@@ -14,6 +14,15 @@ import LandingPage from "@/pages/landing";
 import LoginPage from "@/pages/login";
 import HomePage from "@/pages/home";
 import DashboardOverview from "@/pages/dashboard-overview";
+import DashboardFlightOps from "@/pages/dashboard-flight-ops";
+import DashboardPassengers from "@/pages/dashboard-passengers";
+import DashboardConnectivity from "@/pages/dashboard-connectivity";
+import DashboardAirports from "@/pages/dashboard-airports";
+import DashboardCargo from "@/pages/dashboard-cargo";
+import DashboardFinancial from "@/pages/dashboard-financial";
+import DashboardBop from "@/pages/dashboard-bop";
+import DashboardFleet from "@/pages/dashboard-fleet";
+import DashboardDigital from "@/pages/dashboard-digital";
 import { PlaceholderPage } from "@/pages/placeholder";
 import { Redirect } from "wouter";
 
@@ -22,11 +31,15 @@ function AuthenticatedRouter() {
     <Switch>
       <Route path="/home" component={HomePage} />
       <Route path="/dashboards/overview" component={DashboardOverview} />
-      <Route path="/dashboards/airports">{() => <PlaceholderPage path="/dashboards/airports" />}</Route>
-      <Route path="/dashboards/airlines">{() => <PlaceholderPage path="/dashboards/airlines" />}</Route>
-      <Route path="/dashboards/connectivity">{() => <PlaceholderPage path="/dashboards/connectivity" />}</Route>
-      <Route path="/dashboards/cargo">{() => <PlaceholderPage path="/dashboards/cargo" />}</Route>
-      <Route path="/dashboards/regulatory">{() => <PlaceholderPage path="/dashboards/regulatory" />}</Route>
+      <Route path="/dashboards/flight-ops" component={DashboardFlightOps} />
+      <Route path="/dashboards/passengers" component={DashboardPassengers} />
+      <Route path="/dashboards/connectivity" component={DashboardConnectivity} />
+      <Route path="/dashboards/airports" component={DashboardAirports} />
+      <Route path="/dashboards/cargo" component={DashboardCargo} />
+      <Route path="/dashboards/financial" component={DashboardFinancial} />
+      <Route path="/dashboards/bop" component={DashboardBop} />
+      <Route path="/dashboards/fleet" component={DashboardFleet} />
+      <Route path="/dashboards/digital" component={DashboardDigital} />
       <Route path="/explorer">{() => <PlaceholderPage path="/explorer" />}</Route>
       <Route path="/self-service">{() => <PlaceholderPage path="/self-service" />}</Route>
       <Route path="/reports">{() => <PlaceholderPage path="/reports" />}</Route>

@@ -31,7 +31,16 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 - `/` - Landing page (public)
 - `/login` - Login page (public)
 - `/home` - Home dashboard (authenticated)
-- `/dashboards/*` - Dashboard pages (authenticated)
+- `/dashboards/overview` - National Aviation Overview (8 KPIs)
+- `/dashboards/flight-ops` - Flight Operations (6 KPIs)
+- `/dashboards/passengers` - Passenger Intelligence (6 KPIs)
+- `/dashboards/connectivity` - Connectivity & Market Share (7 KPIs)
+- `/dashboards/airports` - Airport Infrastructure & Capacity (11 KPIs)
+- `/dashboards/cargo` - Cargo & Logistics (5 KPIs)
+- `/dashboards/financial` - Financial & Economic (10 KPIs)
+- `/dashboards/bop` - Balance of Payments (6 KPIs)
+- `/dashboards/fleet` - Fleet & Aircraft (3 KPIs)
+- `/dashboards/digital` - Digital, Sustainability & CX (7 KPIs)
 - `/explorer`, `/self-service`, `/reports`, `/catalog`, `/api-portal` - Tool pages (authenticated)
 - `/notifications`, `/settings` - User pages (authenticated)
 
@@ -49,12 +58,21 @@ client/src/
     kpi-card.tsx    - Reusable KPI metric card with sparkline chart
     ui/             - shadcn/ui components
   pages/
-    landing.tsx     - Public landing page with hero, features, dashboard showcase
-    login.tsx       - Login page with split layout and GACA branding
-    home.tsx        - Home dashboard with KPIs, alerts, activity, quick links
-    dashboard-overview.tsx - National Aviation Overview with charts and tables
-    placeholder.tsx - Coming soon pages for unimplemented sections
-    not-found.tsx   - 404 page
+    landing.tsx           - Public landing page with hero, features, dashboard showcase
+    login.tsx             - Login page with split layout and GACA branding
+    home.tsx              - Home dashboard with KPIs, alerts, activity, quick links
+    dashboard-overview.tsx    - Dashboard 1: National Aviation Overview (8 KPIs)
+    dashboard-flight-ops.tsx  - Dashboard 2: Flight Operations (6 KPIs)
+    dashboard-passengers.tsx  - Dashboard 3: Passenger Intelligence (6 KPIs)
+    dashboard-connectivity.tsx - Dashboard 4: Connectivity & Market Share (7 KPIs)
+    dashboard-airports.tsx    - Dashboard 5: Airport Infrastructure & Capacity (11 KPIs)
+    dashboard-cargo.tsx       - Dashboard 6: Cargo & Logistics (5 KPIs)
+    dashboard-financial.tsx   - Dashboard 7: Financial & Economic (10 KPIs)
+    dashboard-bop.tsx         - Dashboard 8: Balance of Payments (6 KPIs)
+    dashboard-fleet.tsx       - Dashboard 9: Fleet & Aircraft (3 KPIs)
+    dashboard-digital.tsx     - Dashboard 10: Digital, Sustainability & CX (7 KPIs)
+    placeholder.tsx           - Coming soon pages for unimplemented tool sections
+    not-found.tsx             - 404 page
 ```
 
 ## Design Tokens

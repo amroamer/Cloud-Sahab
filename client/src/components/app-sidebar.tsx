@@ -17,6 +17,11 @@ import {
   Package,
   Shield,
   ChevronDown,
+  Users,
+  DollarSign,
+  Scale,
+  Leaf,
+  Radar,
 } from "lucide-react";
 import {
   Sidebar,
@@ -45,11 +50,15 @@ export function AppSidebar() {
 
   const dashboardItems = [
     { title: t("nav.overview"), url: "/dashboards/overview", icon: Globe },
-    { title: t("nav.airports"), url: "/dashboards/airports", icon: Building2 },
-    { title: t("nav.airlines"), url: "/dashboards/airlines", icon: Plane },
+    { title: t("nav.flightOps"), url: "/dashboards/flight-ops", icon: Radar },
+    { title: t("nav.passengers"), url: "/dashboards/passengers", icon: Users },
     { title: t("nav.connectivity"), url: "/dashboards/connectivity", icon: Map },
+    { title: t("nav.airports"), url: "/dashboards/airports", icon: Building2 },
     { title: t("nav.cargo"), url: "/dashboards/cargo", icon: Package },
-    { title: t("nav.regulatory"), url: "/dashboards/regulatory", icon: Shield },
+    { title: t("nav.financial"), url: "/dashboards/financial", icon: DollarSign },
+    { title: t("nav.bop"), url: "/dashboards/bop", icon: Scale },
+    { title: t("nav.fleet"), url: "/dashboards/fleet", icon: Plane },
+    { title: t("nav.digital"), url: "/dashboards/digital", icon: Leaf },
   ];
 
   const mainItems = [
