@@ -116,7 +116,10 @@ client/src/
 ## Important Notes
 - Do NOT add hover:bg-* classes to buttons or badges; elevation system is automatic
 - Always use `dir="ltr"` wrapper div around Recharts components to prevent RTL layout issues
-- RTL: Document dir attribute controlled by i18n provider; logical CSS properties used where possible
+- RTL: Document dir attribute controlled by i18n provider; logical CSS properties (ms-, me-, ps-, pe-, start-, end-, text-end) used throughout
+- Sidebar uses `side={isRTL ? "right" : "left"}` to flip correctly in Arabic mode
+- Directional icons (ArrowLeft, ChevronRight) use `rtl:rotate-180` to flip in RTL
+- Never use `ml-`, `mr-`, `pl-`, `pr-`, `left-`, `right-`, `text-left`, `text-right` — use logical equivalents instead
 
 ## Running
 - `npm run dev` starts both Express backend and Vite frontend on port 5000

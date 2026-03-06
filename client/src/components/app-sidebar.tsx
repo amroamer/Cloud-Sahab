@@ -60,7 +60,7 @@ function filterByRole(items: NavItem[], role: UserRole): NavItem[] {
 }
 
 export function AppSidebar() {
-  const { t, language } = useTranslation();
+  const { t, language, isRTL } = useTranslation();
   const [location] = useLocation();
   const { user } = useAuth();
   const role = (user?.role || "Platform Admin") as UserRole;
@@ -116,7 +116,7 @@ export function AppSidebar() {
   const showAjwaa = filteredAjwaa.length > 0 && showDashboards;
 
   return (
-    <Sidebar>
+    <Sidebar side={isRTL ? "right" : "left"}>
       <SidebarHeader className="p-4">
         <Link href="/home" data-testid="link-home-logo">
           <div className="flex items-center gap-2">

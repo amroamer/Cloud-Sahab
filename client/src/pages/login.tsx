@@ -142,7 +142,7 @@ export default function LoginPage() {
           <div className="absolute top-4 flex items-center gap-1" style={{ insetInlineStart: "1rem" }}>
             <Link href="/">
               <Button size="sm" variant="ghost" className="text-xs gap-1.5" data-testid="button-back-home">
-                <ArrowLeft className="h-3.5 w-3.5" />
+                <ArrowLeft className="h-3.5 w-3.5 rtl:rotate-180" />
                 {language === "ar" ? "الرئيسية" : "Home"}
               </Button>
             </Link>
@@ -174,7 +174,7 @@ export default function LoginPage() {
 
           <div className="mb-5">
             <Label className="text-xs text-muted-foreground mb-1.5 block">
-              <Users className="h-3.5 w-3.5 inline-block mr-1.5" />
+              <Users className="h-3.5 w-3.5 inline-block me-1.5" />
               {language === "ar" ? "حسابات تجريبية" : "Demo Accounts"}
             </Label>
             <Select onValueChange={handleDemoSelect} data-testid="select-demo-account">

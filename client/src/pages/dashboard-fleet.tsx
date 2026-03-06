@@ -229,9 +229,9 @@ export default function DashboardFleet() {
                       <div className="h-3 w-3 rounded-full shrink-0" style={{ backgroundColor: item.color }} />
                       <span className="text-sm">{isAr ? item.nameAr : item.name}</span>
                     </div>
-                    <div className="text-right">
+                    <div className="text-end">
                       <span className="text-lg font-bold">{item.value}</span>
-                      <span className="text-xs text-muted-foreground ml-1">
+                      <span className="text-xs text-muted-foreground ms-1">
                         ({((item.value / totalFleet) * 100).toFixed(0)}%)
                       </span>
                     </div>
@@ -355,10 +355,10 @@ export default function DashboardFleet() {
                 <TableHeader>
                   <TableRow>
                     <TableHead>{isAr ? "شركة الطيران" : "Airline"}</TableHead>
-                    <TableHead className="text-right">{isAr ? "الإجمالي" : "Total"}</TableHead>
-                    <TableHead className="text-right">{isAr ? "متوسط العمر" : "Avg Age"}</TableHead>
-                    <TableHead className="text-right">{isAr ? "أحدث" : "Newest"}</TableHead>
-                    <TableHead className="text-right">{isAr ? "أقدم" : "Oldest"}</TableHead>
+                    <TableHead className="text-end">{isAr ? "الإجمالي" : "Total"}</TableHead>
+                    <TableHead className="text-end">{isAr ? "متوسط العمر" : "Avg Age"}</TableHead>
+                    <TableHead className="text-end">{isAr ? "أحدث" : "Newest"}</TableHead>
+                    <TableHead className="text-end">{isAr ? "أقدم" : "Oldest"}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -367,16 +367,16 @@ export default function DashboardFleet() {
                       <TableCell className="font-medium">
                         {isAr ? row.airlineAr : row.airline}
                       </TableCell>
-                      <TableCell className="text-right">
+                      <TableCell className="text-end">
                         <Badge variant="secondary" className="no-default-active-elevate">
                           {row.total}
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-right">
+                      <TableCell className="text-end">
                         {row.avgAge} {isAr ? "سنوات" : "yrs"}
                       </TableCell>
-                      <TableCell className="text-right">{row.newest}</TableCell>
-                      <TableCell className="text-right">{row.oldest}</TableCell>
+                      <TableCell className="text-end">{row.newest}</TableCell>
+                      <TableCell className="text-end">{row.oldest}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

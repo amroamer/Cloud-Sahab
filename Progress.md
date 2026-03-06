@@ -138,3 +138,15 @@
 - Updated User Guide with Data Marketplace section
 - Renamed "Data Catalog" → "Data Marketplace" across all UI, sidebar, i18n, landing page, user guide, and documentation
 - All pages fully bilingual (EN/AR) with GACA Navy design system
+
+### Phase 9: RTL / Arabic Layout Fix (Complete)
+- **Sidebar RTL Positioning**: Sidebar now dynamically sets `side="right"` in Arabic mode, fixing the fixed-position `left-0` → `right-0` issue so sidebar appears on the correct side
+- **Logical CSS Properties**: Replaced physical directional Tailwind classes with logical equivalents across the entire app:
+  - `ml-*` → `ms-*`, `mr-*` → `me-*` (margin-start / margin-end)
+  - `pl-*` → `ps-*`, `pr-*` → `pe-*` (padding-start / padding-end)
+  - `left-*` → `start-*`, `right-*` → `end-*` (positioning)
+  - `text-right` → `text-end`, `text-left` → `text-start` (alignment)
+- **Arrow Icons**: `ArrowLeft` and `ChevronRight` icons now rotate 180° in RTL mode (`rtl:rotate-180`)
+- **Search Inputs**: Top nav and catalog search bars use `start-3` / `ps-9` instead of conditional `isRTL` logic
+- **Dashboard Tables**: All `text-right` table headers/cells across 8 dashboards converted to `text-end`
+- **Pages Fixed**: catalog.tsx, catalog-detail.tsx, top-nav.tsx, app-sidebar.tsx, home.tsx, landing.tsx, user-guide.tsx, login.tsx, dashboard-airports, dashboard-cargo, dashboard-connectivity, dashboard-digital, dashboard-financial, dashboard-fleet, dashboard-flight-ops, dashboard-passengers

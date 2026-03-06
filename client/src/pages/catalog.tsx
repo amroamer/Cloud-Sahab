@@ -353,7 +353,7 @@ export default function CatalogPage() {
                   <Link href={`/catalog/${CATALOG_PRODUCTS[0].id}`}>
                     <Button size="sm" variant="secondary" className="mt-3 w-full" data-testid="button-view-featured">
                       {language === "ar" ? "عرض المنتج" : "View Product"}
-                      <ChevronRight className="h-3.5 w-3.5" />
+                      <ChevronRight className="h-3.5 w-3.5 rtl:rotate-180" />
                     </Button>
                   </Link>
                 </Card>
@@ -378,7 +378,7 @@ export default function CatalogPage() {
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <div className="relative flex-1">
-              <Search className="absolute left-3 rtl:left-auto rtl:right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute start-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 type="search"
                 placeholder={
@@ -391,7 +391,7 @@ export default function CatalogPage() {
                   setSearchQuery(e.target.value);
                   setVisibleCount(ITEMS_PER_PAGE);
                 }}
-                className="pl-9 rtl:pl-3 rtl:pr-9"
+                className="ps-9"
                 data-testid="input-search"
               />
             </div>
@@ -450,7 +450,7 @@ export default function CatalogPage() {
                 >
                   {language === "ar" ? tab.labelAr : tab.labelEn}
                   {tab.key !== "All" && (
-                    <span className="text-[10px] opacity-60 ml-1">
+                    <span className="text-[10px] opacity-60 ms-1">
                       {tab.key === "Free"
                         ? CATALOG_PRODUCTS.filter((p) => p.isFree).length
                         : CATALOG_PRODUCTS.filter((p) => p.category === tab.key).length}

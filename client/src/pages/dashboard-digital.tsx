@@ -366,7 +366,7 @@ export default function DashboardDigital() {
                         ))}
                       </div>
                     </div>
-                    <div className="text-right">
+                    <div className="text-end">
                       <p className="text-lg font-bold">#{item.rank2026}</p>
                       <div className="flex items-center gap-1">
                         {item.rank2026 < item.rank2025 ? (

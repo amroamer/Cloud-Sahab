@@ -399,20 +399,20 @@ export default function DashboardFinancial() {
                 <TableHeader>
                   <TableRow>
                     <TableHead>{l.component}</TableHead>
-                    <TableHead className="text-right">{l.amount}</TableHead>
-                    <TableHead className="text-right">{l.type}</TableHead>
+                    <TableHead className="text-end">{l.amount}</TableHead>
+                    <TableHead className="text-end">{l.type}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {BOP_COMPONENTS.map((comp) => (
                     <TableRow key={comp.name} data-testid={`row-bop-${comp.name.replace(/\s+/g, "-").toLowerCase()}`}>
                       <TableCell className="font-medium text-sm">{language === "ar" ? comp.nameAr : comp.name}</TableCell>
-                      <TableCell className="text-right font-medium">
+                      <TableCell className="text-end font-medium">
                         <span className={comp.type === "credit" ? "text-emerald-600 dark:text-emerald-400" : "text-red-600 dark:text-red-400"}>
                           {comp.value > 0 ? "+" : ""}{comp.value}
                         </span>
                       </TableCell>
-                      <TableCell className="text-right">
+                      <TableCell className="text-end">
                         <Badge variant="secondary" className="no-default-active-elevate">
                           {comp.type === "credit" ? l.credit : l.debit}
                         </Badge>

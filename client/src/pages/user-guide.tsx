@@ -175,7 +175,7 @@ export default function UserGuidePage() {
                 >
                   <Icon className="h-3.5 w-3.5 text-primary" />
                   <span>{language === "ar" ? s.titleAr : s.titleEn}</span>
-                  <ChevronRight className="h-3 w-3 text-muted-foreground ml-auto" />
+                  <ChevronRight className="h-3 w-3 text-muted-foreground ms-auto rtl:rotate-180" />
                 </a>
               );
             })}

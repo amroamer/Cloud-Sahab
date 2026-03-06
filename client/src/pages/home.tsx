@@ -267,7 +267,7 @@ export default function HomePage() {
                 <Link href="/notifications">
                   <Button variant="ghost" size="sm" data-testid="link-view-all-alerts">
                     {t("home.viewAll")}
-                    <ChevronRight className="h-3.5 w-3.5" />
+                    <ChevronRight className="h-3.5 w-3.5 rtl:rotate-180" />
                   </Button>
                 </Link>
               </div>
@@ -307,7 +307,7 @@ export default function HomePage() {
                     <div className="flex items-center gap-3 p-2.5 rounded-md hover-elevate cursor-pointer" data-testid={`link-quick-${link.href.replace(/\//g, "-")}`}>
                       <link.icon className="h-4 w-4 text-primary shrink-0" />
                       <span className="text-sm">{link.label}</span>
-                      <ChevronRight className="h-3.5 w-3.5 text-muted-foreground ml-auto" />
+                      <ChevronRight className="h-3.5 w-3.5 text-muted-foreground ms-auto rtl:rotate-180" />
                     </div>
                   </Link>
                 ))}

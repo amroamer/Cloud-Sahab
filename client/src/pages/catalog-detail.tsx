@@ -97,7 +97,7 @@ function ClassificationBadge({ classification, language }: { classification: str
   const variant = classification === "Public" ? "secondary" : classification === "Restricted" ? "default" : "destructive";
   return (
     <Badge variant={variant} data-testid="badge-classification">
-      <Shield className="h-3 w-3 mr-1" />
+      <Shield className="h-3 w-3 me-1" />
       {language === "ar" ? labels[classification]?.ar : labels[classification]?.en}
     </Badge>
   );
@@ -187,7 +187,7 @@ function ReviewsTab({ product, language }: { product: CatalogProduct; language: 
                 <div className="flex-1 h-1.5 bg-muted rounded-full overflow-visible">
                   <div className="h-full bg-amber-400 rounded-full" style={{ width: `${pct}%` }} />
                 </div>
-                <span className="w-8 text-muted-foreground text-right">{pct}%</span>
+                <span className="w-8 text-muted-foreground text-end">{pct}%</span>
               </div>
             );
           })}
@@ -265,7 +265,7 @@ function VersionsTab({ product, language }: { product: CatalogProduct; language:
               data-testid={`button-version-download-${idx}`}
               onClick={() => downloadProductCSV(product)}
             >
-              <Download className="h-3.5 w-3.5 mr-1.5" />
+              <Download className="h-3.5 w-3.5 me-1.5" />
               {language === "ar" ? "تحميل" : "Download"}
             </Button>
           </div>
@@ -303,8 +303,8 @@ export default function CatalogDetailPage() {
           </p>
           <Link href="/catalog">
             <Button data-testid="button-back-catalog">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              {language === "ar" ? "العودة إلى الكتالوج" : "Back to Catalog"}
+              <ArrowLeft className="h-4 w-4 me-2 rtl:rotate-180" />
+              {language === "ar" ? "العودة إلى سوق البيانات" : "Back to Marketplace"}
             </Button>
           </Link>
         </div>
@@ -331,7 +331,7 @@ export default function CatalogDetailPage() {
         data-testid="button-download-product"
         onClick={() => downloadProductCSV(product)}
       >
-        <Download className="h-4 w-4 mr-2" />
+        <Download className="h-4 w-4 me-2" />
         {language === "ar" ? "تحميل" : "Download"}
       </Button>
     );
@@ -342,8 +342,8 @@ export default function CatalogDetailPage() {
       <div className="p-6 max-w-[1200px] mx-auto space-y-6">
         <Link href="/catalog">
           <Button variant="ghost" size="sm" className="gap-1.5" data-testid="button-back-catalog">
-            <ArrowLeft className="h-4 w-4" />
-            {language === "ar" ? "العودة إلى الكتالوج" : "Back to Catalog"}
+            <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
+            {language === "ar" ? "العودة إلى سوق البيانات" : "Back to Marketplace"}
           </Button>
         </Link>
 
@@ -355,7 +355,7 @@ export default function CatalogDetailPage() {
                   {language === "ar" ? product.categoryAr : product.category}
                 </Badge>
                 <Badge variant="outline" data-testid="badge-frequency">
-                  <RefreshCw className="h-3 w-3 mr-1" />
+                  <RefreshCw className="h-3 w-3 me-1" />
                   {product.frequency}
                 </Badge>
                 <ClassificationBadge classification={product.classification} language={language} />
@@ -453,7 +453,7 @@ export default function CatalogDetailPage() {
                   >
                     {language === "ar" ? tab.labelAr : tab.labelEn}
                     {activeTab === tab.key && (
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                      <span className="absolute bottom-0 inset-x-0 h-0.5 bg-primary rounded-full" />
                     )}
                   </button>
                 ))}

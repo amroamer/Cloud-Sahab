@@ -434,37 +434,37 @@ export default function DashboardAirports() {
                   <TableHead>
                     {language === "ar" ? "المطار" : "Airport"}
                   </TableHead>
-                  <TableHead className="text-right">
+                  <TableHead className="text-end">
                     {language === "ar" ? "السعة (م)" : "Capacity (M)"}
                   </TableHead>
-                  <TableHead className="text-right">
+                  <TableHead className="text-end">
                     {language === "ar" ? "المسافرون (م)" : "Pax (M)"}
                   </TableHead>
-                  <TableHead className="text-right">
+                  <TableHead className="text-end">
                     {language === "ar" ? "الاستخدام" : "Util %"}
                   </TableHead>
-                  <TableHead className="text-right">
+                  <TableHead className="text-end">
                     {language === "ar" ? "الصالات" : "Terminals"}
                   </TableHead>
-                  <TableHead className="text-right">
+                  <TableHead className="text-end">
                     {language === "ar" ? "المدارج" : "Runways"}
                   </TableHead>
-                  <TableHead className="text-right">
+                  <TableHead className="text-end">
                     {language === "ar" ? "أطول مدرج" : "Max Runway"}
                   </TableHead>
-                  <TableHead className="text-right">
+                  <TableHead className="text-end">
                     {language === "ar" ? "البوابات" : "Gates"}
                   </TableHead>
-                  <TableHead className="text-right">
+                  <TableHead className="text-end">
                     {language === "ar" ? "بجسور" : "w/ Bridge"}
                   </TableHead>
-                  <TableHead className="text-right">
+                  <TableHead className="text-end">
                     {language === "ar" ? "بدون" : "w/o"}
                   </TableHead>
-                  <TableHead className="text-right">
+                  <TableHead className="text-end">
                     {language === "ar" ? "مواقف ق" : "Short P"}
                   </TableHead>
-                  <TableHead className="text-right">
+                  <TableHead className="text-end">
                     {language === "ar" ? "مواقف ط" : "Long P"}
                   </TableHead>
                 </TableRow>
@@ -480,34 +480,34 @@ export default function DashboardAirports() {
                     <TableCell className="font-medium">
                       {language === "ar" ? a.nameAr : a.name}
                     </TableCell>
-                    <TableCell className="text-right">{a.capacity}</TableCell>
-                    <TableCell className="text-right">{a.passengers}</TableCell>
-                    <TableCell className="text-right">
+                    <TableCell className="text-end">{a.capacity}</TableCell>
+                    <TableCell className="text-end">{a.passengers}</TableCell>
+                    <TableCell className="text-end">
                       <div className="flex items-center justify-end gap-2">
                         <Progress
                           value={a.utilization}
                           className="h-1.5 w-16"
                           dir="ltr"
                         />
-                        <span className="text-xs font-medium w-8 text-right">
+                        <span className="text-xs font-medium w-8 text-end">
                           {a.utilization}%
                         </span>
                       </div>
                     </TableCell>
-                    <TableCell className="text-right">{a.terminals}</TableCell>
-                    <TableCell className="text-right">{a.runways}</TableCell>
-                    <TableCell className="text-right">
+                    <TableCell className="text-end">{a.terminals}</TableCell>
+                    <TableCell className="text-end">{a.runways}</TableCell>
+                    <TableCell className="text-end">
                       {Math.max(...a.runwayLengths)}m
                     </TableCell>
-                    <TableCell className="text-right">{a.gates}</TableCell>
-                    <TableCell className="text-right">
+                    <TableCell className="text-end">{a.gates}</TableCell>
+                    <TableCell className="text-end">
                       {a.gatesWithBridges}
                     </TableCell>
-                    <TableCell className="text-right">{a.gatesWithout}</TableCell>
-                    <TableCell className="text-right">
+                    <TableCell className="text-end">{a.gatesWithout}</TableCell>
+                    <TableCell className="text-end">
                       {a.shortParking.toLocaleString()}
                     </TableCell>
-                    <TableCell className="text-right">
+                    <TableCell className="text-end">
                       {a.longParking.toLocaleString()}
                     </TableCell>
                   </TableRow>

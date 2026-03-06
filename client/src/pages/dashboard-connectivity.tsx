@@ -429,31 +429,31 @@ export default function DashboardConnectivity() {
               <TableHeader>
                 <TableRow>
                   <TableHead>{language === "ar" ? "شركة الطيران" : "Airline"}</TableHead>
-                  <TableHead className="text-right">KAIA</TableHead>
-                  <TableHead className="text-right">KKIA</TableHead>
-                  <TableHead className="text-right">KFIA</TableHead>
-                  <TableHead className="text-right">PMIA</TableHead>
-                  <TableHead className="text-right">{language === "ar" ? "أخرى" : "Other"}</TableHead>
+                  <TableHead className="text-end">KAIA</TableHead>
+                  <TableHead className="text-end">KKIA</TableHead>
+                  <TableHead className="text-end">KFIA</TableHead>
+                  <TableHead className="text-end">PMIA</TableHead>
+                  <TableHead className="text-end">{language === "ar" ? "أخرى" : "Other"}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {airlineAirportMatrix.map((row, idx) => (
                   <TableRow key={idx} data-testid={`row-airline-airport-${idx}`}>
                     <TableCell className="font-medium">{language === "ar" ? row.airlineAr : row.airline}</TableCell>
-                    <TableCell className="text-right">
-                      <span className="inline-block min-w-[3rem] text-right">{row.KAIA}K</span>
+                    <TableCell className="text-end">
+                      <span className="inline-block min-w-[3rem] text-end">{row.KAIA}K</span>
                     </TableCell>
-                    <TableCell className="text-right">
-                      <span className="inline-block min-w-[3rem] text-right">{row.KKIA}K</span>
+                    <TableCell className="text-end">
+                      <span className="inline-block min-w-[3rem] text-end">{row.KKIA}K</span>
                     </TableCell>
-                    <TableCell className="text-right">
-                      <span className="inline-block min-w-[3rem] text-right">{row.KFIA}K</span>
+                    <TableCell className="text-end">
+                      <span className="inline-block min-w-[3rem] text-end">{row.KFIA}K</span>
                     </TableCell>
-                    <TableCell className="text-right">
-                      <span className="inline-block min-w-[3rem] text-right">{row.PMIA}K</span>
+                    <TableCell className="text-end">
+                      <span className="inline-block min-w-[3rem] text-end">{row.PMIA}K</span>
                     </TableCell>
-                    <TableCell className="text-right">
-                      <span className="inline-block min-w-[3rem] text-right">{row.Other}K</span>
+                    <TableCell className="text-end">
+                      <span className="inline-block min-w-[3rem] text-end">{row.Other}K</span>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -475,7 +475,7 @@ export default function DashboardConnectivity() {
                 <TableRow>
                   <TableHead>{language === "ar" ? "شركة الطيران" : "Airline"}</TableHead>
                   <TableHead>{language === "ar" ? "الدولة" : "Country"}</TableHead>
-                  <TableHead className="text-right">{language === "ar" ? "الحركات" : "Movements"}</TableHead>
+                  <TableHead className="text-end">{language === "ar" ? "الحركات" : "Movements"}</TableHead>
                   <TableHead className="text-center">{language === "ar" ? "عبور جوي" : "Overflight"}</TableHead>
                 </TableRow>
               </TableHeader>
@@ -484,7 +484,7 @@ export default function DashboardConnectivity() {
                   <TableRow key={idx} data-testid={`row-airspace-${idx}`}>
                     <TableCell className="font-medium">{language === "ar" ? airline.airlineAr : airline.airline}</TableCell>
                     <TableCell className="text-muted-foreground">{language === "ar" ? airline.countryAr : airline.country}</TableCell>
-                    <TableCell className="text-right">{(airline.movements / 1000).toFixed(1)}K</TableCell>
+                    <TableCell className="text-end">{(airline.movements / 1000).toFixed(1)}K</TableCell>
                     <TableCell className="text-center">
                       <Badge variant={airline.overflight ? "default" : "secondary"} className="no-default-active-elevate">
                         {airline.overflight

@@ -312,8 +312,8 @@ export default function DashboardCargo() {
                   <TableRow>
                     <TableHead className="w-10">#</TableHead>
                     <TableHead>{isAr ? "المطار" : "Airport"}</TableHead>
-                    <TableHead className="text-right">{isAr ? "الحمولة (طن)" : "Tonnage"}</TableHead>
-                    <TableHead className="text-right">{isAr ? "المرافق" : "Facilities"}</TableHead>
+                    <TableHead className="text-end">{isAr ? "الحمولة (طن)" : "Tonnage"}</TableHead>
+                    <TableHead className="text-end">{isAr ? "المرافق" : "Facilities"}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -321,8 +321,8 @@ export default function DashboardCargo() {
                     <TableRow key={airport.code} data-testid={`row-cargo-airport-${airport.code}`}>
                       <TableCell className="font-medium text-muted-foreground">{idx + 1}</TableCell>
                       <TableCell className="font-medium">{isAr ? airport.nameAr : airport.name}</TableCell>
-                      <TableCell className="text-right">{airport.cargoTonnage.toLocaleString()}</TableCell>
-                      <TableCell className="text-right">{airport.cargoFacilities}</TableCell>
+                      <TableCell className="text-end">{airport.cargoTonnage.toLocaleString()}</TableCell>
+                      <TableCell className="text-end">{airport.cargoFacilities}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

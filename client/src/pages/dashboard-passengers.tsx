@@ -409,10 +409,10 @@ export default function DashboardPassengers() {
                   <TableRow>
                     <TableHead className="w-12">#</TableHead>
                     <TableHead>{t("dashboard.airport")}</TableHead>
-                    <TableHead className="text-right">{language === "ar" ? "المسافرون (مليون)" : "Passengers (M)"}</TableHead>
-                    <TableHead className="text-right">{language === "ar" ? "البوابات" : "Gates"}</TableHead>
-                    <TableHead className="text-right">{language === "ar" ? "بجسور" : "With Bridges"}</TableHead>
-                    <TableHead className="text-right">{language === "ar" ? "بدون جسور" : "Without"}</TableHead>
+                    <TableHead className="text-end">{language === "ar" ? "المسافرون (مليون)" : "Passengers (M)"}</TableHead>
+                    <TableHead className="text-end">{language === "ar" ? "البوابات" : "Gates"}</TableHead>
+                    <TableHead className="text-end">{language === "ar" ? "بجسور" : "With Bridges"}</TableHead>
+                    <TableHead className="text-end">{language === "ar" ? "بدون جسور" : "Without"}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -420,10 +420,10 @@ export default function DashboardPassengers() {
                     <TableRow key={a.code} data-testid={`row-pax-airport-${a.code}`}>
                       <TableCell className="font-medium text-muted-foreground">{a.rank}</TableCell>
                       <TableCell className="font-medium">{language === "ar" ? a.nameAr : a.name}</TableCell>
-                      <TableCell className="text-right">{a.passengers.toFixed(1)}</TableCell>
-                      <TableCell className="text-right">{a.gates}</TableCell>
-                      <TableCell className="text-right">{a.gatesWithBridges}</TableCell>
-                      <TableCell className="text-right">{a.gatesWithout}</TableCell>
+                      <TableCell className="text-end">{a.passengers.toFixed(1)}</TableCell>
+                      <TableCell className="text-end">{a.gates}</TableCell>
+                      <TableCell className="text-end">{a.gatesWithBridges}</TableCell>
+                      <TableCell className="text-end">{a.gatesWithout}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -434,8 +434,8 @@ export default function DashboardPassengers() {
                   <TableRow>
                     <TableHead className="w-12">#</TableHead>
                     <TableHead>{t("dashboard.airline")}</TableHead>
-                    <TableHead className="text-right">{language === "ar" ? "المسافرون (مليون)" : "Passengers (M)"}</TableHead>
-                    <TableHead className="text-right">{t("dashboard.marketShare")}</TableHead>
+                    <TableHead className="text-end">{language === "ar" ? "المسافرون (مليون)" : "Passengers (M)"}</TableHead>
+                    <TableHead className="text-end">{t("dashboard.marketShare")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -443,8 +443,8 @@ export default function DashboardPassengers() {
                     <TableRow key={a.name} data-testid={`row-pax-airline-${a.rank}`}>
                       <TableCell className="font-medium text-muted-foreground">{a.rank}</TableCell>
                       <TableCell className="font-medium">{language === "ar" ? a.nameAr : a.name}</TableCell>
-                      <TableCell className="text-right">{a.passengers.toFixed(1)}</TableCell>
-                      <TableCell className="text-right">
+                      <TableCell className="text-end">{a.passengers.toFixed(1)}</TableCell>
+                      <TableCell className="text-end">
                         <Badge variant="secondary" className="no-default-active-elevate">{a.marketShare.toFixed(1)}%</Badge>
                       </TableCell>
                     </TableRow>

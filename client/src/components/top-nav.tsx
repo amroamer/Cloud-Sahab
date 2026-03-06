@@ -80,11 +80,11 @@ export function TopNav() {
         <SidebarTrigger data-testid="button-sidebar-toggle" />
 
         <div className={`relative max-w-md flex-1 transition-all ${searchFocused ? "max-w-lg" : ""}`}>
-          <Search className={`absolute top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground ${isRTL ? "right-3" : "left-3"}`} />
+          <Search className="absolute top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground start-3" />
           <Input
             type="search"
             placeholder={t("common.search")}
-            className={`${isRTL ? "pr-9 pl-3" : "pl-9 pr-3"} bg-muted/50 border-transparent focus:border-primary/30 focus:bg-background transition-colors`}
+            className="ps-9 pe-3 bg-muted/50 border-transparent focus:border-primary/30 focus:bg-background transition-colors"
             onFocus={() => setSearchFocused(true)}
             onBlur={() => setSearchFocused(false)}
             data-testid="input-global-search"

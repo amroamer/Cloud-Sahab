@@ -410,7 +410,7 @@ export default function DashboardFlightOps() {
                 <TableRow>
                   <TableHead>{language === "ar" ? "شركة الطيران" : "Airline"}</TableHead>
                   <TableHead>{language === "ar" ? "الدولة" : "Country"}</TableHead>
-                  <TableHead className="text-right">{language === "ar" ? "الحركات" : "Movements"}</TableHead>
+                  <TableHead className="text-end">{language === "ar" ? "الحركات" : "Movements"}</TableHead>
                   <TableHead className="text-center">{language === "ar" ? "عبور المجال الجوي" : "Overflight"}</TableHead>
                 </TableRow>
               </TableHeader>
@@ -423,7 +423,7 @@ export default function DashboardFlightOps() {
                     <TableCell className="text-muted-foreground">
                       {language === "ar" ? airline.countryAr : airline.country}
                     </TableCell>
-                    <TableCell className="text-right">
+                    <TableCell className="text-end">
                       {(airline.movements / 1000).toFixed(1)}K
                     </TableCell>
                     <TableCell className="text-center">

@@ -153,7 +153,7 @@ export default function LandingPage() {
               <Link href="/login">
                 <Button data-testid="button-nav-sign-in">
                   {isAr ? "تسجيل الدخول" : "Sign In"}
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 rtl:rotate-180" />
                 </Button>
               </Link>
             </div>
@@ -176,7 +176,7 @@ export default function LandingPage() {
               variants={fadeUp}
             >
               <Badge variant="secondary" className="mb-6 text-xs px-3 py-1 no-default-active-elevate">
-                <Shield className="h-3 w-3 mr-1.5" />
+                <Shield className="h-3 w-3 me-1.5" />
                 {isAr ? "الهيئة العامة للطيران المدني" : "General Authority of Civil Aviation"}
               </Badge>
             </motion.div>
@@ -226,7 +226,7 @@ export default function LandingPage() {
               <Link href="/login">
                 <Button size="lg" data-testid="button-hero-sign-in">
                   {isAr ? "الدخول إلى المنصة" : "Access the Platform"}
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 rtl:rotate-180" />
                 </Button>
               </Link>
               <Button size="lg" variant="secondary" data-testid="button-hero-learn-more"
@@ -332,7 +332,7 @@ export default function LandingPage() {
                     <p className="text-sm text-muted-foreground">{isAr ? "مؤشر الاتصال الجوي" : "Air Connectivity Index"}</p>
                     <p className="text-4xl font-bold text-primary mt-1">87</p>
                   </div>
-                  <div className="text-right">
+                  <div className="text-end">
                     <p className="text-sm text-muted-foreground">{isAr ? "الهدف" : "Target"}</p>
                     <p className="text-2xl font-semibold text-muted-foreground mt-1">250</p>
                   </div>
@@ -411,7 +411,7 @@ export default function LandingPage() {
                 <Link href="/login">
                   <Button size="lg" variant="secondary" data-testid="button-cta-sign-in">
                     {isAr ? "تسجيل الدخول" : "Sign In"}
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4 rtl:rotate-180" />
                   </Button>
                 </Link>
               </div>
