@@ -1465,3 +1465,114 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     isFree: true,
   },
 ];
+
+function seededRandom(seed: number): () => number {
+  let s = seed;
+  return () => {
+    s = (s * 16807 + 0) % 2147483647;
+    return s / 2147483647;
+  };
+}
+
+function generateRows(
+  schema: SchemaField[],
+  existingRows: Record<string, string | number>[],
+  targetCount: number,
+  productSeed: number
+): Record<string, string | number>[] {
+  if (existingRows.length >= targetCount) return existingRows;
+
+  const rand = seededRandom(productSeed);
+  const rows = [...existingRows];
+
+  while (rows.length < targetCount) {
+    const baseRow = existingRows[Math.floor(rand() * existingRows.length)];
+    const newRow: Record<string, string | number> = {};
+
+    for (const field of schema) {
+      const baseVal = baseRow[field.name];
+      if (baseVal === undefined) continue;
+
+      if (field.type === "integer") {
+        const base = typeof baseVal === "number" ? baseVal : parseInt(String(baseVal), 10);
+        const variation = 0.6 + rand() * 0.8;
+        newRow[field.name] = Math.round(base * variation);
+      } else if (field.type === "decimal") {
+        const base = typeof baseVal === "number" ? baseVal : parseFloat(String(baseVal));
+        const variation = 0.7 + rand() * 0.6;
+        newRow[field.name] = Math.round(base * variation * 100) / 100;
+      } else if (field.type === "date") {
+        const str = String(baseVal);
+        if (/^\d{4}-\d{2}$/.test(str)) {
+          const y = 2020 + Math.floor(rand() * 6);
+          const m = 1 + Math.floor(rand() * 12);
+          newRow[field.name] = `${y}-${String(m).padStart(2, "0")}`;
+        } else if (/^\d{4}-\d{2}-\d{2}$/.test(str)) {
+          const y = 2020 + Math.floor(rand() * 6);
+          const m = 1 + Math.floor(rand() * 12);
+          const d = 1 + Math.floor(rand() * 28);
+          newRow[field.name] = `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+        } else {
+          newRow[field.name] = baseVal;
+        }
+      } else {
+        const allValues = existingRows
+          .map((r) => r[field.name])
+          .filter((v) => v !== undefined);
+        const uniqueValues = Array.from(new Set(allValues.map(String)));
+        newRow[field.name] = uniqueValues[Math.floor(rand() * uniqueValues.length)];
+      }
+    }
+    rows.push(newRow);
+  }
+
+  return rows;
+}
+
+const expandedDataCache = new Map<string, Record<string, string | number>[]>();
+
+export function getExpandedPreviewData(product: CatalogProduct): Record<string, string | number>[] {
+  if (expandedDataCache.has(product.id)) {
+    return expandedDataCache.get(product.id)!;
+  }
+
+  let seed = 0;
+  for (let i = 0; i < product.id.length; i++) {
+    seed = seed * 31 + product.id.charCodeAt(i);
+  }
+
+  const expanded = generateRows(product.schema, product.previewData, 55, Math.abs(seed));
+  expandedDataCache.set(product.id, expanded);
+  return expanded;
+}
+
+export function downloadProductCSV(product: CatalogProduct): void {
+  const data = getExpandedPreviewData(product);
+  const fieldNames = product.schema.map((f) => f.name);
+
+  const escapeCSV = (val: string | number | undefined): string => {
+    if (val === undefined || val === null) return "";
+    const str = String(val);
+    if (str.includes(",") || str.includes('"') || str.includes("\n")) {
+      return `"${str.replace(/"/g, '""')}"`;
+    }
+    return str;
+  };
+
+  const header = fieldNames.map(escapeCSV).join(",");
+  const rows = data.map((row) =>
+    fieldNames.map((f) => escapeCSV(row[f])).join(",")
+  );
+
+  const csvContent = [header, ...rows].join("\n");
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `${product.id}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}

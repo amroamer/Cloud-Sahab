@@ -7,7 +7,6 @@ import {
   Globe,
   BarChart3,
   FileText,
-  Database,
   Code,
   Bell,
   Settings,
@@ -92,8 +91,8 @@ export function AppSidebar() {
     { title: t("nav.home"), url: "/home", icon: Home },
   ];
 
-  const catalogLabel = external ? t("nav.dataMarketplace") : t("nav.catalog");
-  const catalogIcon = external ? ShoppingBag : Database;
+  const catalogLabel = t("nav.dataMarketplace");
+  const catalogIcon = ShoppingBag;
 
   const toolItems: NavItem[] = [
     { title: t("nav.explorer"), url: "/explorer", icon: BarChart3 },

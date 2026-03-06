@@ -1,8 +1,7 @@
 import { useState, useMemo } from "react";
 import { useRoute, Link } from "wouter";
 import { useTranslation } from "@/lib/i18n";
-import { useAuth, isInternalRole } from "@/lib/auth";
-import { CATALOG_PRODUCTS, type CatalogProduct } from "@/lib/catalog-data";
+import { CATALOG_PRODUCTS, downloadProductCSV, getExpandedPreviewData, type CatalogProduct } from "@/lib/catalog-data";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -19,7 +18,6 @@ import {
   ArrowLeft,
   Star,
   Download,
-  ShoppingCart,
   Database,
   FileText,
   Calendar,
@@ -29,7 +27,6 @@ import {
   BarChart3,
   HardDrive,
   RefreshCw,
-  Lock,
   CheckCircle,
   Clock,
   Users,
@@ -137,52 +134,34 @@ function SchemaTab({ product, language }: { product: CatalogProduct; language: s
   );
 }
 
-function PreviewTab({ product, language, isExternal, isPaid }: { product: CatalogProduct; language: string; isExternal: boolean; isPaid: boolean }) {
-  const showBlur = isExternal && isPaid;
+function PreviewTab({ product, language }: { product: CatalogProduct; language: string }) {
   const columns = product.schema.slice(0, 8);
-  const rows = product.previewData;
+  const rows = getExpandedPreviewData(product);
 
   return (
-    <div className="relative">
-      <div className="overflow-x-auto">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              {columns.map((col, idx) => (
-                <TableHead key={idx} className="text-xs whitespace-nowrap">
-                  {language === "ar" ? col.nameAr : col.name}
-                </TableHead>
+    <div className="overflow-x-auto">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            {columns.map((col, idx) => (
+              <TableHead key={idx} className="text-xs whitespace-nowrap">
+                {language === "ar" ? col.nameAr : col.name}
+              </TableHead>
+            ))}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {rows.map((row, rowIdx) => (
+            <TableRow key={rowIdx} data-testid={`row-preview-${rowIdx}`}>
+              {columns.map((col, colIdx) => (
+                <TableCell key={colIdx} className="text-xs whitespace-nowrap font-mono">
+                  {row[col.name] !== undefined ? String(row[col.name]) : "—"}
+                </TableCell>
               ))}
             </TableRow>
-          </TableHeader>
-          <TableBody>
-            {rows.map((row, rowIdx) => (
-              <TableRow key={rowIdx} className={rowIdx >= 3 && showBlur ? "blur-sm select-none" : ""} data-testid={`row-preview-${rowIdx}`}>
-                {columns.map((col, colIdx) => (
-                  <TableCell key={colIdx} className="text-xs whitespace-nowrap font-mono">
-                    {row[col.name] !== undefined ? String(row[col.name]) : "—"}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-      {showBlur && rows.length > 3 && (
-        <div className="absolute bottom-0 left-0 right-0 h-32 flex items-center justify-center bg-gradient-to-t from-background via-background/80 to-transparent">
-          <div className="text-center">
-            <Lock className="h-5 w-5 mx-auto mb-2 text-muted-foreground" />
-            <p className="text-sm font-medium" data-testid="text-preview-locked">
-              {language === "ar" ? "قم بالشراء للوصول إلى مجموعة البيانات الكاملة" : "Purchase to access full dataset"}
-            </p>
-            <p className="text-xs text-muted-foreground mt-1">
-              {language === "ar"
-                ? `${product.recordCount.toLocaleString()} سجل متاح`
-                : `${product.recordCount.toLocaleString()} records available`}
-            </p>
-          </div>
-        </div>
-      )}
+          ))}
+        </TableBody>
+      </Table>
     </div>
   );
 }
@@ -280,7 +259,12 @@ function VersionsTab({ product, language }: { product: CatalogProduct; language:
                 {language === "ar" ? "الأحدث" : "Current"}
               </Badge>
             )}
-            <Button variant="outline" size="sm" data-testid={`button-version-download-${idx}`}>
+            <Button
+              variant="outline"
+              size="sm"
+              data-testid={`button-version-download-${idx}`}
+              onClick={() => downloadProductCSV(product)}
+            >
               <Download className="h-3.5 w-3.5 mr-1.5" />
               {language === "ar" ? "تحميل" : "Download"}
             </Button>
@@ -293,15 +277,11 @@ function VersionsTab({ product, language }: { product: CatalogProduct; language:
 
 export default function CatalogDetailPage() {
   const { language } = useTranslation();
-  const { user } = useAuth();
   const [, params] = useRoute("/catalog/:productId");
   const [activeTab, setActiveTab] = useState<TabKey>("schema");
 
   const productId = params?.productId;
   const product = useMemo(() => CATALOG_PRODUCTS.find((p) => p.id === productId), [productId]);
-
-  const isExternal = user ? !isInternalRole(user.role) : true;
-  const isPaid = product ? !product.isFree : false;
 
   const relatedProducts = useMemo(() => {
     if (!product) return [];
@@ -345,26 +325,14 @@ export default function CatalogDetailPage() {
   };
 
   const actionButton = () => {
-    if (!isExternal) {
-      return (
-        <Button className="w-full" data-testid="button-access-dataset">
-          <Database className="h-4 w-4 mr-2" />
-          {language === "ar" ? "الوصول إلى البيانات" : "Access Dataset"}
-        </Button>
-      );
-    }
-    if (product.isFree) {
-      return (
-        <Button className="w-full" data-testid="button-download-free">
-          <Download className="h-4 w-4 mr-2" />
-          {language === "ar" ? "تحميل مجاني" : "Download Free"}
-        </Button>
-      );
-    }
     return (
-      <Button className="w-full" data-testid="button-add-to-cart">
-        <ShoppingCart className="h-4 w-4 mr-2" />
-        {language === "ar" ? "أضف إلى السلة" : "Add to Cart"}
+      <Button
+        className="w-full"
+        data-testid="button-download-product"
+        onClick={() => downloadProductCSV(product)}
+      >
+        <Download className="h-4 w-4 mr-2" />
+        {language === "ar" ? "تحميل" : "Download"}
       </Button>
     );
   };
@@ -493,7 +461,7 @@ export default function CatalogDetailPage() {
 
               <Card className="p-4" data-testid="card-tab-content">
                 {activeTab === "schema" && <SchemaTab product={product} language={language} />}
-                {activeTab === "preview" && <PreviewTab product={product} language={language} isExternal={isExternal} isPaid={isPaid} />}
+                {activeTab === "preview" && <PreviewTab product={product} language={language} />}
                 {activeTab === "reviews" && <ReviewsTab product={product} language={language} />}
                 {activeTab === "versions" && <VersionsTab product={product} language={language} />}
               </Card>

@@ -86,7 +86,7 @@ export default function LandingPage() {
     },
     {
       icon: <Database className="h-5 w-5" />,
-      title: isAr ? "كتالوج البيانات" : "Data Catalog",
+      title: isAr ? "سوق البيانات" : "Data Marketplace",
       desc: isAr ? "اكتشف واستكشف جميع مجموعات البيانات المتاحة مع بيانات وصفية غنية" : "Discover and explore all available datasets with rich metadata and quality scores.",
       color: "340 75% 45%",
     },

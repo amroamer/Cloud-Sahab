@@ -113,8 +113,8 @@
   - Table of contents with anchor links
   - All content available in English and Arabic
 
-### Phase 8: Data Catalog & Marketplace (Complete)
-- **Data Catalog Page** (`/catalog`): Full-featured data product browser
+### Phase 8: Data Marketplace (Complete)
+- **Data Marketplace Page** (`/catalog`): Full-featured data product browser
   - 32 pre-seeded aviation data products (28 paid + 4 free) across 12 categories
   - Categories: Traffic (5), Connectivity (3), Market Share (3), Flight Operations (3), Cargo (3), Infrastructure (2), Financial (2), Fleet (2), Sustainability (1), Digital & CX (2), Bundles (2), Free (4)
   - Hero banner for external/marketplace users with featured product
@@ -131,7 +131,10 @@
   - Tabbed content: Schema (field table), Preview (sample data with blur overlay for paid), Reviews (star ratings), Versions (edition history)
   - Related products section with 4 cards
   - Back to Catalog navigation
-- **Role-Aware UI**: Internal GACA users see "Access Dataset" buttons; external users see "Add to Cart" / "Download" with marketplace hero banner
-- Created `client/src/lib/catalog-data.ts` with full product metadata, schemas (8-11 fields each), and preview data
-- Updated User Guide with Data Catalog & Marketplace section
+- **Universal Download**: All products downloadable as CSV by all users — no purchase or role restrictions
+- Created `client/src/lib/catalog-data.ts` with full product metadata, schemas (8-11 fields each), and 55 rows of expanded preview data per product
+- `downloadProductCSV()` utility generates CSV from product schema and triggers browser download
+- No blur/lock overlay on preview — all data visible to all users
+- Updated User Guide with Data Marketplace section
+- Renamed "Data Catalog" → "Data Marketplace" across all UI, sidebar, i18n, landing page, user guide, and documentation
 - All pages fully bilingual (EN/AR) with GACA Navy design system

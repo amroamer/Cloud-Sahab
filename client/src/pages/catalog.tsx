@@ -21,13 +21,13 @@ import {
 import {
   CATALOG_PRODUCTS,
   CATALOG_CATEGORIES,
+  downloadProductCSV,
   type CatalogProduct,
 } from "@/lib/catalog-data";
 import {
   Search,
   Star,
   Download,
-  ShoppingCart,
   Database,
   FileSpreadsheet,
   FileText,
@@ -102,11 +102,9 @@ function StarRating({ rating, size = "sm" }: { rating: number; size?: "sm" | "md
 function ProductCard({
   product,
   language,
-  isInternal,
 }: {
   product: CatalogProduct;
   language: string;
-  isInternal: boolean;
 }) {
   const name = language === "ar" ? product.nameAr : product.name;
   const desc = language === "ar" ? product.descriptionAr : product.description;
@@ -163,22 +161,18 @@ function ProductCard({
             </span>
           )}
 
-          {isInternal ? (
-            <Button size="sm" variant="secondary" data-testid={`button-access-${product.id}`}>
-              <Database className="h-3.5 w-3.5" />
-              {language === "ar" ? "الوصول" : "Access"}
-            </Button>
-          ) : product.isFree ? (
-            <Button size="sm" variant="default" data-testid={`button-download-${product.id}`}>
-              <Download className="h-3.5 w-3.5" />
-              {language === "ar" ? "تحميل" : "Download"}
-            </Button>
-          ) : (
-            <Button size="sm" data-testid={`button-cart-${product.id}`}>
-              <ShoppingCart className="h-3.5 w-3.5" />
-              {language === "ar" ? "إضافة" : "Add to Cart"}
-            </Button>
-          )}
+          <Button
+            size="sm"
+            variant="default"
+            data-testid={`button-download-${product.id}`}
+            onClick={(e) => {
+              e.preventDefault();
+              downloadProductCSV(product);
+            }}
+          >
+            <Download className="h-3.5 w-3.5" />
+            {language === "ar" ? "تحميل" : "Download"}
+          </Button>
         </div>
       </Card>
     </Link>
@@ -372,7 +366,7 @@ export default function CatalogPage() {
           {isInternal && (
             <div>
               <h1 className="text-2xl font-bold tracking-tight" data-testid="text-catalog-title">
-                {language === "ar" ? "كتالوج البيانات" : "Data Catalog"}
+                {language === "ar" ? "سوق البيانات" : "Data Marketplace"}
               </h1>
               <p className="text-sm text-muted-foreground mt-1">
                 {language === "ar"
@@ -634,7 +628,6 @@ export default function CatalogPage() {
                         key={product.id}
                         product={product}
                         language={language}
-                        isInternal={isInternal}
                       />
                     ))}
                   </div>

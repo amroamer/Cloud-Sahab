@@ -42,10 +42,10 @@ const pageConfig: Record<string, { icon: typeof BarChart3; titleEn: string; titl
   },
   "/catalog": {
     icon: Database,
-    titleEn: "Data Catalog",
-    titleAr: "كتالوج البيانات",
-    descEn: "Discover available datasets, APIs, and data products with rich metadata.",
-    descAr: "اكتشف مجموعات البيانات المتاحة وواجهات API ومنتجات البيانات.",
+    titleEn: "Data Marketplace",
+    titleAr: "سوق البيانات",
+    descEn: "Browse, preview, and download aviation data products with rich metadata.",
+    descAr: "تصفح ومعاينة وتحميل منتجات بيانات الطيران مع بيانات وصفية غنية.",
   },
   "/api-portal": {
     icon: Code,

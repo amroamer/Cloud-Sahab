@@ -51,8 +51,8 @@ const GUIDE_SECTIONS: Section[] = [
     titleEn: "Navigation Guide",
     titleAr: "دليل التنقل",
     icon: LayoutDashboard,
-    contentEn: "The sidebar provides organized access to all platform features. The Home page shows your personalized dashboard with KPIs, alerts, and quick links. Dashboards are grouped into Aviation Operations (10 dashboards) and Ajwaa E-Services (5 dashboards). The Tools section gives access to the Explorer, Reports, Data Catalog, and API Portal. Your navigation is tailored to your role — you only see the sections relevant to your responsibilities.",
-    contentAr: "يوفر الشريط الجانبي وصولاً منظماً لجميع ميزات المنصة. تعرض الصفحة الرئيسية لوحة المعلومات المخصصة لك مع مؤشرات الأداء والتنبيهات والروابط السريعة. يتم تجميع لوحات المعلومات في عمليات الطيران (١٠ لوحات) وخدمات أجواء الإلكترونية (٥ لوحات). يمنح قسم الأدوات الوصول إلى المستكشف والتقارير وكتالوج البيانات وبوابة API. يتم تخصيص التنقل الخاص بك وفقاً لدورك.",
+    contentEn: "The sidebar provides organized access to all platform features. The Home page shows your personalized dashboard with KPIs, alerts, and quick links. Dashboards are grouped into Aviation Operations (10 dashboards) and Ajwaa E-Services (5 dashboards). The Tools section gives access to the Explorer, Reports, Data Marketplace, and API Portal. Your navigation is tailored to your role — you only see the sections relevant to your responsibilities.",
+    contentAr: "يوفر الشريط الجانبي وصولاً منظماً لجميع ميزات المنصة. تعرض الصفحة الرئيسية لوحة المعلومات المخصصة لك مع مؤشرات الأداء والتنبيهات والروابط السريعة. يتم تجميع لوحات المعلومات في عمليات الطيران (١٠ لوحات) وخدمات أجواء الإلكترونية (٥ لوحات). يمنح قسم الأدوات الوصول إلى المستكشف والتقارير وسوق البيانات وبوابة API. يتم تخصيص التنقل الخاص بك وفقاً لدورك.",
   },
   {
     id: "dashboards",
@@ -88,11 +88,11 @@ const GUIDE_SECTIONS: Section[] = [
   },
   {
     id: "catalog",
-    titleEn: "Data Catalog & Marketplace",
-    titleAr: "كتالوج البيانات وسوق البيانات",
+    titleEn: "Data Marketplace",
+    titleAr: "سوق البيانات",
     icon: Database,
-    contentEn: "The Data Catalog is Sahab's storefront for aviation data products. Internal GACA users can browse and access 32 datasets covering traffic, connectivity, market share, operations, cargo, infrastructure, financial, fleet, sustainability, and digital metrics. External users (airlines, airports, investors, researchers) see a Data Marketplace where they can preview, evaluate, and purchase data products. Use the faceted filters on the left panel to narrow by category, frequency, format, or price range. Click any product card to view its full detail page including schema, data preview, reviews, and version history. Free products (factsheets, sample data, summaries) are available for immediate download by all users.",
-    contentAr: "كتالوج البيانات هو واجهة سحاب لمنتجات بيانات الطيران. يمكن لمستخدمي هيئة الطيران المدني الداخليين تصفح والوصول إلى ٣٢ مجموعة بيانات تغطي حركة المرور والاتصال وحصة السوق والعمليات والشحن والبنية التحتية والمالية والأسطول والاستدامة والمقاييس الرقمية. يرى المستخدمون الخارجيون (شركات الطيران والمطارات والمستثمرون والباحثون) سوق البيانات حيث يمكنهم معاينة وتقييم وشراء منتجات البيانات. استخدم الفلاتر الجانبية لتضييق النتائج حسب الفئة أو التكرار أو التنسيق أو نطاق السعر. انقر على أي بطاقة منتج لعرض صفحة التفاصيل الكاملة بما في ذلك المخطط ومعاينة البيانات والمراجعات وسجل الإصدارات. المنتجات المجانية متاحة للتحميل الفوري لجميع المستخدمين.",
+    contentEn: "The Data Marketplace is Sahab's storefront for aviation data products. Browse and download 32 datasets covering traffic, connectivity, market share, operations, cargo, infrastructure, financial, fleet, sustainability, and digital metrics. Use the faceted filters on the left panel to narrow by category, frequency, format, or price range. Click any product card to view its full detail page including schema, data preview, reviews, and version history. All products are available for immediate download as CSV files.",
+    contentAr: "سوق البيانات هو واجهة سحاب لمنتجات بيانات الطيران. تصفح وحمّل ٣٢ مجموعة بيانات تغطي حركة المرور والاتصال وحصة السوق والعمليات والشحن والبنية التحتية والمالية والأسطول والاستدامة والمقاييس الرقمية. استخدم الفلاتر الجانبية لتضييق النتائج حسب الفئة أو التكرار أو التنسيق أو نطاق السعر. انقر على أي بطاقة منتج لعرض صفحة التفاصيل الكاملة بما في ذلك المخطط ومعاينة البيانات والمراجعات وسجل الإصدارات. جميع المنتجات متاحة للتحميل الفوري كملفات CSV.",
   },
   {
     id: "faq",

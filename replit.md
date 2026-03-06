@@ -51,7 +51,7 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 - `/dashboards/ajwaa-eservices` - Ajwaa e-Service Performance (4 KPIs)
 - `/explorer` - Air Traffic Explorer (interactive analytical workspace)
 - `/guide` - User Guide & Use Cases (bilingual reference page)
-- `/catalog` - Data Catalog / Marketplace (32 products, faceted filters, role-aware)
+- `/catalog` - Data Marketplace (32 products, faceted filters, universal download)
 - `/catalog/:productId` - Product Detail Page (schema, preview, reviews, versions)
 - `/self-service`, `/reports`, `/api-portal` - Tool pages (authenticated, placeholder)
 - `/notifications`, `/settings` - User pages (authenticated, placeholder)
@@ -92,7 +92,7 @@ client/src/
     dashboard-ajwaa-providers.tsx  - Dashboard 14: Airport & Service-Provider Services (9 KPIs)
     dashboard-ajwaa-eservices.tsx  - Dashboard 15: Ajwaa e-Service Performance (4 KPIs)
     explorer.tsx              - Air Traffic Explorer with dimension/metric/chart selectors
-    catalog.tsx               - Data Catalog browser with filters, search, category tabs
+    catalog.tsx               - Data Marketplace browser with filters, search, category tabs
     catalog-detail.tsx        - Product detail page with schema, preview, reviews, versions
     user-guide.tsx            - Bilingual user guide with dashboard descriptions, roles, FAQ
     placeholder.tsx           - Coming soon pages for unimplemented tool sections
