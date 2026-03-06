@@ -1,10 +1,16 @@
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { TrendingUp, TrendingDown } from "lucide-react";
+import { TrendingUp, TrendingDown, Info } from "lucide-react";
 import { useTranslation } from "@/lib/i18n";
 import { Link } from "wouter";
 import { Area, AreaChart, ResponsiveContainer } from "recharts";
 import { useMemo } from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface KpiCardProps {
   title: string;
@@ -16,6 +22,7 @@ interface KpiCardProps {
   href: string;
   icon: React.ReactNode;
   color: string;
+  tooltip?: string;
 }
 
 export function KpiCard({
@@ -28,6 +35,7 @@ export function KpiCard({
   href,
   icon,
   color,
+  tooltip,
 }: KpiCardProps) {
   const { t } = useTranslation();
   const isPositive = change >= 0;
@@ -46,7 +54,21 @@ export function KpiCard({
               {icon}
             </div>
             <div>
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{title}</p>
+              <div className="flex items-center gap-1.5">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{title}</p>
+                {tooltip && (
+                  <TooltipProvider delayDuration={200}>
+                    <Tooltip>
+                      <TooltipTrigger asChild onClick={(e) => e.preventDefault()}>
+                        <Info className="h-3 w-3 text-muted-foreground/60 shrink-0 cursor-help" data-testid={`tooltip-kpi-${title.toLowerCase().replace(/\s+/g, "-")}`} />
+                      </TooltipTrigger>
+                      <TooltipContent side="top" className="max-w-[240px] text-xs">
+                        <p>{tooltip}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                )}
+              </div>
               <p className="text-2xl font-bold tracking-tight mt-0.5" data-testid={`text-kpi-value-${title.toLowerCase().replace(/\s+/g, "-")}`}>{value}</p>
             </div>
           </div>

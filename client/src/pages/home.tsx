@@ -33,15 +33,15 @@ const alertsData = [
     id: "1",
     severity: "critical",
     title: "Connectivity Index trajectory below 2030 pace",
-    titleAr: "مسار مؤشر الاتصال أقل من وتيرة ٢٠٣٠",
+    titleAr: "مسار مؤشر الاتصال أقل من وتيرة 2030",
     time: "10 min ago",
-    timeAr: "منذ ١٠ دقائق",
+    timeAr: "منذ 10 دقائق",
   },
   {
     id: "2",
     severity: "warning",
     title: "KKIA departures delayed avg 45min due to weather",
-    titleAr: "تأخر رحلات مطار الملك خالد بمعدل ٤٥ دقيقة بسبب الطقس",
+    titleAr: "تأخر رحلات مطار الملك خالد بمعدل 45 دقيقة بسبب الطقس",
     time: "1 hour ago",
     timeAr: "منذ ساعة",
   },
@@ -51,22 +51,22 @@ const alertsData = [
     title: "New route: Riyadh-Barcelona launched by Saudia",
     titleAr: "مسار جديد: الرياض-برشلونة أطلقته الخطوط السعودية",
     time: "3 hours ago",
-    timeAr: "منذ ٣ ساعات",
+    timeAr: "منذ 3 ساعات",
   },
 ];
 
 const recentActivity = [
-  { id: "1", title: "National Overview Dashboard", titleAr: "لوحة النظرة العامة الوطنية", type: "dashboard", time: "Today, 9:15 AM", timeAr: "اليوم، ٩:١٥ ص" },
-  { id: "2", title: "Monthly Traffic Report - Feb 2026", titleAr: "تقرير حركة المرور الشهري - فبراير ٢٠٢٦", type: "report", time: "Today, 8:30 AM", timeAr: "اليوم، ٨:٣٠ ص" },
-  { id: "3", title: "KAIA Airport Performance", titleAr: "أداء مطار الملك عبدالعزيز", type: "dashboard", time: "Yesterday, 4:22 PM", timeAr: "أمس، ٤:٢٢ م" },
-  { id: "4", title: "Airline Market Share Analysis", titleAr: "تحليل الحصة السوقية لشركات الطيران", type: "analysis", time: "Yesterday, 2:10 PM", timeAr: "أمس، ٢:١٠ م" },
-  { id: "5", title: "Cargo Intelligence Dashboard", titleAr: "لوحة استخبارات الشحن", type: "dashboard", time: "Mar 4, 11:05 AM", timeAr: "٤ مارس، ١١:٠٥ ص" },
+  { id: "1", title: "National Overview Dashboard", titleAr: "لوحة النظرة العامة الوطنية", type: "dashboard", time: "Today, 9:15 AM", timeAr: "اليوم، 9:15 ص" },
+  { id: "2", title: "Monthly Traffic Report - Feb 2026", titleAr: "تقرير حركة المرور الشهري - فبراير 2026", type: "report", time: "Today, 8:30 AM", timeAr: "اليوم، 8:30 ص" },
+  { id: "3", title: "KAIA Airport Performance", titleAr: "أداء مطار الملك عبدالعزيز", type: "dashboard", time: "Yesterday, 4:22 PM", timeAr: "أمس، 4:22 م" },
+  { id: "4", title: "Airline Market Share Analysis", titleAr: "تحليل الحصة السوقية لشركات الطيران", type: "analysis", time: "Yesterday, 2:10 PM", timeAr: "أمس، 2:10 م" },
+  { id: "5", title: "Cargo Intelligence Dashboard", titleAr: "لوحة استخبارات الشحن", type: "dashboard", time: "Mar 4, 11:05 AM", timeAr: "4 مارس، 11:05 ص" },
 ];
 
 const newReports = [
-  { id: "1", title: "Monthly Aviation Statistics - February 2026", titleAr: "إحصائيات الطيران الشهرية - فبراير ٢٠٢٦", date: "Mar 5, 2026", dateAr: "٥ مارس ٢٠٢٦" },
-  { id: "2", title: "Q4 2025 Connectivity Assessment", titleAr: "تقييم الاتصال للربع الرابع ٢٠٢٥", date: "Mar 3, 2026", dateAr: "٣ مارس ٢٠٢٦" },
-  { id: "3", title: "Airport Benchmarking Report - Annual", titleAr: "تقرير مقارنة المطارات - سنوي", date: "Mar 1, 2026", dateAr: "١ مارس ٢٠٢٦" },
+  { id: "1", title: "Monthly Aviation Statistics - February 2026", titleAr: "إحصائيات الطيران الشهرية - فبراير 2026", date: "Mar 5, 2026", dateAr: "5 مارس 2026" },
+  { id: "2", title: "Q4 2025 Connectivity Assessment", titleAr: "تقييم الاتصال للربع الرابع 2025", date: "Mar 3, 2026", dateAr: "3 مارس 2026" },
+  { id: "3", title: "Airport Benchmarking Report - Annual", titleAr: "تقرير مقارنة المطارات - سنوي", date: "Mar 1, 2026", dateAr: "1 مارس 2026" },
 ];
 
 const favorites = [
@@ -141,7 +141,7 @@ export default function HomePage() {
                 <span className="text-xs text-muted-foreground">{orgName}</span>
               </div>
               <p className="text-sm text-muted-foreground mt-2">
-                {language === "ar" ? "٦ مارس ٢٠٢٦ - ٦ رمضان ١٤٤٧" : "March 6, 2026 - 6 Ramadan 1447"}
+                {language === "ar" ? "6 مارس 2026 - 6 رمضان 1447" : "March 6, 2026 - 6 Ramadan 1447"}
               </p>
             </div>
             <div className="flex items-center gap-2">

@@ -105,11 +105,11 @@ export const CARGO_COMMODITY_SPLIT = [
 ];
 
 export const FINANCIAL_QUARTERLY = [
-  { quarter: "Q1 2025", quarterAr: "الربع الأول ٢٠٢٥", ticketRevenue: 12.4, opRevenue: 8.2, opExpenses: 6.8, investment: 4.5, maintenance: 1.2, bopCredits: 3.8, bopDebits: 2.1 },
-  { quarter: "Q2 2025", quarterAr: "الربع الثاني ٢٠٢٥", ticketRevenue: 14.8, opRevenue: 9.5, opExpenses: 7.2, investment: 5.2, maintenance: 1.4, bopCredits: 4.2, bopDebits: 2.3 },
-  { quarter: "Q3 2025", quarterAr: "الربع الثالث ٢٠٢٥", ticketRevenue: 16.2, opRevenue: 10.8, opExpenses: 7.8, investment: 6.1, maintenance: 1.5, bopCredits: 4.8, bopDebits: 2.5 },
-  { quarter: "Q4 2025", quarterAr: "الربع الرابع ٢٠٢٥", ticketRevenue: 13.5, opRevenue: 9.0, opExpenses: 7.0, investment: 5.8, maintenance: 1.3, bopCredits: 4.0, bopDebits: 2.2 },
-  { quarter: "Q1 2026", quarterAr: "الربع الأول ٢٠٢٦", ticketRevenue: 13.8, opRevenue: 9.1, opExpenses: 7.1, investment: 5.0, maintenance: 1.3, bopCredits: 4.1, bopDebits: 2.2 },
+  { quarter: "Q1 2025", quarterAr: "الربع الأول 2025", ticketRevenue: 12.4, opRevenue: 8.2, opExpenses: 6.8, investment: 4.5, maintenance: 1.2, bopCredits: 3.8, bopDebits: 2.1 },
+  { quarter: "Q2 2025", quarterAr: "الربع الثاني 2025", ticketRevenue: 14.8, opRevenue: 9.5, opExpenses: 7.2, investment: 5.2, maintenance: 1.4, bopCredits: 4.2, bopDebits: 2.3 },
+  { quarter: "Q3 2025", quarterAr: "الربع الثالث 2025", ticketRevenue: 16.2, opRevenue: 10.8, opExpenses: 7.8, investment: 6.1, maintenance: 1.5, bopCredits: 4.8, bopDebits: 2.5 },
+  { quarter: "Q4 2025", quarterAr: "الربع الرابع 2025", ticketRevenue: 13.5, opRevenue: 9.0, opExpenses: 7.0, investment: 5.8, maintenance: 1.3, bopCredits: 4.0, bopDebits: 2.2 },
+  { quarter: "Q1 2026", quarterAr: "الربع الأول 2026", ticketRevenue: 13.8, opRevenue: 9.1, opExpenses: 7.1, investment: 5.0, maintenance: 1.3, bopCredits: 4.1, bopDebits: 2.2 },
 ];
 
 export const CAPITAL_VALUES = [
@@ -132,11 +132,11 @@ export const BOP_COMPONENTS = [
 ];
 
 export const BOP_QUARTERLY = [
-  { quarter: "Q1 2025", quarterAr: "الربع الأول ٢٠٢٥", credits: 9.2, debits: 4.5, net: 4.7 },
-  { quarter: "Q2 2025", quarterAr: "الربع الثاني ٢٠٢٥", credits: 10.8, debits: 5.1, net: 5.7 },
-  { quarter: "Q3 2025", quarterAr: "الربع الثالث ٢٠٢٥", credits: 11.5, debits: 5.4, net: 6.1 },
-  { quarter: "Q4 2025", quarterAr: "الربع الرابع ٢٠٢٥", credits: 10.2, debits: 4.8, net: 5.4 },
-  { quarter: "Q1 2026", quarterAr: "الربع الأول ٢٠٢٦", credits: 9.8, debits: 4.9, net: 4.9 },
+  { quarter: "Q1 2025", quarterAr: "الربع الأول 2025", credits: 9.2, debits: 4.5, net: 4.7 },
+  { quarter: "Q2 2025", quarterAr: "الربع الثاني 2025", credits: 10.8, debits: 5.1, net: 5.7 },
+  { quarter: "Q3 2025", quarterAr: "الربع الثالث 2025", credits: 11.5, debits: 5.4, net: 6.1 },
+  { quarter: "Q4 2025", quarterAr: "الربع الرابع 2025", credits: 10.2, debits: 4.8, net: 5.4 },
+  { quarter: "Q1 2026", quarterAr: "الربع الأول 2026", credits: 9.8, debits: 4.9, net: 4.9 },
 ];
 
 export const PASSENGER_BY_CLASS = [
@@ -196,11 +196,11 @@ export const SKYTRAX_RANKINGS = [
 ];
 
 export const SUSTAINABILITY_QUARTERLY = [
-  { quarter: "Q1 2025", quarterAr: "الربع الأول ٢٠٢٥", co2: 4.2, fuel: 1.65, co2PerPaxKm: 89, fuelPerAsk: 3.2 },
-  { quarter: "Q2 2025", quarterAr: "الربع الثاني ٢٠٢٥", co2: 4.8, fuel: 1.88, co2PerPaxKm: 86, fuelPerAsk: 3.1 },
-  { quarter: "Q3 2025", quarterAr: "الربع الثالث ٢٠٢٥", co2: 5.2, fuel: 2.05, co2PerPaxKm: 84, fuelPerAsk: 3.0 },
-  { quarter: "Q4 2025", quarterAr: "الربع الرابع ٢٠٢٥", co2: 4.5, fuel: 1.78, co2PerPaxKm: 85, fuelPerAsk: 3.05 },
-  { quarter: "Q1 2026", quarterAr: "الربع الأول ٢٠٢٦", co2: 4.3, fuel: 1.70, co2PerPaxKm: 83, fuelPerAsk: 2.95 },
+  { quarter: "Q1 2025", quarterAr: "الربع الأول 2025", co2: 4.2, fuel: 1.65, co2PerPaxKm: 89, fuelPerAsk: 3.2 },
+  { quarter: "Q2 2025", quarterAr: "الربع الثاني 2025", co2: 4.8, fuel: 1.88, co2PerPaxKm: 86, fuelPerAsk: 3.1 },
+  { quarter: "Q3 2025", quarterAr: "الربع الثالث 2025", co2: 5.2, fuel: 2.05, co2PerPaxKm: 84, fuelPerAsk: 3.0 },
+  { quarter: "Q4 2025", quarterAr: "الربع الرابع 2025", co2: 4.5, fuel: 1.78, co2PerPaxKm: 85, fuelPerAsk: 3.05 },
+  { quarter: "Q1 2026", quarterAr: "الربع الأول 2026", co2: 4.3, fuel: 1.70, co2PerPaxKm: 83, fuelPerAsk: 2.95 },
 ];
 
 export const PRIVATE_FLIGHTS_MONTHLY = [
@@ -230,11 +230,11 @@ export const AIRSPACE_AIRLINES = [
 ];
 
 export const COST_PER_CONTAINER = [
-  { quarter: "Q1 2025", quarterAr: "الربع الأول ٢٠٢٥", domestic: 2850, international: 5200 },
-  { quarter: "Q2 2025", quarterAr: "الربع الثاني ٢٠٢٥", domestic: 2780, international: 5050 },
-  { quarter: "Q3 2025", quarterAr: "الربع الثالث ٢٠٢٥", domestic: 2820, international: 5120 },
-  { quarter: "Q4 2025", quarterAr: "الربع الرابع ٢٠٢٥", domestic: 2750, international: 4980 },
-  { quarter: "Q1 2026", quarterAr: "الربع الأول ٢٠٢٦", domestic: 2700, international: 4900 },
+  { quarter: "Q1 2025", quarterAr: "الربع الأول 2025", domestic: 2850, international: 5200 },
+  { quarter: "Q2 2025", quarterAr: "الربع الثاني 2025", domestic: 2780, international: 5050 },
+  { quarter: "Q3 2025", quarterAr: "الربع الثالث 2025", domestic: 2820, international: 5120 },
+  { quarter: "Q4 2025", quarterAr: "الربع الرابع 2025", domestic: 2750, international: 4980 },
+  { quarter: "Q1 2026", quarterAr: "الربع الأول 2026", domestic: 2700, international: 4900 },
 ];
 
 export const SHIPMENTS_BY_MODE = [

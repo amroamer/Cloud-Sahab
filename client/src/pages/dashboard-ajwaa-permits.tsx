@@ -40,6 +40,7 @@ import {
   PERMIT_PROCESSING_TREND,
   OVERFLIGHT_LANDING_MONTHLY,
 } from "@/lib/ajwaa-mock-data";
+import { SectionTooltip } from "@/components/section-tooltip";
 
 const OVERFLIGHT_LANDING_TOTALS = [
   { name: "Overflight", nameAr: "عبور", value: PERMIT_SUMMARY.overflightPermits },
@@ -133,8 +134,9 @@ export default function DashboardAjwaaPermits() {
         />
 
         <div>
-          <h2 className="text-base font-semibold mb-3" data-testid="text-single-permits-section">
+          <h2 className="text-base font-semibold mb-3 flex items-center gap-2" data-testid="text-single-permits-section">
             {t("ajwaa.permits.singlePermits")}
+            <SectionTooltip tooltip={isAr ? "مؤشرات أداء تصاريح الرحلات الفردية" : "Single flight permit performance metrics"} />
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <Card className="p-5" data-testid="card-kpi-fp01">
@@ -143,9 +145,12 @@ export default function DashboardAjwaaPermits() {
                   <FileText className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.permits.singleApps")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.permits.singleApps")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "إجمالي طلبات التصاريح الفردية المقدمة" : "Total single permit applications submitted"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-single-apps">
                     {PERMIT_SUMMARY.singlePermitApps.toLocaleString()}
                   </p>
@@ -164,9 +169,12 @@ export default function DashboardAjwaaPermits() {
                   <CheckCircle className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.permits.onTimeIssuance")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.permits.onTimeIssuance")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "نسبة التصاريح الصادرة في الوقت المحدد" : "Percentage of permits issued within target timeframe"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-ontime-issuance">
                     {PERMIT_SUMMARY.onTimeIssuancePct}%
                   </p>
@@ -183,9 +191,12 @@ export default function DashboardAjwaaPermits() {
                   <Clock className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.permits.avgProcessingHrs")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.permits.avgProcessingHrs")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "متوسط ساعات معالجة طلب التصريح الفردي" : "Average hours to process a single permit application"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-avg-processing-hrs">
                     {PERMIT_SUMMARY.avgProcessingHours}h
                   </p>
@@ -204,9 +215,12 @@ export default function DashboardAjwaaPermits() {
                   <AlertTriangle className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.permits.rejectionRate")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.permits.rejectionRate")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "نسبة طلبات التصاريح المرفوضة" : "Percentage of permit applications rejected"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-rejection-rate">
                     {PERMIT_SUMMARY.rejectionRatePct}%
                   </p>
@@ -222,8 +236,9 @@ export default function DashboardAjwaaPermits() {
         </div>
 
         <div>
-          <h2 className="text-base font-semibold mb-3" data-testid="text-annual-permits-section">
+          <h2 className="text-base font-semibold mb-3 flex items-center gap-2" data-testid="text-annual-permits-section">
             {t("ajwaa.permits.annualPermits")}
+            <SectionTooltip tooltip={isAr ? "مؤشرات أداء التصاريح السنوية" : "Annual permit performance metrics"} />
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <Card className="p-5" data-testid="card-kpi-fp05">
@@ -232,9 +247,12 @@ export default function DashboardAjwaaPermits() {
                   <CalendarCheck className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.permits.activeAnnual")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.permits.activeAnnual")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "عدد التصاريح السنوية النشطة حالياً" : "Number of currently active annual permits"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-active-annual">
                     {PERMIT_SUMMARY.activeAnnualPermits.toLocaleString()}
                   </p>
@@ -253,9 +271,12 @@ export default function DashboardAjwaaPermits() {
                   <RefreshCw className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.permits.annualRenewal")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.permits.annualRenewal")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "نسبة التصاريح السنوية المجددة في الوقت المحدد" : "On-time renewal rate for annual permits"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-annual-renewal">
                     {PERMIT_SUMMARY.annualRenewalOnTimePct}%
                   </p>
@@ -272,9 +293,12 @@ export default function DashboardAjwaaPermits() {
                   <Timer className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.permits.avgAnnualDays")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.permits.avgAnnualDays")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "متوسط أيام معالجة التصريح السنوي" : "Average processing days for annual permits"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-avg-annual-days">
                     {PERMIT_SUMMARY.avgAnnualProcessingDays}d
                   </p>
@@ -293,9 +317,12 @@ export default function DashboardAjwaaPermits() {
                   <DollarSign className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.permits.revenue")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.permits.revenue")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "إجمالي الإيرادات من رسوم التصاريح" : "Total revenue from permit fees"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-permit-revenue">
                     {(PERMIT_SUMMARY.permitRevenueSAR / 1_000_000).toFixed(0)}M SAR
                   </p>
@@ -311,8 +338,9 @@ export default function DashboardAjwaaPermits() {
         </div>
 
         <div>
-          <h2 className="text-base font-semibold mb-3" data-testid="text-overflight-landing-section">
+          <h2 className="text-base font-semibold mb-3 flex items-center gap-2" data-testid="text-overflight-landing-section">
             {t("ajwaa.permits.overflightLanding")}
+            <SectionTooltip tooltip={isAr ? "مؤشرات تصاريح العبور والهبوط" : "Overflight and landing permit metrics"} />
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <Card className="p-5" data-testid="card-kpi-fp09">
@@ -321,9 +349,12 @@ export default function DashboardAjwaaPermits() {
                   <Plane className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.permits.overflight")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.permits.overflight")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "إجمالي تصاريح العبور الصادرة" : "Total overflight permits issued"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-overflight">
                     {PERMIT_SUMMARY.overflightPermits.toLocaleString()}
                   </p>
@@ -342,9 +373,12 @@ export default function DashboardAjwaaPermits() {
                   <Plane className="h-5 w-5 rotate-90" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.permits.landing")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.permits.landing")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "إجمالي تصاريح الهبوط الصادرة" : "Total landing permits issued"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-landing">
                     {PERMIT_SUMMARY.landingPermits.toLocaleString()}
                   </p>
@@ -363,9 +397,12 @@ export default function DashboardAjwaaPermits() {
                   <ShieldAlert className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.permits.violations")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.permits.violations")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "عدد مخالفات الامتثال المسجلة" : "Number of compliance violations recorded"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-violations">
                     {PERMIT_SUMMARY.complianceViolations}
                   </p>
@@ -384,9 +421,12 @@ export default function DashboardAjwaaPermits() {
                   <Timer className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.permits.clearanceHrs")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.permits.clearanceHrs")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "متوسط ساعات التخليص للعبور والهبوط" : "Average clearance hours for overflight and landing"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-clearance-hrs">
                     {PERMIT_SUMMARY.avgClearanceHours}h
                   </p>
@@ -403,8 +443,9 @@ export default function DashboardAjwaaPermits() {
 
         <div className="grid gap-4 lg:grid-cols-3">
           <Card className="p-5 lg:col-span-2">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-volume-trend-chart">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-volume-trend-chart">
               {t("ajwaa.permits.volumeTrend")}
+              <SectionTooltip tooltip={isAr ? "اتجاه حجم التصاريح الشهرية حسب النوع" : "Monthly permit volume trend by type"} />
             </h2>
             <div className="h-[300px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -424,8 +465,9 @@ export default function DashboardAjwaaPermits() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-overflight-vs-landing-chart">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-overflight-vs-landing-chart">
               {t("ajwaa.permits.overflightVsLanding")}
+              <SectionTooltip tooltip={isAr ? "مقارنة بين تصاريح العبور والهبوط" : "Comparison of overflight vs landing permits"} />
             </h2>
             <div className="h-[220px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -464,8 +506,9 @@ export default function DashboardAjwaaPermits() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-processing-trend-chart">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-processing-trend-chart">
               {t("ajwaa.permits.processingTrend")}
+              <SectionTooltip tooltip={isAr ? "اتجاه وقت المعالجة للتصاريح الفردية والسنوية والتخليص" : "Processing time trend for single, annual, and clearance permits"} />
             </h2>
             <div className="h-[280px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -484,8 +527,9 @@ export default function DashboardAjwaaPermits() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2">
               {isAr ? "اتجاه الإيرادات (SAR K)" : "Revenue Trend (SAR K)"}
+              <SectionTooltip tooltip={isAr ? "اتجاه الإيرادات الشهرية من رسوم التصاريح" : "Monthly revenue trend from permit fees"} />
             </h2>
             <div className="h-[280px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -503,8 +547,9 @@ export default function DashboardAjwaaPermits() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2">
               {isAr ? "حركة العبور والهبوط الشهرية" : "Monthly Overflight & Landing"}
+              <SectionTooltip tooltip={isAr ? "الحركة الشهرية لتصاريح العبور والهبوط" : "Monthly overflight and landing permit activity"} />
             </h2>
             <div className="h-[280px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -522,8 +567,9 @@ export default function DashboardAjwaaPermits() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2">
               {isAr ? "اتجاه مخالفات الامتثال" : "Compliance Violation Trend"}
+              <SectionTooltip tooltip={isAr ? "اتجاه مخالفات الامتثال الشهرية" : "Monthly compliance violation trend"} />
             </h2>
             <div className="h-[280px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">

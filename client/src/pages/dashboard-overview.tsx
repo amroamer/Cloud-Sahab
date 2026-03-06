@@ -17,6 +17,7 @@ import {
   MapPin,
   Map,
 } from "lucide-react";
+import { SectionTooltip } from "@/components/section-tooltip";
 import {
   AreaChart,
   Area,
@@ -88,7 +89,7 @@ export default function DashboardOverview() {
             {t("dashboard.title")}
           </h1>
           <p className="text-sm text-muted-foreground mt-0.5">
-            {t("dashboard.dataAsOf")} {language === "ar" ? "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص" : "March 6, 2026, 08:00 AM"}
+            {t("dashboard.dataAsOf")} {language === "ar" ? "6 مارس 2026، 08:00 ص" : "March 6, 2026, 08:00 AM"}
           </p>
         </div>
 
@@ -111,6 +112,7 @@ export default function DashboardOverview() {
             href="/dashboards/connectivity"
             icon={<Globe className="h-5 w-5" />}
             color="210 85% 42%"
+            tooltip={language === "ar" ? "مؤشر الاتصال الجوي يقيس عدد الوجهات المباشرة وتكرار الرحلات" : "Air Connectivity Index measuring direct destinations and flight frequency"}
           />
           <KpiCard
             title={t("kpi.travelers")}
@@ -122,6 +124,7 @@ export default function DashboardOverview() {
             href="/dashboards/passengers"
             icon={<Users className="h-5 w-5" />}
             color="185 75% 38%"
+            tooltip={language === "ar" ? "إجمالي عدد المسافرين عبر جميع المطارات السعودية منذ بداية العام" : "Total passengers across all Saudi airports year-to-date"}
           />
           <KpiCard
             title={t("kpi.cargo")}
@@ -133,13 +136,17 @@ export default function DashboardOverview() {
             href="/dashboards/cargo"
             icon={<Package className="h-5 w-5" />}
             color="28 85% 48%"
+            tooltip={language === "ar" ? "إجمالي حجم الشحن الجوي بالأطنان عبر جميع المطارات السعودية" : "Total air cargo volume in tonnes across all Saudi airports"}
           />
         </div>
 
         <div className="grid gap-4 lg:grid-cols-3">
           <Card className="p-5 lg:col-span-2">
             <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
-              <h2 className="text-base font-semibold">{t("dashboard.trafficTrend")}</h2>
+              <div className="flex items-center gap-1.5">
+                <h2 className="text-base font-semibold">{t("dashboard.trafficTrend")}</h2>
+                <SectionTooltip tooltip={language === "ar" ? "اتجاه حركة المسافرين الشهرية مقارنة بالعام السابق" : "Monthly passenger traffic trend compared to previous year"} />
+              </div>
               <Tabs value={filterValues.granularity} onValueChange={(v) => onFilterChange("granularity", v)}>
                 <TabsList>
                   <TabsTrigger value="monthly" data-testid="tab-monthly">{t("dashboard.monthly")}</TabsTrigger>
@@ -185,7 +192,7 @@ export default function DashboardOverview() {
                   <Area
                     type="monotone"
                     dataKey="passengers"
-                    name={language === "ar" ? "المسافرون ٢٠٢٦" : "Passengers 2026"}
+                    name={language === "ar" ? "المسافرون 2026" : "Passengers 2026"}
                     stroke={CHART_COLORS.primary}
                     strokeWidth={2}
                     fill="url(#gradPassengers)"
@@ -193,7 +200,7 @@ export default function DashboardOverview() {
                   <Area
                     type="monotone"
                     dataKey="lastYearPax"
-                    name={language === "ar" ? "المسافرون ٢٠٢٥" : "Passengers 2025"}
+                    name={language === "ar" ? "المسافرون 2025" : "Passengers 2025"}
                     stroke={CHART_COLORS.muted}
                     strokeWidth={1.5}
                     strokeDasharray="4 3"
@@ -208,6 +215,7 @@ export default function DashboardOverview() {
             <div className="flex items-center gap-2 mb-4">
               <Map className="h-4 w-4 text-muted-foreground" />
               <h2 className="text-base font-semibold">{t("dashboard.connectivityMap")}</h2>
+              <SectionTooltip tooltip={language === "ar" ? "خريطة تفاعلية توضح الوجهات والمسارات الجوية المباشرة" : "Interactive map showing direct air destinations and routes"} />
             </div>
             <div className="flex-1 flex flex-col items-center justify-center rounded-md border border-dashed border-muted-foreground/30 min-h-[260px]">
               <Globe className="h-16 w-16 text-muted-foreground/30 mb-3" />
@@ -215,7 +223,7 @@ export default function DashboardOverview() {
                 {t("dashboard.connectivityMapDesc")}
               </p>
               <p className="text-xs text-muted-foreground/60 mt-1.5">
-                {language === "ar" ? "٧٨ دولة • ٢٣٧ مساراً" : "78 Countries • 237 Routes"}
+                {language === "ar" ? "78 دولة • 237 مساراً" : "78 Countries • 237 Routes"}
               </p>
             </div>
           </Card>
@@ -223,7 +231,10 @@ export default function DashboardOverview() {
 
         <Card className="p-5">
           <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
-            <h2 className="text-base font-semibold">{t("dashboard.targetTrajectory")} - {t("kpi.connectivity")}</h2>
+            <div className="flex items-center gap-1.5">
+              <h2 className="text-base font-semibold">{t("dashboard.targetTrajectory")} - {t("kpi.connectivity")}</h2>
+              <SectionTooltip tooltip={language === "ar" ? "مسار التقدم نحو هدف مؤشر الاتصال 250 بحلول 2030" : "Progress trajectory toward the connectivity index target of 250 by 2030"} />
+            </div>
           </div>
           <div className="h-[260px]" dir="ltr">
             <ResponsiveContainer width="100%" height="100%">
@@ -252,7 +263,7 @@ export default function DashboardOverview() {
                 <Line
                   type="monotone"
                   dataKey="target"
-                  name={language === "ar" ? "المستهدف ٢٠٣٠" : "Target 2030"}
+                  name={language === "ar" ? "المستهدف 2030" : "Target 2030"}
                   stroke={CHART_COLORS.muted}
                   strokeWidth={2}
                   strokeDasharray="6 3"
@@ -270,6 +281,7 @@ export default function DashboardOverview() {
             value={totalAirports.toString()}
             color="210 85% 42%"
             href="/dashboards/airports"
+            tooltip={language === "ar" ? "إجمالي عدد المطارات العاملة في المملكة" : "Total number of operating airports in Saudi Arabia"}
           />
           <QuickCounter
             icon={<Route className="h-5 w-5" />}
@@ -281,6 +293,7 @@ export default function DashboardOverview() {
             ]}
             color="185 75% 38%"
             href="/dashboards/connectivity"
+            tooltip={language === "ar" ? "عدد المسارات الجوية المحلية والدولية النشطة" : "Number of active domestic and international air routes"}
           />
           <QuickCounter
             icon={<Plane className="h-5 w-5" />}
@@ -292,6 +305,7 @@ export default function DashboardOverview() {
             ]}
             color="28 85% 48%"
             href="/dashboards/fleet"
+            tooltip={language === "ar" ? "إجمالي حجم الأسطول الجوي بما في ذلك الطائرات التجارية والخاصة" : "Total fleet size including commercial and private aircraft"}
           />
           <QuickCounter
             icon={<MapPin className="h-5 w-5" />}
@@ -299,6 +313,7 @@ export default function DashboardOverview() {
             value={COUNTRIES_REACHED.toString()}
             color="280 70% 42%"
             href="/dashboards/connectivity"
+            tooltip={language === "ar" ? "عدد الدول التي تصلها رحلات مباشرة من المملكة" : "Number of countries with direct flights from Saudi Arabia"}
           />
           <QuickCounter
             icon={<Plane className="h-5 w-5" />}
@@ -306,6 +321,7 @@ export default function DashboardOverview() {
             value={`${(totalFlightsYTD / 1000).toFixed(0)}K`}
             color="160 70% 38%"
             href="/dashboards/flight-ops"
+            tooltip={language === "ar" ? "إجمالي عدد الرحلات الجوية منذ بداية العام" : "Total number of flights year-to-date"}
           />
         </div>
       </div>
@@ -320,6 +336,7 @@ function QuickCounter({
   subValues,
   color,
   href,
+  tooltip,
 }: {
   icon: React.ReactNode;
   label: string;
@@ -327,6 +344,7 @@ function QuickCounter({
   subValues?: { label: string; value: string }[];
   color: string;
   href: string;
+  tooltip?: string;
 }) {
   return (
     <a href={href} data-testid={`counter-${label.toLowerCase().replace(/\s+/g, "-")}`}>
@@ -339,6 +357,7 @@ function QuickCounter({
             {icon}
           </div>
           <p className="text-xs text-muted-foreground font-medium leading-tight">{label}</p>
+          {tooltip && <SectionTooltip tooltip={tooltip} />}
         </div>
         <p className="text-2xl font-bold tracking-tight" data-testid={`text-counter-${label.toLowerCase().replace(/\s+/g, "-")}`}>
           {value}

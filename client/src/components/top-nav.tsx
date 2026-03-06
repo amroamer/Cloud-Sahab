@@ -36,15 +36,15 @@ const mockNotifications = [
     title: "Connectivity Index Below Target Pace",
     titleAr: "مؤشر الاتصال أقل من المسار المستهدف",
     time: "2 min ago",
-    timeAr: "منذ ٢ دقيقة",
+    timeAr: "منذ 2 دقيقة",
   },
   {
     id: "2",
     type: "warning",
     title: "KKIA Passenger Volume Drop -8% WoW",
-    titleAr: "انخفاض حجم المسافرين في مطار الملك خالد -٨٪ أسبوعياً",
+    titleAr: "انخفاض حجم المسافرين في مطار الملك خالد -8٪ أسبوعياً",
     time: "1 hour ago",
-    timeAr: "منذ ١ ساعة",
+    timeAr: "منذ 1 ساعة",
   },
   {
     id: "3",
@@ -52,7 +52,7 @@ const mockNotifications = [
     title: "Monthly Traffic Report Published",
     titleAr: "تم نشر تقرير حركة المرور الشهري",
     time: "3 hours ago",
-    timeAr: "منذ ٣ ساعات",
+    timeAr: "منذ 3 ساعات",
   },
 ];
 

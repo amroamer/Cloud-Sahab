@@ -54,7 +54,7 @@ export default function LandingPage() {
 
   const stats = [
     { value: "29", label: isAr ? "مطار" : "Airports", labelSub: isAr ? "في المملكة" : "Nationwide" },
-    { value: "330M", label: isAr ? "هدف المسافرين" : "Traveler Target", labelSub: isAr ? "رؤية ٢٠٣٠" : "Vision 2030" },
+    { value: "330M", label: isAr ? "هدف المسافرين" : "Traveler Target", labelSub: isAr ? "رؤية 2030" : "Vision 2030" },
     { value: "250", label: isAr ? "مؤشر الاتصال" : "Connectivity Index", labelSub: isAr ? "الهدف" : "Target" },
     { value: "3M", label: isAr ? "شحنات البضائع" : "Cargo Shipments", labelSub: isAr ? "الهدف السنوي" : "Annual Target" },
   ];
@@ -212,7 +212,7 @@ export default function LandingPage() {
               variants={fadeUp}
             >
               {isAr
-                ? "منصة تحليلات متكاملة للطيران المدني في المملكة العربية السعودية. بيانات حية، رؤى ذكية، وتتبع أهداف رؤية ٢٠٣٠ في الوقت الفعلي."
+                ? "منصة تحليلات متكاملة للطيران المدني في المملكة العربية السعودية. بيانات حية، رؤى ذكية، وتتبع أهداف رؤية 2030 في الوقت الفعلي."
                 : "A comprehensive analytics platform for civil aviation in the Kingdom of Saudi Arabia. Live data, intelligent insights, and real-time Vision 2030 target tracking."}
             </motion.p>
 
@@ -442,7 +442,7 @@ export default function LandingPage() {
               </span>
             </div>
             <p className="text-xs text-muted-foreground">
-              {isAr ? "© ٢٠٢٦ جميع الحقوق محفوظة" : "© 2026 All rights reserved"}
+              {isAr ? "© 2026 جميع الحقوق محفوظة" : "© 2026 All rights reserved"}
             </p>
           </div>
         </div>

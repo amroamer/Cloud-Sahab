@@ -37,13 +37,14 @@ import {
   FLEET_BY_AIRLINE,
   CHART_COLORS,
 } from "@/lib/mock-data";
+import { SectionTooltip } from "@/components/section-tooltip";
 
 const AGE_BANDS = [
-  { key: "age0_5", label: "0–5 yrs", labelAr: "٠–٥ سنوات", color: CHART_COLORS[0] },
-  { key: "age6_10", label: "6–10 yrs", labelAr: "٦–١٠ سنوات", color: CHART_COLORS[1] },
-  { key: "age11_15", label: "11–15 yrs", labelAr: "١١–١٥ سنة", color: CHART_COLORS[2] },
-  { key: "age16_20", label: "16–20 yrs", labelAr: "١٦–٢٠ سنة", color: CHART_COLORS[3] },
-  { key: "age20plus", label: "20+ yrs", labelAr: "٢٠+ سنة", color: CHART_COLORS[4] },
+  { key: "age0_5", label: "0–5 yrs", labelAr: "0–5 سنوات", color: CHART_COLORS[0] },
+  { key: "age6_10", label: "6–10 yrs", labelAr: "6–10 سنوات", color: CHART_COLORS[1] },
+  { key: "age11_15", label: "11–15 yrs", labelAr: "11–15 سنة", color: CHART_COLORS[2] },
+  { key: "age16_20", label: "16–20 yrs", labelAr: "16–20 سنة", color: CHART_COLORS[3] },
+  { key: "age20plus", label: "20+ yrs", labelAr: "20+ سنة", color: CHART_COLORS[4] },
 ];
 
 const PURCHASE_SERIES = [
@@ -104,7 +105,7 @@ export default function DashboardFleet() {
           </h1>
           <p className="text-sm text-muted-foreground mt-0.5">
             {isAr ? "البيانات حتى" : "Data as of"}{" "}
-            {isAr ? "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص" : "March 6, 2026, 08:00 AM"}
+            {isAr ? "6 مارس 2026، 08:00 ص" : "March 6, 2026, 08:00 AM"}
           </p>
         </div>
 
@@ -123,9 +124,12 @@ export default function DashboardFleet() {
                 <Plane className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {isAr ? "الأسطول التجاري" : "Commercial Fleet"}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {isAr ? "الأسطول التجاري" : "Commercial Fleet"}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "إجمالي عدد الطائرات التجارية المسجلة لدى شركات الطيران السعودية" : "Total number of commercial aircraft registered with Saudi airlines"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-commercial-count">
                   {TOTAL_FLEET_COMMERCIAL}
                 </p>
@@ -144,9 +148,12 @@ export default function DashboardFleet() {
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {isAr ? "الأسطول الخاص" : "Private Fleet"}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {isAr ? "الأسطول الخاص" : "Private Fleet"}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "إجمالي عدد الطائرات الخاصة المسجلة في المملكة العربية السعودية" : "Total number of private aircraft registered in Saudi Arabia"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-private-count">
                   {TOTAL_FLEET_PRIVATE}
                 </p>
@@ -165,9 +172,12 @@ export default function DashboardFleet() {
                 <Gauge className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {isAr ? "متوسط عمر الأسطول" : "Average Fleet Age"}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {isAr ? "متوسط عمر الأسطول" : "Average Fleet Age"}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "متوسط عمر جميع الطائرات في الأسطول السعودي بالسنوات" : "Average age of all aircraft in the Saudi fleet in years"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-avg-age">
                   {AVG_FLEET_AGE} {isAr ? "سنوات" : "years"}
                 </p>
@@ -189,9 +199,12 @@ export default function DashboardFleet() {
 
         <div className="grid gap-4 lg:grid-cols-5">
           <Card className="p-5 lg:col-span-3" data-testid="card-fleet-donut">
-            <h2 className="text-base font-semibold mb-4">
-              {isAr ? "تقسيم الأسطول" : "Fleet Split"}
-            </h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">
+                {isAr ? "تقسيم الأسطول" : "Fleet Split"}
+              </h2>
+              <SectionTooltip tooltip={isAr ? "توزيع الأسطول بين الطائرات التجارية والخاصة" : "Fleet distribution between commercial and private aircraft"} />
+            </div>
             <div className="flex flex-col sm:flex-row items-center gap-6">
               <div className="h-[200px] w-[200px] shrink-0" dir="ltr">
                 <ResponsiveContainer width="100%" height="100%">
@@ -246,9 +259,12 @@ export default function DashboardFleet() {
           </Card>
 
           <Card className="p-5 lg:col-span-2" data-testid="card-category-breakdown">
-            <h2 className="text-base font-semibold mb-4">
-              {isAr ? "حسب الفئة" : "By Category"}
-            </h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">
+                {isAr ? "حسب الفئة" : "By Category"}
+              </h2>
+              <SectionTooltip tooltip={isAr ? "توزيع الأسطول حسب فئة الطائرة (ضيقة البدن، واسعة البدن، إقليمية، شحن)" : "Fleet breakdown by aircraft category (narrow-body, wide-body, regional, cargo)"} />
+            </div>
             <div className="space-y-3">
               {FLEET_BY_CATEGORY.map((cat) => (
                 <div key={cat.category}>
@@ -274,9 +290,12 @@ export default function DashboardFleet() {
         </div>
 
         <Card className="p-5" data-testid="card-fleet-age-composition">
-          <h2 className="text-base font-semibold mb-4">
-            {isAr ? "تكوين الأسطول حسب الفئة العمرية" : "Fleet Composition by Age Band"}
-          </h2>
+          <div className="flex items-center gap-1.5 mb-4">
+            <h2 className="text-base font-semibold">
+              {isAr ? "تكوين الأسطول حسب الفئة العمرية" : "Fleet Composition by Age Band"}
+            </h2>
+            <SectionTooltip tooltip={isAr ? "توزيع الطائرات حسب الفئة والعمر لتقييم حداثة الأسطول" : "Aircraft distribution by category and age band to assess fleet modernity"} />
+          </div>
           <div className="h-[320px]" dir="ltr">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={FLEET_BY_CATEGORY}>
@@ -313,9 +332,12 @@ export default function DashboardFleet() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5" data-testid="card-purchase-trend">
-            <h2 className="text-base font-semibold mb-4">
-              {isAr ? "اتجاه شراء الطائرات السنوي" : "Annual Aircraft Purchase Trend"}
-            </h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">
+                {isAr ? "اتجاه شراء الطائرات السنوي" : "Annual Aircraft Purchase Trend"}
+              </h2>
+              <SectionTooltip tooltip={isAr ? "عدد الطائرات المشتراة سنوياً حسب نوع الطائرة" : "Number of aircraft purchased annually by aircraft type"} />
+            </div>
             <div className="h-[320px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={AIRCRAFT_PURCHASES}>
@@ -347,9 +369,12 @@ export default function DashboardFleet() {
           </Card>
 
           <Card className="p-5" data-testid="card-fleet-by-airline">
-            <h2 className="text-base font-semibold mb-4">
-              {isAr ? "الأسطول حسب شركة الطيران" : "Fleet by Airline"}
-            </h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">
+                {isAr ? "الأسطول حسب شركة الطيران" : "Fleet by Airline"}
+              </h2>
+              <SectionTooltip tooltip={isAr ? "تفاصيل أسطول كل شركة طيران بما في ذلك العدد ومتوسط العمر" : "Fleet details per airline including count and average age"} />
+            </div>
             <div className="overflow-x-auto">
               <Table>
                 <TableHeader>
@@ -386,9 +411,12 @@ export default function DashboardFleet() {
         </div>
 
         <Card className="p-5" data-testid="card-purchase-line-trend">
-          <h2 className="text-base font-semibold mb-4">
-            {isAr ? "اتجاه الشراء حسب النوع" : "Purchase Trend by Type"}
-          </h2>
+          <div className="flex items-center gap-1.5 mb-4">
+            <h2 className="text-base font-semibold">
+              {isAr ? "اتجاه الشراء حسب النوع" : "Purchase Trend by Type"}
+            </h2>
+            <SectionTooltip tooltip={isAr ? "اتجاه خطي لمشتريات الطائرات حسب النوع عبر السنوات" : "Line trend of aircraft purchases by type over the years"} />
+          </div>
           <div className="h-[280px]" dir="ltr">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={AIRCRAFT_PURCHASES}>

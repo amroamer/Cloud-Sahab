@@ -35,6 +35,7 @@ import {
   PROCESSING_TIME_TREND,
   LICENSE_REVENUE_TREND,
 } from "@/lib/ajwaa-mock-data";
+import { SectionTooltip } from "@/components/section-tooltip";
 
 const chartTooltipStyle = {
   backgroundColor: "hsl(210, 5%, 96%)",
@@ -117,9 +118,12 @@ export default function DashboardAjwaaLicensing() {
                 <Users className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {t("ajwaa.licensing.applications")}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {t("ajwaa.licensing.applications")}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "إجمالي طلبات تراخيص الطيارين المقدمة خلال الفترة" : "Total pilot license applications submitted during the period"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-pl01-value">
                   {PILOT_LICENSE_SUMMARY.totalApplications.toLocaleString()}
                 </p>
@@ -138,9 +142,12 @@ export default function DashboardAjwaaLicensing() {
                 <CheckCircle className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {t("ajwaa.licensing.onTimeRenewal")}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {t("ajwaa.licensing.onTimeRenewal")}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "نسبة التراخيص المجددة في الوقت المحدد" : "Percentage of licenses renewed on time before expiry"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-pl02-value">
                   {PILOT_LICENSE_SUMMARY.onTimeRenewalPct}%
                 </p>
@@ -161,9 +168,12 @@ export default function DashboardAjwaaLicensing() {
                 <Clock className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {t("ajwaa.licensing.avgProcessing")}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {t("ajwaa.licensing.avgProcessing")}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "متوسط عدد الأيام لمعالجة طلب الترخيص" : "Average number of days to process a license application"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-pl03-value">
                   {PILOT_LICENSE_SUMMARY.avgProcessingDays} {isAr ? "يوم" : "days"}
                 </p>
@@ -182,9 +192,12 @@ export default function DashboardAjwaaLicensing() {
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {t("ajwaa.licensing.firstTimeApproval")}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {t("ajwaa.licensing.firstTimeApproval")}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "نسبة الطلبات الموافق عليها من المحاولة الأولى" : "Percentage of applications approved on first submission"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-pl04-value">
                   {PILOT_LICENSE_SUMMARY.firstTimeApprovalPct}%
                 </p>
@@ -205,9 +218,12 @@ export default function DashboardAjwaaLicensing() {
                 <Monitor className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {t("ajwaa.licensing.digitalCompletion")}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {t("ajwaa.licensing.digitalCompletion")}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "نسبة الطلبات المقدمة رقمياً بالكامل" : "Percentage of applications completed fully digitally"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-pl05-value">
                   {PILOT_LICENSE_SUMMARY.digitalCompletionPct}%
                 </p>
@@ -228,11 +244,14 @@ export default function DashboardAjwaaLicensing() {
                 <DollarSign className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {t("ajwaa.licensing.revenue")}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {t("ajwaa.licensing.revenue")}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "إجمالي الإيرادات المحصلة من رسوم التراخيص" : "Total revenue collected from licensing fees"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-pl06-value">
-                  {isAr ? "٤٢.٥ م ر.س" : "SAR 42.5M"}
+                  {isAr ? "42.5 م ر.س" : "SAR 42.5M"}
                 </p>
               </div>
             </div>
@@ -245,38 +264,51 @@ export default function DashboardAjwaaLicensing() {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-lg font-semibold" data-testid="text-cabin-crew-section">
+          <h2 className="text-lg font-semibold flex items-center gap-2" data-testid="text-cabin-crew-section">
             {t("ajwaa.licensing.cabinCrew")}
+            <SectionTooltip tooltip={isAr ? "مؤشرات أداء تراخيص طاقم الضيافة الجوية" : "Cabin crew licensing performance indicators"} />
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <Card className="p-5" data-testid="card-kpi-cc01">
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
-                {t("ajwaa.licensing.activeLicenses")}
-              </p>
+              <div className="flex items-center gap-1.5 mb-1">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {t("ajwaa.licensing.activeLicenses")}
+                </p>
+                <SectionTooltip tooltip={isAr ? "عدد تراخيص طاقم الضيافة النشطة حالياً" : "Number of currently active cabin crew licenses"} />
+              </div>
               <p className="text-2xl font-bold tracking-tight" data-testid="text-cc01-value">
                 {CABIN_CREW_SUMMARY.activeLicenses.toLocaleString()}
               </p>
             </Card>
             <Card className="p-5" data-testid="card-kpi-cc02">
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
-                {t("ajwaa.licensing.onTimeRenewal")}
-              </p>
+              <div className="flex items-center gap-1.5 mb-1">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {t("ajwaa.licensing.onTimeRenewal")}
+                </p>
+                <SectionTooltip tooltip={isAr ? "نسبة تجديد تراخيص طاقم الضيافة في الوقت المحدد" : "On-time renewal rate for cabin crew licenses"} />
+              </div>
               <p className="text-2xl font-bold tracking-tight" data-testid="text-cc02-value">
                 {CABIN_CREW_SUMMARY.onTimeRenewalPct}%
               </p>
             </Card>
             <Card className="p-5" data-testid="card-kpi-cc03">
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
-                {t("ajwaa.licensing.avgProcessing")}
-              </p>
+              <div className="flex items-center gap-1.5 mb-1">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {t("ajwaa.licensing.avgProcessing")}
+                </p>
+                <SectionTooltip tooltip={isAr ? "متوسط أيام معالجة ترخيص طاقم الضيافة" : "Average processing days for cabin crew licenses"} />
+              </div>
               <p className="text-2xl font-bold tracking-tight" data-testid="text-cc03-value">
                 {CABIN_CREW_SUMMARY.avgProcessingDays} {isAr ? "يوم" : "days"}
               </p>
             </Card>
             <Card className="p-5" data-testid="card-kpi-cc04">
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
-                {t("ajwaa.licensing.appsPer1000")}
-              </p>
+              <div className="flex items-center gap-1.5 mb-1">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {t("ajwaa.licensing.appsPer1000")}
+                </p>
+                <SectionTooltip tooltip={isAr ? "عدد الطلبات لكل 1000 من طاقم الضيافة" : "Applications per 1,000 cabin crew members"} />
+              </div>
               <p className="text-2xl font-bold tracking-tight" data-testid="text-cc04-value">
                 {CABIN_CREW_SUMMARY.applicationsPer1000}
               </p>
@@ -285,14 +317,18 @@ export default function DashboardAjwaaLicensing() {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-lg font-semibold" data-testid="text-other-personnel-section">
+          <h2 className="text-lg font-semibold flex items-center gap-2" data-testid="text-other-personnel-section">
             {t("ajwaa.licensing.otherPersonnel")}
+            <SectionTooltip tooltip={isAr ? "مؤشرات تراخيص الموظفين الآخرين (مراقبون جويون، صيانة، إرسال)" : "Licensing metrics for other personnel (ATCOs, maintenance, dispatch)"} />
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <Card className="p-5" data-testid="card-kpi-ap01">
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
-                {t("ajwaa.licensing.activeLicenses")}
-              </p>
+              <div className="flex items-center gap-1.5 mb-1">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {t("ajwaa.licensing.activeLicenses")}
+                </p>
+                <SectionTooltip tooltip={isAr ? "إجمالي التراخيص النشطة عبر جميع فئات الموظفين" : "Total active licenses across all personnel categories"} />
+              </div>
               <p className="text-2xl font-bold tracking-tight" data-testid="text-ap01-value">
                 {totalActive.toLocaleString()}
               </p>
@@ -301,25 +337,34 @@ export default function DashboardAjwaaLicensing() {
               </p>
             </Card>
             <Card className="p-5" data-testid="card-kpi-ap02">
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
-                {t("ajwaa.licensing.nonCompliance")}
-              </p>
+              <div className="flex items-center gap-1.5 mb-1">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {t("ajwaa.licensing.nonCompliance")}
+                </p>
+                <SectionTooltip tooltip={isAr ? "متوسط نسبة عدم الامتثال عبر فئات الموظفين" : "Average non-compliance rate across personnel categories"} />
+              </div>
               <p className="text-2xl font-bold tracking-tight" data-testid="text-ap02-value">
                 {(PERSONNEL_BY_CATEGORY.reduce((sum, p) => sum + p.nonCompliancePct, 0) / PERSONNEL_BY_CATEGORY.length).toFixed(1)}%
               </p>
             </Card>
             <Card className="p-5" data-testid="card-kpi-ap03">
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
-                {t("ajwaa.licensing.avgProcessing")}
-              </p>
+              <div className="flex items-center gap-1.5 mb-1">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {t("ajwaa.licensing.avgProcessing")}
+                </p>
+                <SectionTooltip tooltip={isAr ? "متوسط أيام المعالجة عبر فئات الموظفين" : "Average processing days across personnel categories"} />
+              </div>
               <p className="text-2xl font-bold tracking-tight" data-testid="text-ap03-value">
                 {(PERSONNEL_BY_CATEGORY.reduce((sum, p) => sum + p.avgDays, 0) / PERSONNEL_BY_CATEGORY.length).toFixed(1)} {isAr ? "يوم" : "days"}
               </p>
             </Card>
             <Card className="p-5" data-testid="card-kpi-ap04">
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
-                {t("ajwaa.licensing.onlineRenewal")}
-              </p>
+              <div className="flex items-center gap-1.5 mb-1">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {t("ajwaa.licensing.onlineRenewal")}
+                </p>
+                <SectionTooltip tooltip={isAr ? "نسبة التجديدات المتمة عبر الإنترنت" : "Percentage of renewals completed online"} />
+              </div>
               <p className="text-2xl font-bold tracking-tight" data-testid="text-ap04-value">
                 {(PERSONNEL_BY_CATEGORY.reduce((sum, p) => sum + p.onlinePct, 0) / PERSONNEL_BY_CATEGORY.length).toFixed(1)}%
               </p>
@@ -329,8 +374,9 @@ export default function DashboardAjwaaLicensing() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-chart-by-type">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-chart-by-type">
               {t("ajwaa.licensing.byType")}
+              <SectionTooltip tooltip={isAr ? "توزيع طلبات التراخيص الشهرية حسب النوع (ATPL، CPL، PPL، تحقق، تحويل)" : "Monthly license applications breakdown by type (ATPL, CPL, PPL, Validation, Conversion)"} />
             </h2>
             <div className="h-[300px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -351,8 +397,9 @@ export default function DashboardAjwaaLicensing() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-chart-processing-trend">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-chart-processing-trend">
               {t("ajwaa.licensing.processingTrend")}
+              <SectionTooltip tooltip={isAr ? "اتجاه وقت المعالجة بالأيام عبر فئات الموظفين" : "Processing time trend in days across personnel categories"} />
             </h2>
             <div className="h-[300px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -374,8 +421,9 @@ export default function DashboardAjwaaLicensing() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-chart-revenue-trend">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-chart-revenue-trend">
               {t("ajwaa.licensing.revenueTrend")}
+              <SectionTooltip tooltip={isAr ? "اتجاه الإيرادات الشهرية من رسوم التراخيص حسب الفئة" : "Monthly licensing fee revenue trend by category"} />
             </h2>
             <div className="h-[300px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -395,8 +443,9 @@ export default function DashboardAjwaaLicensing() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-chart-personnel-breakdown">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-chart-personnel-breakdown">
               {t("ajwaa.licensing.personnelBreakdown")}
+              <SectionTooltip tooltip={isAr ? "توزيع التراخيص النشطة حسب فئة الموظفين" : "Active licenses distribution by personnel category"} />
             </h2>
             <div className="h-[300px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">

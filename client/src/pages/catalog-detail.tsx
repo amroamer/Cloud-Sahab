@@ -321,7 +321,7 @@ export default function CatalogDetailPage() {
 
   const formatPrice = (price: number) => {
     if (product.isFree) return language === "ar" ? "مجاني" : "Free";
-    return `${price.toLocaleString()} SAR`;
+    return language === "ar" ? `${price.toLocaleString()} ر.س` : `${price.toLocaleString()} SAR`;
   };
 
   const actionButton = () => {
@@ -432,7 +432,7 @@ export default function CatalogDetailPage() {
                   <Clock className="h-4 w-4 text-muted-foreground mt-0.5" />
                   <div>
                     <p className="text-xs text-muted-foreground">{language === "ar" ? "آخر تحديث" : "Last Updated"}</p>
-                    <p className="text-sm font-medium" data-testid="text-last-updated">Apr 2025</p>
+                    <p className="text-sm font-medium" data-testid="text-last-updated">{language === "ar" ? "أبريل 2025" : "Apr 2025"}</p>
                   </div>
                 </div>
               </div>

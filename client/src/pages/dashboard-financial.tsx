@@ -45,6 +45,7 @@ import {
   AIRCRAFT_PURCHASES,
   CHART_COLORS,
 } from "@/lib/mock-data";
+import { SectionTooltip } from "@/components/section-tooltip";
 
 const LABELS = {
   en: {
@@ -93,7 +94,7 @@ const LABELS = {
   ar: {
     title: "المالية والاقتصاد",
     dataAsOf: "البيانات حتى",
-    dateValue: "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص",
+    dateValue: "6 مارس 2026، 08:00 ص",
     ticketRevenue: "إيرادات التذاكر",
     opRevenue: "الإيرادات التشغيلية",
     opExpenses: "المصاريف التشغيلية",
@@ -240,7 +241,10 @@ export default function DashboardFinancial() {
                 <DollarSign className="h-5 w-5" style={{ color: CHART_COLORS[0] }} />
               </div>
               <div className="min-w-0">
-                <p className="text-xs text-muted-foreground">{l.ticketRevenue}</p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground">{l.ticketRevenue}</p>
+                  <SectionTooltip tooltip={language === "ar" ? "إجمالي الإيرادات من مبيعات تذاكر الطيران" : "Total revenue generated from airline ticket sales"} />
+                </div>
                 <p className="text-xl font-bold" data-testid="text-ticket-revenue">{totalTicketRevenue.toFixed(1)} {l.sar} {l.billion}</p>
               </div>
             </div>
@@ -257,7 +261,10 @@ export default function DashboardFinancial() {
                 <Banknote className="h-5 w-5" style={{ color: CHART_COLORS[1] }} />
               </div>
               <div className="min-w-0">
-                <p className="text-xs text-muted-foreground">{l.opRevenue} / {l.opExpenses}</p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground">{l.opRevenue} / {l.opExpenses}</p>
+                  <SectionTooltip tooltip={language === "ar" ? "الإيرادات التشغيلية مقابل المصاريف التشغيلية لقطاع الطيران" : "Operating revenue vs. operating expenses for the aviation sector"} />
+                </div>
                 <p className="text-xl font-bold" data-testid="text-op-revenue">{totalOpRevenue.toFixed(1)} / {totalOpExpenses.toFixed(1)}</p>
               </div>
             </div>
@@ -274,7 +281,10 @@ export default function DashboardFinancial() {
                 <TrendingUp className="h-5 w-5" style={{ color: CHART_COLORS[5] }} />
               </div>
               <div className="min-w-0">
-                <p className="text-xs text-muted-foreground">{l.netMargin}</p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground">{l.netMargin}</p>
+                  <SectionTooltip tooltip={language === "ar" ? "صافي هامش الربح بعد خصم المصاريف التشغيلية من الإيرادات" : "Net profit margin after deducting operating expenses from revenue"} />
+                </div>
                 <p className="text-xl font-bold" data-testid="text-net-margin">{netMargin.toFixed(1)} {l.sar} {l.billion}</p>
               </div>
             </div>
@@ -291,7 +301,10 @@ export default function DashboardFinancial() {
                 <Landmark className="h-5 w-5" style={{ color: CHART_COLORS[2] }} />
               </div>
               <div className="min-w-0">
-                <p className="text-xs text-muted-foreground">{l.totalInvestment}</p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground">{l.totalInvestment}</p>
+                  <SectionTooltip tooltip={language === "ar" ? "إجمالي الاستثمارات في قطاع الطيران المدني" : "Total investments in the civil aviation sector"} />
+                </div>
                 <p className="text-xl font-bold" data-testid="text-total-investment">{totalInvestment.toFixed(1)} {l.sar} {l.billion}</p>
               </div>
             </div>
@@ -308,7 +321,10 @@ export default function DashboardFinancial() {
             <div className="flex items-center gap-3 flex-wrap">
               <PiggyBank className="h-4 w-4 text-muted-foreground" />
               <div>
-                <p className="text-xs text-muted-foreground">{l.capitalValue}</p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground">{l.capitalValue}</p>
+                  <SectionTooltip tooltip={language === "ar" ? "القيمة الرأسمالية الإجمالية لأصول قطاع الطيران" : "Total capital value of aviation sector assets"} />
+                </div>
                 <p className="text-lg font-bold" data-testid="text-capital-value">{latestCapital} {l.sar} {l.billion}</p>
               </div>
             </div>
@@ -317,7 +333,10 @@ export default function DashboardFinancial() {
             <div className="flex items-center gap-3 flex-wrap">
               <Wrench className="h-4 w-4 text-muted-foreground" />
               <div>
-                <p className="text-xs text-muted-foreground">{l.maintenance}</p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground">{l.maintenance}</p>
+                  <SectionTooltip tooltip={language === "ar" ? "إجمالي الإنفاق على صيانة الطائرات والبنية التحتية" : "Total spending on aircraft and infrastructure maintenance"} />
+                </div>
                 <p className="text-lg font-bold" data-testid="text-maintenance">{totalMaintenance.toFixed(1)} {l.sar} {l.billion}</p>
               </div>
             </div>
@@ -326,7 +345,10 @@ export default function DashboardFinancial() {
             <div className="flex items-center gap-3 flex-wrap">
               <Plane className="h-4 w-4 text-muted-foreground" />
               <div>
-                <p className="text-xs text-muted-foreground">{l.bopCredits} / {l.bopDebits}</p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground">{l.bopCredits} / {l.bopDebits}</p>
+                  <SectionTooltip tooltip={language === "ar" ? "ملخص ائتمانات ومدينات ميزان المدفوعات لقطاع الطيران" : "Summary of aviation sector balance of payments credits and debits"} />
+                </div>
                 <p className="text-lg font-bold" data-testid="text-bop-summary">
                   <span className="text-emerald-600 dark:text-emerald-400">{totalBopCredits.toFixed(1)}</span>
                   {" / "}
@@ -340,7 +362,10 @@ export default function DashboardFinancial() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">{l.revenueVsExpense}</h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">{l.revenueVsExpense}</h2>
+              <SectionTooltip tooltip={language === "ar" ? "مقارنة ربع سنوية بين إيرادات التذاكر والإيرادات التشغيلية والمصاريف" : "Quarterly comparison of ticket revenue, operating revenue, and expenses"} />
+            </div>
             <div className="h-[320px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
                 <ComposedChart data={revenueExpenseData}>
@@ -359,7 +384,10 @@ export default function DashboardFinancial() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">{l.investmentBreakdown}</h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">{l.investmentBreakdown}</h2>
+              <SectionTooltip tooltip={language === "ar" ? "توزيع الاستثمار ربع سنوياً بين الاستثمار الرأسمالي والصيانة" : "Quarterly investment breakdown between capital investment and maintenance"} />
+            </div>
             <div className="h-[320px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={investmentData}>
@@ -378,7 +406,10 @@ export default function DashboardFinancial() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">{l.bopFlows}</h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">{l.bopFlows}</h2>
+              <SectionTooltip tooltip={language === "ar" ? "تدفقات ميزان المدفوعات ربع سنوياً تشمل الائتمانات والمدينات والصافي" : "Quarterly balance of payments flows including credits, debits, and net"} />
+            </div>
             <div className="h-[300px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
                 <ComposedChart data={bopFlowData}>
@@ -426,7 +457,10 @@ export default function DashboardFinancial() {
 
           <div className="space-y-4">
             <Card className="p-5">
-              <h2 className="text-base font-semibold mb-4">{l.purchaseTrend}</h2>
+              <div className="flex items-center gap-1.5 mb-4">
+                <h2 className="text-base font-semibold">{l.purchaseTrend}</h2>
+                <SectionTooltip tooltip={language === "ar" ? "اتجاه شراء الطائرات سنوياً حسب نوع الطائرة" : "Annual aircraft purchase trend by aircraft type"} />
+              </div>
               <div className="h-[300px]" dir="ltr">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={purchaseData}>
@@ -446,7 +480,10 @@ export default function DashboardFinancial() {
             </Card>
 
             <Card className="p-5">
-              <h2 className="text-base font-semibold mb-4">{l.capitalTrend}</h2>
+              <div className="flex items-center gap-1.5 mb-4">
+                <h2 className="text-base font-semibold">{l.capitalTrend}</h2>
+                <SectionTooltip tooltip={language === "ar" ? "اتجاه القيمة الرأسمالية لأصول الطيران عبر السنوات" : "Capital value trend of aviation assets over the years"} />
+              </div>
               <div className="h-[220px]" dir="ltr">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={CAPITAL_VALUES}>

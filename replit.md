@@ -121,5 +121,8 @@ client/src/
 - Directional icons (ArrowLeft, ChevronRight) use `rtl:rotate-180` to flip in RTL
 - Never use `ml-`, `mr-`, `pl-`, `pr-`, `left-`, `right-`, `text-left`, `text-right` — use logical equivalents instead
 
+- All numbers use Western numerals (0-9) — no Arabic-Indic numerals (٠-٩) anywhere
+- Dashboard tooltips: `SectionTooltip` component for chart/table headers; `KpiCard` has optional `tooltip` prop
+
 ## Running
 - `npm run dev` starts both Express backend and Vite frontend on port 5000

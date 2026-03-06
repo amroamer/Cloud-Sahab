@@ -39,6 +39,7 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 - Dark mode support with GACA Navy design system (`#1B3A5C` primary, `#2E86C1` accent, `#1ABC9C` teal)
 - Role-based access control with 8 user roles and role-filtered sidebar navigation
 - Collapsible sidebar navigation with role-aware menu items
+- Info tooltip icons on every KPI card, chart, and table section across all 15 dashboards with bilingual descriptions
 - Collapsible per-dashboard filter bars with dashboard-specific filters (date range, airport, airline, flight type, passenger type, etc.)
 - Air Traffic Explorer — interactive analytical workspace with dimension/metric selectors and 6 chart types
 - Chart toolbar — hover to reveal fullscreen, download PNG, and export CSV on any chart

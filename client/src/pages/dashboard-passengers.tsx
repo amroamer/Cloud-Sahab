@@ -46,6 +46,7 @@ import {
   PASSENGER_BY_NATIONALITY,
   CHART_COLORS,
 } from "@/lib/mock-data";
+import { SectionTooltip } from "@/components/section-tooltip";
 
 const COLORS = {
   primary: "hsl(210, 85%, 42%)",
@@ -154,7 +155,7 @@ export default function DashboardPassengers() {
             {t("nav.passengers")}
           </h1>
           <p className="text-sm text-muted-foreground mt-0.5">
-            {t("dashboard.dataAsOf")} {language === "ar" ? "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص" : "March 6, 2026, 08:00 AM"}
+            {t("dashboard.dataAsOf")} {language === "ar" ? "6 مارس 2026، 08:00 ص" : "March 6, 2026, 08:00 AM"}
           </p>
         </div>
 
@@ -174,9 +175,12 @@ export default function DashboardPassengers() {
                   <Users className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {language === "ar" ? "إجمالي المسافرين" : "Total Passengers"}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {language === "ar" ? "إجمالي المسافرين" : "Total Passengers"}
+                    </p>
+                    <SectionTooltip tooltip={language === "ar" ? "إجمالي عدد المسافرين عبر جميع المطارات منذ بداية العام" : "Total passenger count across all airports year-to-date"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight mt-0.5" data-testid="text-total-passengers">
                     {totalPassengers.toFixed(1)}M
                   </p>
@@ -206,9 +210,12 @@ export default function DashboardPassengers() {
                   <ArrowRightLeft className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {language === "ar" ? "مسافرو الترانزيت" : "Transit Travelers"}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {language === "ar" ? "مسافرو الترانزيت" : "Transit Travelers"}
+                    </p>
+                    <SectionTooltip tooltip={language === "ar" ? "المسافرون العابرون عبر المطارات السعودية إلى وجهات أخرى" : "Passengers transiting through Saudi airports to other destinations"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight mt-0.5" data-testid="text-transit-passengers">
                     {totalTransit.toFixed(1)}M
                   </p>
@@ -236,9 +243,12 @@ export default function DashboardPassengers() {
               <div className="flex h-10 w-10 items-center justify-center rounded-md shrink-0" style={{ backgroundColor: "hsl(210, 85%, 42%, 0.12)", color: COLORS.primary }}>
                 <Globe className="h-5 w-5" />
               </div>
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                {language === "ar" ? "محلي / دولي / ترانزيت" : "Domestic / Intl / Transit"}
-              </p>
+              <div className="flex items-center gap-1.5">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {language === "ar" ? "محلي / دولي / ترانزيت" : "Domestic / Intl / Transit"}
+                </p>
+                <SectionTooltip tooltip={language === "ar" ? "توزيع المسافرين حسب نوع الرحلة: محلي ودولي وترانزيت" : "Passenger distribution by trip type: domestic, international, and transit"} />
+              </div>
             </div>
             <div className="h-[140px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -281,9 +291,12 @@ export default function DashboardPassengers() {
         <div className="grid gap-4 lg:grid-cols-3">
           <Card className="p-5 lg:col-span-2">
             <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
-              <h2 className="text-base font-semibold">
-                {language === "ar" ? "اتجاه المسافرين الشهري" : "Monthly Passenger Trend"}
-              </h2>
+              <div className="flex items-center gap-1.5">
+                <h2 className="text-base font-semibold">
+                  {language === "ar" ? "اتجاه المسافرين الشهري" : "Monthly Passenger Trend"}
+                </h2>
+                <SectionTooltip tooltip={language === "ar" ? "اتجاه حركة المسافرين الشهري حسب النوع" : "Monthly passenger traffic trend by type"} />
+              </div>
               <Tabs value={trendView} onValueChange={(v) => setTrendView(v as "stacked" | "split")}>
                 <TabsList>
                   <TabsTrigger value="stacked" data-testid="tab-stacked">
@@ -343,9 +356,12 @@ export default function DashboardPassengers() {
               <div className="flex h-10 w-10 items-center justify-center rounded-md shrink-0" style={{ backgroundColor: "hsl(280, 70%, 42%, 0.12)", color: COLORS.purple }}>
                 <Armchair className="h-5 w-5" />
               </div>
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                {language === "ar" ? "المسافرون حسب الدرجة" : "Passengers by Class"}
-              </p>
+              <div className="flex items-center gap-1.5">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {language === "ar" ? "المسافرون حسب الدرجة" : "Passengers by Class"}
+                </p>
+                <SectionTooltip tooltip={language === "ar" ? "توزيع المسافرين حسب درجة السفر: اقتصادية وأعمال وأولى" : "Passenger distribution by travel class: economy, business, and first"} />
+              </div>
             </div>
             <div className="h-[160px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -388,9 +404,12 @@ export default function DashboardPassengers() {
 
         <Card className="p-5">
           <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
-            <h2 className="text-base font-semibold">
-              {language === "ar" ? "حركة المسافرين" : "Passenger Movements"}
-            </h2>
+            <div className="flex items-center gap-1.5">
+              <h2 className="text-base font-semibold">
+                {language === "ar" ? "حركة المسافرين" : "Passenger Movements"}
+              </h2>
+              <SectionTooltip tooltip={language === "ar" ? "تفاصيل حركة المسافرين حسب المطار أو شركة الطيران" : "Passenger movement details by airport or airline"} />
+            </div>
             <Tabs value={pivotView} onValueChange={(v) => setPivotView(v as "airport" | "airline")}>
               <TabsList>
                 <TabsTrigger value="airport" data-testid="tab-pivot-airport">
@@ -462,6 +481,7 @@ export default function DashboardPassengers() {
               <h2 className="text-base font-semibold">
                 {language === "ar" ? "المسافرون حسب الجنسية" : "Passengers by Nationality"}
               </h2>
+              <SectionTooltip tooltip={language === "ar" ? "أعلى الجنسيات حسب عدد المسافرين" : "Top nationalities by passenger count"} />
             </div>
             <div className="h-[320px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -495,6 +515,7 @@ export default function DashboardPassengers() {
               <h2 className="text-base font-semibold">
                 {language === "ar" ? "البنية التحتية للبوابات" : "Gate Infrastructure"}
               </h2>
+              <SectionTooltip tooltip={language === "ar" ? "ملخص البوابات بجسور وبدون جسور حسب المطار" : "Summary of gates with and without bridges by airport"} />
             </div>
             <div className="grid grid-cols-3 gap-4 mb-6">
               <div className="text-center">

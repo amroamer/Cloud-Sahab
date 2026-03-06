@@ -150,3 +150,20 @@
 - **Search Inputs**: Top nav and catalog search bars use `start-3` / `ps-9` instead of conditional `isRTL` logic
 - **Dashboard Tables**: All `text-right` table headers/cells across 8 dashboards converted to `text-end`
 - **Pages Fixed**: catalog.tsx, catalog-detail.tsx, top-nav.tsx, app-sidebar.tsx, home.tsx, landing.tsx, user-guide.tsx, login.tsx, dashboard-airports, dashboard-cargo, dashboard-connectivity, dashboard-digital, dashboard-financial, dashboard-fleet, dashboard-flight-ops, dashboard-passengers
+
+### Phase 10: English Numerals, Marketplace RTL, & Dashboard Tooltips (Complete)
+- **English Numerals Enforcement**: Replaced all Arabic-Indic numerals (٠-٩) with Western numerals (0-9) across the entire codebase
+  - Files fixed: i18n.tsx, mock-data.ts, home.tsx, top-nav.tsx, dashboard-overview.tsx, dashboard-ajwaa-licensing.tsx, placeholder.tsx, user-guide.tsx, dashboard-cargo.tsx, dashboard-connectivity.tsx, dashboard-digital.tsx, dashboard-financial.tsx, dashboard-fleet.tsx, dashboard-flight-ops.tsx, dashboard-passengers.tsx, landing.tsx, login.tsx
+  - All numbers now display consistently as 0-9 regardless of language setting
+- **Data Marketplace RTL Optimization**:
+  - Fixed currency label in catalog-detail.tsx: "SAR" → conditional "ر.س" in Arabic mode
+  - Added Arabic translation for "Last Updated" date on product detail page
+  - Verified filter panel, product grid, and two-column layouts flip correctly via CSS grid + `dir="rtl"`
+- **Dashboard Tooltip Icons**: Added info tooltip (ℹ) icon to every KPI card, chart section, and table section across all 15 dashboards
+  - Created `SectionTooltip` component (`client/src/components/section-tooltip.tsx`) — reusable info icon with shadcn Tooltip
+  - Extended `KpiCard` component with optional `tooltip` prop for inline info icons
+  - All 108 KPIs and ~80 chart/table sections now have bilingual (EN/AR) tooltip descriptions
+  - Tooltips describe what each KPI measures, its data source, and relevance
+  - Dashboards 1-5: Overview, Flight Ops, Passengers, Connectivity, Airports
+  - Dashboards 6-10: Cargo, Financial, BoP, Fleet, Digital
+  - Dashboards 11-15: Ajwaa Licensing, Permits, Economic, Providers, eServices

@@ -73,7 +73,7 @@ const pageConfig: Record<string, { icon: typeof BarChart3; titleEn: string; titl
     titleEn: "Airport Performance",
     titleAr: "أداء المطارات",
     descEn: "Detailed performance analytics for each of the 29 Saudi airports.",
-    descAr: "تحليلات أداء تفصيلية لكل من المطارات السعودية الـ ٢٩.",
+    descAr: "تحليلات أداء تفصيلية لكل من المطارات السعودية الـ 29.",
   },
   "/dashboards/airlines": {
     icon: Plane,
@@ -94,7 +94,7 @@ const pageConfig: Record<string, { icon: typeof BarChart3; titleEn: string; titl
     titleEn: "Cargo Intelligence",
     titleAr: "استخبارات الشحن",
     descEn: "Track air cargo performance and progress toward the 3 million shipments target.",
-    descAr: "تتبع أداء الشحن الجوي والتقدم نحو هدف ٣ ملايين شحنة.",
+    descAr: "تتبع أداء الشحن الجوي والتقدم نحو هدف 3 ملايين شحنة.",
   },
   "/dashboards/regulatory": {
     icon: Shield,

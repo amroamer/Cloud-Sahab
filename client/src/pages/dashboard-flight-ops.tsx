@@ -43,6 +43,7 @@ import {
   AIRSPACE_AIRLINES,
   CHART_COLORS,
 } from "@/lib/mock-data";
+import { SectionTooltip } from "@/components/section-tooltip";
 
 const TOOLTIP_STYLE = {
   backgroundColor: "hsl(210, 5%, 96%)",
@@ -190,7 +191,7 @@ export default function DashboardFlightOps() {
             {language === "ar" ? "عمليات الطيران" : "Flight Operations"}
           </h1>
           <p className="text-sm text-muted-foreground mt-0.5">
-            {t("dashboard.dataAsOf")} {language === "ar" ? "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص" : "March 6, 2026, 08:00 AM"}
+            {t("dashboard.dataAsOf")} {language === "ar" ? "6 مارس 2026، 08:00 ص" : "March 6, 2026, 08:00 AM"}
           </p>
         </div>
 
@@ -209,9 +210,12 @@ export default function DashboardFlightOps() {
                 <Activity className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {language === "ar" ? "إجمالي الحركات" : "Total Movements"}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {language === "ar" ? "إجمالي الحركات" : "Total Movements"}
+                  </p>
+                  <SectionTooltip tooltip={language === "ar" ? "إجمالي حركات الإقلاع والهبوط في جميع المطارات" : "Total takeoff and landing movements across all airports"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-total-movements">
                   {(totalMovements / 1000).toFixed(0)}K
                 </p>
@@ -230,9 +234,12 @@ export default function DashboardFlightOps() {
                 <Clock className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {language === "ar" ? "معدل الالتزام بالمواعيد" : "On-Time Rate"}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {language === "ar" ? "معدل الالتزام بالمواعيد" : "On-Time Rate"}
+                  </p>
+                  <SectionTooltip tooltip={language === "ar" ? "النسبة المئوية للرحلات التي غادرت في موعدها المحدد" : "Percentage of flights that departed on schedule"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-on-time-rate">
                   {avgOnTime}%
                 </p>
@@ -251,9 +258,12 @@ export default function DashboardFlightOps() {
                 <AlertTriangle className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {language === "ar" ? "الرحلات المتأخرة" : "Delayed Flights"}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {language === "ar" ? "الرحلات المتأخرة" : "Delayed Flights"}
+                  </p>
+                  <SectionTooltip tooltip={language === "ar" ? "عدد الرحلات التي تأخرت عن موعدها المحدد" : "Number of flights that were delayed beyond scheduled time"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-delayed-flights">
                   {(totalDelayed / 1000).toFixed(1)}K
                 </p>
@@ -272,9 +282,12 @@ export default function DashboardFlightOps() {
                 <Plane className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {language === "ar" ? "رحلات خاصة" : "Private Flights"}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {language === "ar" ? "رحلات خاصة" : "Private Flights"}
+                  </p>
+                  <SectionTooltip tooltip={language === "ar" ? "إجمالي رحلات الطيران الخاص المحلية والدولية" : "Total private aviation flights, domestic and international"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-private-flights">
                   {(totalPrivateFlights / 1000).toFixed(1)}K
                 </p>
@@ -295,6 +308,7 @@ export default function DashboardFlightOps() {
               <h2 className="text-base font-semibold">
                 {language === "ar" ? "حركة الطائرات حسب المطار" : "Aircraft Movements by Airport"}
               </h2>
+              <SectionTooltip tooltip={language === "ar" ? "مقارنة حركات الطائرات والرحلات بين المطارات السعودية" : "Comparison of aircraft movements and flights across Saudi airports"} />
             </div>
             <div className="h-[340px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -317,6 +331,7 @@ export default function DashboardFlightOps() {
               <h2 className="text-base font-semibold">
                 {language === "ar" ? "في الموعد مقابل التأخير" : "On-Time vs Delayed"}
               </h2>
+              <SectionTooltip tooltip={language === "ar" ? "توزيع الرحلات بين المنتظمة والمتأخرة" : "Distribution of flights between on-time and delayed"} />
             </div>
             <div className="h-[220px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -358,6 +373,7 @@ export default function DashboardFlightOps() {
               <h2 className="text-base font-semibold">
                 {language === "ar" ? "الرحلات المتأخرة حسب شركة الطيران" : "Delayed Flights by Airline"}
               </h2>
+              <SectionTooltip tooltip={language === "ar" ? "تحليل الرحلات المتأخرة مقابل المنتظمة لكل شركة طيران" : "Analysis of delayed vs on-time flights per airline"} />
             </div>
             <div className="h-[300px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -380,6 +396,7 @@ export default function DashboardFlightOps() {
               <h2 className="text-base font-semibold">
                 {language === "ar" ? "الرحلات الخاصة (شهري)" : "Private Flights (Monthly)"}
               </h2>
+              <SectionTooltip tooltip={language === "ar" ? "اتجاه الرحلات الخاصة الشهرية محلية ودولية" : "Monthly private flight trends, domestic and international"} />
             </div>
             <div className="h-[300px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -403,6 +420,7 @@ export default function DashboardFlightOps() {
             <h2 className="text-base font-semibold">
               {language === "ar" ? "شركات الطيران المستخدمة للمجال الجوي" : "Airlines Using Airspace"}
             </h2>
+            <SectionTooltip tooltip={language === "ar" ? "قائمة شركات الطيران التي تستخدم المجال الجوي السعودي" : "List of airlines utilizing Saudi airspace"} />
           </div>
           <div className="overflow-x-auto">
             <Table>
@@ -446,6 +464,7 @@ export default function DashboardFlightOps() {
             <h2 className="text-base font-semibold">
               {language === "ar" ? "نسبة استخدام المطارات" : "Airport Utilization"}
             </h2>
+            <SectionTooltip tooltip={language === "ar" ? "نسبة استخدام الطاقة الاستيعابية لكل مطار" : "Capacity utilization rate for each airport"} />
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {utilizationData.map((airport) => (

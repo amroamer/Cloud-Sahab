@@ -28,6 +28,7 @@ import {
   ReferenceLine,
 } from "recharts";
 import { BOP_COMPONENTS, BOP_QUARTERLY, CHART_COLORS } from "@/lib/mock-data";
+import { SectionTooltip } from "@/components/section-tooltip";
 
 export default function DashboardBop() {
   const { t, language } = useTranslation();
@@ -159,7 +160,10 @@ export default function DashboardBop() {
                   <ArrowUpRight className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">{isAr ? "إجمالي الإيرادات" : "Total Credits"}</p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-sm text-muted-foreground">{isAr ? "إجمالي الإيرادات" : "Total Credits"}</p>
+                    <SectionTooltip tooltip={isAr ? "إجمالي التدفقات الداخلة لقطاع الطيران في ميزان المدفوعات" : "Total inflows to the aviation sector in the balance of payments"} />
+                  </div>
                   <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400" data-testid="text-bop-credits-value">
                     {totalCredits.toFixed(1)}B
                   </p>
@@ -188,7 +192,10 @@ export default function DashboardBop() {
                   <ArrowDownRight className="h-5 w-5 text-red-600 dark:text-red-400" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">{isAr ? "إجمالي المدفوعات" : "Total Debits"}</p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-sm text-muted-foreground">{isAr ? "إجمالي المدفوعات" : "Total Debits"}</p>
+                    <SectionTooltip tooltip={isAr ? "إجمالي التدفقات الخارجة من قطاع الطيران في ميزان المدفوعات" : "Total outflows from the aviation sector in the balance of payments"} />
+                  </div>
                   <p className="text-2xl font-bold text-red-600 dark:text-red-400" data-testid="text-bop-debits-value">
                     {totalDebits.toFixed(1)}B
                   </p>
@@ -217,7 +224,10 @@ export default function DashboardBop() {
                   <Wallet className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">{isAr ? "صافي الميزان" : "Net Balance"}</p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-sm text-muted-foreground">{isAr ? "صافي الميزان" : "Net Balance"}</p>
+                    <SectionTooltip tooltip={isAr ? "الفرق بين إجمالي الإيرادات والمدفوعات في ميزان المدفوعات" : "Difference between total credits and debits in the balance of payments"} />
+                  </div>
                   <p className="text-2xl font-bold" data-testid="text-bop-net-value">
                     {netBalance >= 0 ? "+" : ""}{netBalance.toFixed(1)}B
                   </p>
@@ -247,9 +257,12 @@ export default function DashboardBop() {
         </div>
 
         <Card className="p-5" data-testid="card-bop-waterfall">
-          <h2 className="text-base font-semibold mb-4">
-            {isAr ? "تحليل مكونات ميزان المدفوعات (شلال)" : "BOP Component Breakdown (Waterfall)"}
-          </h2>
+          <div className="flex items-center gap-1.5 mb-4">
+            <h2 className="text-base font-semibold">
+              {isAr ? "تحليل مكونات ميزان المدفوعات (شلال)" : "BOP Component Breakdown (Waterfall)"}
+            </h2>
+            <SectionTooltip tooltip={isAr ? "رسم بياني شلالي يوضح مساهمة كل مكون في صافي ميزان المدفوعات" : "Waterfall chart showing each component's contribution to the net balance of payments"} />
+          </div>
           <div className="h-[380px]" dir="ltr">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={waterfallData} barSize={32}>
@@ -298,9 +311,12 @@ export default function DashboardBop() {
         </Card>
 
         <Card className="p-5" data-testid="card-bop-quarterly-trend">
-          <h2 className="text-base font-semibold mb-4">
-            {isAr ? "اتجاه ميزان المدفوعات الربعي" : "Quarterly BOP Trend"}
-          </h2>
+          <div className="flex items-center gap-1.5 mb-4">
+            <h2 className="text-base font-semibold">
+              {isAr ? "اتجاه ميزان المدفوعات الربعي" : "Quarterly BOP Trend"}
+            </h2>
+            <SectionTooltip tooltip={isAr ? "اتجاه الإيرادات والمدفوعات والصافي ربع سنوياً" : "Quarterly trend of credits, debits, and net balance"} />
+          </div>
           <div className="h-[300px]" dir="ltr">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={BOP_QUARTERLY}>
@@ -354,9 +370,12 @@ export default function DashboardBop() {
         </Card>
 
         <Card className="p-5" data-testid="card-bop-net-trend-line">
-          <h2 className="text-base font-semibold mb-4">
-            {isAr ? "اتجاه صافي ميزان المدفوعات" : "Net BOP Trend"}
-          </h2>
+          <div className="flex items-center gap-1.5 mb-4">
+            <h2 className="text-base font-semibold">
+              {isAr ? "اتجاه صافي ميزان المدفوعات" : "Net BOP Trend"}
+            </h2>
+            <SectionTooltip tooltip={isAr ? "اتجاه خطي لصافي ميزان المدفوعات مقارنة بالإيرادات والمدفوعات" : "Line trend of net balance of payments compared to credits and debits"} />
+          </div>
           <div className="h-[260px]" dir="ltr">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={BOP_QUARTERLY}>

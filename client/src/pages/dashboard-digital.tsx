@@ -38,6 +38,7 @@ import {
   COMPLAINT_CHANNELS,
   CHART_COLORS,
 } from "@/lib/mock-data";
+import { SectionTooltip } from "@/components/section-tooltip";
 
 const totalECheckins = DIGITAL_MONTHLY.reduce((sum, m) => sum + m.eCheckins, 0);
 const totalETickets = DIGITAL_MONTHLY.reduce((sum, m) => sum + m.eTickets, 0);
@@ -97,7 +98,7 @@ export default function DashboardDigital() {
             {t("digital.title")}
           </h1>
           <p className="text-sm text-muted-foreground mt-0.5">
-            {language === "ar" ? "٧ مؤشرات أداء رئيسية في ٣ محاور" : "7 KPIs across 3 zones"}
+            {language === "ar" ? "7 مؤشرات أداء رئيسية في 3 محاور" : "7 KPIs across 3 zones"}
           </p>
         </div>
 
@@ -114,11 +115,15 @@ export default function DashboardDigital() {
             <div className="flex items-center gap-2">
               <Leaf className="h-4 w-4" style={{ color: COLORS.green }} />
               <h2 className="text-base font-semibold">{t("digital.sustainability")}</h2>
+              <SectionTooltip tooltip={language === "ar" ? "مؤشرات الاستدامة البيئية لقطاع الطيران المدني" : "Environmental sustainability indicators for the civil aviation sector"} />
             </div>
 
             <div className="grid gap-3 grid-cols-2">
               <Card className="p-4" data-testid="card-co2-emissions">
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{t("digital.co2Emissions")}</p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{t("digital.co2Emissions")}</p>
+                  <SectionTooltip tooltip={language === "ar" ? "إجمالي انبعاثات ثاني أكسيد الكربون من الطيران المدني بالمليون طن" : "Total CO2 emissions from civil aviation in million tonnes"} />
+                </div>
                 <p className="text-2xl font-bold mt-1">{latestSustainability.co2}</p>
                 <p className="text-xs text-muted-foreground">{t("digital.millionTonnes")}</p>
                 <div className="flex items-center gap-1 mt-2">
@@ -134,7 +139,10 @@ export default function DashboardDigital() {
               </Card>
 
               <Card className="p-4" data-testid="card-fuel-consumption">
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{t("digital.fuelConsumption")}</p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{t("digital.fuelConsumption")}</p>
+                  <SectionTooltip tooltip={language === "ar" ? "إجمالي استهلاك الوقود للطيران المدني بمليار لتر" : "Total fuel consumption for civil aviation in billion liters"} />
+                </div>
                 <p className="text-2xl font-bold mt-1">{latestSustainability.fuel}</p>
                 <p className="text-xs text-muted-foreground">{t("digital.billionLiters")}</p>
                 <div className="flex items-center gap-1 mt-2">
@@ -241,6 +249,7 @@ export default function DashboardDigital() {
             <div className="flex items-center gap-2">
               <Smartphone className="h-4 w-4" style={{ color: COLORS.blue }} />
               <h2 className="text-base font-semibold">{t("digital.digitalZone")}</h2>
+              <SectionTooltip tooltip={language === "ar" ? "مؤشرات التحول الرقمي في خدمات الطيران" : "Digital transformation indicators for aviation services"} />
             </div>
 
             <div className="grid gap-3 grid-cols-2">
@@ -248,6 +257,7 @@ export default function DashboardDigital() {
                 <div className="flex items-center gap-2 mb-1">
                   <Smartphone className="h-3.5 w-3.5 text-muted-foreground" />
                   <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{t("digital.eCheckins")}</p>
+                  <SectionTooltip tooltip={language === "ar" ? "عدد عمليات تسجيل الوصول الإلكتروني عبر التطبيقات والمواقع" : "Number of electronic check-ins via apps and websites"} />
                 </div>
                 <p className="text-2xl font-bold">{totalECheckins.toFixed(1)}{t("digital.million")}</p>
                 <div className="flex items-center gap-1 mt-2">
@@ -260,6 +270,7 @@ export default function DashboardDigital() {
                 <div className="flex items-center gap-2 mb-1">
                   <Ticket className="h-3.5 w-3.5 text-muted-foreground" />
                   <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{t("digital.eTickets")}</p>
+                  <SectionTooltip tooltip={language === "ar" ? "عدد التذاكر الإلكترونية المصدرة رقمياً" : "Number of electronically issued e-tickets"} />
                 </div>
                 <p className="text-2xl font-bold">{totalETickets.toFixed(1)}{t("digital.million")}</p>
                 <div className="flex items-center gap-1 mt-2">
@@ -336,6 +347,7 @@ export default function DashboardDigital() {
               <div className="flex items-center gap-2 mb-1">
                 <MessageSquare className="h-3.5 w-3.5 text-muted-foreground" />
                 <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{t("digital.digitalComplaints")}</p>
+                <SectionTooltip tooltip={language === "ar" ? "عدد الشكاوى المقدمة عبر القنوات الرقمية" : "Number of complaints submitted through digital channels"} />
               </div>
               <p className="text-2xl font-bold">{(totalDigitalComplaints / 1000).toFixed(1)}K</p>
               <p className="text-xs text-muted-foreground mt-1">
@@ -348,6 +360,7 @@ export default function DashboardDigital() {
             <div className="flex items-center gap-2">
               <Star className="h-4 w-4" style={{ color: COLORS.orange }} />
               <h2 className="text-base font-semibold">{t("digital.customerExperience")}</h2>
+              <SectionTooltip tooltip={language === "ar" ? "مؤشرات تجربة العملاء بما في ذلك التصنيفات والشكاوى" : "Customer experience indicators including rankings and complaints"} />
             </div>
 
             <Card className="p-4" data-testid="card-skytrax-rankings">

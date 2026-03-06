@@ -30,6 +30,7 @@ import {
   CSAT_TREND,
   CHART_COLORS,
 } from "@/lib/ajwaa-mock-data";
+import { SectionTooltip } from "@/components/section-tooltip";
 
 export default function DashboardAjwaaEservices() {
   const { t, language } = useTranslation();
@@ -98,9 +99,12 @@ export default function DashboardAjwaaEservices() {
                 <FileText className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {t("ajwaa.eservices.totalApps")}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {t("ajwaa.eservices.totalApps")}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "إجمالي الطلبات المقدمة عبر جميع الخدمات الإلكترونية" : "Total applications submitted across all e-services"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-total-apps">
                   {ESERVICE_SUMMARY.totalApplications.toLocaleString()}
                 </p>
@@ -119,9 +123,12 @@ export default function DashboardAjwaaEservices() {
                 <Clock className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {t("ajwaa.eservices.avgProcessing")}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {t("ajwaa.eservices.avgProcessing")}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "متوسط أيام المعالجة الرقمية للطلبات" : "Average digital processing days for applications"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-avg-processing">
                   {ESERVICE_SUMMARY.avgDigitalProcessingDays} {t("ajwaa.eservices.days")}
                 </p>
@@ -140,9 +147,12 @@ export default function DashboardAjwaaEservices() {
                 <Star className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {t("ajwaa.eservices.csat")}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {t("ajwaa.eservices.csat")}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "درجة رضا العملاء عن الخدمات الإلكترونية من 5" : "Customer satisfaction score for e-services out of 5"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-csat-score">
                   {ESERVICE_SUMMARY.csatScore} <span className="text-sm font-normal text-muted-foreground">{t("ajwaa.eservices.outOf5")}</span>
                 </p>
@@ -161,9 +171,12 @@ export default function DashboardAjwaaEservices() {
                 <Monitor className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {t("ajwaa.eservices.digitized")}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {t("ajwaa.eservices.digitized")}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "نسبة الخدمات المرقمنة بالكامل" : "Percentage of services fully digitized"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-digitized-pct">
                   {ESERVICE_SUMMARY.fullyDigitizedPct}%
                 </p>
@@ -181,8 +194,9 @@ export default function DashboardAjwaaEservices() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-chart-by-group">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-chart-by-group">
               {t("ajwaa.eservices.byGroup")}
+              <SectionTooltip tooltip={isAr ? "توزيع الطلبات الشهرية حسب مجموعة الخدمات" : "Monthly application distribution by service group"} />
             </h2>
             <div className="h-[320px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -203,8 +217,9 @@ export default function DashboardAjwaaEservices() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-chart-processing-comparison">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-chart-processing-comparison">
               {t("ajwaa.eservices.processingComparison")}
+              <SectionTooltip tooltip={isAr ? "مقارنة متوسط أيام المعالجة بين مجموعات الخدمات" : "Processing days comparison across service groups"} />
             </h2>
             <div className="h-[320px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -222,8 +237,9 @@ export default function DashboardAjwaaEservices() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-chart-csat-trend">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-chart-csat-trend">
               {t("ajwaa.eservices.csatTrend")}
+              <SectionTooltip tooltip={isAr ? "اتجاه رضا العملاء الشهري للخدمات الإلكترونية" : "Monthly customer satisfaction trend for e-services"} />
             </h2>
             <div className="h-[280px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -239,8 +255,9 @@ export default function DashboardAjwaaEservices() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-chart-digitization">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-chart-digitization">
               {t("ajwaa.eservices.digitizationProgress")}
+              <SectionTooltip tooltip={isAr ? "تقدم الرقمنة وأداء كل مجموعة خدمات" : "Digitization progress and performance for each service group"} />
             </h2>
             <div className="space-y-5 pt-2">
               {ESERVICE_BY_GROUP.map((group, i) => (

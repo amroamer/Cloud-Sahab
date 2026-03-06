@@ -35,6 +35,7 @@ import {
   SERVICE_PROVIDERS_BY_CATEGORY,
   PROVIDER_COMPLIANCE_TREND,
 } from "@/lib/ajwaa-mock-data";
+import { SectionTooltip } from "@/components/section-tooltip";
 
 const totalCertified = SERVICE_PROVIDERS_BY_CATEGORY.reduce((s, p) => s + p.certified, 0);
 const avgOnTimePct = SERVICE_PROVIDERS_BY_CATEGORY.reduce((s, p) => s + p.onTimePct, 0) / SERVICE_PROVIDERS_BY_CATEGORY.length;
@@ -113,8 +114,9 @@ export default function DashboardAjwaaProviders() {
         />
 
         <div>
-          <h2 className="text-base font-semibold mb-3" data-testid="text-section-airport-ops">
+          <h2 className="text-base font-semibold mb-3 flex items-center gap-2" data-testid="text-section-airport-ops">
             {t("ajwaa.providers.airportOps")}
+            <SectionTooltip tooltip={isAr ? "مؤشرات أداء مشغلي المطارات" : "Airport operators performance metrics"} />
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <Card className="p-5" data-testid="card-kpi-ao-01">
@@ -123,9 +125,12 @@ export default function DashboardAjwaaProviders() {
                   <Building2 className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.providers.approvedOperators")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.providers.approvedOperators")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "عدد مشغلي المطارات المعتمدين" : "Number of approved airport operators"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-approved-operators">
                     {AIRPORT_OPERATORS_SUMMARY.approvedOperators}
                   </p>
@@ -142,9 +147,12 @@ export default function DashboardAjwaaProviders() {
                   <FileCheck className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.providers.filingCompliance")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.providers.filingCompliance")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "نسبة امتثال التقارير المقدمة من المشغلين" : "Filing compliance rate for operators"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-filing-compliance">
                     {AIRPORT_OPERATORS_SUMMARY.filingCompliancePct}%
                   </p>
@@ -163,9 +171,12 @@ export default function DashboardAjwaaProviders() {
                   <Clock className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.providers.processingMonths")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.providers.processingMonths")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "متوسط أشهر معالجة طلبات المشغلين" : "Average processing months for operator applications"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-processing-months">
                     {AIRPORT_OPERATORS_SUMMARY.avgProcessingMonths}
                   </p>
@@ -182,9 +193,12 @@ export default function DashboardAjwaaProviders() {
                   <Monitor className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.providers.digitalShare")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.providers.digitalShare")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "نسبة الخدمات الرقمية لمشغلي المطارات" : "Digital service share for airport operators"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-digital-share">
                     {AIRPORT_OPERATORS_SUMMARY.digitalSharePct}%
                   </p>
@@ -196,8 +210,9 @@ export default function DashboardAjwaaProviders() {
         </div>
 
         <div>
-          <h2 className="text-base font-semibold mb-3" data-testid="text-section-service-providers">
+          <h2 className="text-base font-semibold mb-3 flex items-center gap-2" data-testid="text-section-service-providers">
             {t("ajwaa.providers.serviceProviders")}
+            <SectionTooltip tooltip={isAr ? "مؤشرات أداء مزودي الخدمات المعتمدين" : "Certified service providers performance metrics"} />
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             <Card className="p-5" data-testid="card-kpi-sp-01">
@@ -206,9 +221,12 @@ export default function DashboardAjwaaProviders() {
                   <Award className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.providers.certifiedProviders")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.providers.certifiedProviders")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "إجمالي مزودي الخدمات المعتمدين" : "Total certified service providers"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-certified-providers">
                     {totalCertified}
                   </p>
@@ -225,9 +243,12 @@ export default function DashboardAjwaaProviders() {
                   <CheckCircle className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.providers.certOnTime")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.providers.certOnTime")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "نسبة الشهادات الصادرة في الوقت المحدد" : "On-time certification issuance rate"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-cert-ontime">
                     {avgOnTimePct.toFixed(1)}%
                   </p>
@@ -246,9 +267,12 @@ export default function DashboardAjwaaProviders() {
                   <Clock className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.providers.avgDays")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.providers.avgDays")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "متوسط أيام معالجة شهادات مزودي الخدمات" : "Average processing days for provider certifications"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-avg-processing-days">
                     {avgProcessingDays.toFixed(0)}
                   </p>
@@ -265,9 +289,12 @@ export default function DashboardAjwaaProviders() {
                   <ClipboardList className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.providers.findingsPerAudit")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.providers.findingsPerAudit")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "متوسط عدد الملاحظات لكل عملية تدقيق" : "Average findings per audit inspection"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-findings-per-audit">
                     {avgFindings.toFixed(1)}
                   </p>
@@ -284,9 +311,12 @@ export default function DashboardAjwaaProviders() {
                   <DollarSign className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.providers.revenue")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.providers.revenue")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "إجمالي الإيرادات من رسوم مزودي الخدمات" : "Total revenue from service provider fees"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-provider-revenue">
                     {isAr ? `${(totalRevenue / 1_000_000).toFixed(1)} م ر.س` : `${(totalRevenue / 1_000_000).toFixed(1)}M SAR`}
                   </p>
@@ -303,8 +333,9 @@ export default function DashboardAjwaaProviders() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-chart-by-category">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-chart-by-category">
               {t("ajwaa.providers.byCategory")}
+              <SectionTooltip tooltip={isAr ? "مزودي الخدمات المعتمدين حسب الفئة" : "Certified providers by category"} />
             </h2>
             <div className="h-[300px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -330,8 +361,9 @@ export default function DashboardAjwaaProviders() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-chart-compliance-trend">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-chart-compliance-trend">
               {t("ajwaa.providers.complianceTrend")}
+              <SectionTooltip tooltip={isAr ? "اتجاه الامتثال والرقمنة لمزودي الخدمات" : "Provider compliance and digitization trend"} />
             </h2>
             <div className="h-[300px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -351,8 +383,9 @@ export default function DashboardAjwaaProviders() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-chart-audit-findings">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-chart-audit-findings">
               {t("ajwaa.providers.auditFindings")}
+              <SectionTooltip tooltip={isAr ? "اتجاه نتائج التدقيق الشهرية لمزودي الخدمات" : "Monthly audit findings trend for service providers"} />
             </h2>
             <div className="h-[300px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -368,8 +401,9 @@ export default function DashboardAjwaaProviders() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2">
               {isAr ? "الإيرادات حسب الفئة" : "Revenue by Category"}
+              <SectionTooltip tooltip={isAr ? "توزيع الإيرادات حسب فئة مزودي الخدمات" : "Revenue distribution by service provider category"} />
             </h2>
             <div className="h-[300px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -390,8 +424,9 @@ export default function DashboardAjwaaProviders() {
         </div>
 
         <Card className="p-5">
-          <h2 className="text-base font-semibold mb-4">
+          <h2 className="text-base font-semibold mb-4 flex items-center gap-2">
             {isAr ? "حصة الرقمنة — التقدم" : "Digital Share — Progress"}
+            <SectionTooltip tooltip={isAr ? "تقدم الرقمنة عبر فئات مشغلي المطارات ومزودي الخدمات" : "Digitization progress across operator and provider categories"} />
           </h2>
           <div className="space-y-4">
             <div className="space-y-2">

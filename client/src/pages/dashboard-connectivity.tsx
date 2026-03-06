@@ -46,6 +46,7 @@ import {
   AIRSPACE_AIRLINES,
   CHART_COLORS,
 } from "@/lib/mock-data";
+import { SectionTooltip } from "@/components/section-tooltip";
 
 const saudiAirlines = AIRLINES.filter((a) => a.nationality === "Saudi");
 const foreignAirlines = AIRLINES.filter((a) => a.nationality !== "Saudi");
@@ -135,7 +136,7 @@ export default function DashboardConnectivity() {
             {language === "ar" ? "الاتصال والحصة السوقية" : "Connectivity & Market Share"}
           </h1>
           <p className="text-sm text-muted-foreground mt-0.5">
-            {t("dashboard.dataAsOf")} {language === "ar" ? "٦ مارس ٢٠٢٦" : "March 6, 2026"}
+            {t("dashboard.dataAsOf")} {language === "ar" ? "6 مارس 2026" : "March 6, 2026"}
           </p>
         </div>
 
@@ -153,9 +154,12 @@ export default function DashboardConnectivity() {
               <div className="flex h-9 w-9 items-center justify-center rounded-md shrink-0" style={{ backgroundColor: `hsl(210 85% 42% / 0.12)`, color: `hsl(210 85% 42%)` }}>
                 <Globe className="h-4.5 w-4.5" />
               </div>
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                {language === "ar" ? "مؤشر الاتصال الجوي" : "Air Connectivity Index"}
-              </p>
+              <div className="flex items-center gap-1.5">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {language === "ar" ? "مؤشر الاتصال الجوي" : "Air Connectivity Index"}
+                </p>
+                <SectionTooltip tooltip={language === "ar" ? "مؤشر يقيس مستوى الربط الجوي بناءً على الوجهات وتكرار الرحلات" : "Index measuring air connectivity based on destinations and flight frequency"} />
+              </div>
             </div>
             <div className="flex items-end gap-2 mb-2">
               <span className="text-3xl font-bold" data-testid="text-connectivity-index-value">{currentIndex}</span>
@@ -183,9 +187,12 @@ export default function DashboardConnectivity() {
               <div className="flex h-9 w-9 items-center justify-center rounded-md shrink-0" style={{ backgroundColor: `hsl(185 75% 38% / 0.12)`, color: `hsl(185 75% 38%)` }}>
                 <Map className="h-4.5 w-4.5" />
               </div>
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                {language === "ar" ? "الدول المخدومة" : "Countries Reached"}
-              </p>
+              <div className="flex items-center gap-1.5">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {language === "ar" ? "الدول المخدومة" : "Countries Reached"}
+                </p>
+                <SectionTooltip tooltip={language === "ar" ? "عدد الدول التي تصلها رحلات مباشرة من المملكة" : "Number of countries with direct flight connections from Saudi Arabia"} />
+              </div>
             </div>
             <span className="text-3xl font-bold" data-testid="text-countries-value">{COUNTRIES_REACHED}</span>
             <div className="mt-3 p-3 rounded-md bg-muted/50 text-center">
@@ -201,9 +208,12 @@ export default function DashboardConnectivity() {
               <div className="flex h-9 w-9 items-center justify-center rounded-md shrink-0" style={{ backgroundColor: `hsl(28 85% 48% / 0.12)`, color: `hsl(28 85% 48%)` }}>
                 <Route className="h-4.5 w-4.5" />
               </div>
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                {language === "ar" ? "المسارات" : "Routes"}
-              </p>
+              <div className="flex items-center gap-1.5">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {language === "ar" ? "المسارات" : "Routes"}
+                </p>
+                <SectionTooltip tooltip={language === "ar" ? "إجمالي المسارات الجوية النشطة المحلية والدولية" : "Total active air routes, domestic and international"} />
+              </div>
             </div>
             <span className="text-3xl font-bold" data-testid="text-routes-total">{DOMESTIC_ROUTES + INTERNATIONAL_ROUTES}</span>
             <div className="flex items-center gap-4 mt-3">
@@ -224,9 +234,12 @@ export default function DashboardConnectivity() {
               <div className="flex h-9 w-9 items-center justify-center rounded-md shrink-0" style={{ backgroundColor: `hsl(280 70% 42% / 0.12)`, color: `hsl(280 70% 42%)` }}>
                 <Plane className="h-4.5 w-4.5" />
               </div>
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                {language === "ar" ? "خطوط المجال الجوي" : "Airlines Using Airspace"}
-              </p>
+              <div className="flex items-center gap-1.5">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {language === "ar" ? "خطوط المجال الجوي" : "Airlines Using Airspace"}
+                </p>
+                <SectionTooltip tooltip={language === "ar" ? "عدد شركات الطيران التي تعمل في أو تعبر المجال الجوي السعودي" : "Number of airlines operating in or transiting Saudi airspace"} />
+              </div>
             </div>
             <span className="text-3xl font-bold" data-testid="text-airspace-count">{AIRLINES.length + AIRSPACE_AIRLINES.length}</span>
             <div className="flex items-center gap-4 mt-3">
@@ -245,9 +258,12 @@ export default function DashboardConnectivity() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
-              {language === "ar" ? "اتجاه مؤشر الاتصال" : "Connectivity Index Trend"}
-            </h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">
+                {language === "ar" ? "اتجاه مؤشر الاتصال" : "Connectivity Index Trend"}
+              </h2>
+              <SectionTooltip tooltip={language === "ar" ? "تطور مؤشر الاتصال الجوي السنوي مقارنة بالهدف" : "Annual air connectivity index progression vs target"} />
+            </div>
             <div className="h-[280px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={CONNECTIVITY_INDEX_TREND}>
@@ -286,9 +302,12 @@ export default function DashboardConnectivity() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
-              {language === "ar" ? "نمو المسارات" : "Route Growth"}
-            </h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">
+                {language === "ar" ? "نمو المسارات" : "Route Growth"}
+              </h2>
+              <SectionTooltip tooltip={language === "ar" ? "نمو المسارات الجوية المحلية والدولية عبر السنوات" : "Domestic and international route growth over the years"} />
+            </div>
             <div className="h-[280px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={routeGrowthData}>
@@ -326,9 +345,12 @@ export default function DashboardConnectivity() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
-              {language === "ar" ? "حصة الناقلات الأجنبية" : "Foreign Airlines Share"}
-            </h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">
+                {language === "ar" ? "حصة الناقلات الأجنبية" : "Foreign Airlines Share"}
+              </h2>
+              <SectionTooltip tooltip={language === "ar" ? "نسبة حصة الناقلات الأجنبية مقابل السعودية من إجمالي الرحلات" : "Foreign vs Saudi carrier share of total flights"} />
+            </div>
             <div className="h-[220px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -372,9 +394,12 @@ export default function DashboardConnectivity() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
-              {language === "ar" ? "حصة الطيران منخفض التكلفة" : "LCC Market Share"}
-            </h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">
+                {language === "ar" ? "حصة الطيران منخفض التكلفة" : "LCC Market Share"}
+              </h2>
+              <SectionTooltip tooltip={language === "ar" ? "حصة شركات الطيران منخفضة التكلفة من إجمالي السوق" : "Low-cost carrier share of total market"} />
+            </div>
             <div className="h-[220px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -420,9 +445,12 @@ export default function DashboardConnectivity() {
 
         <Card className="p-5">
           <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
-            <h2 className="text-base font-semibold">
-              {language === "ar" ? "الرحلات حسب الناقل والمطار (بالآلاف)" : "Flights by Airline & Airport (Thousands)"}
-            </h2>
+            <div className="flex items-center gap-1.5">
+              <h2 className="text-base font-semibold">
+                {language === "ar" ? "الرحلات حسب الناقل والمطار (بالآلاف)" : "Flights by Airline & Airport (Thousands)"}
+              </h2>
+              <SectionTooltip tooltip={language === "ar" ? "مصفوفة توزيع الرحلات بين شركات الطيران والمطارات" : "Flight distribution matrix between airlines and airports"} />
+            </div>
           </div>
           <div className="overflow-x-auto">
             <Table>
@@ -468,6 +496,7 @@ export default function DashboardConnectivity() {
             <h2 className="text-base font-semibold">
               {language === "ar" ? "شركات الطيران المستخدمة للمجال الجوي" : "Airlines Using Saudi Airspace"}
             </h2>
+            <SectionTooltip tooltip={language === "ar" ? "تفاصيل شركات الطيران العابرة والمشغلة في المجال الجوي السعودي" : "Details of airlines operating in and transiting Saudi airspace"} />
           </div>
           <div className="overflow-x-auto">
             <Table>

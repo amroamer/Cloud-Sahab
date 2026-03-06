@@ -37,6 +37,7 @@ import {
   GA_SUMMARY,
   GA_GROWTH_TREND,
 } from "@/lib/ajwaa-mock-data";
+import { SectionTooltip } from "@/components/section-tooltip";
 
 const renewalDonutData = [
   { name: "Success", value: ECONOMIC_SUMMARY.renewalSuccessPct },
@@ -121,8 +122,9 @@ export default function DashboardAjwaaEconomic() {
         />
 
         <div>
-          <h2 className="text-base font-semibold mb-3" data-testid="text-section-economic-licenses">
+          <h2 className="text-base font-semibold mb-3 flex items-center gap-2" data-testid="text-section-economic-licenses">
             {t("ajwaa.economic.economicLicenses")}
+            <SectionTooltip tooltip={isAr ? "مؤشرات أداء التراخيص الاقتصادية للناقلات الجوية" : "Economic licensing metrics for air carriers"} />
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             <Card className="p-5" data-testid="card-kpi-el01">
@@ -131,9 +133,12 @@ export default function DashboardAjwaaEconomic() {
                   <FileText className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.economic.activeLicenses")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.economic.activeLicenses")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "إجمالي التراخيص الاقتصادية النشطة" : "Total active economic licenses"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-el01-value">{ECONOMIC_SUMMARY.totalActiveLicenses}</p>
                 </div>
               </div>
@@ -148,9 +153,12 @@ export default function DashboardAjwaaEconomic() {
                   <Clock className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.economic.timeToIssue")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.economic.timeToIssue")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "متوسط الأشهر لإصدار ترخيص اقتصادي" : "Average months to issue an economic license"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-el02-value">{ECONOMIC_SUMMARY.avgTimeToIssueMonths}</p>
                 </div>
               </div>
@@ -165,9 +173,12 @@ export default function DashboardAjwaaEconomic() {
                   <RefreshCw className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.economic.renewalSuccess")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.economic.renewalSuccess")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "نسبة نجاح تجديد التراخيص الاقتصادية" : "Economic license renewal success rate"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-el03-value">{ECONOMIC_SUMMARY.renewalSuccessPct}%</p>
                 </div>
               </div>
@@ -180,9 +191,12 @@ export default function DashboardAjwaaEconomic() {
                   <AlertTriangle className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.economic.violations")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.economic.violations")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "إجمالي المخالفات المسجلة هذا العام" : "Total violations recorded this year"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-el04-value">{ECONOMIC_SUMMARY.totalViolations}</p>
                 </div>
               </div>
@@ -197,9 +211,12 @@ export default function DashboardAjwaaEconomic() {
                   <DollarSign className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.economic.revenue")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.economic.revenue")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "إجمالي الإيرادات من رسوم التراخيص الاقتصادية" : "Total revenue from economic licensing fees"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-el05-value">
                     {(ECONOMIC_SUMMARY.totalRevenueSAR / 1_000_000).toFixed(1)}M
                   </p>
@@ -211,8 +228,9 @@ export default function DashboardAjwaaEconomic() {
         </div>
 
         <div>
-          <h2 className="text-base font-semibold mb-3" data-testid="text-section-general-aviation">
+          <h2 className="text-base font-semibold mb-3 flex items-center gap-2" data-testid="text-section-general-aviation">
             {t("ajwaa.economic.generalAviation")}
+            <SectionTooltip tooltip={isAr ? "مؤشرات أداء قطاع الطيران العام" : "General aviation sector performance metrics"} />
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <Card className="p-5" data-testid="card-kpi-ga01">
@@ -221,9 +239,12 @@ export default function DashboardAjwaaEconomic() {
                   <Shield className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.economic.gaApprovals")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.economic.gaApprovals")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "عدد الموافقات النشطة للطيران العام" : "Number of active general aviation approvals"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-ga01-value">{GA_SUMMARY.activeApprovals}</p>
                 </div>
               </div>
@@ -238,9 +259,12 @@ export default function DashboardAjwaaEconomic() {
                   <PlusCircle className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.economic.newGa")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.economic.newGa")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "موافقات الطيران العام الجديدة هذا العام" : "New general aviation approvals this year"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-ga02-value">{GA_SUMMARY.newApprovalsThisYear}</p>
                 </div>
               </div>
@@ -255,9 +279,12 @@ export default function DashboardAjwaaEconomic() {
                   <Calendar className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.economic.gaProcessing")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.economic.gaProcessing")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "متوسط أيام معالجة موافقات الطيران العام" : "Average processing days for GA approvals"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-ga03-value">{GA_SUMMARY.avgProcessingDays}</p>
                 </div>
               </div>
@@ -272,9 +299,12 @@ export default function DashboardAjwaaEconomic() {
                   <CheckCircle className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                    {t("ajwaa.economic.auditPass")}
-                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      {t("ajwaa.economic.auditPass")}
+                    </p>
+                    <SectionTooltip tooltip={isAr ? "نسبة نجاح التدقيق للطيران العام" : "Audit pass rate for general aviation"} />
+                  </div>
                   <p className="text-2xl font-bold tracking-tight" data-testid="text-ga04-value">{GA_SUMMARY.auditPassRatePct}%</p>
                 </div>
               </div>
@@ -285,8 +315,9 @@ export default function DashboardAjwaaEconomic() {
 
         <div className="grid gap-4 lg:grid-cols-3">
           <Card className="p-5 lg:col-span-2">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-chart-by-carrier">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-chart-by-carrier">
               {t("ajwaa.economic.byCarrierType")}
+              <SectionTooltip tooltip={isAr ? "التراخيص النشطة والجديدة حسب نوع الناقل" : "Active and new licenses by carrier type"} />
             </h2>
             <div className="h-[300px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -304,8 +335,9 @@ export default function DashboardAjwaaEconomic() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2">
               {t("ajwaa.economic.renewalSuccess")}
+              <SectionTooltip tooltip={isAr ? "نسبة نجاح تجديد التراخيص الاقتصادية بشكل دائري" : "Economic license renewal success rate donut chart"} />
             </h2>
             <div className="h-[220px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -340,8 +372,9 @@ export default function DashboardAjwaaEconomic() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4" data-testid="text-chart-ga-growth">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2" data-testid="text-chart-ga-growth">
               {t("ajwaa.economic.gaGrowth")}
+              <SectionTooltip tooltip={isAr ? "اتجاه نمو موافقات الطيران العام عبر السنوات" : "General aviation approvals growth trend over years"} />
             </h2>
             <div className="h-[280px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -365,8 +398,9 @@ export default function DashboardAjwaaEconomic() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
+            <h2 className="text-base font-semibold mb-4 flex items-center gap-2">
               {isAr ? "ملخص تراخيص حسب النوع" : "License Details by Type"}
+              <SectionTooltip tooltip={isAr ? "تفاصيل الإيرادات حسب نوع الترخيص" : "Revenue details by license type"} />
             </h2>
             <div className="h-[280px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
@@ -388,8 +422,9 @@ export default function DashboardAjwaaEconomic() {
         </div>
 
         <Card className="p-5">
-          <h2 className="text-base font-semibold mb-4">
+          <h2 className="text-base font-semibold mb-4 flex items-center gap-2">
             {t("ajwaa.economic.auditPass")}
+            <SectionTooltip tooltip={isAr ? "مقياس نسبة نجاح التدقيق للطيران العام" : "General aviation audit pass rate gauge"} />
           </h2>
           <div className="flex items-center justify-center py-6">
             <div className="relative w-48 h-48">

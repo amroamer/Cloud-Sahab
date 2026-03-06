@@ -47,6 +47,7 @@ import {
   SHIPMENTS_BY_MODE,
   CHART_COLORS,
 } from "@/lib/mock-data";
+import { SectionTooltip } from "@/components/section-tooltip";
 
 const TOTAL_SHIPMENTS = CARGO_MONTHLY.reduce((acc, m) => acc + m.shipments, 0);
 const TOTAL_TONNAGE = CARGO_MONTHLY.reduce((acc, m) => acc + m.tonnage, 0);
@@ -124,7 +125,7 @@ export default function DashboardCargo() {
             {isAr ? "الشحن واللوجستيات" : "Cargo & Logistics"}
           </h1>
           <p className="text-sm text-muted-foreground mt-0.5">
-            {t("dashboard.dataAsOf")} {isAr ? "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص" : "March 6, 2026, 08:00 AM"}
+            {t("dashboard.dataAsOf")} {isAr ? "6 مارس 2026، 08:00 ص" : "March 6, 2026, 08:00 AM"}
           </p>
         </div>
 
@@ -143,9 +144,12 @@ export default function DashboardCargo() {
                 <Package className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {isAr ? "إجمالي الشحنات" : "Total Shipments"}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {isAr ? "إجمالي الشحنات" : "Total Shipments"}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "إجمالي عدد الشحنات الجوية المعالجة عبر جميع المطارات السعودية" : "Total number of air cargo shipments processed across all Saudi airports"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-total-shipments">{TOTAL_SHIPMENTS.toLocaleString()}K</p>
               </div>
             </div>
@@ -164,9 +168,12 @@ export default function DashboardCargo() {
                 <Warehouse className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {isAr ? "إجمالي الحمولة" : "Total Tonnage"}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {isAr ? "إجمالي الحمولة" : "Total Tonnage"}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "إجمالي وزن البضائع المنقولة جواً بالأطنان" : "Total weight of air freight transported in tonnes"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-total-tonnage">{(TOTAL_TONNAGE / 1000).toFixed(0)}K</p>
               </div>
             </div>
@@ -183,11 +190,14 @@ export default function DashboardCargo() {
                 <DollarSign className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {isAr ? "تكلفة الحاوية" : "Cost / Container"}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {isAr ? "تكلفة الحاوية" : "Cost / Container"}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "متوسط تكلفة شحن الحاوية الواحدة بالريال السعودي" : "Average cost per shipping container in SAR"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-cost-container">
-                  {isAr ? "٢,٧٠٠ ر.س" : "SAR 2,700"}
+                  {isAr ? "2,700 ر.س" : "SAR 2,700"}
                 </p>
               </div>
             </div>
@@ -204,9 +214,12 @@ export default function DashboardCargo() {
                 <Truck className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {isAr ? "مرافق الشحن" : "Cargo Facilities"}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    {isAr ? "مرافق الشحن" : "Cargo Facilities"}
+                  </p>
+                  <SectionTooltip tooltip={isAr ? "عدد مرافق ومستودعات الشحن النشطة في المطارات السعودية" : "Number of active cargo facilities and warehouses at Saudi airports"} />
+                </div>
                 <p className="text-2xl font-bold tracking-tight" data-testid="text-cargo-facilities">{TOTAL_CARGO_FACILITIES}</p>
               </div>
             </div>
@@ -219,9 +232,12 @@ export default function DashboardCargo() {
         <div className="grid gap-4 lg:grid-cols-3">
           <Card className="p-5 lg:col-span-2">
             <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
-              <h2 className="text-base font-semibold">
-                {isAr ? "اتجاه الشحن الشهري" : "Monthly Cargo Trend"}
-              </h2>
+              <div className="flex items-center gap-1.5">
+                <h2 className="text-base font-semibold">
+                  {isAr ? "اتجاه الشحن الشهري" : "Monthly Cargo Trend"}
+                </h2>
+                <SectionTooltip tooltip={isAr ? "اتجاه الشحنات والحمولة شهرياً مع إمكانية عرض الواردات والصادرات" : "Monthly shipments and tonnage trend with import/export split view"} />
+              </div>
               <Tabs value={cargoView} onValueChange={(v) => setCargoView(v as "combined" | "split")}>
                 <TabsList>
                   <TabsTrigger value="combined" data-testid="tab-cargo-combined">
@@ -262,9 +278,12 @@ export default function DashboardCargo() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
-              {isAr ? "تصنيف البضائع" : "Commodity Split"}
-            </h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">
+                {isAr ? "تصنيف البضائع" : "Commodity Split"}
+              </h2>
+              <SectionTooltip tooltip={isAr ? "توزيع البضائع المشحونة حسب نوع السلعة" : "Breakdown of cargo shipments by commodity type"} />
+            </div>
             <div className="h-[220px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -303,9 +322,12 @@ export default function DashboardCargo() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
-              {isAr ? "ترتيب المطارات حسب الشحن" : "Airport Cargo Ranking"}
-            </h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">
+                {isAr ? "ترتيب المطارات حسب الشحن" : "Airport Cargo Ranking"}
+              </h2>
+              <SectionTooltip tooltip={isAr ? "ترتيب المطارات السعودية حسب حجم الشحن والمرافق المتاحة" : "Saudi airports ranked by cargo volume and available facilities"} />
+            </div>
             <div className="overflow-x-auto">
               <Table>
                 <TableHeader>
@@ -331,9 +353,12 @@ export default function DashboardCargo() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
-              {isAr ? "تكلفة الحاوية (ر.س)" : "Cost per Container (SAR)"}
-            </h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">
+                {isAr ? "تكلفة الحاوية (ر.س)" : "Cost per Container (SAR)"}
+              </h2>
+              <SectionTooltip tooltip={isAr ? "اتجاه تكلفة الحاوية ربع سنوياً للشحن المحلي والدولي" : "Quarterly container cost trend for domestic and international shipping"} />
+            </div>
             <div className="h-[280px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={COST_PER_CONTAINER}>
@@ -351,9 +376,12 @@ export default function DashboardCargo() {
         </div>
 
         <Card className="p-5">
-          <h2 className="text-base font-semibold mb-4">
-            {isAr ? "الشحنات حسب وسيلة النقل" : "Shipments by Transport Mode"}
-          </h2>
+          <div className="flex items-center gap-1.5 mb-4">
+            <h2 className="text-base font-semibold">
+              {isAr ? "الشحنات حسب وسيلة النقل" : "Shipments by Transport Mode"}
+            </h2>
+            <SectionTooltip tooltip={isAr ? "توزيع الشحنات حسب وسيلة النقل المستخدمة (جوي، بري، بحري)" : "Distribution of shipments by transport mode (air, land, sea)"} />
+          </div>
           <div className="h-[250px]" dir="ltr">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={SHIPMENTS_BY_MODE} layout="vertical">

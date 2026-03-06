@@ -38,6 +38,7 @@ import {
   Line,
 } from "recharts";
 import { AIRPORTS, CHART_COLORS } from "@/lib/mock-data";
+import { SectionTooltip } from "@/components/section-tooltip";
 
 const nationalTotals = {
   airports: AIRPORTS.length,
@@ -120,31 +121,37 @@ export default function DashboardAirports() {
       label: language === "ar" ? "المطارات" : "Airports",
       value: nationalTotals.airports,
       icon: Building2,
+      tooltip: language === "ar" ? "إجمالي عدد المطارات العاملة" : "Total number of operating airports",
     },
     {
       label: language === "ar" ? "الصالات" : "Terminals",
       value: nationalTotals.terminals,
       icon: Layers,
+      tooltip: language === "ar" ? "إجمالي صالات المسافرين في جميع المطارات" : "Total passenger terminals across all airports",
     },
     {
       label: language === "ar" ? "المدارج" : "Runways",
       value: nationalTotals.runways,
       icon: PlaneTakeoff,
+      tooltip: language === "ar" ? "إجمالي عدد المدارج في جميع المطارات" : "Total number of runways across all airports",
     },
     {
       label: language === "ar" ? "البوابات" : "Gates",
       value: nationalTotals.gates,
       icon: DoorOpen,
+      tooltip: language === "ar" ? "إجمالي بوابات الصعود في جميع المطارات" : "Total boarding gates across all airports",
     },
     {
       label: language === "ar" ? "مواقف قصيرة" : "Short Parking",
       value: nationalTotals.shortParking.toLocaleString(),
       icon: ParkingSquare,
+      tooltip: language === "ar" ? "إجمالي مواقف السيارات قصيرة المدى" : "Total short-stay parking spots",
     },
     {
       label: language === "ar" ? "مواقف طويلة" : "Long Parking",
       value: nationalTotals.longParking.toLocaleString(),
       icon: ParkingSquare,
+      tooltip: language === "ar" ? "إجمالي مواقف السيارات طويلة المدى" : "Total long-stay parking spots",
     },
   ];
 
@@ -189,6 +196,7 @@ export default function DashboardAirports() {
                   <span className="text-xs text-muted-foreground font-medium">
                     {item.label}
                   </span>
+                  {item.tooltip && <SectionTooltip tooltip={item.tooltip} />}
                 </div>
                 <p className="text-2xl font-bold tracking-tight">{item.value}</p>
               </Card>
@@ -198,9 +206,12 @@ export default function DashboardAirports() {
 
         <div className="grid gap-4 lg:grid-cols-4">
           <Card className="p-5" data-testid="card-total-capacity">
-            <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
-              {language === "ar" ? "السعة الإجمالية" : "Total Capacity"}
-            </p>
+            <div className="flex items-center gap-1.5 mb-1">
+              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                {language === "ar" ? "السعة الإجمالية" : "Total Capacity"}
+              </p>
+              <SectionTooltip tooltip={language === "ar" ? "الطاقة الاستيعابية القصوى لجميع المطارات سنوياً" : "Maximum annual capacity of all airports combined"} />
+            </div>
             <p className="text-2xl font-bold">
               {nationalTotals.totalCapacity}M
             </p>
@@ -209,9 +220,12 @@ export default function DashboardAirports() {
             </p>
           </Card>
           <Card className="p-5" data-testid="card-throughput">
-            <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
-              {language === "ar" ? "الإنتاجية الفعلية" : "Actual Throughput"}
-            </p>
+            <div className="flex items-center gap-1.5 mb-1">
+              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                {language === "ar" ? "الإنتاجية الفعلية" : "Actual Throughput"}
+              </p>
+              <SectionTooltip tooltip={language === "ar" ? "العدد الفعلي للمسافرين الذين تمت خدمتهم" : "Actual number of passengers served"} />
+            </div>
             <p className="text-2xl font-bold">
               {nationalTotals.totalPassengers.toFixed(1)}M
             </p>
@@ -220,16 +234,22 @@ export default function DashboardAirports() {
             </p>
           </Card>
           <Card className="p-5" data-testid="card-utilization">
-            <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
-              {language === "ar" ? "نسبة الاستخدام" : "Avg Utilization"}
-            </p>
+            <div className="flex items-center gap-1.5 mb-1">
+              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                {language === "ar" ? "نسبة الاستخدام" : "Avg Utilization"}
+              </p>
+              <SectionTooltip tooltip={language === "ar" ? "متوسط نسبة استخدام الطاقة الاستيعابية عبر جميع المطارات" : "Average capacity utilization rate across all airports"} />
+            </div>
             <p className="text-2xl font-bold">{avgUtilization}%</p>
             <Progress value={avgUtilization} className="h-1.5 mt-2" dir="ltr" />
           </Card>
           <Card className="p-5" data-testid="card-land-area">
-            <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
-              {language === "ar" ? "المساحة الإجمالية" : "Total Land Area"}
-            </p>
+            <div className="flex items-center gap-1.5 mb-1">
+              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                {language === "ar" ? "المساحة الإجمالية" : "Total Land Area"}
+              </p>
+              <SectionTooltip tooltip={language === "ar" ? "إجمالي مساحة الأراضي لجميع المطارات بالكيلومتر المربع" : "Total land area of all airports in square kilometers"} />
+            </div>
             <p className="text-2xl font-bold">
               {nationalTotals.totalLandArea.toLocaleString()}
             </p>
@@ -343,6 +363,7 @@ export default function DashboardAirports() {
                 ? "السعة مقابل الإنتاجية والاستخدام"
                 : "Capacity vs Throughput & Utilization"}
             </h2>
+            <SectionTooltip tooltip={language === "ar" ? "مقارنة الطاقة الاستيعابية مع الإنتاجية الفعلية ونسبة الاستخدام لكل مطار" : "Comparison of capacity, actual throughput, and utilization rate per airport"} />
           </div>
           <div className="h-[350px]" dir="ltr">
             <ResponsiveContainer width="100%" height="100%">
@@ -426,6 +447,7 @@ export default function DashboardAirports() {
                 ? "مقارنة المطارات"
                 : "Airport Comparison"}
             </h2>
+            <SectionTooltip tooltip={language === "ar" ? "جدول مقارنة شامل لجميع المطارات السعودية من حيث السعة والبنية التحتية" : "Comprehensive comparison table of all Saudi airports by capacity and infrastructure"} />
           </div>
           <div className="overflow-x-auto">
             <Table>
@@ -519,9 +541,12 @@ export default function DashboardAirports() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
-              {language === "ar" ? "البوابات: بجسور مقابل بدون" : "Gates: With vs Without Bridges"}
-            </h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">
+                {language === "ar" ? "البوابات: بجسور مقابل بدون" : "Gates: With vs Without Bridges"}
+              </h2>
+              <SectionTooltip tooltip={language === "ar" ? "توزيع البوابات بجسور ركاب وبدون حسب المطار" : "Distribution of gates with and without passenger bridges per airport"} />
+            </div>
             <div className="h-[280px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
@@ -570,9 +595,12 @@ export default function DashboardAirports() {
           </Card>
 
           <Card className="p-5">
-            <h2 className="text-base font-semibold mb-4">
-              {language === "ar" ? "مواقف السيارات حسب المطار" : "Parking Spots by Airport"}
-            </h2>
+            <div className="flex items-center gap-1.5 mb-4">
+              <h2 className="text-base font-semibold">
+                {language === "ar" ? "مواقف السيارات حسب المطار" : "Parking Spots by Airport"}
+              </h2>
+              <SectionTooltip tooltip={language === "ar" ? "عدد مواقف السيارات قصيرة وطويلة المدى حسب المطار" : "Short-stay and long-stay parking spots per airport"} />
+            </div>
             <div className="h-[280px]" dir="ltr">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart

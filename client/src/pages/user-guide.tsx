@@ -26,6 +26,7 @@ import {
   Monitor,
   ChevronRight,
   Database,
+  Info,
 } from "lucide-react";
 
 interface Section {
@@ -44,7 +45,7 @@ const GUIDE_SECTIONS: Section[] = [
     titleAr: "نظرة عامة على المنصة",
     icon: BookOpen,
     contentEn: "Sahab is the National Aviation Data Platform developed for the General Authority of Civil Aviation (GACA). It provides comprehensive analytics across 15 dashboards covering 108 KPIs aligned with Saudi Arabia's Vision 2030 aviation targets: 330 million travelers, 250 connectivity index, and 3 million cargo shipments.",
-    contentAr: "سحاب هي المنصة الوطنية لبيانات الطيران المطورة للهيئة العامة للطيران المدني. توفر تحليلات شاملة عبر ١٥ لوحة معلومات تغطي ١٠٨ مؤشرات أداء رئيسية متوافقة مع أهداف رؤية المملكة العربية السعودية ٢٠٣٠ للطيران: ٣٣٠ مليون مسافر، ٢٥٠ مؤشر اتصال، و٣ مليون شحنة.",
+    contentAr: "سحاب هي المنصة الوطنية لبيانات الطيران المطورة للهيئة العامة للطيران المدني. توفر تحليلات شاملة عبر 15 لوحة معلومات تغطي 108 مؤشرات أداء رئيسية متوافقة مع أهداف رؤية المملكة العربية السعودية 2030 للطيران: 330 مليون مسافر، 250 مؤشر اتصال، و3 مليون شحنة.",
   },
   {
     id: "navigation",
@@ -52,7 +53,7 @@ const GUIDE_SECTIONS: Section[] = [
     titleAr: "دليل التنقل",
     icon: LayoutDashboard,
     contentEn: "The sidebar provides organized access to all platform features. The Home page shows your personalized dashboard with KPIs, alerts, and quick links. Dashboards are grouped into Aviation Operations (10 dashboards) and Ajwaa E-Services (5 dashboards). The Tools section gives access to the Explorer, Reports, Data Marketplace, and API Portal. Your navigation is tailored to your role — you only see the sections relevant to your responsibilities.",
-    contentAr: "يوفر الشريط الجانبي وصولاً منظماً لجميع ميزات المنصة. تعرض الصفحة الرئيسية لوحة المعلومات المخصصة لك مع مؤشرات الأداء والتنبيهات والروابط السريعة. يتم تجميع لوحات المعلومات في عمليات الطيران (١٠ لوحات) وخدمات أجواء الإلكترونية (٥ لوحات). يمنح قسم الأدوات الوصول إلى المستكشف والتقارير وسوق البيانات وبوابة API. يتم تخصيص التنقل الخاص بك وفقاً لدورك.",
+    contentAr: "يوفر الشريط الجانبي وصولاً منظماً لجميع ميزات المنصة. تعرض الصفحة الرئيسية لوحة المعلومات المخصصة لك مع مؤشرات الأداء والتنبيهات والروابط السريعة. يتم تجميع لوحات المعلومات في عمليات الطيران (10 لوحات) وخدمات أجواء الإلكترونية (5 لوحات). يمنح قسم الأدوات الوصول إلى المستكشف والتقارير وسوق البيانات وبوابة API. يتم تخصيص التنقل الخاص بك وفقاً لدورك.",
   },
   {
     id: "dashboards",
@@ -79,6 +80,14 @@ const GUIDE_SECTIONS: Section[] = [
     contentAr: "تتضمن كل لوحة معلومات شريط فلتر قابل للطي أسفل العنوان. تتيح لك الفلاتر تضييق البيانات حسب الفترة الزمنية أو المطار أو شركة الطيران أو نوع الرحلة. انقر على شريط الفلتر لتوسيعه، واختر معاييرك، ثم انقر على تطبيق. تستمر الفلاتر أثناء التنقل بين الأقسام. استخدم زر إعادة التعيين لمسح جميع الفلاتر.",
   },
   {
+    id: "tooltips",
+    titleEn: "Dashboard Tooltips",
+    titleAr: "تلميحات لوحة المعلومات",
+    icon: Info,
+    contentEn: "Every KPI card, chart, and table section across all 15 dashboards includes a small info icon (i). Hover over it to see a brief description of what that component measures, its data source, and its relevance. Tooltips are available in both English and Arabic and help users quickly understand each metric without leaving the dashboard.",
+    contentAr: "يتضمن كل بطاقة مؤشر أداء رئيسي ورسم بياني وقسم جدول عبر جميع لوحات المعلومات الـ 15 رمز معلومات صغير (i). مرر فوقه لرؤية وصف موجز لما يقيسه هذا المكون ومصدر بياناته وأهميته. التلميحات متاحة باللغتين العربية والإنجليزية وتساعد المستخدمين على فهم كل مقياس بسرعة دون مغادرة لوحة المعلومات.",
+  },
+  {
     id: "explorer",
     titleEn: "Explorer Guide",
     titleAr: "دليل المستكشف",
@@ -92,7 +101,7 @@ const GUIDE_SECTIONS: Section[] = [
     titleAr: "سوق البيانات",
     icon: Database,
     contentEn: "The Data Marketplace is Sahab's storefront for aviation data products. Browse and download 32 datasets covering traffic, connectivity, market share, operations, cargo, infrastructure, financial, fleet, sustainability, and digital metrics. Use the faceted filters on the left panel to narrow by category, frequency, format, or price range. Click any product card to view its full detail page including schema, data preview, reviews, and version history. All products are available for immediate download as CSV files.",
-    contentAr: "سوق البيانات هو واجهة سحاب لمنتجات بيانات الطيران. تصفح وحمّل ٣٢ مجموعة بيانات تغطي حركة المرور والاتصال وحصة السوق والعمليات والشحن والبنية التحتية والمالية والأسطول والاستدامة والمقاييس الرقمية. استخدم الفلاتر الجانبية لتضييق النتائج حسب الفئة أو التكرار أو التنسيق أو نطاق السعر. انقر على أي بطاقة منتج لعرض صفحة التفاصيل الكاملة بما في ذلك المخطط ومعاينة البيانات والمراجعات وسجل الإصدارات. جميع المنتجات متاحة للتحميل الفوري كملفات CSV.",
+    contentAr: "سوق البيانات هو واجهة سحاب لمنتجات بيانات الطيران. تصفح وحمّل 32 مجموعة بيانات تغطي حركة المرور والاتصال وحصة السوق والعمليات والشحن والبنية التحتية والمالية والأسطول والاستدامة والمقاييس الرقمية. استخدم الفلاتر الجانبية لتضييق النتائج حسب الفئة أو التكرار أو التنسيق أو نطاق السعر. انقر على أي بطاقة منتج لعرض صفحة التفاصيل الكاملة بما في ذلك المخطط ومعاينة البيانات والمراجعات وسجل الإصدارات. جميع المنتجات متاحة للتحميل الفوري كملفات CSV.",
   },
   {
     id: "faq",
@@ -105,12 +114,12 @@ const GUIDE_SECTIONS: Section[] = [
 ];
 
 const DASHBOARD_LIST = [
-  { icon: Globe, nameEn: "National Overview", nameAr: "النظرة العامة الوطنية", descEn: "High-level KPIs, Vision 2030 progress, traffic trends, and connectivity index tracking.", descAr: "مؤشرات الأداء الرئيسية، تقدم رؤية ٢٠٣٠، اتجاهات الحركة، وتتبع مؤشر الاتصال." },
+  { icon: Globe, nameEn: "National Overview", nameAr: "النظرة العامة الوطنية", descEn: "High-level KPIs, Vision 2030 progress, traffic trends, and connectivity index tracking.", descAr: "مؤشرات الأداء الرئيسية، تقدم رؤية 2030، اتجاهات الحركة، وتتبع مؤشر الاتصال." },
   { icon: Radar, nameEn: "Flight Operations", nameAr: "عمليات الطيران", descEn: "Flight movements, on-time performance, delays, and operational efficiency.", descAr: "حركات الطيران، الالتزام بالمواعيد، التأخيرات، والكفاءة التشغيلية." },
   { icon: Users, nameEn: "Passengers", nameAr: "المسافرون", descEn: "Passenger volumes, growth trends, nationality breakdown, and seasonal patterns.", descAr: "أحجام المسافرين، اتجاهات النمو، توزيع الجنسيات، والأنماط الموسمية." },
   { icon: Map, nameEn: "Connectivity", nameAr: "الاتصال", descEn: "Global connectivity index, route network analysis, and destination coverage.", descAr: "مؤشر الاتصال العالمي، تحليل شبكة المسارات، وتغطية الوجهات." },
-  { icon: Building2, nameEn: "Airports", nameAr: "المطارات", descEn: "Airport performance metrics for all 29 Saudi airports including capacity utilization.", descAr: "مقاييس أداء المطارات لجميع المطارات السعودية الـ ٢٩ بما في ذلك استخدام السعة." },
-  { icon: Package, nameEn: "Cargo", nameAr: "الشحن", descEn: "Cargo tonnage, shipment tracking, and progress toward the 3M target.", descAr: "حمولة الشحن، تتبع الشحنات، والتقدم نحو هدف ٣ مليون." },
+  { icon: Building2, nameEn: "Airports", nameAr: "المطارات", descEn: "Airport performance metrics for all 29 Saudi airports including capacity utilization.", descAr: "مقاييس أداء المطارات لجميع المطارات السعودية الـ 29 بما في ذلك استخدام السعة." },
+  { icon: Package, nameEn: "Cargo", nameAr: "الشحن", descEn: "Cargo tonnage, shipment tracking, and progress toward the 3M target.", descAr: "حمولة الشحن، تتبع الشحنات، والتقدم نحو هدف 3 مليون." },
   { icon: DollarSign, nameEn: "Financial", nameAr: "المالية", descEn: "Revenue analysis, cost metrics, and financial performance indicators.", descAr: "تحليل الإيرادات، مقاييس التكلفة، ومؤشرات الأداء المالي." },
   { icon: Scale, nameEn: "Balance of Payments", nameAr: "ميزان المدفوعات", descEn: "Aviation sector impact on balance of payments and economic contribution.", descAr: "تأثير قطاع الطيران على ميزان المدفوعات والمساهمة الاقتصادية." },
   { icon: Plane, nameEn: "Fleet", nameAr: "الأسطول", descEn: "Fleet composition, aircraft age analysis, and procurement tracking.", descAr: "تكوين الأسطول، تحليل عمر الطائرات، وتتبع المشتريات." },

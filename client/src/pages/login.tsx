@@ -103,7 +103,7 @@ export default function LoginPage() {
               </h2>
               <p className="text-lg opacity-80 mt-4 max-w-md leading-relaxed">
                 {language === "ar"
-                  ? "تحليلات شاملة للطيران المدني في المملكة العربية السعودية. بيانات في الوقت الفعلي، رؤى ذكية، وتتبع رؤية ٢٠٣٠."
+                  ? "تحليلات شاملة للطيران المدني في المملكة العربية السعودية. بيانات في الوقت الفعلي، رؤى ذكية، وتتبع رؤية 2030."
                   : "Comprehensive civil aviation analytics for the Kingdom of Saudi Arabia. Real-time data, intelligent insights, and Vision 2030 tracking."}
               </p>
             </div>
