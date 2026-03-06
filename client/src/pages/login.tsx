@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import {
   Plane,
+  Cloud,
   Eye,
   EyeOff,
   Languages,
@@ -62,8 +63,9 @@ export default function LoginPage() {
         <div className="relative z-10 flex flex-col justify-between p-12 text-primary-foreground w-full">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white/15 backdrop-blur-sm">
-                <Plane className="h-7 w-7" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white/15 backdrop-blur-sm relative">
+                <Cloud className="h-8 w-8 text-white/40 absolute" />
+                <Plane className="h-7 w-7 text-white relative z-10" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold tracking-tight">
@@ -139,8 +141,9 @@ export default function LoginPage() {
           </div>
 
           <div className="lg:hidden flex items-center gap-2.5 mb-8">
-            <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary">
-              <Plane className="h-5 w-5 text-primary-foreground" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary relative">
+              <Cloud className="h-7 w-7 text-primary-foreground/40 absolute" />
+              <Plane className="h-5 w-5 text-primary-foreground relative z-10" />
             </div>
             <div>
               <h1 className="text-xl font-bold">{language === "ar" ? "سحاب" : "Sahab"}</h1>

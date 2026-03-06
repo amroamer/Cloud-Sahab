@@ -7,6 +7,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import {
   Plane,
+  Cloud,
   Languages,
   Sun,
   Moon,
@@ -118,8 +119,9 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between gap-4">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary">
-                <Plane className="h-5 w-5 text-primary-foreground" />
+              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary relative">
+                <Cloud className="h-6 w-6 text-primary-foreground/40 absolute" />
+                <Plane className="h-5 w-5 text-primary-foreground relative z-10" />
               </div>
               <div>
                 <span className="text-lg font-bold tracking-tight">
@@ -422,8 +424,9 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary">
-                <Plane className="h-4 w-4 text-primary-foreground" />
+              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary relative">
+                <Cloud className="h-5 w-5 text-primary-foreground/40 absolute" />
+                <Plane className="h-4 w-4 text-primary-foreground relative z-10" />
               </div>
               <div>
                 <span className="text-sm font-bold">{isAr ? "سحاب" : "Sahab"}</span>

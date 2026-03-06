@@ -11,6 +11,7 @@ import {
   Bell,
   Settings,
   Plane,
+  Cloud,
   Building2,
   TrendingUp,
   Map,
@@ -83,8 +84,9 @@ export function AppSidebar() {
       <SidebarHeader className="p-4">
         <Link href="/home" data-testid="link-home-logo">
           <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary">
-              <Plane className="h-5 w-5 text-primary-foreground" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary relative">
+              <Cloud className="h-6 w-6 text-primary-foreground/40 absolute" />
+              <Plane className="h-5 w-5 text-primary-foreground relative z-10" />
             </div>
             <div className="flex flex-col">
               <span className="text-sm font-bold tracking-tight">{t("app.name")}</span>
