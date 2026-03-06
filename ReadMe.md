@@ -42,6 +42,7 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 - Collapsible per-dashboard filter bars with dashboard-specific filters (date range, airport, airline, flight type, passenger type, etc.)
 - Air Traffic Explorer — interactive analytical workspace with dimension/metric selectors and 6 chart types
 - Chart toolbar — hover to reveal fullscreen, download PNG, and export CSV on any chart
+- Data Catalog & Marketplace — 32 aviation data products with faceted filters, product detail pages, schema preview, role-aware purchasing (internal browse vs external marketplace)
 - User Guide — bilingual reference page with platform overview, dashboard descriptions, role access, FAQ
 - Global search, notifications, user preferences
 - Public landing page with platform overview
@@ -75,6 +76,8 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 | `/dashboards/ajwaa-providers` | Auth | Airport & Service-Provider Services |
 | `/dashboards/ajwaa-eservices` | Auth | Ajwaa e-Service Performance |
 | `/explorer` | Auth | Air Traffic Explorer |
+| `/catalog` | Auth | Data Catalog / Marketplace |
+| `/catalog/:productId` | Auth | Product Detail Page |
 | `/guide` | Auth | User Guide & Use Cases |
 
 ## Running

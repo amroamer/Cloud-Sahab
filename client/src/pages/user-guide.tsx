@@ -25,6 +25,7 @@ import {
   Warehouse,
   Monitor,
   ChevronRight,
+  Database,
 } from "lucide-react";
 
 interface Section {
@@ -84,6 +85,14 @@ const GUIDE_SECTIONS: Section[] = [
     icon: BarChart3,
     contentEn: "The Air Traffic Explorer is your analytical workspace for custom data exploration. Select a Dimension (Month, Airport, Airline, or Flight Type) from the left panel to define your X-axis. Choose one or more Metrics (Passengers, Flights, Cargo, Load Factor, OTP, Revenue) from the right panel. Pick a Chart Type from the toolbar (Bar, Stacked Bar, Line, Area, Pie, or Donut). Charts can be downloaded as PNG or data exported as CSV using the toolbar that appears on hover.",
     contentAr: "مستكشف حركة الطيران هو مساحة العمل التحليلية لاستكشاف البيانات المخصصة. اختر بُعداً (الشهر، المطار، شركة الطيران، أو نوع الرحلة) من اللوحة اليسرى لتحديد المحور السيني. اختر مقياساً واحداً أو أكثر من اللوحة اليمنى. اختر نوع الرسم البياني من شريط الأدوات. يمكن تحميل الرسوم البيانية كصورة PNG أو تصدير البيانات كملف CSV.",
+  },
+  {
+    id: "catalog",
+    titleEn: "Data Catalog & Marketplace",
+    titleAr: "كتالوج البيانات وسوق البيانات",
+    icon: Database,
+    contentEn: "The Data Catalog is Sahab's storefront for aviation data products. Internal GACA users can browse and access 32 datasets covering traffic, connectivity, market share, operations, cargo, infrastructure, financial, fleet, sustainability, and digital metrics. External users (airlines, airports, investors, researchers) see a Data Marketplace where they can preview, evaluate, and purchase data products. Use the faceted filters on the left panel to narrow by category, frequency, format, or price range. Click any product card to view its full detail page including schema, data preview, reviews, and version history. Free products (factsheets, sample data, summaries) are available for immediate download by all users.",
+    contentAr: "كتالوج البيانات هو واجهة سحاب لمنتجات بيانات الطيران. يمكن لمستخدمي هيئة الطيران المدني الداخليين تصفح والوصول إلى ٣٢ مجموعة بيانات تغطي حركة المرور والاتصال وحصة السوق والعمليات والشحن والبنية التحتية والمالية والأسطول والاستدامة والمقاييس الرقمية. يرى المستخدمون الخارجيون (شركات الطيران والمطارات والمستثمرون والباحثون) سوق البيانات حيث يمكنهم معاينة وتقييم وشراء منتجات البيانات. استخدم الفلاتر الجانبية لتضييق النتائج حسب الفئة أو التكرار أو التنسيق أو نطاق السعر. انقر على أي بطاقة منتج لعرض صفحة التفاصيل الكاملة بما في ذلك المخطط ومعاينة البيانات والمراجعات وسجل الإصدارات. المنتجات المجانية متاحة للتحميل الفوري لجميع المستخدمين.",
   },
   {
     id: "faq",

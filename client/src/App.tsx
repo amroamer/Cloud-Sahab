@@ -31,6 +31,8 @@ import DashboardAjwaaProviders from "@/pages/dashboard-ajwaa-providers";
 import DashboardAjwaaEservices from "@/pages/dashboard-ajwaa-eservices";
 import ExplorerPage from "@/pages/explorer";
 import UserGuidePage from "@/pages/user-guide";
+import CatalogPage from "@/pages/catalog";
+import CatalogDetailPage from "@/pages/catalog-detail";
 import { PlaceholderPage } from "@/pages/placeholder";
 import { Redirect } from "wouter";
 
@@ -68,7 +70,8 @@ function AuthenticatedRouter() {
       <Route path="/guide" component={UserGuidePage} />
       <Route path="/self-service">{() => <PlaceholderPage path="/self-service" />}</Route>
       <Route path="/reports">{() => <PlaceholderPage path="/reports" />}</Route>
-      <Route path="/catalog">{() => <PlaceholderPage path="/catalog" />}</Route>
+      <Route path="/catalog/:productId" component={CatalogDetailPage} />
+      <Route path="/catalog" component={CatalogPage} />
       <Route path="/api-portal">{() => <PlaceholderPage path="/api-portal" />}</Route>
       <Route path="/notifications">{() => <PlaceholderPage path="/notifications" />}</Route>
       <Route path="/settings">{() => <PlaceholderPage path="/settings" />}</Route>

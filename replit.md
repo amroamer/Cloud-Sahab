@@ -51,7 +51,9 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 - `/dashboards/ajwaa-eservices` - Ajwaa e-Service Performance (4 KPIs)
 - `/explorer` - Air Traffic Explorer (interactive analytical workspace)
 - `/guide` - User Guide & Use Cases (bilingual reference page)
-- `/self-service`, `/reports`, `/catalog`, `/api-portal` - Tool pages (authenticated, placeholder)
+- `/catalog` - Data Catalog / Marketplace (32 products, faceted filters, role-aware)
+- `/catalog/:productId` - Product Detail Page (schema, preview, reviews, versions)
+- `/self-service`, `/reports`, `/api-portal` - Tool pages (authenticated, placeholder)
 - `/notifications`, `/settings` - User pages (authenticated, placeholder)
 
 ## File Structure
@@ -63,6 +65,7 @@ client/src/
     auth.tsx        - Auth context with credential validation
     queryClient.ts  - TanStack Query setup
     ajwaa-mock-data.ts - Ajwaa e-services regulatory data (licensing, permits, economic, providers)
+    catalog-data.ts   - 32 aviation data products with schemas, preview data, and metadata
   components/
     app-sidebar.tsx       - Navigation sidebar with collapsible dashboard sub-menu
     top-nav.tsx           - Top navigation bar (search, notifications, language, theme, user)
@@ -89,6 +92,8 @@ client/src/
     dashboard-ajwaa-providers.tsx  - Dashboard 14: Airport & Service-Provider Services (9 KPIs)
     dashboard-ajwaa-eservices.tsx  - Dashboard 15: Ajwaa e-Service Performance (4 KPIs)
     explorer.tsx              - Air Traffic Explorer with dimension/metric/chart selectors
+    catalog.tsx               - Data Catalog browser with filters, search, category tabs
+    catalog-detail.tsx        - Product detail page with schema, preview, reviews, versions
     user-guide.tsx            - Bilingual user guide with dashboard descriptions, roles, FAQ
     placeholder.tsx           - Coming soon pages for unimplemented tool sections
     not-found.tsx             - 404 page

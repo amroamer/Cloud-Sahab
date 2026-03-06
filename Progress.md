@@ -112,3 +112,26 @@
   - Sections: Platform Overview, Navigation Guide, Dashboard Descriptions (all 15), User Roles & Access, Using Filters, Explorer Guide, FAQ
   - Table of contents with anchor links
   - All content available in English and Arabic
+
+### Phase 8: Data Catalog & Marketplace (Complete)
+- **Data Catalog Page** (`/catalog`): Full-featured data product browser
+  - 32 pre-seeded aviation data products (28 paid + 4 free) across 12 categories
+  - Categories: Traffic (5), Connectivity (3), Market Share (3), Flight Operations (3), Cargo (3), Infrastructure (2), Financial (2), Fleet (2), Sustainability (1), Digital & CX (2), Bundles (2), Free (4)
+  - Hero banner for external/marketplace users with featured product
+  - Category tabs for quick filtering (All, Traffic, Connectivity, Market, Ops, etc.)
+  - Left faceted filters panel: category checkboxes, frequency, format, price range slider, "Free Only" toggle
+  - Full-text search across product names, descriptions, and schema fields (bilingual)
+  - Sort options: Most Popular, Newest, Price Low-to-High, Price High-to-Low
+  - Product card grid with category badge, star rating, price, format icons, role-aware action buttons
+  - "Load More" pagination
+- **Product Detail Page** (`/catalog/:productId`): Comprehensive product information
+  - Two-column layout: product info (left) + purchase panel (right)
+  - Purchase panel with price (SAR + VAT), role-aware action button, format/size/record count
+  - Coverage details: scope, period, granularity, update frequency, quality score
+  - Tabbed content: Schema (field table), Preview (sample data with blur overlay for paid), Reviews (star ratings), Versions (edition history)
+  - Related products section with 4 cards
+  - Back to Catalog navigation
+- **Role-Aware UI**: Internal GACA users see "Access Dataset" buttons; external users see "Add to Cart" / "Download" with marketplace hero banner
+- Created `client/src/lib/catalog-data.ts` with full product metadata, schemas (8-11 fields each), and preview data
+- Updated User Guide with Data Catalog & Marketplace section
+- All pages fully bilingual (EN/AR) with GACA Navy design system
