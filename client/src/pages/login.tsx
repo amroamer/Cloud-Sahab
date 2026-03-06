@@ -24,7 +24,7 @@ export default function LoginPage() {
   const { toggleTheme, isDark } = useTheme();
   const { login } = useAuth();
   const { toast } = useToast();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,7 +35,7 @@ export default function LoginPage() {
     setError("");
     setIsLoading(true);
     try {
-      const success = await login(email, password);
+      const success = await login(username, password);
       if (!success) setError(t("login.error"));
     } catch {
       setError(t("login.error"));
@@ -140,15 +140,16 @@ export default function LoginPage() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">{t("login.email")}</Label>
+              <Label htmlFor="username">{language === "ar" ? "اسم المستخدم" : "Username"}</Label>
               <Input
-                id="email"
-                type="email"
-                placeholder="name@gaca.gov.sa"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                id="username"
+                type="text"
+                placeholder={language === "ar" ? "اسم المستخدم" : "Enter your username"}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 required
-                data-testid="input-email"
+                autoComplete="username"
+                data-testid="input-username"
               />
             </div>
 

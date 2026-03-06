@@ -14,21 +14,27 @@ export interface AuthUser {
 interface AuthContextType {
   user: AuthUser | null;
   isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<boolean>;
+  login: (username: string, password: string) => Promise<boolean>;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-const MOCK_USER: AuthUser = {
-  id: "1",
-  name: "Mohammed Al-Rashid",
-  nameAr: "محمد الراشد",
-  email: "m.alrashid@gaca.gov.sa",
-  role: "GACA Analyst",
-  organization: "General Authority of Civil Aviation",
-  organizationAr: "الهيئة العامة للطيران المدني",
-};
+const USERS: { username: string; password: string; user: AuthUser }[] = [
+  {
+    username: "amro",
+    password: "amro",
+    user: {
+      id: "1",
+      name: "Amro",
+      nameAr: "عمرو",
+      email: "amro@gaca.gov.sa",
+      role: "Platform Admin",
+      organization: "General Authority of Civil Aviation",
+      organizationAr: "الهيئة العامة للطيران المدني",
+    },
+  },
+];
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(() => {
@@ -36,10 +42,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return saved ? JSON.parse(saved) : null;
   });
 
-  const login = useCallback(async (_email: string, _password: string): Promise<boolean> => {
+  const login = useCallback(async (username: string, password: string): Promise<boolean> => {
     await new Promise((r) => setTimeout(r, 800));
-    setUser(MOCK_USER);
-    sessionStorage.setItem("sahab-user", JSON.stringify(MOCK_USER));
+    const match = USERS.find(
+      (u) => u.username === username && u.password === password
+    );
+    if (!match) return false;
+    setUser(match.user);
+    sessionStorage.setItem("sahab-user", JSON.stringify(match.user));
     return true;
   }, []);
 
