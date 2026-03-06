@@ -1,0 +1,191 @@
+Below is a focused KPI set for each Ajwaa service group, tuned for a regulator (GACA) and aligned with good licensing/permit KPI practice.
+
+1. Licensing and personnel services
+Pilot licenses (issuance, renewal, validations, conversions)
+PL‑01 – Pilot license applications received (by type)
+Count of applications by license type (ATPL, CPL, PPL, validation, conversion) per period.
+
+PL‑02 – Pilot licenses issued / renewed on time (%)
+Approved before current license expiry ÷ total renewals due in period.
+​
+
+PL‑03 – Average processing time – pilot license (days)
+Mean calendar days from complete application to decision, by license type.
+​
+
+PL‑04 – First‑time approval rate – pilot licenses (%)
+Applications approved without resubmission ÷ total decided applications.
+​
+
+PL‑05 – Digital completion rate – pilot licensing (%)
+Applications fully completed through Ajwaa (no manual back‑and‑forth) ÷ total applications.
+
+PL‑06 – Revenue from pilot licensing fees (SAR)
+Sum of fees invoiced for issuance/renewal/validation/conversion (can be reconciled to the GACA charges schedule).
+​
+
+Cabin crew licenses and crew member cards
+CC‑01 – Cabin crew licenses/cards active
+Number of valid cabin crew licenses/ID cards in force.
+
+CC‑02 – Cabin crew license renewals on time (%)
+Renewed before expiry ÷ licenses expiring in period.
+​
+
+CC‑03 – Average processing time – cabin crew license (days)
+Complete application to decision.
+​
+
+CC‑04 – Applications per 1,000 active cabin crew
+Total new + renewal + reissue applications in period ÷ active cabin crew ÷ 1,000; proxy for workload.
+​
+
+ATCOs and other aviation personnel (maintenance, dispatch, etc.)
+AP‑01 – Active licenses by personnel category
+Counts by ATCO, maintenance engineer, dispatcher, etc.
+
+AP‑02 – License non‑compliance rate (%)
+Number of detected cases of operating with expired/suspended license ÷ spot checks/audits.
+​
+
+AP‑03 – Average processing time – personnel license (days)
+For ATCO and other license types.
+​
+
+AP‑04 – Percentage of licenses renewed online (%)
+Renewals processed entirely through Ajwaa ÷ total renewals.
+
+2. Flight and operation permits
+Single flight permits (one‑off commercial or charter)
+FP‑01 – Single flight permit applications received
+Count by type (commercial charter, business jet, humanitarian, diplomatic).
+
+FP‑02 – On‑time issuance rate – single flight permits (%)
+Permits issued within service standard (e.g., 24 hours) ÷ total applications.
+
+FP‑03 – Average processing time – single flight permit (hours)
+Submission to permit issuance.
+
+FP‑04 – Rejection / modification rate – single flight permits (%)
+Applications that require change or are rejected ÷ total decided applications.
+​
+
+Annual / multiple flight permits (scheduled & non‑scheduled)
+FP‑05 – Active annual / multiple flight permits
+Number of valid permits by operator type (scheduled, non‑scheduled, charter).
+
+FP‑06 – Renewal on‑time rate – annual permits (%)
+Renewed before expiry ÷ total due renewals.
+​
+
+FP‑07 – Average processing time – annual permit (days)
+Complete application to decision.
+​
+
+FP‑08 – Revenue from flight permit fees (SAR)
+Based on the GACA service charge schedule (overflight/landing/annual permit fee codes).
+​
+
+Overflight and landing permits for foreign operators
+FP‑09 – Overflight permits issued (foreign operators)
+Total permits and breakdown (one‑off vs annual; commercial vs private).
+
+FP‑10 – Landing permits issued (foreign operators)
+Same, but landing permissions.
+
+FP‑11 – Compliance violations – overflight/landing permits
+Flights operated without valid permit ÷ flights sampled (from ATC data).
+​
+
+FP‑12 – Average time to clear overflight for compliant applications (hours)
+SLA measure for CWC/Oboor channel.
+​
+
+3. Economic and regulatory approvals
+Economic licenses for airlines and air operators (AOC‑related)
+EL‑01 – Active economic licenses by carrier type
+Number of licenses for national scheduled, non‑scheduled, cargo, low‑cost, etc.
+
+EL‑02 – Time to issue new economic license (months)
+Approval date minus complete application date.
+​
+
+EL‑03 – License renewal success rate (%)
+Renewed licenses ÷ expiring licenses; track by reason for non‑renewal (non‑compliance, voluntary exit).
+​
+
+EL‑04 – Economic license violations detected
+Operators offering services without valid economic license.
+​
+
+EL‑05 – Revenue from economic licensing fees (SAR)
+Sum of fees by license type (e.g., scheduled vs non‑scheduled) as per regulatory charges document.
+​
+
+Approvals for general aviation and private aviation activities
+GA‑01 – Active general aviation operator approvals
+Number of approved GA/BA operators (air taxi, helicopter, MRO with flight ops, etc.).
+
+GA‑02 – New GA approvals granted per year
+Shows growth of general aviation sector.
+
+GA‑03 – Processing time – GA approval (days)
+Application to decision.
+​
+
+GA‑04 – Compliance audit pass rate – GA operators (%)
+Operators passing audits without major findings ÷ audited operators.
+​
+
+4. Airport, ANSP, and service‑provider services
+Services for airport operators (concessions, approvals, filings)
+AO‑01 – Approved airport operators / concessions
+Number of airport operating entities and major concessions under GACA oversight.
+​
+
+AO‑02 – Regulatory filing compliance rate (%)
+Required filings (tariffs, slot declarations, safety reports) submitted on time ÷ total required.
+​
+
+AO‑03 – Processing time – new airport concession/approval (months)
+For major airport projects or operator changes.
+​
+
+AO‑04 – Share of airport operator requests processed digitally (%)
+Requests handled fully via Ajwaa ÷ total requests.
+
+Ground handling, maintenance, and other aviation service companies
+SP‑01 – Number of certified service providers (by category)
+Ground handling, catering, MRO, fuel, security, etc.
+
+SP‑02 – Certification / renewal on‑time rate (%)
+Certificates renewed before expiry ÷ those due in period.
+​
+
+SP‑03 – Average processing time – service‑provider approval (days)
+Application to decision.
+​
+
+SP‑04 – Non‑compliance findings per audit – service providers
+Average number of findings per audit; track trend to measure quality.
+​
+
+SP‑05 – Revenue from service‑provider certification fees (SAR)
+Fees from ground handling, MRO, etc., per the GACA charges framework.
+​
+
+5. Cross‑cutting Ajwaa / e‑service performance KPIs
+For all the above groups, you can add platform‑level KPIs:
+
+ES‑01 – Total applications processed via Ajwaa (by service group)
+Licensing, permits, economic approvals, airport services, service providers.
+
+ES‑02 – Average end‑to‑end digital processing time (days/hours)
+From online submission to final decision, by service type.
+
+ES‑03 – Customer satisfaction score (CSAT) for Ajwaa services
+Survey after completion, averaged by service category.
+
+ES‑04 – Percentage of services fully digitized (%)
+Services with no manual step ÷ all services in that category.
+
