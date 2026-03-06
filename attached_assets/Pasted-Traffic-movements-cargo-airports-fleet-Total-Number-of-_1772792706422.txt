@@ -1,0 +1,109 @@
+Traffic, movements, cargo, airports, fleet
+Total Number of Travelers (Passengers)
+
+2023: about 112 million passengers handled by Saudi airports.
+
+2024: about 128 million passengers (record), 59M domestic and 69M international.
+
+Air Cargo Movement (Volume and Shipments)
+
+2023: about 918,000 tonnes of air cargo (+7% YoY).
+
+2024: about 1.2 million tonnes of air cargo handled (+34% vs 2023).
+
+Movement of Aircraft / Airplanes per Airport
+
+2023 (national): about 815,000 flights (394k international, 421k domestic).
+​
+
+2024 (national): about 905,000 flights (474k domestic, 431k international).
+
+Movement of Passengers in Airports (per Airport and Airline)
+
+Distribution example 2024 (from GACA/press – aggregate, not by airline): total 128M passengers across KSA airports; busiest international routes include Jeddah–Cairo (4.4M), Riyadh–Dubai (3.2M), Riyadh–Cairo (2.7M).
+​
+
+Growth of Volume of Freight in Air Transport
+
+2023: cargo +7% YoY to 918k tonnes.
+
+2024: cargo +34% YoY to 1.2M tonnes.
+
+Number of Airports
+
+KSA has 29 airports (12 international, 3 regional, 14 domestic) – consistent with Vision 2030 material.
+​
+
+49/50. Number of Aircraft in Commercial Fleet by Age and Category / Number of Planes (Private and Commercial)
+
+Public fleet snapshot (commercial only, end‑2025 industry analysis): around 284 commercial aircraft in Saudi airlines’ fleets, with 176 narrowbodies and 108 widebodies; Saudia 167 aircraft, flyadeal 45, flynas 71 (approximate numbers from 2025 analysis).
+​
+
+Private/business fleet is not reliably quantified in open sources; likely needs GACA registry data.
+
+Connectivity, routes, countries
+4 / 19. Number of Countries Reached / Number of Domestic and International Routes
+
+2024: Saudi Arabia connected to “over 170 destinations worldwide.”
+​
+
+Destination count is often used as a proxy for connectivity; exact route count (pairs) by GACA is not publicly enumerated but will exceed destination count.
+
+1 / 4 / 19. Air Connectivity Index / Airport connectivity rankings
+
+ACI Air Connectivity Index example: King Abdulaziz International Airport (Jeddah) ranked 3rd in Middle East in the 2024 ACI Asia‑Pacific & Middle East Air Connectivity Index, reflecting strong hub growth.
+​
+
+No public single “national” air connectivity index number yet; you will likely calculate your own composite (as in Sahab).
+
+Cargo facilities and types
+30 / 60. Number of Cargo Facilities in Saudi Airports / by Type
+
+Public sources describe individual terminals (e.g., KFIA Dammam cargo terminal capacity 94,000 metric tons per year with ability to extend to 176,000 tons and 3 widebody stands), but there is no consolidated national count of facilities by type in open data.
+​
+
+This KPI will need internal GACA/Matarat inventory; external benchmark: presence of specialized facilities (cold chain, DG, express) in major hubs.
+
+CO₂ and fuel
+CO₂ Emissions from Aviation
+
+No official national aviation‑only CO₂ figure is widely published; global climate reports give total Saudi GHG emissions (all sectors) at about 774 MtCO₂e in 2019 (excluding LULUCF).
+​
+
+For Sahab, you will likely build this KPI from airline fuel usage and ICAO emissions factors rather than public statistics.
+
+Aircraft Fuel Consumption
+
+No consolidated public KSA figure; this comes from airlines’ internal fuel data (tonnes per year, per ASK/PK). Public sources only provide generic energy/emissions trends.
+​
+
+Service quality / OTP / CX / digital
+Number of Delayed Flights by Operating Company
+
+GACA’s monthly complaints/airport performance bulletins (e.g., December 2024 report) rank airports and include delay‑related complaint statistics, but not an open, consolidated KPI for “number of delayed flights” by carrier.
+​
+
+For Sahab, you will compute this from operational data (AFTN/Ops data or OAG/Cirium feeds).
+
+53 / 58. Skytrax World Airline / Airport Ranking
+
+Saudia achieved global leadership in OTP 2024 (Cirium/OAG‑tracked, announcement 2025) with departure OTP 88.82% and arrival OTP 86.35%, and operated 192,560 flights across 100+ destinations.
+​
+
+Skytrax rankings for Saudi airports (e.g., Riyadh, Jeddah) vary annually; 2023–2024 rankings include King Abdulaziz and King Khalid in regional top lists, but exact rank numbers per year need to be pulled directly from Skytrax tables for each year.
+
+Number of Complaints and Inquiries via Digital Platforms
+
+GACA monthly airport performance reports rank airports by number of complaints and compliance rates (e.g., Riyadh KKIA topping rankings with 82% compliance in Feb 2025), but they do not publish absolute complaint counts per month in a single consolidated public database.
+​
+
+54 / 55 / 59. Electronic check‑ins / e‑tickets / digital adoption rate
+
+No public Saudi‑wide numbers; these are to be fed from airline and airport DCS/CRM systems.
+
+Economic & BOP
+33–41 etc. (ticket revenue, investments, BOP credits/debits, leases)
+
+These mostly come from national accounts and SAMA BOP tables and are not broken out in public sector‑level form on aviation‑only basis online.
+
+Example: sector narrative emphasizes growing aviation GDP contribution and investment in large hub projects, but not standardized KPI numbers per your exact definitions.
