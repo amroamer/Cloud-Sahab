@@ -17,7 +17,7 @@ export default function NotFound() {
           <p className="text-sm text-muted-foreground mb-6">
             The page you're looking for doesn't exist or you don't have access.
           </p>
-          <Link href="/">
+          <Link href="/home">
             <Button data-testid="button-go-home">Go to Home</Button>
           </Link>
         </CardContent>

@@ -53,7 +53,7 @@ export function AppSidebar() {
   ];
 
   const mainItems = [
-    { title: t("nav.home"), url: "/", icon: Home },
+    { title: t("nav.home"), url: "/home", icon: Home },
   ];
 
   const toolItems = [
@@ -72,7 +72,7 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader className="p-4">
-        <Link href="/" data-testid="link-home-logo">
+        <Link href="/home" data-testid="link-home-logo">
           <div className="flex items-center gap-2">
             <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary">
               <Plane className="h-5 w-5 text-primary-foreground" />

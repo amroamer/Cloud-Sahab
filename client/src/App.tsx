@@ -10,15 +10,17 @@ import { I18nProvider } from "@/lib/i18n";
 import { ThemeProvider } from "@/lib/theme";
 import { AuthProvider, useAuth } from "@/lib/auth";
 import NotFound from "@/pages/not-found";
+import LandingPage from "@/pages/landing";
 import LoginPage from "@/pages/login";
 import HomePage from "@/pages/home";
 import DashboardOverview from "@/pages/dashboard-overview";
 import { PlaceholderPage } from "@/pages/placeholder";
+import { Redirect } from "wouter";
 
-function Router() {
+function AuthenticatedRouter() {
   return (
     <Switch>
-      <Route path="/" component={HomePage} />
+      <Route path="/home" component={HomePage} />
       <Route path="/dashboards/overview" component={DashboardOverview} />
       <Route path="/dashboards/airports">{() => <PlaceholderPage path="/dashboards/airports" />}</Route>
       <Route path="/dashboards/airlines">{() => <PlaceholderPage path="/dashboards/airlines" />}</Route>
@@ -50,7 +52,7 @@ function AuthenticatedLayout() {
         <div className="flex flex-col flex-1 min-w-0">
           <TopNav />
           <main className="flex-1 overflow-hidden">
-            <Router />
+            <AuthenticatedRouter />
           </main>
         </div>
       </div>
@@ -61,11 +63,19 @@ function AuthenticatedLayout() {
 function AppContent() {
   const { isAuthenticated } = useAuth();
 
-  if (!isAuthenticated) {
-    return <LoginPage />;
-  }
-
-  return <AuthenticatedLayout />;
+  return (
+    <Switch>
+      <Route path="/">
+        {() => isAuthenticated ? <Redirect to="/home" /> : <LandingPage />}
+      </Route>
+      <Route path="/login">
+        {() => isAuthenticated ? <Redirect to="/home" /> : <LoginPage />}
+      </Route>
+      <Route>
+        {() => isAuthenticated ? <AuthenticatedLayout /> : <Redirect to="/" />}
+      </Route>
+    </Switch>
+  );
 }
 
 function App() {

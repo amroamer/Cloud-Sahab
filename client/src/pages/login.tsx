@@ -16,14 +16,17 @@ import {
   Moon,
   Loader2,
   Shield,
+  ArrowLeft,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useLocation, Link } from "wouter";
 
 export default function LoginPage() {
   const { t, language, setLanguage } = useTranslation();
   const { toggleTheme, isDark } = useTheme();
   const { login } = useAuth();
   const { toast } = useToast();
+  const [, navigate] = useLocation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -36,7 +39,11 @@ export default function LoginPage() {
     setIsLoading(true);
     try {
       const success = await login(username, password);
-      if (!success) setError(t("login.error"));
+      if (!success) {
+        setError(t("login.error"));
+      } else {
+        navigate("/home");
+      }
     } catch {
       setError(t("login.error"));
     } finally {
@@ -114,6 +121,14 @@ export default function LoginPage() {
 
       <div className="flex-1 flex items-center justify-center p-6 sm:p-8 bg-background">
         <div className="w-full max-w-sm">
+          <div className="absolute top-4 flex items-center gap-1" style={{ insetInlineStart: "1rem" }}>
+            <Link href="/">
+              <Button size="sm" variant="ghost" className="text-xs gap-1.5" data-testid="button-back-home">
+                <ArrowLeft className="h-3.5 w-3.5" />
+                {language === "ar" ? "الرئيسية" : "Home"}
+              </Button>
+            </Link>
+          </div>
           <div className="absolute top-4 flex gap-1" style={{ insetInlineEnd: "1rem" }}>
             <Button size="icon" variant="ghost" onClick={() => setLanguage(language === "en" ? "ar" : "en")} data-testid="button-login-language">
               <Languages className="h-4 w-4" />

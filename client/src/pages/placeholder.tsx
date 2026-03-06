@@ -117,7 +117,7 @@ export function PlaceholderPage({ path }: { path: string }) {
             <Construction className="h-10 w-10 text-muted-foreground mx-auto mb-4" />
             <h1 className="text-xl font-bold mb-2">Coming Soon</h1>
             <p className="text-sm text-muted-foreground mb-4">This section is under development.</p>
-            <Link href="/"><Button>Back to Home</Button></Link>
+            <Link href="/home"><Button>Back to Home</Button></Link>
           </CardContent>
         </Card>
       </div>
@@ -149,7 +149,7 @@ export function PlaceholderPage({ path }: { path: string }) {
               {language === "ar" ? "قيد التطوير" : "Coming Soon"}
             </span>
           </div>
-          <Link href="/">
+          <Link href="/home">
             <Button variant="secondary" data-testid="button-back-home">
               {language === "ar" ? "العودة للرئيسية" : "Back to Home"}
             </Button>
