@@ -9,7 +9,9 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 
 ## Features
 
-### 10 KPI Dashboards (60 KPIs Total)
+### 15 KPI Dashboards (108 KPIs Total)
+
+#### Aviation Operations (Dashboards 1–10, 60 KPIs)
 | # | Dashboard | KPIs | Description |
 |---|-----------|------|-------------|
 | 1 | National Aviation Overview | 8 | Executive-level Vision 2030 KPIs and sector health |
@@ -22,6 +24,15 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 | 8 | Balance of Payments | 6 | Cross-border aviation service flows |
 | 9 | Fleet & Aircraft | 3 | Fleet composition, purchases, age breakdown |
 | 10 | Digital, Sustainability & CX | 7 | Emissions, digital services, Skytrax rankings |
+
+#### Ajwaa e-Services (Dashboards 11–15, 48 KPIs)
+| # | Dashboard | KPIs | Description |
+|---|-----------|------|-------------|
+| 11 | Licensing & Personnel Services | 14 | Pilot/crew/ATCO/maintenance licensing, processing times, revenue |
+| 12 | Flight & Operation Permits | 12 | Single/annual/overflight/landing permits, compliance |
+| 13 | Economic & Regulatory Approvals | 9 | Economic licenses, general aviation approvals, audit rates |
+| 14 | Airport & Service-Provider Services | 9 | Airport operators, ground handling, MRO, service certifications |
+| 15 | Ajwaa e-Service Performance | 4 | Cross-cutting digital platform metrics, CSAT, digitization |
 
 ### Platform Features
 - Fully bilingual (Arabic RTL / English LTR)
@@ -54,6 +65,11 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 | `/dashboards/bop` | Auth | Balance of Payments |
 | `/dashboards/fleet` | Auth | Fleet & Aircraft |
 | `/dashboards/digital` | Auth | Digital, Sustainability & CX |
+| `/dashboards/ajwaa-licensing` | Auth | Licensing & Personnel Services |
+| `/dashboards/ajwaa-permits` | Auth | Flight & Operation Permits |
+| `/dashboards/ajwaa-economic` | Auth | Economic & Regulatory Approvals |
+| `/dashboards/ajwaa-providers` | Auth | Airport & Service-Provider Services |
+| `/dashboards/ajwaa-eservices` | Auth | Ajwaa e-Service Performance |
 
 ## Running
 ```bash

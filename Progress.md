@@ -64,3 +64,16 @@
   - **Digital & Sustainability**: Date Range, Section Focus
 - Consistent placement: filter bar sits below page title, above charts on every dashboard
 - Replaced all inline Select/Button filter controls with unified DashboardFilters component
+
+### Phase 6: Ajwaa e-Services Dashboards (Complete)
+- Added 5 new Ajwaa dashboards covering 48 additional KPIs (total: 108 KPIs across 15 dashboards)
+- Created `client/src/lib/ajwaa-mock-data.ts` with realistic regulatory/e-service data
+- Added ~200 bilingual i18n keys (EN + AR) for all Ajwaa KPIs, filters, and navigation
+- **Dashboard 11 — Licensing & Personnel Services** (14 KPIs): Pilot/cabin crew/ATCO/maintenance licensing, applications by type, processing times, approval rates, digital completion, revenue, active licenses by category
+- **Dashboard 12 — Flight & Operation Permits** (12 KPIs): Single/annual/overflight/landing permits, issuance rates, processing times, rejection rates, compliance violations, revenue
+- **Dashboard 13 — Economic & Regulatory Approvals** (9 KPIs): Economic licenses by carrier type, issuance timelines, renewal rates, violations, general aviation approvals, audit pass rates
+- **Dashboard 14 — Airport & Service-Provider Services** (9 KPIs): Approved operators, concessions, filing compliance, certified providers by category, audit findings, certification revenue
+- **Dashboard 15 — Ajwaa e-Service Performance** (4 KPIs): Total applications by service group, average digital processing time, CSAT scores, digitization percentage
+- New "Ajwaa Services" collapsible sidebar section with 5 sub-items
+- All 5 dashboards include collapsible filter bars with dashboard-specific filters using shared DashboardFilters component
+- Filters: License Category, Application Type, Permit Type, Operator Type, License Type, Sector, Provider Category, Service Type, Service Group

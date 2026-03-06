@@ -23,6 +23,12 @@ import {
   Scale,
   Leaf,
   Radar,
+  ClipboardCheck,
+  Award,
+  FileCheck,
+  Landmark,
+  Warehouse,
+  Monitor,
 } from "lucide-react";
 import {
   Sidebar,
@@ -60,6 +66,14 @@ export function AppSidebar() {
     { title: t("nav.bop"), url: "/dashboards/bop", icon: Scale },
     { title: t("nav.fleet"), url: "/dashboards/fleet", icon: Plane },
     { title: t("nav.digital"), url: "/dashboards/digital", icon: Leaf },
+  ];
+
+  const ajwaaItems = [
+    { title: t("nav.ajwaaLicensing"), url: "/dashboards/ajwaa-licensing", icon: Award },
+    { title: t("nav.ajwaaPermits"), url: "/dashboards/ajwaa-permits", icon: FileCheck },
+    { title: t("nav.ajwaaEconomic"), url: "/dashboards/ajwaa-economic", icon: Landmark },
+    { title: t("nav.ajwaaProviders"), url: "/dashboards/ajwaa-providers", icon: Warehouse },
+    { title: t("nav.ajwaaEservices"), url: "/dashboards/ajwaa-eservices", icon: Monitor },
   ];
 
   const mainItems = [
@@ -131,6 +145,40 @@ export function AppSidebar() {
                   <SidebarMenuItem>
                     <SidebarMenuSub>
                       {dashboardItems.map((item) => (
+                        <SidebarMenuSubItem key={item.url}>
+                          <SidebarMenuSubButton
+                            asChild
+                            data-active={location === item.url}
+                          >
+                            <Link href={item.url} data-testid={`link-nav-${item.url.replace(/\//g, "-")}`}>
+                              <item.icon className="h-3.5 w-3.5" />
+                              <span>{item.title}</span>
+                            </Link>
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                      ))}
+                    </SidebarMenuSub>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </CollapsibleContent>
+          </Collapsible>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <Collapsible defaultOpen className="group/ajwaa">
+            <SidebarGroupLabel asChild>
+              <CollapsibleTrigger className="flex w-full items-center justify-between gap-1">
+                {t("nav.ajwaaServices")}
+                <ChevronDown className="h-3.5 w-3.5 transition-transform group-data-[state=open]/ajwaa:rotate-180" />
+              </CollapsibleTrigger>
+            </SidebarGroupLabel>
+            <CollapsibleContent>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuSub>
+                      {ajwaaItems.map((item) => (
                         <SidebarMenuSubItem key={item.url}>
                           <SidebarMenuSubButton
                             asChild

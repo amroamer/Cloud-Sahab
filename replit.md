@@ -41,6 +41,11 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 - `/dashboards/bop` - Balance of Payments (6 KPIs)
 - `/dashboards/fleet` - Fleet & Aircraft (3 KPIs)
 - `/dashboards/digital` - Digital, Sustainability & CX (7 KPIs)
+- `/dashboards/ajwaa-licensing` - Licensing & Personnel Services (14 KPIs)
+- `/dashboards/ajwaa-permits` - Flight & Operation Permits (12 KPIs)
+- `/dashboards/ajwaa-economic` - Economic & Regulatory Approvals (9 KPIs)
+- `/dashboards/ajwaa-providers` - Airport & Service-Provider Services (9 KPIs)
+- `/dashboards/ajwaa-eservices` - Ajwaa e-Service Performance (4 KPIs)
 - `/explorer`, `/self-service`, `/reports`, `/catalog`, `/api-portal` - Tool pages (authenticated)
 - `/notifications`, `/settings` - User pages (authenticated)
 
@@ -52,6 +57,7 @@ client/src/
     theme.tsx       - Dark/light mode provider
     auth.tsx        - Auth context with credential validation
     queryClient.ts  - TanStack Query setup
+    ajwaa-mock-data.ts - Ajwaa e-services regulatory data (licensing, permits, economic, providers)
   components/
     app-sidebar.tsx       - Navigation sidebar with collapsible dashboard sub-menu
     top-nav.tsx           - Top navigation bar (search, notifications, language, theme, user)
@@ -72,6 +78,11 @@ client/src/
     dashboard-bop.tsx         - Dashboard 8: Balance of Payments (6 KPIs)
     dashboard-fleet.tsx       - Dashboard 9: Fleet & Aircraft (3 KPIs)
     dashboard-digital.tsx     - Dashboard 10: Digital, Sustainability & CX (7 KPIs)
+    dashboard-ajwaa-licensing.tsx  - Dashboard 11: Licensing & Personnel Services (14 KPIs)
+    dashboard-ajwaa-permits.tsx    - Dashboard 12: Flight & Operation Permits (12 KPIs)
+    dashboard-ajwaa-economic.tsx   - Dashboard 13: Economic & Regulatory Approvals (9 KPIs)
+    dashboard-ajwaa-providers.tsx  - Dashboard 14: Airport & Service-Provider Services (9 KPIs)
+    dashboard-ajwaa-eservices.tsx  - Dashboard 15: Ajwaa e-Service Performance (4 KPIs)
     placeholder.tsx           - Coming soon pages for unimplemented tool sections
     not-found.tsx             - 404 page
 ```

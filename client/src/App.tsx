@@ -23,6 +23,11 @@ import DashboardFinancial from "@/pages/dashboard-financial";
 import DashboardBop from "@/pages/dashboard-bop";
 import DashboardFleet from "@/pages/dashboard-fleet";
 import DashboardDigital from "@/pages/dashboard-digital";
+import DashboardAjwaaLicensing from "@/pages/dashboard-ajwaa-licensing";
+import DashboardAjwaaPermits from "@/pages/dashboard-ajwaa-permits";
+import DashboardAjwaaEconomic from "@/pages/dashboard-ajwaa-economic";
+import DashboardAjwaaProviders from "@/pages/dashboard-ajwaa-providers";
+import DashboardAjwaaEservices from "@/pages/dashboard-ajwaa-eservices";
 import { PlaceholderPage } from "@/pages/placeholder";
 import { Redirect } from "wouter";
 
@@ -40,6 +45,11 @@ function AuthenticatedRouter() {
       <Route path="/dashboards/bop" component={DashboardBop} />
       <Route path="/dashboards/fleet" component={DashboardFleet} />
       <Route path="/dashboards/digital" component={DashboardDigital} />
+      <Route path="/dashboards/ajwaa-licensing" component={DashboardAjwaaLicensing} />
+      <Route path="/dashboards/ajwaa-permits" component={DashboardAjwaaPermits} />
+      <Route path="/dashboards/ajwaa-economic" component={DashboardAjwaaEconomic} />
+      <Route path="/dashboards/ajwaa-providers" component={DashboardAjwaaProviders} />
+      <Route path="/dashboards/ajwaa-eservices" component={DashboardAjwaaEservices} />
       <Route path="/explorer">{() => <PlaceholderPage path="/explorer" />}</Route>
       <Route path="/self-service">{() => <PlaceholderPage path="/self-service" />}</Route>
       <Route path="/reports">{() => <PlaceholderPage path="/reports" />}</Route>
