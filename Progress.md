@@ -31,3 +31,17 @@
 - Shared mock data module with realistic Saudi aviation datasets
 - Updated sidebar navigation with all 10 dashboards
 - All dashboards bilingual (AR/EN) with proper RTL support
+
+### Phase 4: Real Data Calibration (Complete)
+- Updated `client/src/lib/mock-data.ts` with verified 2023–2024 figures from GACA/industry sources
+- **Passengers**: 2024 = 128M (59M domestic, 69M international), 2023 = 112M; monthly traffic recalibrated
+- **Cargo**: 2024 = 1.2M tonnes (+34% YoY), 2023 = 918K tonnes; cargo monthly recalibrated to ~1.35M for 2025
+- **Flights**: 2024 = 905K (474K domestic, 431K international), 2023 = 815K; airport flight counts aligned
+- **Countries/Destinations**: Updated from 78 to 170+ worldwide destinations
+- **Fleet**: 284 commercial aircraft (176 NB + 108 WB); Saudia 167, flynas 71, flyadeal 45, Riyadh Air 1
+- **Airlines**: Saudia 192,560 flights, OTP 89% (departure 88.82%, arrival 86.35%)
+- **Airports**: 29 airports (12 international, 3 regional, 14 domestic); airport types corrected; passenger/flight totals aligned to 128M/905K baselines
+- **Cargo by airport**: Proportionally scaled to match 1.2M tonnes national total
+- **Air shipments**: Updated to 1.2M tonnes (from 852K) in shipments-by-mode
+- Passenger class/nationality distributions scaled to 128M base
+- All 10 dashboards automatically reflect updated data (single source of truth)

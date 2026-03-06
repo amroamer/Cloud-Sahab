@@ -35,7 +35,7 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 - **Frontend**: React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Recharts, Framer Motion
 - **Backend**: Express.js (Node.js)
 - **Routing**: wouter (client-side)
-- **Data**: Mock/in-memory (realistic Saudi aviation data)
+- **Data**: Real-calibrated datasets (2023–2024 verified GACA/industry figures, 2025 projections)
 
 ## Routes
 | Path | Access | Description |
