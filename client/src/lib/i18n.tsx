@@ -1,0 +1,280 @@
+import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react";
+
+type Language = "en" | "ar";
+
+const translations: Record<Language, Record<string, string>> = {
+  en: {
+    "app.name": "Sahab",
+    "app.nameAr": "سحاب",
+    "app.tagline": "National Aviation Data Platform",
+    "app.gaca": "General Authority of Civil Aviation",
+    "nav.home": "Home",
+    "nav.dashboards": "Dashboards",
+    "nav.overview": "National Overview",
+    "nav.airports": "Airport Performance",
+    "nav.airlines": "Airline Intelligence",
+    "nav.connectivity": "Connectivity Map",
+    "nav.cargo": "Cargo Intelligence",
+    "nav.regulatory": "Regulatory Oversight",
+    "nav.explorer": "Explorer",
+    "nav.selfService": "Self-Service",
+    "nav.reports": "Reports",
+    "nav.catalog": "Data Catalog",
+    "nav.api": "API Portal",
+    "nav.notifications": "Notifications",
+    "nav.settings": "Settings",
+    "kpi.connectivity": "Air Connectivity Index",
+    "kpi.travelers": "Total Travelers",
+    "kpi.cargo": "Cargo Shipments",
+    "kpi.target": "Target",
+    "kpi.ytd": "YTD",
+    "kpi.yoy": "vs. last year",
+    "kpi.currentValue": "Current",
+    "kpi.progress": "Progress",
+    "home.welcome": "Welcome back",
+    "home.summary": "Saudi aviation served {passengers} passengers this month, {change} vs. last year.",
+    "home.alerts": "Quick Alerts",
+    "home.viewAll": "View All",
+    "home.favorites": "Favorites",
+    "home.recentActivity": "Recent Activity",
+    "home.quickLinks": "Quick Links",
+    "home.newReports": "New & Updated Reports",
+    "home.exploreTraffic": "Explore Air Traffic",
+    "home.buildReport": "Build a Report",
+    "home.browseCatalog": "Browse Data Catalog",
+    "home.viewApiDocs": "View API Docs",
+    "dashboard.title": "National Aviation Overview",
+    "dashboard.filters": "Filters",
+    "dashboard.dateRange": "Date Range",
+    "dashboard.airport": "Airport",
+    "dashboard.airline": "Airline",
+    "dashboard.apply": "Apply Filters",
+    "dashboard.reset": "Reset",
+    "dashboard.export": "Export Dashboard",
+    "dashboard.dataAsOf": "Data as of",
+    "dashboard.trafficTrend": "Traffic Trend",
+    "dashboard.domesticVsIntl": "Domestic vs. International",
+    "dashboard.topAirports": "Top 10 Airports",
+    "dashboard.topAirlines": "Top 10 Airlines",
+    "dashboard.passengers": "Passengers",
+    "dashboard.flights": "Flights",
+    "dashboard.marketShare": "Market Share",
+    "dashboard.loadFactor": "Load Factor",
+    "dashboard.rank": "Rank",
+    "dashboard.yoyChange": "YoY Change",
+    "dashboard.otp": "On-Time Performance",
+    "dashboard.snapshot": "Saudi Aviation Snapshot",
+    "dashboard.totalAirports": "Total Airports",
+    "dashboard.activeAirlines": "Active Airlines",
+    "dashboard.totalRoutes": "Total Routes",
+    "dashboard.avgLoadFactor": "Avg Load Factor",
+    "dashboard.avgOTP": "Avg OTP",
+    "dashboard.totalDestinations": "Destinations",
+    "dashboard.targetTrajectory": "Target Trajectory",
+    "dashboard.monthly": "Monthly",
+    "dashboard.quarterly": "Quarterly",
+    "dashboard.yearly": "Yearly",
+    "dashboard.domestic": "Domestic",
+    "dashboard.international": "International",
+    "dashboard.all": "All",
+    "dashboard.ytd": "Year to Date",
+    "dashboard.lastMonth": "Last Month",
+    "dashboard.lastQuarter": "Last Quarter",
+    "dashboard.lastYear": "Last Year",
+    "dashboard.trailing12": "Trailing 12 Months",
+    "dashboard.customRange": "Custom Range",
+    "login.title": "Sign In",
+    "login.subtitle": "Access the national aviation intelligence platform",
+    "login.email": "Email Address",
+    "login.password": "Password",
+    "login.signIn": "Sign In",
+    "login.sso": "Sign in with GACA Account",
+    "login.forgot": "Forgot Password?",
+    "login.requestAccess": "Request Access",
+    "login.or": "or",
+    "login.error": "Invalid email or password",
+    "common.search": "Search dashboards, reports, airports...",
+    "common.loading": "Loading...",
+    "common.noData": "No data available for the selected filters",
+    "common.retry": "Retry",
+    "common.cancel": "Cancel",
+    "common.save": "Save",
+    "common.profile": "Profile",
+    "common.preferences": "Preferences",
+    "common.help": "Help",
+    "common.signOut": "Sign Out",
+    "common.darkMode": "Dark Mode",
+    "common.lightMode": "Light Mode",
+    "common.language": "العربية",
+    "notification.kpiAlert": "KPI Alert",
+    "notification.dataQuality": "Data Quality",
+    "notification.anomaly": "Anomaly Detection",
+    "notification.report": "Report Published",
+    "notification.system": "System",
+  },
+  ar: {
+    "app.name": "سحاب",
+    "app.nameAr": "سحاب",
+    "app.tagline": "المنصة الوطنية لبيانات الطيران",
+    "app.gaca": "الهيئة العامة للطيران المدني",
+    "nav.home": "الرئيسية",
+    "nav.dashboards": "لوحات المعلومات",
+    "nav.overview": "النظرة العامة الوطنية",
+    "nav.airports": "أداء المطارات",
+    "nav.airlines": "استخبارات الطيران",
+    "nav.connectivity": "خريطة الاتصال",
+    "nav.cargo": "استخبارات الشحن",
+    "nav.regulatory": "الرقابة التنظيمية",
+    "nav.explorer": "المستكشف",
+    "nav.selfService": "الخدمة الذاتية",
+    "nav.reports": "التقارير",
+    "nav.catalog": "كتالوج البيانات",
+    "nav.api": "بوابة API",
+    "nav.notifications": "الإشعارات",
+    "nav.settings": "الإعدادات",
+    "kpi.connectivity": "مؤشر الاتصال الجوي",
+    "kpi.travelers": "إجمالي المسافرين",
+    "kpi.cargo": "شحنات البضائع",
+    "kpi.target": "الهدف",
+    "kpi.ytd": "منذ بداية العام",
+    "kpi.yoy": "مقارنة بالعام الماضي",
+    "kpi.currentValue": "الحالي",
+    "kpi.progress": "التقدم",
+    "home.welcome": "مرحباً بك",
+    "home.summary": "خدم قطاع الطيران السعودي {passengers} مسافر هذا الشهر، {change} مقارنة بالعام الماضي.",
+    "home.alerts": "التنبيهات السريعة",
+    "home.viewAll": "عرض الكل",
+    "home.favorites": "المفضلة",
+    "home.recentActivity": "النشاط الأخير",
+    "home.quickLinks": "روابط سريعة",
+    "home.newReports": "تقارير جديدة ومحدثة",
+    "home.exploreTraffic": "استكشاف حركة الطيران",
+    "home.buildReport": "إنشاء تقرير",
+    "home.browseCatalog": "تصفح كتالوج البيانات",
+    "home.viewApiDocs": "عرض وثائق API",
+    "dashboard.title": "النظرة العامة للطيران الوطني",
+    "dashboard.filters": "عوامل التصفية",
+    "dashboard.dateRange": "نطاق التاريخ",
+    "dashboard.airport": "المطار",
+    "dashboard.airline": "شركة الطيران",
+    "dashboard.apply": "تطبيق",
+    "dashboard.reset": "إعادة تعيين",
+    "dashboard.export": "تصدير اللوحة",
+    "dashboard.dataAsOf": "البيانات حتى",
+    "dashboard.trafficTrend": "اتجاه حركة المرور",
+    "dashboard.domesticVsIntl": "محلي مقابل دولي",
+    "dashboard.topAirports": "أفضل ١٠ مطارات",
+    "dashboard.topAirlines": "أفضل ١٠ شركات طيران",
+    "dashboard.passengers": "المسافرون",
+    "dashboard.flights": "الرحلات",
+    "dashboard.marketShare": "الحصة السوقية",
+    "dashboard.loadFactor": "عامل الحمولة",
+    "dashboard.rank": "الترتيب",
+    "dashboard.yoyChange": "التغير السنوي",
+    "dashboard.otp": "الأداء في الوقت المحدد",
+    "dashboard.snapshot": "لمحة عن الطيران السعودي",
+    "dashboard.totalAirports": "إجمالي المطارات",
+    "dashboard.activeAirlines": "شركات الطيران النشطة",
+    "dashboard.totalRoutes": "إجمالي المسارات",
+    "dashboard.avgLoadFactor": "متوسط عامل الحمولة",
+    "dashboard.avgOTP": "متوسط الأداء في الوقت المحدد",
+    "dashboard.totalDestinations": "الوجهات",
+    "dashboard.targetTrajectory": "مسار الهدف",
+    "dashboard.monthly": "شهري",
+    "dashboard.quarterly": "ربع سنوي",
+    "dashboard.yearly": "سنوي",
+    "dashboard.domestic": "محلي",
+    "dashboard.international": "دولي",
+    "dashboard.all": "الكل",
+    "dashboard.ytd": "منذ بداية العام",
+    "dashboard.lastMonth": "الشهر الماضي",
+    "dashboard.lastQuarter": "الربع الماضي",
+    "dashboard.lastYear": "العام الماضي",
+    "dashboard.trailing12": "آخر ١٢ شهر",
+    "dashboard.customRange": "نطاق مخصص",
+    "login.title": "تسجيل الدخول",
+    "login.subtitle": "الوصول إلى منصة استخبارات الطيران الوطنية",
+    "login.email": "البريد الإلكتروني",
+    "login.password": "كلمة المرور",
+    "login.signIn": "تسجيل الدخول",
+    "login.sso": "تسجيل الدخول بحساب GACA",
+    "login.forgot": "نسيت كلمة المرور؟",
+    "login.requestAccess": "طلب الوصول",
+    "login.or": "أو",
+    "login.error": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+    "common.search": "بحث في اللوحات والتقارير والمطارات...",
+    "common.loading": "جاري التحميل...",
+    "common.noData": "لا توجد بيانات للفلاتر المحددة",
+    "common.retry": "إعادة المحاولة",
+    "common.cancel": "إلغاء",
+    "common.save": "حفظ",
+    "common.profile": "الملف الشخصي",
+    "common.preferences": "التفضيلات",
+    "common.help": "المساعدة",
+    "common.signOut": "تسجيل الخروج",
+    "common.darkMode": "الوضع الداكن",
+    "common.lightMode": "الوضع الفاتح",
+    "common.language": "English",
+    "notification.kpiAlert": "تنبيه مؤشر الأداء",
+    "notification.dataQuality": "جودة البيانات",
+    "notification.anomaly": "كشف الشذوذ",
+    "notification.report": "تقرير منشور",
+    "notification.system": "النظام",
+  },
+};
+
+interface I18nContextType {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: (key: string, params?: Record<string, string>) => string;
+  dir: "ltr" | "rtl";
+  isRTL: boolean;
+}
+
+const I18nContext = createContext<I18nContextType | null>(null);
+
+export function I18nProvider({ children }: { children: ReactNode }) {
+  const [language, setLanguageState] = useState<Language>(() => {
+    const saved = localStorage.getItem("sahab-language");
+    if (saved === "ar" || saved === "en") return saved;
+    return navigator.language.startsWith("ar") ? "ar" : "en";
+  });
+
+  const dir = language === "ar" ? "rtl" : "ltr";
+  const isRTL = language === "ar";
+
+  useEffect(() => {
+    document.documentElement.setAttribute("dir", dir);
+    document.documentElement.setAttribute("lang", language);
+    localStorage.setItem("sahab-language", language);
+  }, [language, dir]);
+
+  const setLanguage = useCallback((lang: Language) => {
+    setLanguageState(lang);
+  }, []);
+
+  const t = useCallback(
+    (key: string, params?: Record<string, string>) => {
+      let value = translations[language][key] || translations.en[key] || key;
+      if (params) {
+        Object.entries(params).forEach(([k, v]) => {
+          value = value.replace(`{${k}}`, v);
+        });
+      }
+      return value;
+    },
+    [language]
+  );
+
+  return (
+    <I18nContext.Provider value={{ language, setLanguage, t, dir, isRTL }}>
+      {children}
+    </I18nContext.Provider>
+  );
+}
+
+export function useTranslation() {
+  const context = useContext(I18nContext);
+  if (!context) throw new Error("useTranslation must be used within I18nProvider");
+  return context;
+}
