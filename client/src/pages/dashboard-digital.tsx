@@ -1,7 +1,9 @@
+import { useMemo } from "react";
 import { useTranslation } from "@/lib/i18n";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { DashboardFilters, useFilterState, type FilterConfig } from "@/components/dashboard-filters";
 import {
   Leaf,
   Fuel,
@@ -51,6 +53,33 @@ const fuelChange = ((latestSustainability.fuel - prevSustainability.fuel) / prev
 export default function DashboardDigital() {
   const { t, language } = useTranslation();
 
+  const filterConfigs: FilterConfig[] = useMemo(() => [
+    {
+      key: "dateRange",
+      label: t("dashboard.dateRange"),
+      options: [
+        { value: "ytd", label: t("dashboard.ytd") },
+        { value: "lastMonth", label: t("dashboard.lastMonth") },
+        { value: "lastQuarter", label: t("dashboard.lastQuarter") },
+        { value: "lastYear", label: t("dashboard.lastYear") },
+      ],
+      defaultValue: "ytd",
+    },
+    {
+      key: "section",
+      label: t("filter.section"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        { value: "sustainability", label: t("filter.sustainability") },
+        { value: "digital", label: t("filter.digital") },
+        { value: "cx", label: t("filter.cx") },
+      ],
+      defaultValue: "all",
+    },
+  ], [t]);
+
+  const { values: filterValues, onChange: onFilterChange, onReset: onFilterReset } = useFilterState(filterConfigs);
+
   const COLORS = {
     green: "hsl(160, 70%, 38%)",
     blue: "hsl(210, 85%, 42%)",
@@ -71,6 +100,14 @@ export default function DashboardDigital() {
             {language === "ar" ? "٧ مؤشرات أداء رئيسية في ٣ محاور" : "7 KPIs across 3 zones"}
           </p>
         </div>
+
+        <DashboardFilters
+          filters={filterConfigs}
+          values={filterValues}
+          onChange={onFilterChange}
+          onReset={onFilterReset}
+          onExport={() => {}}
+        />
 
         <div className="grid gap-6 lg:grid-cols-3">
           <div className="space-y-4">

@@ -3,13 +3,7 @@ import { useTranslation } from "@/lib/i18n";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { DashboardFilters, useFilterState, type FilterConfig } from "@/components/dashboard-filters";
 import {
   Table,
   TableBody,
@@ -59,7 +53,51 @@ const TOOLTIP_STYLE = {
 
 export default function DashboardFlightOps() {
   const { t, language } = useTranslation();
-  const [selectedAirport, setSelectedAirport] = useState("all");
+
+  const filterConfigs: FilterConfig[] = useMemo(() => [
+    {
+      key: "dateRange",
+      label: t("dashboard.dateRange"),
+      options: [
+        { value: "ytd", label: t("dashboard.ytd") },
+        { value: "lastMonth", label: t("dashboard.lastMonth") },
+        { value: "lastQuarter", label: t("dashboard.lastQuarter") },
+        { value: "lastYear", label: t("dashboard.lastYear") },
+      ],
+      defaultValue: "ytd",
+    },
+    {
+      key: "airport",
+      label: t("dashboard.airport"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        ...AIRPORTS.map((a) => ({ value: a.code, label: language === "ar" ? a.nameAr : a.name })),
+      ],
+      defaultValue: "all",
+    },
+    {
+      key: "airline",
+      label: t("dashboard.airline"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        ...AIRLINES.map((a) => ({ value: a.code, label: language === "ar" ? a.nameAr : a.name })),
+      ],
+      defaultValue: "all",
+    },
+    {
+      key: "flightType",
+      label: t("filter.flightType"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        { value: "domestic", label: t("dashboard.domestic") },
+        { value: "international", label: t("dashboard.international") },
+      ],
+      defaultValue: "all",
+    },
+  ], [t, language]);
+
+  const { values: filterValues, onChange: onFilterChange, onReset: onFilterReset } = useFilterState(filterConfigs);
+  const selectedAirport = filterValues.airport;
 
   const totalMovements = useMemo(() => {
     if (selectedAirport === "all") {
@@ -147,31 +185,22 @@ export default function DashboardFlightOps() {
   return (
     <ScrollArea className="h-full">
       <div className="p-6 max-w-[1400px] mx-auto space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight" data-testid="text-flight-ops-title">
-              {language === "ar" ? "عمليات الطيران" : "Flight Operations"}
-            </h1>
-            <p className="text-sm text-muted-foreground mt-0.5">
-              {t("dashboard.dataAsOf")} {language === "ar" ? "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص" : "March 6, 2026, 08:00 AM"}
-            </p>
-          </div>
-          <div className="flex items-center gap-2 flex-wrap">
-            <Select value={selectedAirport} onValueChange={setSelectedAirport}>
-              <SelectTrigger className="w-[180px]" data-testid="select-airport-filter">
-                <SelectValue placeholder={t("dashboard.airport")} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">{t("dashboard.all")}</SelectItem>
-                {AIRPORTS.map((a) => (
-                  <SelectItem key={a.code} value={a.code}>
-                    {language === "ar" ? a.nameAr : a.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight" data-testid="text-flight-ops-title">
+            {language === "ar" ? "عمليات الطيران" : "Flight Operations"}
+          </h1>
+          <p className="text-sm text-muted-foreground mt-0.5">
+            {t("dashboard.dataAsOf")} {language === "ar" ? "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص" : "March 6, 2026, 08:00 AM"}
+          </p>
         </div>
+
+        <DashboardFilters
+          filters={filterConfigs}
+          values={filterValues}
+          onChange={onFilterChange}
+          onReset={onFilterReset}
+          onExport={() => {}}
+        />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <Card className="p-5">

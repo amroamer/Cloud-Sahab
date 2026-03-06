@@ -1,22 +1,14 @@
-import { useState } from "react";
+import { useMemo } from "react";
 import { useTranslation } from "@/lib/i18n";
 import { KpiCard } from "@/components/kpi-card";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { DashboardFilters, useFilterState, type FilterConfig } from "@/components/dashboard-filters";
 import {
   Globe,
   Users,
   Package,
-  Download,
   TrendingUp,
   TrendingDown,
   Plane,
@@ -62,39 +54,51 @@ const totalFlightsYTD = AIRPORTS.reduce((sum, a) => sum + a.flights, 0);
 
 export default function DashboardOverview() {
   const { t, language } = useTranslation();
-  const [granularity, setGranularity] = useState("monthly");
+  const filterConfigs: FilterConfig[] = useMemo(() => [
+    {
+      key: "dateRange",
+      label: t("dashboard.dateRange"),
+      options: [
+        { value: "ytd", label: t("dashboard.ytd") },
+        { value: "lastMonth", label: t("dashboard.lastMonth") },
+        { value: "lastQuarter", label: t("dashboard.lastQuarter") },
+        { value: "lastYear", label: t("dashboard.lastYear") },
+        { value: "trailing12", label: t("dashboard.trailing12") },
+      ],
+      defaultValue: "ytd",
+    },
+    {
+      key: "granularity",
+      label: t("filter.granularity"),
+      options: [
+        { value: "monthly", label: t("dashboard.monthly") },
+        { value: "quarterly", label: t("dashboard.quarterly") },
+      ],
+      defaultValue: "monthly",
+    },
+  ], [t]);
+
+  const { values: filterValues, onChange: onFilterChange, onReset: onFilterReset } = useFilterState(filterConfigs);
 
   return (
     <ScrollArea className="h-full">
       <div className="p-6 max-w-[1400px] mx-auto space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight" data-testid="text-dashboard-title">
-              {t("dashboard.title")}
-            </h1>
-            <p className="text-sm text-muted-foreground mt-0.5">
-              {t("dashboard.dataAsOf")} {language === "ar" ? "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص" : "March 6, 2026, 08:00 AM"}
-            </p>
-          </div>
-          <div className="flex items-center gap-2 flex-wrap">
-            <Select defaultValue="ytd">
-              <SelectTrigger className="w-[160px]" data-testid="select-date-range">
-                <SelectValue placeholder={t("dashboard.dateRange")} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="ytd">{t("dashboard.ytd")}</SelectItem>
-                <SelectItem value="lastMonth">{t("dashboard.lastMonth")}</SelectItem>
-                <SelectItem value="lastQuarter">{t("dashboard.lastQuarter")}</SelectItem>
-                <SelectItem value="lastYear">{t("dashboard.lastYear")}</SelectItem>
-                <SelectItem value="trailing12">{t("dashboard.trailing12")}</SelectItem>
-              </SelectContent>
-            </Select>
-            <Button variant="secondary" size="sm" data-testid="button-export-dashboard">
-              <Download className="h-3.5 w-3.5" />
-              {t("dashboard.export")}
-            </Button>
-          </div>
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight" data-testid="text-dashboard-title">
+            {t("dashboard.title")}
+          </h1>
+          <p className="text-sm text-muted-foreground mt-0.5">
+            {t("dashboard.dataAsOf")} {language === "ar" ? "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص" : "March 6, 2026, 08:00 AM"}
+          </p>
         </div>
+
+        <DashboardFilters
+          filters={filterConfigs}
+          values={filterValues}
+          onChange={onFilterChange}
+          onReset={onFilterReset}
+          onExport={() => {}}
+        />
 
         <div className="grid gap-4 md:grid-cols-3">
           <KpiCard
@@ -136,7 +140,7 @@ export default function DashboardOverview() {
           <Card className="p-5 lg:col-span-2">
             <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
               <h2 className="text-base font-semibold">{t("dashboard.trafficTrend")}</h2>
-              <Tabs value={granularity} onValueChange={setGranularity}>
+              <Tabs value={filterValues.granularity} onValueChange={(v) => onFilterChange("granularity", v)}>
                 <TabsList>
                   <TabsTrigger value="monthly" data-testid="tab-monthly">{t("dashboard.monthly")}</TabsTrigger>
                   <TabsTrigger value="quarterly" data-testid="tab-quarterly">{t("dashboard.quarterly")}</TabsTrigger>

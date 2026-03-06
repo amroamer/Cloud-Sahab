@@ -53,10 +53,11 @@ client/src/
     auth.tsx        - Auth context with credential validation
     queryClient.ts  - TanStack Query setup
   components/
-    app-sidebar.tsx - Navigation sidebar with collapsible dashboard sub-menu
-    top-nav.tsx     - Top navigation bar (search, notifications, language, theme, user)
-    kpi-card.tsx    - Reusable KPI metric card with sparkline chart
-    ui/             - shadcn/ui components
+    app-sidebar.tsx       - Navigation sidebar with collapsible dashboard sub-menu
+    top-nav.tsx           - Top navigation bar (search, notifications, language, theme, user)
+    kpi-card.tsx          - Reusable KPI metric card with sparkline chart
+    dashboard-filters.tsx - Shared collapsible filter bar component + useFilterState hook
+    ui/                   - shadcn/ui components
   pages/
     landing.tsx           - Public landing page with hero, features, dashboard showcase
     login.tsx             - Login page with split layout and GACA branding

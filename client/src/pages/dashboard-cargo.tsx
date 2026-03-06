@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useTranslation } from "@/lib/i18n";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -14,11 +13,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Progress } from "@/components/ui/progress";
+import { DashboardFilters, useFilterState, type FilterConfig } from "@/components/dashboard-filters";
 import {
   Package,
   TrendingUp,
   TrendingDown,
-  Download,
   Warehouse,
   DollarSign,
   Truck,
@@ -66,6 +65,50 @@ export default function DashboardCargo() {
 
   const isAr = language === "ar";
 
+  const filterConfigs: FilterConfig[] = useMemo(() => [
+    {
+      key: "dateRange",
+      label: t("dashboard.dateRange"),
+      options: [
+        { value: "ytd", label: t("dashboard.ytd") },
+        { value: "lastMonth", label: t("dashboard.lastMonth") },
+        { value: "lastQuarter", label: t("dashboard.lastQuarter") },
+        { value: "lastYear", label: t("dashboard.lastYear") },
+      ],
+      defaultValue: "ytd",
+    },
+    {
+      key: "airport",
+      label: t("dashboard.airport"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        ...AIRPORTS.map((a) => ({ value: a.code, label: isAr ? a.nameAr : a.name })),
+      ],
+      defaultValue: "all",
+    },
+    {
+      key: "flowDirection",
+      label: t("filter.flowDirection"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        { value: "import", label: t("filter.import") },
+        { value: "export", label: t("filter.export") },
+      ],
+      defaultValue: "all",
+    },
+    {
+      key: "commodity",
+      label: t("filter.commodity"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        ...CARGO_COMMODITY_SPLIT.map((c) => ({ value: c.name.toLowerCase().replace(/\s/g, "_"), label: isAr ? c.nameAr : c.name })),
+      ],
+      defaultValue: "all",
+    },
+  ], [t, isAr]);
+
+  const { values: filterValues, onChange: onFilterChange, onReset: onFilterReset } = useFilterState(filterConfigs);
+
   const chartTooltipStyle = {
     backgroundColor: "hsl(210, 5%, 96%)",
     border: "1px solid hsl(210, 5%, 88%)",
@@ -76,20 +119,22 @@ export default function DashboardCargo() {
   return (
     <ScrollArea className="h-full">
       <div className="p-6 max-w-[1400px] mx-auto space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight" data-testid="text-cargo-title">
-              {isAr ? "الشحن واللوجستيات" : "Cargo & Logistics"}
-            </h1>
-            <p className="text-sm text-muted-foreground mt-0.5">
-              {t("dashboard.dataAsOf")} {isAr ? "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص" : "March 6, 2026, 08:00 AM"}
-            </p>
-          </div>
-          <Button variant="secondary" size="sm" data-testid="button-export-cargo">
-            <Download className="h-3.5 w-3.5" />
-            {t("dashboard.export")}
-          </Button>
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight" data-testid="text-cargo-title">
+            {isAr ? "الشحن واللوجستيات" : "Cargo & Logistics"}
+          </h1>
+          <p className="text-sm text-muted-foreground mt-0.5">
+            {t("dashboard.dataAsOf")} {isAr ? "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص" : "March 6, 2026, 08:00 AM"}
+          </p>
         </div>
+
+        <DashboardFilters
+          filters={filterConfigs}
+          values={filterValues}
+          onChange={onFilterChange}
+          onReset={onFilterReset}
+          onExport={() => {}}
+        />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <Card className="p-5" data-testid="card-kpi-shipments">

@@ -1,7 +1,9 @@
+import { useMemo } from "react";
 import { useTranslation } from "@/lib/i18n";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { DashboardFilters, useFilterState, type FilterConfig } from "@/components/dashboard-filters";
 import {
   TrendingUp,
   TrendingDown,
@@ -30,6 +32,33 @@ import { BOP_COMPONENTS, BOP_QUARTERLY, CHART_COLORS } from "@/lib/mock-data";
 export default function DashboardBop() {
   const { t, language } = useTranslation();
   const isAr = language === "ar";
+
+  const filterConfigs: FilterConfig[] = useMemo(() => [
+    {
+      key: "quarter",
+      label: t("filter.quarter"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        { value: "q1", label: "Q1" },
+        { value: "q2", label: "Q2" },
+        { value: "q3", label: "Q3" },
+        { value: "q4", label: "Q4" },
+      ],
+      defaultValue: "all",
+    },
+    {
+      key: "flowType",
+      label: t("filter.flowType"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        { value: "credits", label: t("filter.credits") },
+        { value: "debits", label: t("filter.debits") },
+      ],
+      defaultValue: "all",
+    },
+  ], [t]);
+
+  const { values: filterValues, onChange: onFilterChange, onReset: onFilterReset } = useFilterState(filterConfigs);
 
   const totalCredits = BOP_COMPONENTS.filter(c => c.type === "credit").reduce((s, c) => s + c.value, 0);
   const totalDebits = BOP_COMPONENTS.filter(c => c.type === "debit").reduce((s, c) => s + Math.abs(c.value), 0);
@@ -113,6 +142,14 @@ export default function DashboardBop() {
             {isAr ? "تدفقات الطيران المدني — القيم بمليار ريال سعودي" : "Civil aviation flows — Values in SAR Billion"}
           </p>
         </div>
+
+        <DashboardFilters
+          filters={filterConfigs}
+          values={filterValues}
+          onChange={onFilterChange}
+          onReset={onFilterReset}
+          onExport={() => {}}
+        />
 
         <div className="grid gap-4 md:grid-cols-3">
           <Card className="p-5" data-testid="card-bop-credits">

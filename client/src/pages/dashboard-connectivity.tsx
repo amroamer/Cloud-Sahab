@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo } from "react";
 import { useTranslation } from "@/lib/i18n";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -11,13 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { DashboardFilters, useFilterState, type FilterConfig } from "@/components/dashboard-filters";
 import {
   Globe,
   Map,
@@ -102,38 +96,56 @@ const indexProgress = (currentIndex / targetIndex) * 100;
 
 export default function DashboardConnectivity() {
   const { t, language } = useTranslation();
-  const [selectedAirport, setSelectedAirport] = useState("all");
+
+  const filterConfigs: FilterConfig[] = useMemo(() => [
+    {
+      key: "dateRange",
+      label: t("dashboard.dateRange"),
+      options: [
+        { value: "ytd", label: t("dashboard.ytd") },
+        { value: "lastMonth", label: t("dashboard.lastMonth") },
+        { value: "lastQuarter", label: t("dashboard.lastQuarter") },
+        { value: "lastYear", label: t("dashboard.lastYear") },
+      ],
+      defaultValue: "ytd",
+    },
+    {
+      key: "airlineType",
+      label: t("filter.airlineType"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        { value: "saudi", label: t("filter.saudi") },
+        { value: "foreign", label: t("filter.foreign") },
+        { value: "lcc", label: t("filter.lcc") },
+        { value: "fullService", label: t("filter.fullService") },
+      ],
+      defaultValue: "all",
+    },
+  ], [t]);
+
+  const { values: filterValues, onChange: onFilterChange, onReset: onFilterReset } = useFilterState(filterConfigs);
 
   const gaugeAngle = (currentIndex / targetIndex) * 180;
 
   return (
     <ScrollArea className="h-full">
       <div className="p-6 max-w-[1400px] mx-auto space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight" data-testid="text-dashboard-title">
-              {language === "ar" ? "الاتصال والحصة السوقية" : "Connectivity & Market Share"}
-            </h1>
-            <p className="text-sm text-muted-foreground mt-0.5">
-              {t("dashboard.dataAsOf")} {language === "ar" ? "٦ مارس ٢٠٢٦" : "March 6, 2026"}
-            </p>
-          </div>
-          <div className="flex items-center gap-2 flex-wrap">
-            <Select value={selectedAirport} onValueChange={setSelectedAirport}>
-              <SelectTrigger className="w-[180px]" data-testid="select-airport-filter">
-                <SelectValue placeholder={t("dashboard.airport")} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">{t("dashboard.all")}</SelectItem>
-                {AIRPORTS.slice(0, 5).map((ap) => (
-                  <SelectItem key={ap.code} value={ap.code}>
-                    {language === "ar" ? ap.nameAr : ap.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight" data-testid="text-dashboard-title">
+            {language === "ar" ? "الاتصال والحصة السوقية" : "Connectivity & Market Share"}
+          </h1>
+          <p className="text-sm text-muted-foreground mt-0.5">
+            {t("dashboard.dataAsOf")} {language === "ar" ? "٦ مارس ٢٠٢٦" : "March 6, 2026"}
+          </p>
         </div>
+
+        <DashboardFilters
+          filters={filterConfigs}
+          values={filterValues}
+          onChange={onFilterChange}
+          onReset={onFilterReset}
+          onExport={() => {}}
+        />
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Card className="p-5" data-testid="card-connectivity-index">

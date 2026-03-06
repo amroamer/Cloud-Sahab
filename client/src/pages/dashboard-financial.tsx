@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useTranslation } from "@/lib/i18n";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { DashboardFilters, useFilterState, type FilterConfig } from "@/components/dashboard-filters";
 import {
   DollarSign,
   TrendingUp,
@@ -141,8 +143,35 @@ const TOOLTIP_STYLE = {
 };
 
 export default function DashboardFinancial() {
-  const { language } = useTranslation();
+  const { t, language } = useTranslation();
   const l = LABELS[language];
+
+  const filterConfigs: FilterConfig[] = useMemo(() => [
+    {
+      key: "quarter",
+      label: t("filter.quarter"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        { value: "q1", label: "Q1" },
+        { value: "q2", label: "Q2" },
+        { value: "q3", label: "Q3" },
+        { value: "q4", label: "Q4" },
+      ],
+      defaultValue: "all",
+    },
+    {
+      key: "revenueType",
+      label: t("filter.revenueType"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        { value: "ticket", label: t("filter.ticket") },
+        { value: "operating", label: t("filter.operating") },
+      ],
+      defaultValue: "all",
+    },
+  ], [t]);
+
+  const { values: filterValues, onChange: onFilterChange, onReset: onFilterReset } = useFilterState(filterConfigs);
 
   const totalTicketRevenue = FINANCIAL_QUARTERLY.reduce((s, q) => s + q.ticketRevenue, 0);
   const totalOpRevenue = FINANCIAL_QUARTERLY.reduce((s, q) => s + q.opRevenue, 0);
@@ -195,6 +224,14 @@ export default function DashboardFinancial() {
             {l.dataAsOf} {l.dateValue}
           </p>
         </div>
+
+        <DashboardFilters
+          filters={filterConfigs}
+          values={filterValues}
+          onChange={onFilterChange}
+          onReset={onFilterReset}
+          onExport={() => {}}
+        />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <Card className="p-4">

@@ -27,6 +27,7 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 - Fully bilingual (Arabic RTL / English LTR)
 - Dark mode support
 - Collapsible sidebar navigation
+- Collapsible per-dashboard filter bars with dashboard-specific filters (date range, airport, airline, flight type, passenger type, etc.)
 - Global search, notifications, user preferences
 - Public landing page with platform overview
 - Username/password authentication

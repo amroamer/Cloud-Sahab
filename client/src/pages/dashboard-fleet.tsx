@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useTranslation } from "@/lib/i18n";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { DashboardFilters, useFilterState, type FilterConfig } from "@/components/dashboard-filters";
 import { Plane, ShieldCheck, Gauge, TrendingUp, TrendingDown } from "lucide-react";
 import {
   BarChart,
@@ -61,6 +63,35 @@ export default function DashboardFleet() {
   const { t, language } = useTranslation();
   const isAr = language === "ar";
 
+  const filterConfigs: FilterConfig[] = useMemo(() => [
+    {
+      key: "airline",
+      label: t("dashboard.airline"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        { value: "saudia", label: isAr ? "الخطوط السعودية" : "Saudia" },
+        { value: "flynas", label: isAr ? "طيران ناس" : "flynas" },
+        { value: "flyadeal", label: isAr ? "طيران أديل" : "flyadeal" },
+        { value: "riyadhair", label: isAr ? "طيران الرياض" : "Riyadh Air" },
+      ],
+      defaultValue: "all",
+    },
+    {
+      key: "aircraftCategory",
+      label: t("filter.aircraftCategory"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        { value: "narrowBody", label: t("filter.narrowBody") },
+        { value: "wideBody", label: t("filter.wideBody") },
+        { value: "regional", label: t("filter.regional") },
+        { value: "cargo", label: t("filter.cargoAc") },
+      ],
+      defaultValue: "all",
+    },
+  ], [t, isAr]);
+
+  const { values: filterValues, onChange: onFilterChange, onReset: onFilterReset } = useFilterState(filterConfigs);
+
   const totalFleet = TOTAL_FLEET_COMMERCIAL + TOTAL_FLEET_PRIVATE;
   const ageGaugePercent = Math.min((AVG_FLEET_AGE / 20) * 100, 100);
 
@@ -76,6 +107,14 @@ export default function DashboardFleet() {
             {isAr ? "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص" : "March 6, 2026, 08:00 AM"}
           </p>
         </div>
+
+        <DashboardFilters
+          filters={filterConfigs}
+          values={filterValues}
+          onChange={onFilterChange}
+          onReset={onFilterReset}
+          onExport={() => {}}
+        />
 
         <div className="grid gap-4 md:grid-cols-3">
           <Card className="p-5" data-testid="card-commercial-fleet">

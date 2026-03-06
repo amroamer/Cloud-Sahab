@@ -1,17 +1,10 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useTranslation } from "@/lib/i18n";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { DashboardFilters, useFilterState, type FilterConfig } from "@/components/dashboard-filters";
 import {
   Table,
   TableBody,
@@ -27,7 +20,6 @@ import {
   Armchair,
   Flag,
   DoorOpen,
-  Download,
   TrendingUp,
   TrendingDown,
 } from "lucide-react";
@@ -107,36 +99,72 @@ export default function DashboardPassengers() {
   const [trendView, setTrendView] = useState<"stacked" | "split">("stacked");
   const [pivotView, setPivotView] = useState<"airport" | "airline">("airport");
 
+  const filterConfigs: FilterConfig[] = useMemo(() => [
+    {
+      key: "dateRange",
+      label: t("dashboard.dateRange"),
+      options: [
+        { value: "ytd", label: t("dashboard.ytd") },
+        { value: "lastMonth", label: t("dashboard.lastMonth") },
+        { value: "lastQuarter", label: t("dashboard.lastQuarter") },
+        { value: "trailing12", label: t("dashboard.trailing12") },
+      ],
+      defaultValue: "ytd",
+    },
+    {
+      key: "airport",
+      label: t("dashboard.airport"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        ...AIRPORTS.map((a) => ({ value: a.code, label: language === "ar" ? a.nameAr : a.name })),
+      ],
+      defaultValue: "all",
+    },
+    {
+      key: "passengerType",
+      label: t("filter.passengerType"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        { value: "domestic", label: t("dashboard.domestic") },
+        { value: "international", label: t("dashboard.international") },
+        { value: "transit", label: t("filter.transit") },
+      ],
+      defaultValue: "all",
+    },
+    {
+      key: "travelClass",
+      label: t("filter.travelClass"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        { value: "economy", label: t("filter.economy") },
+        { value: "business", label: t("filter.business") },
+        { value: "first", label: t("filter.first") },
+      ],
+      defaultValue: "all",
+    },
+  ], [t, language]);
+
+  const { values: filterValues, onChange: onFilterChange, onReset: onFilterReset } = useFilterState(filterConfigs);
+
   return (
     <ScrollArea className="h-full">
       <div className="p-6 max-w-[1400px] mx-auto space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight" data-testid="text-passengers-title">
-              {t("nav.passengers")}
-            </h1>
-            <p className="text-sm text-muted-foreground mt-0.5">
-              {t("dashboard.dataAsOf")} {language === "ar" ? "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص" : "March 6, 2026, 08:00 AM"}
-            </p>
-          </div>
-          <div className="flex items-center gap-2 flex-wrap">
-            <Select defaultValue="ytd">
-              <SelectTrigger className="w-[160px]" data-testid="select-pax-date-range">
-                <SelectValue placeholder={t("dashboard.dateRange")} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="ytd">{t("dashboard.ytd")}</SelectItem>
-                <SelectItem value="lastMonth">{t("dashboard.lastMonth")}</SelectItem>
-                <SelectItem value="lastQuarter">{t("dashboard.lastQuarter")}</SelectItem>
-                <SelectItem value="trailing12">{t("dashboard.trailing12")}</SelectItem>
-              </SelectContent>
-            </Select>
-            <Button variant="secondary" size="sm" data-testid="button-export-passengers">
-              <Download className="h-3.5 w-3.5" />
-              {t("dashboard.export")}
-            </Button>
-          </div>
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight" data-testid="text-passengers-title">
+            {t("nav.passengers")}
+          </h1>
+          <p className="text-sm text-muted-foreground mt-0.5">
+            {t("dashboard.dataAsOf")} {language === "ar" ? "٦ مارس ٢٠٢٦، ٠٨:٠٠ ص" : "March 6, 2026, 08:00 AM"}
+          </p>
         </div>
+
+        <DashboardFilters
+          filters={filterConfigs}
+          values={filterValues}
+          onChange={onFilterChange}
+          onReset={onFilterReset}
+          onExport={() => {}}
+        />
 
         <div className="grid gap-4 md:grid-cols-3">
           <Card className="p-5">

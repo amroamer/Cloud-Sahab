@@ -1,17 +1,10 @@
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import { useTranslation } from "@/lib/i18n";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Progress } from "@/components/ui/progress";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { DashboardFilters, useFilterState, type FilterConfig } from "@/components/dashboard-filters";
 import {
   Table,
   TableBody,
@@ -26,7 +19,6 @@ import {
   Ruler,
   ParkingSquare,
   DoorOpen,
-  Download,
   MapPin,
   Layers,
   BarChart3,
@@ -67,7 +59,45 @@ const avgUtilization = Math.round(
 
 export default function DashboardAirports() {
   const { t, language } = useTranslation();
-  const [selectedAirport, setSelectedAirport] = useState("ALL");
+
+  const airportFilterConfigs: FilterConfig[] = useMemo(() => [
+    {
+      key: "airport",
+      label: t("dashboard.airport"),
+      options: [
+        { value: "ALL", label: language === "ar" ? "جميع المطارات" : "All Airports" },
+        ...AIRPORTS.map((a) => ({ value: a.code, label: language === "ar" ? a.nameAr : a.name })),
+      ],
+      defaultValue: "ALL",
+    },
+    {
+      key: "airportType",
+      label: t("filter.airportType"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        { value: "international", label: t("dashboard.international") },
+        { value: "regional", label: t("filter.regional") },
+        { value: "domestic", label: t("dashboard.domestic") },
+      ],
+      defaultValue: "all",
+    },
+    {
+      key: "region",
+      label: t("filter.region"),
+      options: [
+        { value: "all", label: t("dashboard.all") },
+        { value: "western", label: t("filter.western") },
+        { value: "central", label: t("filter.central") },
+        { value: "eastern", label: t("filter.eastern") },
+        { value: "southern", label: t("filter.southern") },
+        { value: "northern", label: t("filter.northern") },
+      ],
+      defaultValue: "all",
+    },
+  ], [t, language]);
+
+  const { values: airportFilterValues, onChange: onAirportFilterChange, onReset: onAirportFilterReset } = useFilterState(airportFilterConfigs);
+  const selectedAirport = airportFilterValues.airport;
 
   const airport = useMemo(
     () => AIRPORTS.find((a) => a.code === selectedAirport),
@@ -121,48 +151,29 @@ export default function DashboardAirports() {
   return (
     <ScrollArea className="h-full">
       <div className="p-6 max-w-[1400px] mx-auto space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <div>
-            <h1
-              className="text-2xl font-bold tracking-tight"
-              data-testid="text-airports-title"
-            >
-              {language === "ar"
-                ? "البنية التحتية للمطارات والسعة"
-                : "Airport Infrastructure & Capacity"}
-            </h1>
-            <p className="text-sm text-muted-foreground mt-0.5">
-              {language === "ar"
-                ? "نظرة شاملة على البنية التحتية والقدرة الاستيعابية للمطارات السعودية"
-                : "Comprehensive view of Saudi airport infrastructure and capacity"}
-            </p>
-          </div>
-          <div className="flex items-center gap-2 flex-wrap">
-            <Select value={selectedAirport} onValueChange={setSelectedAirport}>
-              <SelectTrigger className="w-[200px]" data-testid="select-airport-filter">
-                <SelectValue placeholder={t("dashboard.airport")} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="ALL">
-                  {language === "ar" ? "جميع المطارات" : "All Airports"}
-                </SelectItem>
-                {AIRPORTS.map((a) => (
-                  <SelectItem key={a.code} value={a.code}>
-                    {language === "ar" ? a.nameAr : a.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Button
-              variant="secondary"
-              size="sm"
-              data-testid="button-export-airports"
-            >
-              <Download className="h-3.5 w-3.5" />
-              {t("dashboard.export")}
-            </Button>
-          </div>
+        <div>
+          <h1
+            className="text-2xl font-bold tracking-tight"
+            data-testid="text-airports-title"
+          >
+            {language === "ar"
+              ? "البنية التحتية للمطارات والسعة"
+              : "Airport Infrastructure & Capacity"}
+          </h1>
+          <p className="text-sm text-muted-foreground mt-0.5">
+            {language === "ar"
+              ? "نظرة شاملة على البنية التحتية والقدرة الاستيعابية للمطارات السعودية"
+              : "Comprehensive view of Saudi airport infrastructure and capacity"}
+          </p>
         </div>
+
+        <DashboardFilters
+          filters={airportFilterConfigs}
+          values={airportFilterValues}
+          onChange={onAirportFilterChange}
+          onReset={onAirportFilterReset}
+          onExport={() => {}}
+        />
 
         <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
           {counterItems.map((item) => {

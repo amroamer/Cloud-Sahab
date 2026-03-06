@@ -45,3 +45,22 @@
 - **Air shipments**: Updated to 1.2M tonnes (from 852K) in shipments-by-mode
 - Passenger class/nationality distributions scaled to 128M base
 - All 10 dashboards automatically reflect updated data (single source of truth)
+
+### Phase 5: Dashboard Filter Bars (Complete)
+- Created shared `DashboardFilters` component (`client/src/components/dashboard-filters.tsx`) with collapsible/expandable filter bar using shadcn Collapsible
+- `useFilterState` hook for filter state management with reset capability
+- Active filter count badge, reset button, and export button in collapsed header
+- Added 30+ bilingual filter i18n keys (EN + AR) for all filter labels and options
+- Wired dashboard-specific filters into all 10 dashboards:
+  - **Overview**: Date Range, Granularity
+  - **Flight Operations**: Date Range, Airport, Airline, Flight Type
+  - **Passenger Intelligence**: Date Range, Airport, Passenger Type, Travel Class
+  - **Connectivity & Market**: Date Range, Airline Type
+  - **Airport Infrastructure**: Airport, Airport Type, Region
+  - **Cargo & Logistics**: Date Range, Airport, Flow Direction, Commodity
+  - **Financial & Economic**: Quarter, Revenue Type
+  - **Balance of Payments**: Quarter, Flow Type
+  - **Fleet & Aircraft**: Airline, Aircraft Category
+  - **Digital & Sustainability**: Date Range, Section Focus
+- Consistent placement: filter bar sits below page title, above charts on every dashboard
+- Replaced all inline Select/Button filter controls with unified DashboardFilters component
