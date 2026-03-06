@@ -21,8 +21,11 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 9. **Placeholder Pages** - Coming soon pages for Explorer, Self-Service, Reports, Catalog, API Portal, Notifications, Settings, and additional dashboards
 
 ## Authentication
-- Mock auth with credential validation
-- Users: amro/amro (Platform Admin, full access)
+- Mock auth with credential validation (client-side, no JWT)
+- 5 demo accounts:
+  - amro/amro (Platform Admin), executive/exec123 (GACA Executive), analyst/analyst123 (GACA Analyst), airline/airline123 (Airline Operator), admin/admin123 (Marketplace Admin)
+- 8 roles: Platform Admin, Marketplace Admin, GACA Executive, GACA Analyst, GACA Regulator, Airline Operator, Airport Operator, Investor/Analyst, Researcher
+- Role-based navigation filtering via `ROLE_ALLOWED_PATHS` in auth.tsx
 - Session stored in sessionStorage
 - Public routes: "/" (landing), "/login"
 - Protected routes: everything else (redirects to "/" if not authenticated)
@@ -46,8 +49,10 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 - `/dashboards/ajwaa-economic` - Economic & Regulatory Approvals (9 KPIs)
 - `/dashboards/ajwaa-providers` - Airport & Service-Provider Services (9 KPIs)
 - `/dashboards/ajwaa-eservices` - Ajwaa e-Service Performance (4 KPIs)
-- `/explorer`, `/self-service`, `/reports`, `/catalog`, `/api-portal` - Tool pages (authenticated)
-- `/notifications`, `/settings` - User pages (authenticated)
+- `/explorer` - Air Traffic Explorer (interactive analytical workspace)
+- `/guide` - User Guide & Use Cases (bilingual reference page)
+- `/self-service`, `/reports`, `/catalog`, `/api-portal` - Tool pages (authenticated, placeholder)
+- `/notifications`, `/settings` - User pages (authenticated, placeholder)
 
 ## File Structure
 ```
@@ -83,15 +88,25 @@ client/src/
     dashboard-ajwaa-economic.tsx   - Dashboard 13: Economic & Regulatory Approvals (9 KPIs)
     dashboard-ajwaa-providers.tsx  - Dashboard 14: Airport & Service-Provider Services (9 KPIs)
     dashboard-ajwaa-eservices.tsx  - Dashboard 15: Ajwaa e-Service Performance (4 KPIs)
+    explorer.tsx              - Air Traffic Explorer with dimension/metric/chart selectors
+    user-guide.tsx            - Bilingual user guide with dashboard descriptions, roles, FAQ
     placeholder.tsx           - Coming soon pages for unimplemented tool sections
     not-found.tsx             - 404 page
+  components/
+    chart-toolbar.tsx         - Reusable chart wrapper with fullscreen, PNG download, CSV export
 ```
 
 ## Design Tokens
 - Font: Inter (English) + Noto Sans Arabic (Arabic)
-- Primary color: Blue (210 hue) - aviation themed
-- Chart colors: Blue (210), Teal (185), Orange (28), Purple (280), Pink (340)
-- Dark mode: Full support with semantic color tokens
+- GACA Navy design system:
+  - Primary Navy: #1B3A5C (210 53% 23%)
+  - Accent Blue: #2E86C1 (207 62% 47%)
+  - Teal Green: #1ABC9C (168 74% 42%)
+  - Warning Amber: #F39C12 (37 90% 51%)
+  - Alert Red: #E74C3C (6 78% 57%)
+- Chart colors: Navy, Teal, Blue, Amber, Red
+- Dark mode: Full support with navy-based dark tokens
+- Sidebar: Dark navy background with teal accent highlights
 
 ## Important Notes
 - Do NOT add hover:bg-* classes to buttons or badges; elevation system is automatic

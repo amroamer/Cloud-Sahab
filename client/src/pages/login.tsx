@@ -1,12 +1,19 @@
 import { useState } from "react";
 import { useTranslation } from "@/lib/i18n";
-import { useAuth } from "@/lib/auth";
+import { useAuth, DEMO_ACCOUNTS } from "@/lib/auth";
 import { useTheme } from "@/lib/theme";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Plane,
   Cloud,
@@ -18,6 +25,7 @@ import {
   Loader2,
   Shield,
   ArrowLeft,
+  Users,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation, Link } from "wouter";
@@ -49,6 +57,14 @@ export default function LoginPage() {
       setError(t("login.error"));
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleDemoSelect = (value: string) => {
+    const account = DEMO_ACCOUNTS.find((a) => a.username === value);
+    if (account) {
+      setUsername(account.username);
+      setPassword(account.password);
     }
   };
 
@@ -154,6 +170,25 @@ export default function LoginPage() {
           <div className="mb-8">
             <h2 className="text-2xl font-bold tracking-tight" data-testid="text-login-title">{t("login.title")}</h2>
             <p className="text-sm text-muted-foreground mt-1.5">{t("login.subtitle")}</p>
+          </div>
+
+          <div className="mb-5">
+            <Label className="text-xs text-muted-foreground mb-1.5 block">
+              <Users className="h-3.5 w-3.5 inline-block mr-1.5" />
+              {language === "ar" ? "حسابات تجريبية" : "Demo Accounts"}
+            </Label>
+            <Select onValueChange={handleDemoSelect} data-testid="select-demo-account">
+              <SelectTrigger data-testid="select-demo-trigger">
+                <SelectValue placeholder={language === "ar" ? "اختر حساب تجريبي..." : "Select a demo account..."} />
+              </SelectTrigger>
+              <SelectContent>
+                {DEMO_ACCOUNTS.map((account) => (
+                  <SelectItem key={account.username} value={account.username} data-testid={`select-demo-${account.username}`}>
+                    {language === "ar" ? account.labelAr : account.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">

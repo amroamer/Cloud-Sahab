@@ -8,7 +8,8 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { TopNav } from "@/components/top-nav";
 import { I18nProvider } from "@/lib/i18n";
 import { ThemeProvider } from "@/lib/theme";
-import { AuthProvider, useAuth } from "@/lib/auth";
+import { AuthProvider, useAuth, isPathAllowed, type UserRole } from "@/lib/auth";
+import { useLocation as useWouterLocation } from "wouter";
 import NotFound from "@/pages/not-found";
 import LandingPage from "@/pages/landing";
 import LoginPage from "@/pages/login";
@@ -28,11 +29,24 @@ import DashboardAjwaaPermits from "@/pages/dashboard-ajwaa-permits";
 import DashboardAjwaaEconomic from "@/pages/dashboard-ajwaa-economic";
 import DashboardAjwaaProviders from "@/pages/dashboard-ajwaa-providers";
 import DashboardAjwaaEservices from "@/pages/dashboard-ajwaa-eservices";
+import ExplorerPage from "@/pages/explorer";
+import UserGuidePage from "@/pages/user-guide";
 import { PlaceholderPage } from "@/pages/placeholder";
 import { Redirect } from "wouter";
 
+function RoleGuard({ children }: { children: React.ReactNode }) {
+  const { user } = useAuth();
+  const [location] = useWouterLocation();
+  if (!user) return <Redirect to="/" />;
+  if (!isPathAllowed(user.role as UserRole, location)) {
+    return <Redirect to="/home" />;
+  }
+  return <>{children}</>;
+}
+
 function AuthenticatedRouter() {
   return (
+    <RoleGuard>
     <Switch>
       <Route path="/home" component={HomePage} />
       <Route path="/dashboards/overview" component={DashboardOverview} />
@@ -50,7 +64,8 @@ function AuthenticatedRouter() {
       <Route path="/dashboards/ajwaa-economic" component={DashboardAjwaaEconomic} />
       <Route path="/dashboards/ajwaa-providers" component={DashboardAjwaaProviders} />
       <Route path="/dashboards/ajwaa-eservices" component={DashboardAjwaaEservices} />
-      <Route path="/explorer">{() => <PlaceholderPage path="/explorer" />}</Route>
+      <Route path="/explorer" component={ExplorerPage} />
+      <Route path="/guide" component={UserGuidePage} />
       <Route path="/self-service">{() => <PlaceholderPage path="/self-service" />}</Route>
       <Route path="/reports">{() => <PlaceholderPage path="/reports" />}</Route>
       <Route path="/catalog">{() => <PlaceholderPage path="/catalog" />}</Route>
@@ -59,6 +74,7 @@ function AuthenticatedRouter() {
       <Route path="/settings">{() => <PlaceholderPage path="/settings" />}</Route>
       <Route component={NotFound} />
     </Switch>
+    </RoleGuard>
   );
 }
 

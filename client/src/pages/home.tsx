@@ -23,6 +23,9 @@ import {
   TrendingUp,
   LayoutDashboard,
   Plane,
+  Sun,
+  Sunset,
+  Moon,
 } from "lucide-react";
 
 const alertsData = [
@@ -72,6 +75,26 @@ const favorites = [
   { id: "3", title: "Traffic Explorer", titleAr: "مستكشف الحركة", type: "Analysis", icon: BarChart3, href: "/explorer" },
 ];
 
+function getGreeting(language: string): { text: string; icon: typeof Sun } {
+  const hour = new Date().getHours();
+  if (hour < 12) {
+    return {
+      text: language === "ar" ? "صباح الخير" : "Good morning",
+      icon: Sun,
+    };
+  } else if (hour < 18) {
+    return {
+      text: language === "ar" ? "مساء الخير" : "Good afternoon",
+      icon: Sunset,
+    };
+  } else {
+    return {
+      text: language === "ar" ? "مساء الخير" : "Good evening",
+      icon: Moon,
+    };
+  }
+}
+
 export default function HomePage() {
   const { t, language } = useTranslation();
   const { user } = useAuth();
@@ -95,6 +118,9 @@ export default function HomePage() {
   };
 
   const userName = language === "ar" ? user?.nameAr : user?.name;
+  const greeting = getGreeting(language);
+  const GreetingIcon = greeting.icon;
+  const orgName = language === "ar" ? user?.organizationAr : user?.organization;
 
   return (
     <ScrollArea className="h-full">
@@ -102,10 +128,19 @@ export default function HomePage() {
         <div className="rounded-lg bg-gradient-to-r from-primary/10 via-primary/5 to-transparent p-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-              <h1 className="text-2xl font-bold tracking-tight" data-testid="text-welcome">
-                {t("home.welcome")}, {userName?.split(" ")[0]}
-              </h1>
-              <p className="text-sm text-muted-foreground mt-1">
+              <div className="flex items-center gap-2 mb-1">
+                <GreetingIcon className="h-5 w-5 text-primary" />
+                <h1 className="text-2xl font-bold tracking-tight" data-testid="text-welcome">
+                  {greeting.text}, {userName?.split(" ")[0]}
+                </h1>
+              </div>
+              <div className="flex items-center gap-2 mt-1.5">
+                <Badge variant="secondary" className="text-xs" data-testid="badge-role">
+                  {user?.role}
+                </Badge>
+                <span className="text-xs text-muted-foreground">{orgName}</span>
+              </div>
+              <p className="text-sm text-muted-foreground mt-2">
                 {language === "ar" ? "٦ مارس ٢٠٢٦ - ٦ رمضان ١٤٤٧" : "March 6, 2026 - 6 Ramadan 1447"}
               </p>
             </div>
@@ -128,7 +163,7 @@ export default function HomePage() {
             sparklineData={[62, 65, 68, 71, 73, 75, 72, 78, 80, 82, 85, 87]}
             href="/dashboards/overview"
             icon={<Globe className="h-5 w-5" />}
-            color="210 85% 42%"
+            color="210 53% 23%"
           />
           <KpiCard
             title={t("kpi.travelers")}
@@ -139,7 +174,7 @@ export default function HomePage() {
             sparklineData={[5.8, 6.2, 7.1, 8.5, 9.2, 10.1, 11.2, 10.8, 9.5, 11.5, 12.1, 12.4]}
             href="/dashboards/overview"
             icon={<Users className="h-5 w-5" />}
-            color="185 75% 38%"
+            color="168 74% 42%"
           />
           <KpiCard
             title={t("kpi.cargo")}
@@ -150,7 +185,7 @@ export default function HomePage() {
             sparklineData={[55, 58, 62, 68, 72, 75, 71, 78, 82, 85, 88, 92]}
             href="/dashboards/overview"
             icon={<Package className="h-5 w-5" />}
-            color="28 85% 48%"
+            color="207 62% 47%"
           />
         </div>
 

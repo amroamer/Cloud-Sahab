@@ -36,12 +36,16 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 
 ### Platform Features
 - Fully bilingual (Arabic RTL / English LTR)
-- Dark mode support
-- Collapsible sidebar navigation
+- Dark mode support with GACA Navy design system (`#1B3A5C` primary, `#2E86C1` accent, `#1ABC9C` teal)
+- Role-based access control with 8 user roles and role-filtered sidebar navigation
+- Collapsible sidebar navigation with role-aware menu items
 - Collapsible per-dashboard filter bars with dashboard-specific filters (date range, airport, airline, flight type, passenger type, etc.)
+- Air Traffic Explorer — interactive analytical workspace with dimension/metric selectors and 6 chart types
+- Chart toolbar — hover to reveal fullscreen, download PNG, and export CSV on any chart
+- User Guide — bilingual reference page with platform overview, dashboard descriptions, role access, FAQ
 - Global search, notifications, user preferences
 - Public landing page with platform overview
-- Username/password authentication
+- Multi-user authentication with demo accounts
 
 ## Tech Stack
 - **Frontend**: React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Recharts, Framer Motion
@@ -70,6 +74,8 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 | `/dashboards/ajwaa-economic` | Auth | Economic & Regulatory Approvals |
 | `/dashboards/ajwaa-providers` | Auth | Airport & Service-Provider Services |
 | `/dashboards/ajwaa-eservices` | Auth | Ajwaa e-Service Performance |
+| `/explorer` | Auth | Air Traffic Explorer |
+| `/guide` | Auth | User Guide & Use Cases |
 
 ## Running
 ```bash
@@ -78,4 +84,13 @@ npm run dev
 Starts Express backend and Vite frontend on port 5000.
 
 ## Authentication
-- Username: `amro` / Password: `amro` (Platform Admin, full access)
+| Username | Password | Role | Access |
+|----------|----------|------|--------|
+| `amro` | `amro` | Platform Admin | Full access |
+| `executive` | `exec123` | GACA Executive | All dashboards, reports, catalog |
+| `analyst` | `analyst123` | GACA Analyst | All dashboards, explorer, self-service, reports |
+| `airline` | `airline123` | Airline Operator | Filtered dashboards, reports, catalog, API |
+| `admin` | `admin123` | Marketplace Admin | Full access |
+
+### Additional Roles (assignable)
+- GACA Regulator, Airport Operator, Investor/Analyst, Researcher

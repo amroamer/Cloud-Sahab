@@ -77,3 +77,38 @@
 - New "Ajwaa Services" collapsible sidebar section with 5 sub-items
 - All 5 dashboards include collapsible filter bars with dashboard-specific filters using shared DashboardFilters component
 - Filters: License Category, Application Type, Permit Type, Operator Type, License Type, Sector, Provider Category, Service Type, Service Group
+
+### Phase 7: Design System, RBAC, Explorer & Chart Toolbar (Complete)
+- **Design System Update**: Replaced blue palette with GACA Navy design system
+  - Primary Navy `#1B3A5C` (HSL 210 53% 23%), Accent Blue `#2E86C1` (207 62% 47%), Teal `#1ABC9C` (168 74% 42%)
+  - Navy sidebar with teal accent highlights, white card backgrounds
+  - Updated chart colors to navy/teal/blue/amber/red palette
+  - Full dark mode support with adjusted navy-based dark tokens
+- **Role-Based Access Control**: 8 user roles with 5 demo accounts
+  - Roles: Platform Admin, Marketplace Admin, GACA Executive, GACA Analyst, GACA Regulator, Airline Operator, Airport Operator, Investor/Analyst, Researcher
+  - Demo accounts: amro/amro, executive/exec123, analyst/analyst123, airline/airline123, admin/admin123
+  - Role→navigation path mapping with `isPathAllowed()` utility
+  - Login page demo account selector dropdown for quick access
+- **Role-Based Sidebar Filtering**: Sidebar items filtered by role
+  - Internal roles see all dashboards; external roles see filtered dashboards
+  - External users see "Data Marketplace" instead of "Catalog" with shopping bag icon
+  - User Guide link added to sidebar under System section
+- **Enhanced Home Screen**: Dynamic welcome banner
+  - Time-of-day greeting (Good morning/afternoon/evening) with icon
+  - User role badge and organization name displayed
+  - Updated KPI card colors to match new palette
+- **Air Traffic Explorer** (`/explorer`): Interactive analytical workspace
+  - Three-panel layout: Dimensions (left), Chart Canvas (center), Metrics (right)
+  - 4 dimensions: Month, Airport, Airline, Flight Type
+  - 6 metrics: Passengers, Flights, Cargo, Load Factor, OTP, Revenue
+  - 6 chart types: Bar, Stacked Bar, Line, Area, Pie, Donut
+  - Uses existing mock data from `mock-data.ts`
+  - Chart toolbar integration with fullscreen, PNG download, CSV export
+- **Chart Toolbar Component** (`client/src/components/chart-toolbar.tsx`): Reusable wrapper
+  - Appears on hover over any chart card
+  - Fullscreen mode (dialog/modal), Download PNG (html2canvas), Export CSV
+  - Integrated into Explorer page
+- **User Guide** (`/guide`): Bilingual reference page
+  - Sections: Platform Overview, Navigation Guide, Dashboard Descriptions (all 15), User Roles & Access, Using Filters, Explorer Guide, FAQ
+  - Table of contents with anchor links
+  - All content available in English and Arabic
