@@ -50,7 +50,7 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 - `/dashboards/ajwaa-providers` - Airport & Service-Provider Services (9 KPIs)
 - `/dashboards/ajwaa-eservices` - Ajwaa e-Service Performance (4 KPIs)
 - `/guide` - User Guide & Use Cases (bilingual reference page)
-- `/catalog` - Aviation Data Products (live revenue ticker, revenue KPIs + product revenue table with drill-down for admins, 32 products with faceted filters)
+- `/catalog` - Data Product Catalog (live sales ticker, revenue KPIs + product revenue table with drill-down for admins, 32 products with faceted filters)
 - `/catalog/:productId` - Product Detail Page (schema, preview, reviews, versions)
 - `/airport-pulse` - Airport Pulse View (29 airports as breathing circles on Leaflet map)
 - `/hajj-umrah` - Hajj & Umrah Live Operations (countdown, congestion heatmap, capacity gauges)
@@ -58,9 +58,9 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 - `/war-room` - Vision 2030 War Room (target tracking, scenario modeling sliders)
 - `/fifa-2034` - FIFA 2034 Readiness Tracker (host city readiness, infrastructure timelines)
 - `/investor` - Investor Intelligence (Bloomberg-style market dashboard, competitive benchmarking)
-- `/data-products` - Data Products Storefront (e-commerce catalog with hero banner, category tabs, faceted filters, Add to Cart for external users)
+- `/data-products` - Data Marketplace Storefront (e-commerce catalog with hero banner, category tabs, faceted filters, Add to Cart for external users)
 - `/cart` - Shopping Cart (item management, promo codes, VAT, mock checkout with order confirmation)
-- `/revenue-tracker` - Data Products Revenue Tracker (8 KPI cards, revenue trend chart, category donut, buyer type bars, product performance table with drill-down, buyer leaderboard, calendar heatmap, targets/forecasting, export/reporting)
+- `/revenue-tracker` - Revenue Analytics Dashboard (8 KPI cards, revenue trend chart, category donut, buyer type bars, product performance table with drill-down, buyer leaderboard, calendar heatmap, targets/forecasting, export/reporting)
 - `/anomalies` - Anomaly Detection (severity-based anomaly feed, root-cause narratives)
 - `/transparency` - Public Transparency Dashboard (no login required, KPIs, rankings, trends)
 - `/seasonal-calendar` - Seasonal Pattern Calendar (12-month color-coded calendar, event overlays)
@@ -120,7 +120,7 @@ client/src/
     transparency.tsx          - Public Transparency Dashboard (no auth)
     seasonal-calendar.tsx     - Seasonal Pattern Calendar
     explorer.tsx              - Air Traffic Explorer with dimension/metric/chart selectors
-    catalog.tsx               - Data Marketplace browser with filters, search, category tabs
+    catalog.tsx               - Data Product Catalog with filters, search, category tabs
     catalog-detail.tsx        - Product detail page with schema, preview, reviews, versions
     user-guide.tsx            - Bilingual user guide with dashboard descriptions, roles, FAQ
     placeholder.tsx           - Coming soon pages for unimplemented tool sections

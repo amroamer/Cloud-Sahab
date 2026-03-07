@@ -445,12 +445,12 @@ export default function CatalogPage() {
         <div className="p-6 max-w-[1400px] mx-auto w-full space-y-6">
           <div>
             <h1 className="text-2xl font-bold tracking-tight" data-testid="text-catalog-title">
-              {language === "ar" ? "متتبع إيرادات منتجات البيانات" : "Data Products Revenue Tracker"}
+              {language === "ar" ? "كتالوج منتجات البيانات" : "Data Product Catalog"}
             </h1>
             <p className="text-sm text-muted-foreground mt-1">
               {language === "ar"
-                ? "مراقبة أداء المبيعات وإيرادات سوق البيانات"
-                : "Monitor sales performance and data marketplace revenue"}
+                ? "تصفح وابحث في جميع منتجات البيانات المتاحة"
+                : "Browse and search all available data products"}
             </p>
           </div>
 
