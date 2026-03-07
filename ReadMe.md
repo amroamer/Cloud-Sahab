@@ -41,6 +41,7 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 - Collapsible sidebar navigation with role-aware menu items
 - Info tooltip icons on every KPI card, chart, and table section across all 15 dashboards with bilingual descriptions
 - Collapsible per-dashboard filter bars with dashboard-specific filters (date range, airport, airline, flight type, passenger type, etc.)
+- Sidebar navigation restructured: Dashboards, Ajwaa e-Services, Data Marketplace (collapsible with Aviation Data Products + Investor Intelligence), Tools (9 operational tools), System
 - Route Map — interactive geographic visualization of airline routes from Saudi airports to worldwide destinations with Leaflet
 - Airport Pulse View — real-time Leaflet map (CartoDB tiles, light/dark auto-switch) of Saudi Arabia with 29 breathing circle markers representing airports, color-coded by congestion status (green/amber/red), sized by traffic volume, with hover tooltips and detail drawers
 - Air Traffic Explorer — interactive analytical workspace with dimension/metric selectors and 6 chart types
@@ -87,7 +88,6 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 | `/dashboards/ajwaa-economic` | Auth | Economic & Regulatory Approvals |
 | `/dashboards/ajwaa-providers` | Auth | Airport & Service-Provider Services |
 | `/dashboards/ajwaa-eservices` | Auth | Ajwaa e-Service Performance |
-| `/explorer` | Auth | Air Traffic Explorer |
 | `/route-map` | Auth | Route Map |
 | `/airport-pulse` | Auth | Airport Pulse View |
 | `/catalog` | Auth | Data Marketplace |

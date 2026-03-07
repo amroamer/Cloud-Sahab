@@ -185,6 +185,15 @@
   - Fully bilingual (EN/AR), RTL-compatible, dark mode support
   - Files: `route-map.tsx`, `mock-data.ts` (AIRLINE_ROUTES), `App.tsx`, `app-sidebar.tsx`, `auth.tsx`, `i18n.tsx`, `dashboard-connectivity.tsx`
 
+### Phase 14: Sidebar Reorganization & Page Cleanup (Complete)
+- **Sidebar restructured** into 5 groups: Home, Dashboards (10 items), Ajwaa e-Services (5 items), Data Marketplace (2 items: Aviation Data Products + Investor Intelligence), Tools (9 items: AI Copilot, Airport Pulse, Hajj & Umrah, Vision 2030 War Room, FIFA 2034 Tracker, Route Map, Seasonal Calendar, Anomaly Detection, API Portal), System (Notifications, Settings, User Guide)
+- **Data Marketplace** promoted to its own collapsible sidebar group with Aviation Data Products (catalog) and Investor Intelligence as sub-items
+- **Removed pages**: Explorer (`/explorer`), Self-Service (`/self-service`), Reports (`/reports`) removed from sidebar, routing, and role permissions
+- **Hajj & Umrah, War Room, FIFA 2034** moved from Dashboards group to Tools group
+- Auth roles updated: removed `/explorer`, `/self-service`, `/reports` from all ROLE_ALLOWED_PATHS
+- i18n: added `nav.aviationDataProducts` (EN: "Aviation Data Products", AR: "منتجات بيانات الطيران")
+- Files modified: `app-sidebar.tsx`, `App.tsx`, `auth.tsx`, `i18n.tsx`, `ReadMe.md`, `Progress.md`, `replit.md`
+
 ### Phase 13: 10 New Pages & Components (Complete)
 - **Hajj & Umrah Live Operations** (`/hajj-umrah`): Countdown to peak Hajj day, pilgrims arrived vs. expected progress by nationality (top 10 countries), 29-airport congestion heatmap grid, airline capacity vs. demand gauge cards (6 airlines), predictive congestion alerts table (6-hour lookahead), refresh data button
 - **AI Regulatory Copilot** (`/copilot`): Chat-style UI with message bubbles, 11 pre-built English Q&A pairs + 5 Arabic Q&A pairs, pattern-matched responses, suggested question chips, follow-up suggestions, embedded mock charts and tables in responses, typing indicator animation, new chat button

@@ -29,7 +29,6 @@ import DashboardAjwaaPermits from "@/pages/dashboard-ajwaa-permits";
 import DashboardAjwaaEconomic from "@/pages/dashboard-ajwaa-economic";
 import DashboardAjwaaProviders from "@/pages/dashboard-ajwaa-providers";
 import DashboardAjwaaEservices from "@/pages/dashboard-ajwaa-eservices";
-import ExplorerPage from "@/pages/explorer";
 import UserGuidePage from "@/pages/user-guide";
 import CatalogPage from "@/pages/catalog";
 import CatalogDetailPage from "@/pages/catalog-detail";
@@ -77,7 +76,6 @@ function AuthenticatedRouter() {
       <Route path="/dashboards/ajwaa-providers" component={DashboardAjwaaProviders} />
       <Route path="/dashboards/ajwaa-eservices" component={DashboardAjwaaEservices} />
       <Route path="/copilot" component={CopilotPage} />
-      <Route path="/explorer" component={ExplorerPage} />
       <Route path="/route-map" component={RouteMapPage} />
       <Route path="/airport-pulse" component={AirportPulsePage} />
       <Route path="/hajj-umrah" component={HajjUmrahPage} />
@@ -87,8 +85,6 @@ function AuthenticatedRouter() {
       <Route path="/fifa-2034" component={Fifa2034Page} />
       <Route path="/investor" component={InvestorPage} />
       <Route path="/guide" component={UserGuidePage} />
-      <Route path="/self-service">{() => <PlaceholderPage path="/self-service" />}</Route>
-      <Route path="/reports">{() => <PlaceholderPage path="/reports" />}</Route>
       <Route path="/catalog/:productId" component={CatalogDetailPage} />
       <Route path="/catalog" component={CatalogPage} />
       <Route path="/api-portal">{() => <PlaceholderPage path="/api-portal" />}</Route>

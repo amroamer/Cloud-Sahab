@@ -3,20 +3,15 @@ import { useTranslation } from "@/lib/i18n";
 import { useAuth, isPathAllowed, isInternalRole, type UserRole } from "@/lib/auth";
 import {
   Home,
-  LayoutDashboard,
   Globe,
-  BarChart3,
-  FileText,
   Code,
   Bell,
   Settings,
   Plane,
   Cloud,
   Building2,
-  TrendingUp,
   Map,
   Package,
-  Shield,
   ChevronDown,
   Navigation,
   Users,
@@ -24,7 +19,6 @@ import {
   Scale,
   Leaf,
   Radar,
-  ClipboardCheck,
   Award,
   FileCheck,
   Landmark,
@@ -85,9 +79,6 @@ export function AppSidebar() {
     { title: t("nav.bop"), url: "/dashboards/bop", icon: Scale },
     { title: t("nav.fleet"), url: "/dashboards/fleet", icon: Plane },
     { title: t("nav.digital"), url: "/dashboards/digital", icon: Leaf },
-    { title: t("nav.hajjUmrah"), url: "/hajj-umrah", icon: Landmark },
-    { title: t("nav.warRoom"), url: "/war-room", icon: Target },
-    { title: t("nav.fifa2034"), url: "/fifa-2034", icon: Trophy },
   ];
 
   const ajwaaItems: NavItem[] = [
@@ -102,21 +93,21 @@ export function AppSidebar() {
     { title: t("nav.home"), url: "/home", icon: Home },
   ];
 
-  const catalogLabel = t("nav.dataMarketplace");
-  const catalogIcon = ShoppingBag;
+  const marketplaceItems: NavItem[] = [
+    { title: t("nav.aviationDataProducts"), url: "/catalog", icon: ShoppingBag },
+    { title: t("nav.investor"), url: "/investor", icon: Briefcase },
+  ];
 
   const toolItems: NavItem[] = [
-    { title: t("nav.explorer"), url: "/explorer", icon: BarChart3 },
-    { title: t("nav.routeMap"), url: "/route-map", icon: Navigation },
-    { title: t("nav.airportPulse"), url: "/airport-pulse", icon: Activity },
     { title: t("nav.copilot"), url: "/copilot", icon: Bot },
-    { title: t("nav.selfService"), url: "/self-service", icon: TrendingUp },
-    { title: t("nav.reports"), url: "/reports", icon: FileText },
-    { title: catalogLabel, url: "/catalog", icon: catalogIcon },
-    { title: t("nav.api"), url: "/api-portal", icon: Code },
+    { title: t("nav.airportPulse"), url: "/airport-pulse", icon: Activity },
+    { title: t("nav.hajjUmrah"), url: "/hajj-umrah", icon: Landmark },
+    { title: t("nav.warRoom"), url: "/war-room", icon: Target },
+    { title: t("nav.fifa2034"), url: "/fifa-2034", icon: Trophy },
+    { title: t("nav.routeMap"), url: "/route-map", icon: Navigation },
     { title: t("nav.seasonalCalendar"), url: "/seasonal-calendar", icon: CalendarDays },
     { title: t("nav.anomalies"), url: "/anomalies", icon: AlertTriangle },
-    { title: t("nav.investor"), url: "/investor", icon: Briefcase },
+    { title: t("nav.api"), url: "/api-portal", icon: Code },
   ];
 
   const systemItems: NavItem[] = [
@@ -127,6 +118,7 @@ export function AppSidebar() {
 
   const filteredDashboards = filterByRole(dashboardItems, role);
   const filteredAjwaa = filterByRole(ajwaaItems, role);
+  const filteredMarketplace = filterByRole(marketplaceItems, role);
   const filteredTools = filterByRole(toolItems, role);
   const filteredSystem = filterByRole(systemItems, role);
   const showDashboards = filteredDashboards.length > 0;
@@ -225,6 +217,42 @@ export function AppSidebar() {
                             <SidebarMenuSubButton
                               asChild
                               data-active={location === item.url}
+                            >
+                              <Link href={item.url} data-testid={`link-nav-${item.url.replace(/\//g, "-")}`}>
+                                <item.icon className="h-3.5 w-3.5" />
+                                <span>{item.title}</span>
+                              </Link>
+                            </SidebarMenuSubButton>
+                          </SidebarMenuSubItem>
+                        ))}
+                      </SidebarMenuSub>
+                    </SidebarMenuItem>
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </CollapsibleContent>
+            </Collapsible>
+          </SidebarGroup>
+        )}
+
+        {filteredMarketplace.length > 0 && (
+          <SidebarGroup>
+            <Collapsible defaultOpen className="group/marketplace">
+              <SidebarGroupLabel asChild>
+                <CollapsibleTrigger className="flex w-full items-center justify-between gap-1">
+                  {t("nav.dataMarketplace")}
+                  <ChevronDown className="h-3.5 w-3.5 transition-transform group-data-[state=open]/marketplace:rotate-180" />
+                </CollapsibleTrigger>
+              </SidebarGroupLabel>
+              <CollapsibleContent>
+                <SidebarGroupContent>
+                  <SidebarMenu>
+                    <SidebarMenuItem>
+                      <SidebarMenuSub>
+                        {filteredMarketplace.map((item) => (
+                          <SidebarMenuSubItem key={item.url}>
+                            <SidebarMenuSubButton
+                              asChild
+                              data-active={location === item.url || location.startsWith(item.url + "/")}
                             >
                               <Link href={item.url} data-testid={`link-nav-${item.url.replace(/\//g, "-")}`}>
                                 <item.icon className="h-3.5 w-3.5" />

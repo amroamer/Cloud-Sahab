@@ -49,7 +49,6 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 - `/dashboards/ajwaa-economic` - Economic & Regulatory Approvals (9 KPIs)
 - `/dashboards/ajwaa-providers` - Airport & Service-Provider Services (9 KPIs)
 - `/dashboards/ajwaa-eservices` - Ajwaa e-Service Performance (4 KPIs)
-- `/explorer` - Air Traffic Explorer (interactive analytical workspace)
 - `/guide` - User Guide & Use Cases (bilingual reference page)
 - `/catalog` - Data Marketplace (32 products, faceted filters, universal download)
 - `/catalog/:productId` - Product Detail Page (schema, preview, reviews, versions)
@@ -62,7 +61,7 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 - `/anomalies` - Anomaly Detection (severity-based anomaly feed, root-cause narratives)
 - `/transparency` - Public Transparency Dashboard (no login required, KPIs, rankings, trends)
 - `/seasonal-calendar` - Seasonal Pattern Calendar (12-month color-coded calendar, event overlays)
-- `/self-service`, `/reports`, `/api-portal` - Tool pages (authenticated, placeholder)
+- `/api-portal` - API Portal (authenticated, placeholder)
 - `/notifications`, `/settings` - User pages (authenticated, placeholder)
 
 ## File Structure
@@ -83,7 +82,7 @@ client/src/
     anomaly-data.ts       - Anomaly detection mock data with root-cause narratives
     seasonal-data.ts      - Seasonal calendar patterns, event overlays, traffic forecasts
   components/
-    app-sidebar.tsx       - Navigation sidebar with collapsible dashboard sub-menu
+    app-sidebar.tsx       - Navigation sidebar with collapsible groups (Dashboards, Ajwaa, Data Marketplace, Tools, System)
     top-nav.tsx           - Top navigation bar (search, notifications, language, theme, user)
     kpi-card.tsx          - Reusable KPI metric card with sparkline chart
     dashboard-filters.tsx - Shared collapsible filter bar component + useFilterState hook

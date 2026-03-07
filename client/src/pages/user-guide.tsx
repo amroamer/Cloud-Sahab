@@ -5,7 +5,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   BookOpen,
   LayoutDashboard,
-  BarChart3,
   Users,
   Shield,
   Filter,
@@ -95,14 +94,6 @@ const GUIDE_SECTIONS: Section[] = [
     icon: Info,
     contentEn: "Every KPI card, chart, and table section across all 15 dashboards includes a small info icon (i). Hover over it to see a brief description of what that component measures, its data source, and its relevance. Tooltips are available in both English and Arabic and help users quickly understand each metric without leaving the dashboard.",
     contentAr: "يتضمن كل بطاقة مؤشر أداء رئيسي ورسم بياني وقسم جدول عبر جميع لوحات المعلومات الـ 15 رمز معلومات صغير (i). مرر فوقه لرؤية وصف موجز لما يقيسه هذا المكون ومصدر بياناته وأهميته. التلميحات متاحة باللغتين العربية والإنجليزية وتساعد المستخدمين على فهم كل مقياس بسرعة دون مغادرة لوحة المعلومات.",
-  },
-  {
-    id: "explorer",
-    titleEn: "Explorer Guide",
-    titleAr: "دليل المستكشف",
-    icon: BarChart3,
-    contentEn: "The Air Traffic Explorer is your analytical workspace for custom data exploration. Select a Dimension (Month, Airport, Airline, or Flight Type) from the left panel to define your X-axis. Choose one or more Metrics (Passengers, Flights, Cargo, Load Factor, OTP, Revenue) from the right panel. Pick a Chart Type from the toolbar (Bar, Stacked Bar, Line, Area, Pie, or Donut). Charts can be downloaded as PNG or data exported as CSV using the toolbar that appears on hover.",
-    contentAr: "مستكشف حركة الطيران هو مساحة العمل التحليلية لاستكشاف البيانات المخصصة. اختر بُعداً (الشهر، المطار، شركة الطيران، أو نوع الرحلة) من اللوحة اليسرى لتحديد المحور السيني. اختر مقياساً واحداً أو أكثر من اللوحة اليمنى. اختر نوع الرسم البياني من شريط الأدوات. يمكن تحميل الرسوم البيانية كصورة PNG أو تصدير البيانات كملف CSV.",
   },
   {
     id: "route-map",
