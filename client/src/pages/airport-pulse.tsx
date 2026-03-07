@@ -6,7 +6,6 @@ import { Card } from "@/components/ui/card";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { TrendingUp, TrendingDown, Minus, Terminal } from "lucide-react";
 import { SectionTooltip } from "@/components/section-tooltip";
-import saudiMapBg from "@assets/image_1772847725299.png";
 
 const STATUS_CONFIG: Record<PulseStatus, { label: string; labelAr: string; color: string; bg: string }> = {
   flowing: { label: "Flowing", labelAr: "سلس", color: "#10B981", bg: "rgba(16,185,129,0.15)" },
@@ -24,15 +23,10 @@ function TrendIcon({ trend }: { trend: number }) {
   return <Minus className="w-3 h-3" />;
 }
 
-const IMG_LAT_MIN = 10.5;
-const IMG_LAT_MAX = 37.5;
-const IMG_LON_MIN = 26.0;
-const IMG_LON_MAX = 68.0;
-
-const LAT_MIN = IMG_LAT_MIN;
-const LAT_MAX = IMG_LAT_MAX;
-const LON_MIN = IMG_LON_MIN;
-const LON_MAX = IMG_LON_MAX;
+const LAT_MIN = 16.0;
+const LAT_MAX = 32.5;
+const LON_MIN = 34.5;
+const LON_MAX = 51.0;
 
 function latLonToSvg(lat: number, lon: number, width: number, height: number): { x: number; y: number } {
   const x = ((lon - LON_MIN) / (LON_MAX - LON_MIN)) * width;
@@ -52,6 +46,58 @@ function getBreathSpeed(status: PulseStatus): string {
   return "3.5s";
 }
 
+function geoToSvg(lat: number, lon: number): string {
+  const x = ((lon - LON_MIN) / (LON_MAX - LON_MIN)) * 850;
+  const y = ((LAT_MAX - lat) / (LAT_MAX - LAT_MIN)) * 550;
+  return `${x.toFixed(1)},${y.toFixed(1)}`;
+}
+
+const SAUDI_BORDER_COORDS: [number, number][] = [
+  [29.37, 34.96], [29.18, 34.84], [28.03, 34.66], [27.88, 35.17],
+  [28.57, 35.55], [28.54, 36.49], [29.20, 36.07], [29.63, 36.07],
+  [29.90, 36.74], [30.46, 37.00], [30.52, 37.67], [31.35, 37.50],
+  [31.50, 37.22], [31.96, 37.01], [32.16, 39.01], [32.00, 39.20],
+  [32.15, 39.37], [31.75, 39.97], [31.35, 40.38], [31.20, 41.25],
+  [31.37, 42.08], [30.88, 41.40], [30.10, 42.46], [29.23, 43.78],
+  [28.54, 44.70], [28.07, 46.53], [27.84, 47.17], [28.99, 48.42],
+  [29.08, 48.42], [29.33, 47.95], [29.88, 47.73], [30.09, 48.03],
+  [30.10, 47.68], [29.98, 47.52], [30.06, 47.38], [29.37, 46.56],
+  [29.19, 46.48], [29.04, 46.37], [28.53, 45.77],
+  [28.26, 45.51], [27.73, 45.50], [27.25, 45.46],
+  [27.03, 49.00], [26.42, 50.06], [26.07, 50.15],
+  [25.85, 50.24], [25.80, 50.46], [25.58, 50.53],
+  [25.30, 50.50], [25.20, 50.61], [24.91, 50.62],
+  [24.63, 50.56], [24.47, 51.00], [24.29, 51.20],
+  [24.20, 51.19], [24.07, 51.59],
+  [23.93, 51.58], [23.76, 51.40], [23.54, 51.30],
+  [23.30, 51.23], [22.93, 50.66], [22.58, 50.82],
+  [22.22, 50.45], [22.02, 50.52],
+  [21.48, 49.44], [20.59, 49.52], [20.30, 49.18],
+  [20.11, 48.75], [19.90, 48.38], [19.76, 48.18],
+  [19.50, 47.97], [19.33, 47.80], [19.00, 48.04],
+  [18.80, 47.95], [18.47, 47.45], [18.35, 47.18],
+  [18.23, 47.17], [18.17, 46.98], [17.86, 47.07],
+  [17.47, 46.90], [17.32, 46.73], [17.16, 46.68],
+  [16.96, 46.73], [16.89, 46.41], [16.73, 46.36],
+  [16.65, 45.41], [16.37, 45.39], [16.53, 44.58],
+  [16.99, 43.60], [17.17, 43.47], [17.29, 43.26],
+  [17.37, 43.19], [17.48, 43.08],
+  [17.63, 43.41], [18.17, 43.00],
+  [18.26, 42.82], [18.68, 42.40],
+  [19.03, 42.18], [19.25, 42.12], [19.65, 41.87],
+  [20.07, 41.40], [20.49, 41.26],
+  [20.75, 40.78], [20.95, 40.45], [21.17, 40.30],
+  [21.43, 39.97], [21.58, 39.78], [21.60, 39.21],
+  [22.02, 39.04], [22.55, 39.07], [22.77, 39.07],
+  [23.25, 38.81], [24.02, 38.16], [24.42, 37.51],
+  [24.59, 37.25], [24.94, 37.15], [25.35, 37.35],
+  [25.79, 36.93], [26.29, 36.65], [26.57, 36.43],
+  [27.09, 36.14], [27.33, 35.84], [27.59, 35.71],
+  [27.88, 35.52], [28.17, 35.26], [28.55, 35.07],
+  [28.57, 34.78], [29.37, 34.96],
+];
+
+const SAUDI_OUTLINE = "M " + SAUDI_BORDER_COORDS.map(([lat, lon]) => geoToSvg(lat, lon)).join(" L ") + " Z";
 
 function BreathingCircle({
   airport,
@@ -402,40 +448,46 @@ export default function AirportPulsePage() {
           </div>
         </div>
 
-        <Card className="p-0 relative overflow-hidden rounded-xl" data-testid="map-card">
-          <div className="relative" style={{ maxHeight: "70vh", minHeight: "400px" }}>
-            <img
-              src={saudiMapBg}
-              alt=""
-              className="w-full h-auto block rounded-xl"
-              style={{ maxHeight: "70vh", minHeight: "400px", objectFit: "cover" }}
-              draggable={false}
-            />
-            <svg
-              viewBox={`0 0 ${SVG_W} ${SVG_H}`}
-              className="absolute inset-0 w-full h-full"
-              preserveAspectRatio="none"
-              data-testid="saudi-map"
-            >
-              {airports.map((airport) => {
-                const pos = latLonToSvg(airport.lat, airport.lon, SVG_W, SVG_H);
-                return (
-                  <BreathingCircle
-                    key={airport.code}
-                    airport={airport}
-                    x={pos.x}
-                    y={pos.y}
-                    language={language}
-                    onHover={handleHover}
-                    onLeave={handleLeave}
-                    onClick={handleCardClick}
-                  />
-                );
-              })}
-            </svg>
-          </div>
+        <Card className="p-4 relative overflow-hidden" data-testid="map-card">
+          <svg
+            viewBox={`0 0 ${SVG_W} ${SVG_H}`}
+            className="w-full h-auto"
+            style={{ maxHeight: "70vh", minHeight: "400px" }}
+            data-testid="saudi-map"
+          >
+            <defs>
+              <linearGradient id="mapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" className="[stop-color:hsl(var(--muted))]" stopOpacity="0.5" />
+                <stop offset="100%" className="[stop-color:hsl(var(--muted))]" stopOpacity="0.3" />
+              </linearGradient>
+            </defs>
 
-          <div className="flex items-center gap-6 mt-0 px-4 py-3 text-xs text-muted-foreground" data-testid="map-legend">
+            <path
+              d={SAUDI_OUTLINE}
+              fill="url(#mapGradient)"
+              className="stroke-border"
+              strokeWidth="2"
+              strokeLinejoin="round"
+            />
+
+            {airports.map((airport) => {
+              const pos = latLonToSvg(airport.lat, airport.lon, SVG_W, SVG_H);
+              return (
+                <BreathingCircle
+                  key={airport.code}
+                  airport={airport}
+                  x={pos.x}
+                  y={pos.y}
+                  language={language}
+                  onHover={handleHover}
+                  onLeave={handleLeave}
+                  onClick={handleCardClick}
+                />
+              );
+            })}
+          </svg>
+
+          <div className="flex items-center gap-6 mt-3 px-2 text-xs text-muted-foreground" data-testid="map-legend">
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#10B981" }} />
