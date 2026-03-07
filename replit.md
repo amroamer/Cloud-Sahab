@@ -60,7 +60,6 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 - `/investor` - Investor Intelligence (Bloomberg-style market dashboard, competitive benchmarking)
 - `/data-products` - Data Products Storefront (e-commerce catalog with hero banner, category tabs, faceted filters, Add to Cart for external users)
 - `/cart` - Shopping Cart (item management, promo codes, VAT, mock checkout with order confirmation)
-- `/revenue-tracker` - Data Products Revenue Tracker (8 KPI cards, revenue trend chart, category donut, buyer type bars, product performance table with drill-down, buyer leaderboard, calendar heatmap, targets/forecasting, export/reporting)
 - `/anomalies` - Anomaly Detection (severity-based anomaly feed, root-cause narratives)
 - `/transparency` - Public Transparency Dashboard (no login required, KPIs, rankings, trends)
 - `/seasonal-calendar` - Seasonal Pattern Calendar (12-month color-coded calendar, event overlays)
@@ -77,7 +76,6 @@ client/src/
     queryClient.ts  - TanStack Query setup
     ajwaa-mock-data.ts - Ajwaa e-services regulatory data (licensing, permits, economic, providers)
     catalog-data.ts   - 32 aviation data products with schemas, preview data, and metadata
-    revenue-data.ts   - Revenue tracker mock data: transactions, buyer orgs, KPI computations, heatmap, targets
     airport-pulse-data.ts - 29 airports simulation engine + useAirportPulse hook for real-time data
     hajj-umrah-data.ts    - Hajj/Umrah pilgrim tracking, congestion, airline capacity mock data
     war-room-data.ts      - Vision 2030 targets, scenario modeling, growth trajectory data
