@@ -4,7 +4,6 @@ CREATE NEW FILE: .github/workflows/azure-deploy.yml
   # Triggers: every push to the main branch
   # What it does: installs deps → builds app → deploys to Azure
   # ─────────────────────────────────────────────────────────────
-  
   name: Deploy Sahab to Azure
   
   on:
