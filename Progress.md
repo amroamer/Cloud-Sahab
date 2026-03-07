@@ -185,8 +185,22 @@
   - Fully bilingual (EN/AR), RTL-compatible, dark mode support
   - Files: `route-map.tsx`, `mock-data.ts` (AIRLINE_ROUTES), `App.tsx`, `app-sidebar.tsx`, `auth.tsx`, `i18n.tsx`, `dashboard-connectivity.tsx`
 
+### Phase 15: Aviation Data Products Redesign & Sidebar Polish (Complete)
+- **Aviation Data Products page redesigned** (`/catalog`):
+  - Live revenue ticker at top showing stock-ticker-style scrolling purchase events (visible to all users)
+  - Revenue KPI cards: Total Revenue, Total Transactions, Avg Order Value, Top Seller (admin-only)
+  - Product Revenue Table: sortable by revenue/purchases/name, every product listed with purchase counts and total revenue (admin-only)
+  - Drill-down purchase details: click any product row to expand and see recent individual purchases with buyer, date, amount, format
+  - Browse Products section below: product cards grid with search, category tabs, faceted filters, sort, Load More pagination
+- **Tools group** converted from flat list to collapsible (same pattern as Dashboards/Ajwaa/Data Marketplace)
+- **Sidebar collapsed by default**: Ajwaa e-Services, Data Marketplace, and Tools all start collapsed; Dashboards stays expanded
+- **API Portal moved** from Tools group to System group (after Settings, before User Guide)
+- Tools group now has 8 items (API Portal removed)
+- System group now: Notifications, Settings, API Portal, User Guide
+- Files modified: `catalog.tsx`, `app-sidebar.tsx`, `user-guide.tsx`, `ReadMe.md`, `Progress.md`
+
 ### Phase 14: Sidebar Reorganization & Page Cleanup (Complete)
-- **Sidebar restructured** into 5 groups: Home, Dashboards (10 items), Ajwaa e-Services (5 items), Data Marketplace (2 items: Aviation Data Products + Investor Intelligence), Tools (9 items: AI Copilot, Airport Pulse, Hajj & Umrah, Vision 2030 War Room, FIFA 2034 Tracker, Route Map, Seasonal Calendar, Anomaly Detection, API Portal), System (Notifications, Settings, User Guide)
+- **Sidebar restructured** into 5 groups: Home, Dashboards (10 items), Ajwaa e-Services (5 items), Data Marketplace (2 items: Aviation Data Products + Investor Intelligence), Tools (9 items), System (Notifications, Settings, User Guide)
 - **Data Marketplace** promoted to its own collapsible sidebar group with Aviation Data Products (catalog) and Investor Intelligence as sub-items
 - **Removed pages**: Explorer (`/explorer`), Self-Service (`/self-service`), Reports (`/reports`) removed from sidebar, routing, and role permissions
 - **Hajj & Umrah, War Room, FIFA 2034** moved from Dashboards group to Tools group

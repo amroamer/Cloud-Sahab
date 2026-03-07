@@ -107,12 +107,12 @@ export function AppSidebar() {
     { title: t("nav.routeMap"), url: "/route-map", icon: Navigation },
     { title: t("nav.seasonalCalendar"), url: "/seasonal-calendar", icon: CalendarDays },
     { title: t("nav.anomalies"), url: "/anomalies", icon: AlertTriangle },
-    { title: t("nav.api"), url: "/api-portal", icon: Code },
   ];
 
   const systemItems: NavItem[] = [
     { title: t("nav.notifications"), url: "/notifications", icon: Bell },
     { title: t("nav.settings"), url: "/settings", icon: Settings },
+    { title: t("nav.api"), url: "/api-portal", icon: Code },
     { title: t("nav.userGuide"), url: "/guide", icon: BookOpen },
   ];
 
@@ -200,7 +200,7 @@ export function AppSidebar() {
 
         {showAjwaa && (
           <SidebarGroup>
-            <Collapsible defaultOpen className="group/ajwaa">
+            <Collapsible className="group/ajwaa">
               <SidebarGroupLabel asChild>
                 <CollapsibleTrigger className="flex w-full items-center justify-between gap-1">
                   {t("nav.ajwaaServices")}
@@ -236,7 +236,7 @@ export function AppSidebar() {
 
         {filteredMarketplace.length > 0 && (
           <SidebarGroup>
-            <Collapsible defaultOpen className="group/marketplace">
+            <Collapsible className="group/marketplace">
               <SidebarGroupLabel asChild>
                 <CollapsibleTrigger className="flex w-full items-center justify-between gap-1">
                   {t("nav.dataMarketplace")}
@@ -272,24 +272,37 @@ export function AppSidebar() {
 
         {filteredTools.length > 0 && (
           <SidebarGroup>
-            <SidebarGroupLabel>{t("nav.tools")}</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {filteredTools.map((item) => (
-                  <SidebarMenuItem key={item.url}>
-                    <SidebarMenuButton
-                      asChild
-                      data-active={location === item.url}
-                    >
-                      <Link href={item.url} data-testid={`link-nav-${item.url.replace(/\//g, "-")}`}>
-                        <item.icon className="h-4 w-4" />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
+            <Collapsible className="group/tools">
+              <SidebarGroupLabel asChild>
+                <CollapsibleTrigger className="flex w-full items-center justify-between gap-1">
+                  {t("nav.tools")}
+                  <ChevronDown className="h-3.5 w-3.5 transition-transform group-data-[state=open]/tools:rotate-180" />
+                </CollapsibleTrigger>
+              </SidebarGroupLabel>
+              <CollapsibleContent>
+                <SidebarGroupContent>
+                  <SidebarMenu>
+                    <SidebarMenuItem>
+                      <SidebarMenuSub>
+                        {filteredTools.map((item) => (
+                          <SidebarMenuSubItem key={item.url}>
+                            <SidebarMenuSubButton
+                              asChild
+                              data-active={location === item.url}
+                            >
+                              <Link href={item.url} data-testid={`link-nav-${item.url.replace(/\//g, "-")}`}>
+                                <item.icon className="h-3.5 w-3.5" />
+                                <span>{item.title}</span>
+                              </Link>
+                            </SidebarMenuSubButton>
+                          </SidebarMenuSubItem>
+                        ))}
+                      </SidebarMenuSub>
+                    </SidebarMenuItem>
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </CollapsibleContent>
+            </Collapsible>
           </SidebarGroup>
         )}
 

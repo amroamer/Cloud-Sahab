@@ -41,12 +41,12 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 - Collapsible sidebar navigation with role-aware menu items
 - Info tooltip icons on every KPI card, chart, and table section across all 15 dashboards with bilingual descriptions
 - Collapsible per-dashboard filter bars with dashboard-specific filters (date range, airport, airline, flight type, passenger type, etc.)
-- Sidebar navigation restructured: Dashboards, Ajwaa e-Services, Data Marketplace (collapsible with Aviation Data Products + Investor Intelligence), Tools (9 operational tools), System
+- Sidebar navigation restructured: Dashboards (expanded by default), Ajwaa e-Services (collapsed), Data Marketplace (collapsed, with Aviation Data Products + Investor Intelligence), Tools (collapsed, 8 items), System (Notifications, Settings, API Portal, User Guide)
 - Route Map — interactive geographic visualization of airline routes from Saudi airports to worldwide destinations with Leaflet
 - Airport Pulse View — real-time Leaflet map (CartoDB tiles, light/dark auto-switch) of Saudi Arabia with 29 breathing circle markers representing airports, color-coded by congestion status (green/amber/red), sized by traffic volume, with hover tooltips and detail drawers
 - Air Traffic Explorer — interactive analytical workspace with dimension/metric selectors and 6 chart types
 - Chart toolbar — hover to reveal fullscreen, download PNG, and export CSV on any chart
-- Data Marketplace — 32 aviation data products with faceted filters, product detail pages, schema preview, and universal CSV download
+- Data Marketplace — 32 aviation data products with live revenue ticker, revenue KPI cards, expandable product revenue table with drill-down purchase details (admin view), faceted filters, product detail pages, schema preview, and CSV download
 - User Guide — bilingual reference page with platform overview, dashboard descriptions, role access, FAQ
 - Hajj & Umrah Live Operations — countdown, pilgrim tracking, congestion heatmap, airline capacity gauges, predictive alerts
 - AI Regulatory Copilot — simulated chat assistant with pre-built Q&A pairs, suggested questions, embedded charts
@@ -56,7 +56,7 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 - Anomaly Detection — AI-powered anomaly feed with severity badges, root-cause narratives, timeline chart, action recommendations
 - Public Transparency Dashboard — public-facing KPIs, rankings, and trend charts (no login required)
 - Seasonal Pattern Calendar — 12-month color-coded calendar with event overlays and traffic forecasts
-- Revenue Ticker — scrolling marquee of marketplace purchase events (admin-only, on catalog page)
+- Revenue Ticker — stock-ticker-style scrolling marquee of live purchase events at top of Aviation Data Products page (visible to all users)
 - Global search, notifications, user preferences
 - Public landing page with platform overview
 - Multi-user authentication with demo accounts

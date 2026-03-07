@@ -60,8 +60,8 @@ const GUIDE_SECTIONS: Section[] = [
     titleEn: "Navigation Guide",
     titleAr: "دليل التنقل",
     icon: LayoutDashboard,
-    contentEn: "The sidebar provides organized access to all platform features. The Home page shows your personalized dashboard with KPIs, alerts, and quick links. Dashboards are grouped into Aviation Operations (10 dashboards) and Ajwaa E-Services (5 dashboards). The Tools section gives access to the Explorer, Reports, Data Marketplace, and API Portal. Your navigation is tailored to your role — you only see the sections relevant to your responsibilities.",
-    contentAr: "يوفر الشريط الجانبي وصولاً منظماً لجميع ميزات المنصة. تعرض الصفحة الرئيسية لوحة المعلومات المخصصة لك مع مؤشرات الأداء والتنبيهات والروابط السريعة. يتم تجميع لوحات المعلومات في عمليات الطيران (10 لوحات) وخدمات أجواء الإلكترونية (5 لوحات). يمنح قسم الأدوات الوصول إلى المستكشف والتقارير وسوق البيانات وبوابة API. يتم تخصيص التنقل الخاص بك وفقاً لدورك.",
+    contentEn: "The sidebar provides organized access to all platform features. The Home page shows your personalized dashboard with KPIs, alerts, and quick links. Dashboards (expanded by default) group 10 Aviation Operations dashboards. Ajwaa E-Services, Data Marketplace, and Tools are collapsible groups — collapsed by default to keep the sidebar compact. Data Marketplace contains Aviation Data Products and Investor Intelligence. Tools includes AI Copilot, Airport Pulse, Hajj & Umrah, War Room, FIFA 2034, Route Map, Seasonal Calendar, and Anomaly Detection. The System group holds Notifications, Settings, API Portal, and User Guide. Navigation is tailored to your role — you only see the sections relevant to your responsibilities.",
+    contentAr: "يوفر الشريط الجانبي وصولاً منظماً لجميع ميزات المنصة. تعرض الصفحة الرئيسية لوحة المعلومات المخصصة لك. لوحات المعلومات (مفتوحة افتراضياً) تضم 10 لوحات لعمليات الطيران. خدمات أجواء الإلكترونية وسوق البيانات والأدوات هي مجموعات قابلة للطي — مطوية افتراضياً. يتضمن سوق البيانات منتجات بيانات الطيران واستخبارات المستثمرين. الأدوات تشمل المساعد الذكي ونبض المطارات والحج والعمرة وغرفة الحرب وفيفا 2034 وخريطة المسارات والتقويم الموسمي وكشف الشذوذ. مجموعة النظام تحتوي على الإشعارات والإعدادات وبوابة API ودليل المستخدم.",
   },
   {
     id: "dashboards",
@@ -116,8 +116,8 @@ const GUIDE_SECTIONS: Section[] = [
     titleEn: "Data Marketplace",
     titleAr: "سوق البيانات",
     icon: Database,
-    contentEn: "The Data Marketplace is Sahab's storefront for aviation data products. Browse and download 32 datasets covering traffic, connectivity, market share, operations, cargo, infrastructure, financial, fleet, sustainability, and digital metrics. Use the faceted filters on the left panel to narrow by category, frequency, format, or price range. Click any product card to view its full detail page including schema, data preview, reviews, and version history. All products are available for immediate download as CSV files.",
-    contentAr: "سوق البيانات هو واجهة سحاب لمنتجات بيانات الطيران. تصفح وحمّل 32 مجموعة بيانات تغطي حركة المرور والاتصال وحصة السوق والعمليات والشحن والبنية التحتية والمالية والأسطول والاستدامة والمقاييس الرقمية. استخدم الفلاتر الجانبية لتضييق النتائج حسب الفئة أو التكرار أو التنسيق أو نطاق السعر. انقر على أي بطاقة منتج لعرض صفحة التفاصيل الكاملة بما في ذلك المخطط ومعاينة البيانات والمراجعات وسجل الإصدارات. جميع المنتجات متاحة للتحميل الفوري كملفات CSV.",
+    contentEn: "The Aviation Data Products page is the marketplace hub for Sahab's 32 aviation datasets. At the top, a live revenue ticker scrolls real-time purchase events showing which airline bought which dataset and for how much. Below, admin users see four KPI cards (Total Revenue, Total Transactions, Average Order Value, Top Seller) and a full Product Revenue Table listing every product with purchase counts and revenue. Click any row to expand and see recent individual purchase details including buyer name, date, and amount. Below the revenue section, all users can browse product cards using search, category tabs, faceted filters (category, frequency, format, price range), and sort options. Click any product card to view its detail page with schema, preview, and reviews.",
+    contentAr: "صفحة منتجات بيانات الطيران هي مركز سوق البيانات لـ 32 مجموعة بيانات طيران في سحاب. في الأعلى، شريط إيرادات مباشر يعرض أحداث الشراء في الوقت الفعلي. أدناه، يرى المسؤولون أربع بطاقات مؤشرات أداء (إجمالي الإيرادات، إجمالي المعاملات، متوسط قيمة الطلب، المنتج الأعلى مبيعاً) وجدول إيرادات المنتجات الكامل مع أعداد المشتريات والإيرادات. انقر على أي صف للتوسيع ورؤية تفاصيل المشتريات الفردية. أسفل قسم الإيرادات، يمكن لجميع المستخدمين تصفح بطاقات المنتجات باستخدام البحث وعلامات التصنيف والفلاتر وخيارات الترتيب.",
   },
   {
     id: "hajj-umrah",
@@ -188,8 +188,8 @@ const GUIDE_SECTIONS: Section[] = [
     titleEn: "Revenue Ticker",
     titleAr: "شريط الإيرادات",
     icon: TrendingUp,
-    contentEn: "The Revenue Ticker is a scrolling marquee displayed at the top of the Data Marketplace page, visible only to Platform Admin and Marketplace Admin users. It shows simulated real-time purchase events in the format '[Airline] purchased [Product] — SAR [amount]', giving administrators a live view of marketplace activity. Click the refresh button to generate new mock events.",
-    contentAr: "شريط الإيرادات هو شريط تمرير متحرك يظهر في أعلى صفحة سوق البيانات، مرئي فقط لمسؤولي المنصة ومسؤولي السوق. يعرض أحداث شراء محاكاة في الوقت الفعلي بتنسيق '[خطوط جوية] اشترت [منتج] — [مبلغ] ر.س'، مما يمنح المسؤولين عرضاً مباشراً لنشاط السوق.",
+    contentEn: "The Revenue Ticker is a stock-ticker-style scrolling marquee at the top of the Aviation Data Products page, visible to all users. It shows simulated real-time purchase events in the format '[Airline] just purchased [Product] — SAR [amount] · Xm ago', providing a live view of marketplace activity. Click the refresh button to generate new events. For admin users, the ticker is complemented by revenue KPI cards and a detailed product revenue table with drill-down purchase details.",
+    contentAr: "شريط الإيرادات هو شريط تمرير بأسلوب بورصة الأسهم يظهر في أعلى صفحة منتجات بيانات الطيران، مرئي لجميع المستخدمين. يعرض أحداث شراء محاكاة في الوقت الفعلي. انقر على زر التحديث لإنشاء أحداث جديدة. للمسؤولين، يُكمل الشريط ببطاقات مؤشرات إيرادات وجدول إيرادات تفصيلي مع تفاصيل المشتريات.",
   },
   {
     id: "faq",

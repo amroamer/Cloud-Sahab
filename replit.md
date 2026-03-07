@@ -50,7 +50,7 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 - `/dashboards/ajwaa-providers` - Airport & Service-Provider Services (9 KPIs)
 - `/dashboards/ajwaa-eservices` - Ajwaa e-Service Performance (4 KPIs)
 - `/guide` - User Guide & Use Cases (bilingual reference page)
-- `/catalog` - Data Marketplace (32 products, faceted filters, universal download)
+- `/catalog` - Aviation Data Products (live revenue ticker, revenue KPIs + product revenue table with drill-down for admins, 32 products with faceted filters)
 - `/catalog/:productId` - Product Detail Page (schema, preview, reviews, versions)
 - `/airport-pulse` - Airport Pulse View (29 airports as breathing circles on Leaflet map)
 - `/hajj-umrah` - Hajj & Umrah Live Operations (countdown, congestion heatmap, capacity gauges)
@@ -82,7 +82,7 @@ client/src/
     anomaly-data.ts       - Anomaly detection mock data with root-cause narratives
     seasonal-data.ts      - Seasonal calendar patterns, event overlays, traffic forecasts
   components/
-    app-sidebar.tsx       - Navigation sidebar with collapsible groups (Dashboards, Ajwaa, Data Marketplace, Tools, System)
+    app-sidebar.tsx       - Navigation sidebar with collapsible groups (Dashboards expanded, Ajwaa/Data Marketplace/Tools collapsed by default, System with API Portal)
     top-nav.tsx           - Top navigation bar (search, notifications, language, theme, user)
     kpi-card.tsx          - Reusable KPI metric card with sparkline chart
     dashboard-filters.tsx - Shared collapsible filter bar component + useFilterState hook
