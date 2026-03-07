@@ -31,8 +31,6 @@ import DashboardAjwaaEconomic from "@/pages/dashboard-ajwaa-economic";
 import DashboardAjwaaProviders from "@/pages/dashboard-ajwaa-providers";
 import DashboardAjwaaEservices from "@/pages/dashboard-ajwaa-eservices";
 import UserGuidePage from "@/pages/user-guide";
-import CatalogPage from "@/pages/catalog";
-import CatalogDetailPage from "@/pages/catalog-detail";
 import RouteMapPage from "@/pages/route-map";
 import AirportPulsePage from "@/pages/airport-pulse";
 import WarRoomPage from "@/pages/war-room";
@@ -92,8 +90,6 @@ function AuthenticatedRouter() {
       <Route path="/revenue-tracker" component={RevenueTrackerPage} />
       <Route path="/cart" component={CartPage} />
       <Route path="/guide" component={UserGuidePage} />
-      <Route path="/catalog/:productId" component={CatalogDetailPage} />
-      <Route path="/catalog" component={CatalogPage} />
       <Route path="/api-portal">{() => <PlaceholderPage path="/api-portal" />}</Route>
       <Route path="/notifications">{() => <PlaceholderPage path="/notifications" />}</Route>
       <Route path="/settings">{() => <PlaceholderPage path="/settings" />}</Route>
