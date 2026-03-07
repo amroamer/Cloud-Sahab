@@ -230,7 +230,7 @@ export default function RouteMapPage() {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-3 items-end relative z-[500]">
+        <div className="flex flex-wrap gap-3 items-end">
           <div className="space-y-1.5">
             <label className="text-xs font-medium text-muted-foreground">
               {language === "ar" ? "شركة الطيران" : "Airline"}
@@ -239,7 +239,7 @@ export default function RouteMapPage() {
               <SelectTrigger className="w-[180px]" data-testid="select-airline">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="z-[1000]">
                 <SelectItem value="all" data-testid="option-airline-all">
                   {language === "ar" ? "جميع الشركات" : "All Airlines"}
                 </SelectItem>
@@ -265,7 +265,7 @@ export default function RouteMapPage() {
               <SelectTrigger className="w-[180px]" data-testid="select-origin">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="z-[1000]">
                 <SelectItem value="all" data-testid="option-origin-all">
                   {language === "ar" ? "جميع المطارات" : "All Airports"}
                 </SelectItem>
@@ -286,7 +286,7 @@ export default function RouteMapPage() {
               <SelectTrigger className="w-[130px]" data-testid="select-period">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="z-[1000]">
                 <SelectItem value="all" data-testid="option-period-all">
                   {language === "ar" ? "الكل" : "All"}
                 </SelectItem>
