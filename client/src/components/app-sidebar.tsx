@@ -32,6 +32,7 @@ import {
   Monitor,
   BookOpen,
   ShoppingBag,
+  Activity,
 } from "lucide-react";
 import {
   Sidebar,
@@ -98,6 +99,7 @@ export function AppSidebar() {
   const toolItems: NavItem[] = [
     { title: t("nav.explorer"), url: "/explorer", icon: BarChart3 },
     { title: t("nav.routeMap"), url: "/route-map", icon: Navigation },
+    { title: t("nav.airportPulse"), url: "/airport-pulse", icon: Activity },
     { title: t("nav.selfService"), url: "/self-service", icon: TrendingUp },
     { title: t("nav.reports"), url: "/reports", icon: FileText },
     { title: catalogLabel, url: "/catalog", icon: catalogIcon },

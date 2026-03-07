@@ -42,6 +42,7 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 - Info tooltip icons on every KPI card, chart, and table section across all 15 dashboards with bilingual descriptions
 - Collapsible per-dashboard filter bars with dashboard-specific filters (date range, airport, airline, flight type, passenger type, etc.)
 - Route Map — interactive geographic visualization of airline routes from Saudi airports to worldwide destinations with Leaflet
+- Airport Pulse View — full-screen real-time command center displaying 29 Saudi airports as live EKG-style heartbeat monitors with congestion status, waveform animations, and a simulation engine
 - Air Traffic Explorer — interactive analytical workspace with dimension/metric selectors and 6 chart types
 - Chart toolbar — hover to reveal fullscreen, download PNG, and export CSV on any chart
 - Data Marketplace — 32 aviation data products with faceted filters, product detail pages, schema preview, and universal CSV download
@@ -51,7 +52,7 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 - Multi-user authentication with demo accounts
 
 ## Tech Stack
-- **Frontend**: React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Recharts, Leaflet/react-leaflet, Framer Motion
+- **Frontend**: React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Recharts, Leaflet/react-leaflet, Framer Motion, HTML5 Canvas, JetBrains Mono
 - **Backend**: Express.js (Node.js)
 - **Routing**: wouter (client-side)
 - **Data**: Real-calibrated datasets (2023–2024 verified GACA/industry figures, 2025 projections)
@@ -79,6 +80,7 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 | `/dashboards/ajwaa-eservices` | Auth | Ajwaa e-Service Performance |
 | `/explorer` | Auth | Air Traffic Explorer |
 | `/route-map` | Auth | Route Map |
+| `/airport-pulse` | Auth | Airport Pulse View (full-screen) |
 | `/catalog` | Auth | Data Marketplace |
 | `/catalog/:productId` | Auth | Product Detail Page |
 | `/guide` | Auth | User Guide & Use Cases |

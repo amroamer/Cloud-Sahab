@@ -27,6 +27,7 @@ import {
   ChevronRight,
   Database,
   Info,
+  Activity,
 } from "lucide-react";
 
 interface Section {
@@ -102,6 +103,14 @@ const GUIDE_SECTIONS: Section[] = [
     icon: Globe,
     contentEn: "The Route Map is an interactive geographic visualization tool that displays airline routes from Saudi airports to destinations worldwide. Use the Airline filter to focus on a specific carrier (Saudia, flynas, flyadeal, or foreign airlines), the Origin Airport filter to view routes from a particular airport, and the Period filter to narrow by year. The map shows Saudi airports as teal markers, destination cities as blue/amber markers, and curved arc lines connecting origins to destinations. Line thickness reflects passenger volume. Click any route line or destination marker for detailed route information including frequency and annual passengers. A summary strip shows total routes, destinations, countries, and passengers for the current selection.",
     contentAr: "خريطة المسارات هي أداة تصور جغرافي تفاعلية تعرض مسارات شركات الطيران من المطارات السعودية إلى الوجهات حول العالم. استخدم فلتر شركة الطيران للتركيز على ناقل محدد (السعودية، طيران ناس، طيران أديل، أو شركات أجنبية)، وفلتر المطار المصدر لعرض المسارات من مطار معين، وفلتر الفترة للتضييق حسب السنة. تعرض الخريطة المطارات السعودية كعلامات فيروزية، ومدن الوجهة كعلامات زرقاء/برتقالية، وخطوط قوسية تربط المصادر بالوجهات. يعكس سمك الخط حجم المسافرين. انقر على أي خط مسار أو علامة وجهة للحصول على معلومات تفصيلية عن المسار.",
+  },
+  {
+    id: "airport-pulse",
+    titleEn: "Airport Pulse View",
+    titleAr: "نبض المطارات",
+    icon: Activity,
+    contentEn: "The Airport Pulse View is a full-screen, real-time command center that monitors all 29 Saudi airports simultaneously. Each airport is displayed as a live EKG-style heartbeat monitor showing passenger throughput (people entering and exiting terminals per minute). Airports are color-coded by congestion status: Green (Flowing) means throughput is within normal capacity, Amber (Congested) means approaching capacity limits, and Red (Critical) means capacity is exceeded. The three major hubs (RUH, JED, DMM) appear as large cards with detailed waveforms. The remaining 26 airports are shown in a compact grid. Click any airport card to open a detailed drawer with expanded waveform, per-terminal breakdown, 24-hour trend chart, and key metrics. The header shows real-time status counts and a LIVE indicator. The bottom ticker scrolls national statistics and active alerts. Use the AR/EN button to switch languages.",
+    contentAr: "نبض المطارات هي شاشة مراقبة كاملة تعرض جميع المطارات السعودية الـ 29 في الوقت الفعلي. يُعرض كل مطار كجهاز مراقبة نبض القلب بنمط تخطيط القلب يُظهر إنتاجية المسافرين (الأشخاص الداخلين والخارجين من الصالات في الدقيقة). المطارات مُرمّزة بالألوان حسب حالة الازدحام: الأخضر (سلس) يعني أن الإنتاجية ضمن السعة الطبيعية، والبرتقالي (مزدحم) يعني الاقتراب من حدود السعة، والأحمر (حرج) يعني تجاوز السعة. تظهر المحاور الثلاثة الرئيسية (RUH، JED، DMM) كبطاقات كبيرة مع أشكال موجية مفصلة. تُعرض المطارات الـ 26 المتبقية في شبكة مضغوطة. انقر على أي بطاقة مطار لفتح درج تفصيلي مع شكل موجي موسع وتفاصيل الصالات ورسم بياني لاتجاه 24 ساعة والمقاييس الرئيسية. يعرض الشريط العلوي أعداد الحالات في الوقت الفعلي ومؤشر البث المباشر. يعرض الشريط السفلي الإحصاءات الوطنية والتنبيهات النشطة.",
   },
   {
     id: "catalog",

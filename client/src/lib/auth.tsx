@@ -136,7 +136,7 @@ export const ROLE_ALLOWED_PATHS: Record<UserRole, string[]> = {
     "/dashboards/financial", "/dashboards/bop", "/dashboards/fleet", "/dashboards/digital",
     "/dashboards/ajwaa-licensing", "/dashboards/ajwaa-permits", "/dashboards/ajwaa-economic",
     "/dashboards/ajwaa-providers", "/dashboards/ajwaa-eservices",
-    "/route-map", "/reports", "/catalog", "/notifications", "/guide",
+    "/route-map", "/airport-pulse", "/reports", "/catalog", "/notifications", "/guide",
   ],
   "GACA Analyst": [
     "/home", "/dashboards/overview", "/dashboards/flight-ops", "/dashboards/passengers",
@@ -144,7 +144,7 @@ export const ROLE_ALLOWED_PATHS: Record<UserRole, string[]> = {
     "/dashboards/financial", "/dashboards/bop", "/dashboards/fleet", "/dashboards/digital",
     "/dashboards/ajwaa-licensing", "/dashboards/ajwaa-permits", "/dashboards/ajwaa-economic",
     "/dashboards/ajwaa-providers", "/dashboards/ajwaa-eservices",
-    "/explorer", "/route-map", "/self-service", "/reports", "/catalog", "/notifications", "/guide",
+    "/explorer", "/route-map", "/airport-pulse", "/self-service", "/reports", "/catalog", "/notifications", "/guide",
   ],
   "GACA Regulator": [
     "/home", "/dashboards/overview", "/dashboards/flight-ops", "/dashboards/passengers",
@@ -152,11 +152,11 @@ export const ROLE_ALLOWED_PATHS: Record<UserRole, string[]> = {
     "/dashboards/financial", "/dashboards/bop", "/dashboards/fleet", "/dashboards/digital",
     "/dashboards/ajwaa-licensing", "/dashboards/ajwaa-permits", "/dashboards/ajwaa-economic",
     "/dashboards/ajwaa-providers", "/dashboards/ajwaa-eservices",
-    "/explorer", "/route-map", "/reports", "/catalog", "/notifications", "/guide",
+    "/explorer", "/route-map", "/airport-pulse", "/reports", "/catalog", "/notifications", "/guide",
   ],
   "Airline Operator": [
     "/home", "/dashboards/overview", "/dashboards/connectivity", "/dashboards/flight-ops",
-    "/dashboards/financial", "/route-map", "/reports", "/catalog", "/api-portal", "/guide",
+    "/dashboards/financial", "/route-map", "/airport-pulse", "/reports", "/catalog", "/api-portal", "/guide",
   ],
   "Airport Operator": [
     "/home", "/dashboards/overview", "/dashboards/airports", "/dashboards/passengers",

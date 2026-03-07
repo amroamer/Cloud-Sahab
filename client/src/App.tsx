@@ -34,6 +34,7 @@ import UserGuidePage from "@/pages/user-guide";
 import CatalogPage from "@/pages/catalog";
 import CatalogDetailPage from "@/pages/catalog-detail";
 import RouteMapPage from "@/pages/route-map";
+import AirportPulsePage from "@/pages/airport-pulse";
 import { PlaceholderPage } from "@/pages/placeholder";
 import { Redirect } from "wouter";
 
@@ -104,6 +105,12 @@ function AuthenticatedLayout() {
   );
 }
 
+function FullScreenRoute({ component: Component }: { component: React.ComponentType }) {
+  const { user } = useAuth();
+  if (!user) return <Redirect to="/" />;
+  return <Component />;
+}
+
 function AppContent() {
   const { isAuthenticated } = useAuth();
 
@@ -114,6 +121,9 @@ function AppContent() {
       </Route>
       <Route path="/login">
         {() => isAuthenticated ? <Redirect to="/home" /> : <LoginPage />}
+      </Route>
+      <Route path="/airport-pulse">
+        {() => <FullScreenRoute component={AirportPulsePage} />}
       </Route>
       <Route>
         {() => isAuthenticated ? <AuthenticatedLayout /> : <Redirect to="/" />}
