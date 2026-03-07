@@ -230,7 +230,7 @@ export default function RouteMapPage() {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-3 items-end">
+        <div className="flex flex-wrap gap-3 items-end relative z-[500]">
           <div className="space-y-1.5">
             <label className="text-xs font-medium text-muted-foreground">
               {language === "ar" ? "شركة الطيران" : "Airline"}
