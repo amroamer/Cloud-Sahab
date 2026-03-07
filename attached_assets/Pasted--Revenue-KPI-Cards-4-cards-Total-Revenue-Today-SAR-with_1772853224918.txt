@@ -1,0 +1,82 @@
+ Revenue KPI Cards (4 cards)
+
+Total Revenue Today (SAR) with comparison to same day last week, green/red arrow
+Total Revenue MTD (SAR) with % of monthly target if set
+Total Revenue YTD (SAR) with trend sparkline (last 12 months)
+Total Transactions Today (count) with average order value
+Row 2 — Secondary KPI Cards (4 cards)
+
+Active Buyers (unique buyers who purchased in last 30 days)
+New Buyers This Month (first-time purchasers)
+Best-Selling Product This Month (name + units sold)
+Highest Revenue Product This Month (name + SAR total)
+Revenue Trend Chart
+
+Time-series area/bar chart showing revenue over time
+Toggle granularity: daily, weekly, monthly, quarterly
+Overlay: transaction count as a line on secondary axis
+Compare toggle: overlay same period last year (dashed line)
+Clickable bars — clicking a day/week/month filters the product table below to that period
+Revenue by Category — Donut Chart
+
+Donut chart showing revenue split by product category (Traffic, Connectivity, Market Share, Cargo, Infrastructure, Financial, Fleet, Sustainability, Digital & CX, Bundles, Historical)
+Each segment clickable — filters the product table below
+Center of donut shows total revenue for selected period
+Legend with SAR amounts and % share
+Revenue by Buyer Type — Horizontal Bar Chart
+
+Bars showing revenue from each buyer persona: Airlines, Airport Operators, Investors, Consulting Firms, Researchers, Government Agencies, Travel Tech, Media, Other
+Each bar shows SAR amount + transaction count
+Clickable — filters product table to that buyer type
+Product Performance Table (the main data table)
+
+Sortable, filterable table of ALL 32 data products
+Columns: Product Name, Category, Price (SAR), Units Sold (period), Revenue (period), Revenue % of Total, Trend Sparkline (last 6 months), Avg Rating, Status (Active/Draft/Archived)
+Default sort: by revenue descending (top sellers first)
+Search bar above table to find specific products
+Filter dropdowns: category, frequency (monthly/quarterly/annual), price range, status
+Period selector synced with the revenue trend chart above
+Click any row to expand/drill down into that product's detail
+Product Drill-Down Panel (when you click a product row)
+
+Slides in from the right or expands below the row
+Product name, description, price, format, current rating
+Revenue trend chart for this specific product (monthly over last 12 months)
+Total lifetime revenue + total units sold
+Top 10 buyers of this product (org name, purchase count, total spent)
+Purchase history table: date, buyer org, buyer type, amount paid, payment method, download count, invoice link
+Geographic breakdown: where are buyers located (country/region pie chart)
+Review summary: average rating, total reviews, most recent 3 reviews
+Quick actions: Edit Price, Set as Featured, Archive Product, View in Storefront
+Buyer Leaderboard
+
+Ranked table of top 20 buyers by total spend
+Columns: Rank, Organization Name, Buyer Type, Country, Total Purchases (count), Total Spend (SAR), Last Purchase Date, Account Status
+Click any buyer → side panel showing their full purchase history, downloaded products, and contact info
+"Export Buyer List" button (XLSX)
+Revenue Heatmap — Calendar View
+
+A GitHub-style contribution heatmap showing revenue by day for the last 12 months
+Each day cell colored by revenue intensity (light green = low, dark green = high, empty = no sales)
+Hover shows: date, revenue, transaction count
+Helps spot patterns: which days of week sell most, seasonal peaks, Hajj/Ramadan effects
+Click any day to filter the transaction log below
+
+
+Revenue Targets & Forecasting
+
+If GACA sets monthly/quarterly/annual revenue targets: a progress bar showing actual vs target
+Forecasted revenue for the rest of the month/quarter based on current run rate
+"On Pace" / "Behind Pace" indicator with days to go
+Simple projection: "At current pace, this quarter will close at SAR [X]"
+
+Export & Reporting
+
+"Generate Revenue Report" button → options: Monthly Summary, Quarterly Summary, Annual Summary, Custom Period
+Output formats: PDF (branded with GACA/Sahab logo), XLSX (raw data)
+Schedule automated report: daily/weekly/monthly email to finance team
+"Export All Transactions" button for accounting/ERP integration
+
+
+add refresh button 
+
