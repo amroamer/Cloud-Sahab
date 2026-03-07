@@ -123,6 +123,7 @@ client/src/
 
 - All numbers use Western numerals (0-9) — no Arabic-Indic numerals (٠-٩) anywhere
 - Dashboard tooltips: `SectionTooltip` component for chart/table headers; `KpiCard` has optional `tooltip` prop
+- Route Map (`/route-map`): Leaflet + react-leaflet, CartoDB tiles (light/dark auto-switch), AIRLINE_ROUTES data in mock-data.ts
 
 ## Running
 - `npm run dev` starts both Express backend and Vite frontend on port 5000

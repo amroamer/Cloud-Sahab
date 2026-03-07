@@ -33,6 +33,7 @@ import ExplorerPage from "@/pages/explorer";
 import UserGuidePage from "@/pages/user-guide";
 import CatalogPage from "@/pages/catalog";
 import CatalogDetailPage from "@/pages/catalog-detail";
+import RouteMapPage from "@/pages/route-map";
 import { PlaceholderPage } from "@/pages/placeholder";
 import { Redirect } from "wouter";
 
@@ -67,6 +68,7 @@ function AuthenticatedRouter() {
       <Route path="/dashboards/ajwaa-providers" component={DashboardAjwaaProviders} />
       <Route path="/dashboards/ajwaa-eservices" component={DashboardAjwaaEservices} />
       <Route path="/explorer" component={ExplorerPage} />
+      <Route path="/route-map" component={RouteMapPage} />
       <Route path="/guide" component={UserGuidePage} />
       <Route path="/self-service">{() => <PlaceholderPage path="/self-service" />}</Route>
       <Route path="/reports">{() => <PlaceholderPage path="/reports" />}</Route>

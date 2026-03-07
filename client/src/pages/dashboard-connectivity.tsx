@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { Link } from "wouter";
 import { useTranslation } from "@/lib/i18n";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -195,12 +196,14 @@ export default function DashboardConnectivity() {
               </div>
             </div>
             <span className="text-3xl font-bold" data-testid="text-countries-value">{COUNTRIES_REACHED}</span>
-            <div className="mt-3 p-3 rounded-md bg-muted/50 text-center">
-              <Navigation className="h-8 w-8 mx-auto text-muted-foreground mb-1" />
-              <p className="text-xs text-muted-foreground">
-                {language === "ar" ? "خريطة تفاعلية قريباً" : "Interactive map coming soon"}
-              </p>
-            </div>
+            <Link href="/route-map" data-testid="link-route-map">
+              <div className="mt-3 p-3 rounded-md bg-primary/5 hover:bg-primary/10 transition-colors text-center cursor-pointer">
+                <Navigation className="h-8 w-8 mx-auto text-primary mb-1" />
+                <p className="text-xs font-medium text-primary">
+                  {language === "ar" ? "عرض خريطة المسارات" : "View Route Map"} →
+                </p>
+              </div>
+            </Link>
           </Card>
 
           <Card className="p-5" data-testid="card-routes">

@@ -167,3 +167,20 @@
   - Dashboards 1-5: Overview, Flight Ops, Passengers, Connectivity, Airports
   - Dashboards 6-10: Cargo, Financial, BoP, Fleet, Digital
   - Dashboards 11-15: Ajwaa Licensing, Permits, Economic, Providers, eServices
+
+### Phase 11: Route Map (Complete)
+- **Interactive Route Map** (`/route-map`): Geographic visualization of airline routes from Saudi airports
+  - Built with Leaflet + react-leaflet (open-source, no API key required)
+  - Map centered on Saudi Arabia with CartoDB tiles (auto-switches between light/dark themes)
+  - **Filters**: Airline selector (10 airlines), Origin Airport (10 airports), Period (2024/2025/All)
+  - **Route Data**: 55 airline routes covering 3 Saudi carriers + 7 foreign airlines, domestic + international
+  - **Visualization**: Saudi airports as teal markers, destinations as blue/amber markers, curved arc lines connecting origins to destinations with thickness proportional to passenger volume
+  - **Interactivity**: Click route lines or destination markers for popup with airline, frequency, passengers
+  - **Summary Stats**: Live counter strip showing routes, destinations, countries, passengers for current filter selection
+  - **Route List Panel**: Scrollable sidebar listing all filtered routes sorted by passenger volume
+  - **Legend**: Color-coded map legend for airport types and high-volume routes
+  - Replaced "Interactive map coming soon" placeholder in Connectivity dashboard with "View Route Map" link
+  - Added to sidebar under Tools with Navigation icon
+  - Role access: Platform Admin, Marketplace Admin, GACA Executive, GACA Analyst, GACA Regulator, Airline Operator
+  - Fully bilingual (EN/AR), RTL-compatible, dark mode support
+  - Files: `route-map.tsx`, `mock-data.ts` (AIRLINE_ROUTES), `App.tsx`, `app-sidebar.tsx`, `auth.tsx`, `i18n.tsx`, `dashboard-connectivity.tsx`

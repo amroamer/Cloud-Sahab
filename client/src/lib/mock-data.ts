@@ -244,6 +244,86 @@ export const SHIPMENTS_BY_MODE = [
   { name: "Rail", nameAr: "سكك حديد", value: 320, unit: "K" },
 ];
 
+export interface AirlineRoute {
+  airline: string;
+  origin: string;
+  destination: string;
+  destinationAr: string;
+  country: string;
+  countryAr: string;
+  destLat: number;
+  destLon: number;
+  frequency: number;
+  passengers: number;
+  period: "2024" | "2025";
+}
+
+export const AIRLINE_ROUTES: AirlineRoute[] = [
+  { airline: "SV", origin: "KAIA", destination: "Dubai", destinationAr: "دبي", country: "UAE", countryAr: "الإمارات", destLat: 25.25, destLon: 55.36, frequency: 42, passengers: 2100000, period: "2024" },
+  { airline: "SV", origin: "KKIA", destination: "Dubai", destinationAr: "دبي", country: "UAE", countryAr: "الإمارات", destLat: 25.25, destLon: 55.36, frequency: 35, passengers: 1850000, period: "2024" },
+  { airline: "SV", origin: "KAIA", destination: "Cairo", destinationAr: "القاهرة", country: "Egypt", countryAr: "مصر", destLat: 30.12, destLon: 31.40, frequency: 28, passengers: 1650000, period: "2024" },
+  { airline: "SV", origin: "KAIA", destination: "London Heathrow", destinationAr: "لندن هيثرو", country: "UK", countryAr: "بريطانيا", destLat: 51.47, destLon: -0.46, frequency: 14, passengers: 980000, period: "2024" },
+  { airline: "SV", origin: "KAIA", destination: "Istanbul", destinationAr: "اسطنبول", country: "Turkey", countryAr: "تركيا", destLat: 41.26, destLon: 28.74, frequency: 21, passengers: 1420000, period: "2024" },
+  { airline: "SV", origin: "KKIA", destination: "Kuala Lumpur", destinationAr: "كوالالمبور", country: "Malaysia", countryAr: "ماليزيا", destLat: 2.75, destLon: 101.71, frequency: 10, passengers: 620000, period: "2024" },
+  { airline: "SV", origin: "KAIA", destination: "Karachi", destinationAr: "كراتشي", country: "Pakistan", countryAr: "باكستان", destLat: 24.91, destLon: 67.16, frequency: 14, passengers: 780000, period: "2024" },
+  { airline: "SV", origin: "KAIA", destination: "Mumbai", destinationAr: "مومباي", country: "India", countryAr: "الهند", destLat: 19.09, destLon: 72.87, frequency: 14, passengers: 820000, period: "2024" },
+  { airline: "SV", origin: "KKIA", destination: "Amman", destinationAr: "عمان", country: "Jordan", countryAr: "الأردن", destLat: 31.72, destLon: 35.99, frequency: 21, passengers: 920000, period: "2024" },
+  { airline: "SV", origin: "KAIA", destination: "Dhaka", destinationAr: "دكا", country: "Bangladesh", countryAr: "بنغلاديش", destLat: 23.84, destLon: 90.40, frequency: 10, passengers: 540000, period: "2024" },
+  { airline: "SV", origin: "KKIA", destination: "Paris CDG", destinationAr: "باريس", country: "France", countryAr: "فرنسا", destLat: 49.01, destLon: 2.55, frequency: 7, passengers: 420000, period: "2024" },
+  { airline: "SV", origin: "KAIA", destination: "Addis Ababa", destinationAr: "أديس أبابا", country: "Ethiopia", countryAr: "إثيوبيا", destLat: 8.98, destLon: 38.80, frequency: 7, passengers: 310000, period: "2024" },
+  { airline: "SV", origin: "KKIA", destination: "Manila", destinationAr: "مانيلا", country: "Philippines", countryAr: "الفلبين", destLat: 14.51, destLon: 121.02, frequency: 7, passengers: 380000, period: "2024" },
+  { airline: "SV", origin: "KAIA", destination: "Bahrain", destinationAr: "البحرين", country: "Bahrain", countryAr: "البحرين", destLat: 26.27, destLon: 50.64, frequency: 28, passengers: 680000, period: "2024" },
+  { airline: "SV", origin: "KKIA", destination: "Washington Dulles", destinationAr: "واشنطن", country: "USA", countryAr: "أمريكا", destLat: 38.94, destLon: -77.46, frequency: 5, passengers: 280000, period: "2025" },
+  { airline: "SV", origin: "KAIA", destination: "Riyadh", destinationAr: "الرياض", country: "Saudi Arabia", countryAr: "السعودية", destLat: 24.96, destLon: 46.70, frequency: 56, passengers: 4200000, period: "2024" },
+  { airline: "SV", origin: "KAIA", destination: "Dammam", destinationAr: "الدمام", country: "Saudi Arabia", countryAr: "السعودية", destLat: 26.47, destLon: 49.80, frequency: 28, passengers: 1800000, period: "2024" },
+  { airline: "SV", origin: "KKIA", destination: "Madinah", destinationAr: "المدينة المنورة", country: "Saudi Arabia", countryAr: "السعودية", destLat: 24.55, destLon: 39.70, frequency: 35, passengers: 2500000, period: "2024" },
+
+  { airline: "XY", origin: "KKIA", destination: "Dubai", destinationAr: "دبي", country: "UAE", countryAr: "الإمارات", destLat: 25.25, destLon: 55.36, frequency: 28, passengers: 1200000, period: "2024" },
+  { airline: "XY", origin: "KAIA", destination: "Cairo", destinationAr: "القاهرة", country: "Egypt", countryAr: "مصر", destLat: 30.12, destLon: 31.40, frequency: 14, passengers: 780000, period: "2024" },
+  { airline: "XY", origin: "KKIA", destination: "Istanbul", destinationAr: "اسطنبول", country: "Turkey", countryAr: "تركيا", destLat: 41.26, destLon: 28.74, frequency: 14, passengers: 620000, period: "2024" },
+  { airline: "XY", origin: "KAIA", destination: "Tbilisi", destinationAr: "تبليسي", country: "Georgia", countryAr: "جورجيا", destLat: 41.67, destLon: 44.95, frequency: 7, passengers: 280000, period: "2024" },
+  { airline: "XY", origin: "KAIA", destination: "Sarajevo", destinationAr: "سراييفو", country: "Bosnia", countryAr: "البوسنة", destLat: 43.82, destLon: 18.33, frequency: 4, passengers: 120000, period: "2025" },
+  { airline: "XY", origin: "KKIA", destination: "Jeddah", destinationAr: "جدة", country: "Saudi Arabia", countryAr: "السعودية", destLat: 21.67, destLon: 39.16, frequency: 42, passengers: 3100000, period: "2024" },
+  { airline: "XY", origin: "KKIA", destination: "Abha", destinationAr: "أبها", country: "Saudi Arabia", countryAr: "السعودية", destLat: 18.24, destLon: 42.66, frequency: 21, passengers: 920000, period: "2024" },
+  { airline: "XY", origin: "KAIA", destination: "Riyadh", destinationAr: "الرياض", country: "Saudi Arabia", countryAr: "السعودية", destLat: 24.96, destLon: 46.70, frequency: 35, passengers: 2600000, period: "2024" },
+  { airline: "XY", origin: "KKIA", destination: "Dammam", destinationAr: "الدمام", country: "Saudi Arabia", countryAr: "السعودية", destLat: 26.47, destLon: 49.80, frequency: 21, passengers: 1400000, period: "2024" },
+
+  { airline: "F3", origin: "KKIA", destination: "Dubai", destinationAr: "دبي", country: "UAE", countryAr: "الإمارات", destLat: 25.25, destLon: 55.36, frequency: 14, passengers: 580000, period: "2024" },
+  { airline: "F3", origin: "KAIA", destination: "Sharm El Sheikh", destinationAr: "شرم الشيخ", country: "Egypt", countryAr: "مصر", destLat: 27.98, destLon: 34.39, frequency: 7, passengers: 210000, period: "2024" },
+  { airline: "F3", origin: "KKIA", destination: "Jeddah", destinationAr: "جدة", country: "Saudi Arabia", countryAr: "السعودية", destLat: 21.67, destLon: 39.16, frequency: 42, passengers: 2800000, period: "2024" },
+  { airline: "F3", origin: "KKIA", destination: "Abha", destinationAr: "أبها", country: "Saudi Arabia", countryAr: "السعودية", destLat: 18.24, destLon: 42.66, frequency: 14, passengers: 650000, period: "2024" },
+  { airline: "F3", origin: "KAIA", destination: "Madinah", destinationAr: "المدينة المنورة", country: "Saudi Arabia", countryAr: "السعودية", destLat: 24.55, destLon: 39.70, frequency: 21, passengers: 1100000, period: "2024" },
+  { airline: "F3", origin: "KAIA", destination: "Dammam", destinationAr: "الدمام", country: "Saudi Arabia", countryAr: "السعودية", destLat: 26.47, destLon: 49.80, frequency: 14, passengers: 720000, period: "2024" },
+  { airline: "F3", origin: "KKIA", destination: "Jazan", destinationAr: "جازان", country: "Saudi Arabia", countryAr: "السعودية", destLat: 16.90, destLon: 42.59, frequency: 10, passengers: 380000, period: "2024" },
+  { airline: "F3", origin: "KKIA", destination: "Tabuk", destinationAr: "تبوك", country: "Saudi Arabia", countryAr: "السعودية", destLat: 28.37, destLon: 36.63, frequency: 7, passengers: 280000, period: "2024" },
+
+  { airline: "EK", origin: "KAIA", destination: "Dubai", destinationAr: "دبي", country: "UAE", countryAr: "الإمارات", destLat: 25.25, destLon: 55.36, frequency: 35, passengers: 1800000, period: "2024" },
+  { airline: "EK", origin: "KKIA", destination: "Dubai", destinationAr: "دبي", country: "UAE", countryAr: "الإمارات", destLat: 25.25, destLon: 55.36, frequency: 28, passengers: 1500000, period: "2024" },
+  { airline: "EK", origin: "KFIA", destination: "Dubai", destinationAr: "دبي", country: "UAE", countryAr: "الإمارات", destLat: 25.25, destLon: 55.36, frequency: 14, passengers: 620000, period: "2024" },
+
+  { airline: "QR", origin: "KAIA", destination: "Doha", destinationAr: "الدوحة", country: "Qatar", countryAr: "قطر", destLat: 25.26, destLon: 51.57, frequency: 21, passengers: 1100000, period: "2024" },
+  { airline: "QR", origin: "KKIA", destination: "Doha", destinationAr: "الدوحة", country: "Qatar", countryAr: "قطر", destLat: 25.26, destLon: 51.57, frequency: 21, passengers: 980000, period: "2024" },
+  { airline: "QR", origin: "KFIA", destination: "Doha", destinationAr: "الدوحة", country: "Qatar", countryAr: "قطر", destLat: 25.26, destLon: 51.57, frequency: 14, passengers: 520000, period: "2024" },
+
+  { airline: "TK", origin: "KAIA", destination: "Istanbul", destinationAr: "اسطنبول", country: "Turkey", countryAr: "تركيا", destLat: 41.26, destLon: 28.74, frequency: 21, passengers: 1250000, period: "2024" },
+  { airline: "TK", origin: "KKIA", destination: "Istanbul", destinationAr: "اسطنبول", country: "Turkey", countryAr: "تركيا", destLat: 41.26, destLon: 28.74, frequency: 14, passengers: 880000, period: "2024" },
+  { airline: "TK", origin: "KFIA", destination: "Istanbul", destinationAr: "اسطنبول", country: "Turkey", countryAr: "تركيا", destLat: 41.26, destLon: 28.74, frequency: 7, passengers: 420000, period: "2024" },
+
+  { airline: "MS", origin: "KAIA", destination: "Cairo", destinationAr: "القاهرة", country: "Egypt", countryAr: "مصر", destLat: 30.12, destLon: 31.40, frequency: 21, passengers: 1050000, period: "2024" },
+  { airline: "MS", origin: "KKIA", destination: "Cairo", destinationAr: "القاهرة", country: "Egypt", countryAr: "مصر", destLat: 30.12, destLon: 31.40, frequency: 14, passengers: 720000, period: "2024" },
+
+  { airline: "PK", origin: "KAIA", destination: "Islamabad", destinationAr: "اسلام اباد", country: "Pakistan", countryAr: "باكستان", destLat: 33.62, destLon: 73.10, frequency: 14, passengers: 680000, period: "2024" },
+  { airline: "PK", origin: "KAIA", destination: "Lahore", destinationAr: "لاهور", country: "Pakistan", countryAr: "باكستان", destLat: 31.52, destLon: 74.40, frequency: 10, passengers: 520000, period: "2024" },
+  { airline: "PK", origin: "KKIA", destination: "Islamabad", destinationAr: "اسلام اباد", country: "Pakistan", countryAr: "باكستان", destLat: 33.62, destLon: 73.10, frequency: 7, passengers: 380000, period: "2024" },
+
+  { airline: "AI", origin: "KAIA", destination: "Mumbai", destinationAr: "مومباي", country: "India", countryAr: "الهند", destLat: 19.09, destLon: 72.87, frequency: 10, passengers: 580000, period: "2024" },
+  { airline: "AI", origin: "KAIA", destination: "Delhi", destinationAr: "دلهي", country: "India", countryAr: "الهند", destLat: 28.56, destLon: 77.10, frequency: 7, passengers: 420000, period: "2024" },
+  { airline: "AI", origin: "KKIA", destination: "Hyderabad", destinationAr: "حيدر اباد", country: "India", countryAr: "الهند", destLat: 17.24, destLon: 78.43, frequency: 7, passengers: 350000, period: "2024" },
+
+  { airline: "BA", origin: "KAIA", destination: "London Heathrow", destinationAr: "لندن هيثرو", country: "UK", countryAr: "بريطانيا", destLat: 51.47, destLon: -0.46, frequency: 7, passengers: 480000, period: "2024" },
+  { airline: "BA", origin: "KKIA", destination: "London Heathrow", destinationAr: "لندن هيثرو", country: "UK", countryAr: "بريطانيا", destLat: 51.47, destLon: -0.46, frequency: 7, passengers: 420000, period: "2024" },
+];
+
 export const CHART_COLORS = [
   "hsl(210, 85%, 42%)",
   "hsl(185, 75%, 38%)",

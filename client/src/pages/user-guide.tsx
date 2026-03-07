@@ -96,6 +96,14 @@ const GUIDE_SECTIONS: Section[] = [
     contentAr: "مستكشف حركة الطيران هو مساحة العمل التحليلية لاستكشاف البيانات المخصصة. اختر بُعداً (الشهر، المطار، شركة الطيران، أو نوع الرحلة) من اللوحة اليسرى لتحديد المحور السيني. اختر مقياساً واحداً أو أكثر من اللوحة اليمنى. اختر نوع الرسم البياني من شريط الأدوات. يمكن تحميل الرسوم البيانية كصورة PNG أو تصدير البيانات كملف CSV.",
   },
   {
+    id: "route-map",
+    titleEn: "Route Map",
+    titleAr: "خريطة المسارات",
+    icon: Globe,
+    contentEn: "The Route Map is an interactive geographic visualization tool that displays airline routes from Saudi airports to destinations worldwide. Use the Airline filter to focus on a specific carrier (Saudia, flynas, flyadeal, or foreign airlines), the Origin Airport filter to view routes from a particular airport, and the Period filter to narrow by year. The map shows Saudi airports as teal markers, destination cities as blue/amber markers, and curved arc lines connecting origins to destinations. Line thickness reflects passenger volume. Click any route line or destination marker for detailed route information including frequency and annual passengers. A summary strip shows total routes, destinations, countries, and passengers for the current selection.",
+    contentAr: "خريطة المسارات هي أداة تصور جغرافي تفاعلية تعرض مسارات شركات الطيران من المطارات السعودية إلى الوجهات حول العالم. استخدم فلتر شركة الطيران للتركيز على ناقل محدد (السعودية، طيران ناس، طيران أديل، أو شركات أجنبية)، وفلتر المطار المصدر لعرض المسارات من مطار معين، وفلتر الفترة للتضييق حسب السنة. تعرض الخريطة المطارات السعودية كعلامات فيروزية، ومدن الوجهة كعلامات زرقاء/برتقالية، وخطوط قوسية تربط المصادر بالوجهات. يعكس سمك الخط حجم المسافرين. انقر على أي خط مسار أو علامة وجهة للحصول على معلومات تفصيلية عن المسار.",
+  },
+  {
     id: "catalog",
     titleEn: "Data Marketplace",
     titleAr: "سوق البيانات",
