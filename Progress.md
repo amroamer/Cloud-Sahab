@@ -185,8 +185,8 @@
   - Fully bilingual (EN/AR), RTL-compatible, dark mode support
   - Files: `route-map.tsx`, `mock-data.ts` (AIRLINE_ROUTES), `App.tsx`, `app-sidebar.tsx`, `auth.tsx`, `i18n.tsx`, `dashboard-connectivity.tsx`
 
-### Phase 16: Data Products Storefront & Shopping Cart (Complete)
-- **Data Products page** (`/data-products`): E-commerce-style browsable catalog/marketplace for aviation datasets
+### Phase 16: Aviation Data Products Storefront & Shopping Cart (Complete)
+- **Aviation Data Products page** (`/data-products`): E-commerce-style browsable catalog/marketplace for aviation datasets
   - Hero banner for external/marketplace users with featured product spotlight and new releases badges
   - Category tab bar (All, Traffic, Connectivity, Market, Ops, Cargo, Infra, Financial, Fleet, Sustainability, CX, Bundles, Free)
   - Left-side faceted filters (Category checkboxes, Frequency, Format, Price Range slider, Free Only toggle)
@@ -208,13 +208,13 @@
   - Actions: ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART, APPLY_PROMO, REMOVE_PROMO
   - Computed: subtotal, discount, VAT (15%), total
 - **Cart icon in top nav**: ShoppingCart icon with item count badge, visible only for external/marketplace users
-- **Sidebar updated**: "Data Products" added to Data Marketplace group (Store icon, first item)
+- **Sidebar updated**: "Aviation Data Products" (Storefront) and "Data Products Revenue Tracker" (Admin)
 - **Auth paths updated**: `/data-products` and `/cart` added to all applicable roles
-- **i18n**: Added `nav.dataProducts` (EN: "Data Products", AR: "منتجات البيانات")
+- **i18n**: Added `nav.dataProducts` (EN: "Aviation Data Products", AR: "منتجات بيانات الطيران") and `nav.aviationDataProducts` (EN: "Data Products Revenue Tracker", AR: "متتبع إيرادات منتجات البيانات")
 - Files: `data-products.tsx`, `cart.tsx`, `cart-context.tsx`, `top-nav.tsx`, `App.tsx`, `app-sidebar.tsx`, `auth.tsx`, `i18n.tsx`
 
-### Phase 15: Aviation Data Products Redesign & Sidebar Polish (Complete)
-- **Aviation Data Products page redesigned** (`/catalog`):
+### Phase 15: Data Products Revenue Tracker Redesign & Sidebar Polish (Complete)
+- **Data Products Revenue Tracker page redesigned** (`/catalog`):
   - Live revenue ticker at top showing stock-ticker-style scrolling purchase events (visible to all users)
   - Revenue KPI cards: Total Revenue, Total Transactions, Avg Order Value, Top Seller (admin-only)
   - Product Revenue Table: sortable by revenue/purchases/name, every product listed with purchase counts and total revenue (admin-only)

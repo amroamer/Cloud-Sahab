@@ -46,8 +46,8 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 - Airport Pulse View — real-time Leaflet map (CartoDB tiles, light/dark auto-switch) of Saudi Arabia with 29 breathing circle markers representing airports, color-coded by congestion status (green/amber/red), sized by traffic volume, with hover tooltips and detail drawers
 - Air Traffic Explorer — interactive analytical workspace with dimension/metric selectors and 6 chart types
 - Chart toolbar — hover to reveal fullscreen, download PNG, and export CSV on any chart
-- Data Marketplace — 32 aviation data products with live revenue ticker, revenue KPI cards, expandable product revenue table with drill-down purchase details (admin view), faceted filters, product detail pages, schema preview, and CSV download
-- Data Products Storefront — e-commerce-style browsable catalog with hero banner, category tabs, faceted filters, search/sort, product cards with role-based CTAs (Add to Cart / Access Dataset / Download), Load More pagination
+- Aviation Data Products — e-commerce-style browsable catalog with hero banner, category tabs, faceted filters, search/sort, product cards with role-based CTAs (Add to Cart / Access Dataset / Download), Load More pagination
+- Data Products Revenue Tracker — 32 aviation data products with live revenue ticker, revenue KPI cards, expandable product revenue table with drill-down purchase details (admin view), faceted filters, product detail pages, schema preview, and CSV download
 - Shopping Cart — cart page with item management, promo codes (GACA2026/SAHAB10/AVIATION20), order summary with VAT, mock checkout with order confirmation; cart icon with badge in top nav for external users
 - User Guide — bilingual reference page with platform overview, dashboard descriptions, role access, FAQ
 - Hajj & Umrah Live Operations — countdown, pilgrim tracking, congestion heatmap, airline capacity gauges, predictive alerts
