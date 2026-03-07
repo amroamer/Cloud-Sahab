@@ -97,7 +97,6 @@ export function AppSidebar() {
   const marketplaceItems: NavItem[] = [
     { title: t("nav.dataProducts"), url: "/data-products", icon: Store },
     { title: t("nav.aviationDataProducts"), url: "/catalog", icon: ShoppingBag },
-    { title: t("nav.revenueTracker"), url: "/revenue-tracker", icon: DollarSign },
     { title: t("nav.investor"), url: "/investor", icon: Briefcase },
   ];
 
