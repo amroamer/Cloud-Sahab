@@ -5,7 +5,7 @@ CREATE NEW FILE: .github/workflows/azure-deploy.yml
   # What it does: installs deps → builds app → deploys to Azure
   # ─────────────────────────────────────────────────────────────
   
-  name: Deploy Cloud-Sahab to Azure
+  name: Deploy Sahab to Azure
   
   on:
     push:
