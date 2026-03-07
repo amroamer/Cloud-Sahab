@@ -53,7 +53,7 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 - `/guide` - User Guide & Use Cases (bilingual reference page)
 - `/catalog` - Data Marketplace (32 products, faceted filters, universal download)
 - `/catalog/:productId` - Product Detail Page (schema, preview, reviews, versions)
-- `/airport-pulse` - Airport Pulse View (full-screen, no sidebar/topnav, 29 airports EKG heartbeat monitors)
+- `/airport-pulse` - Airport Pulse View (29 airports as breathing circles on Saudi Arabia SVG map)
 - `/self-service`, `/reports`, `/api-portal` - Tool pages (authenticated, placeholder)
 - `/notifications`, `/settings` - User pages (authenticated, placeholder)
 
@@ -93,7 +93,7 @@ client/src/
     dashboard-ajwaa-economic.tsx   - Dashboard 13: Economic & Regulatory Approvals (9 KPIs)
     dashboard-ajwaa-providers.tsx  - Dashboard 14: Airport & Service-Provider Services (9 KPIs)
     dashboard-ajwaa-eservices.tsx  - Dashboard 15: Ajwaa e-Service Performance (4 KPIs)
-    airport-pulse.tsx         - Airport Pulse View (full-screen dark command center, 29 airports)
+    airport-pulse.tsx         - Airport Pulse View (breathing circles on Saudi Arabia SVG map, 29 airports)
     explorer.tsx              - Air Traffic Explorer with dimension/metric/chart selectors
     catalog.tsx               - Data Marketplace browser with filters, search, category tabs
     catalog-detail.tsx        - Product detail page with schema, preview, reviews, versions
@@ -102,7 +102,6 @@ client/src/
     not-found.tsx             - 404 page
   components/
     chart-toolbar.tsx         - Reusable chart wrapper with fullscreen, PNG download, CSV export
-    heartbeat-waveform.tsx    - HTML5 Canvas EKG waveform component for Airport Pulse View
 ```
 
 ## Design Tokens
@@ -128,7 +127,7 @@ client/src/
 - All numbers use Western numerals (0-9) — no Arabic-Indic numerals (٠-٩) anywhere
 - Dashboard tooltips: `SectionTooltip` component for chart/table headers; `KpiCard` has optional `tooltip` prop
 - Route Map (`/route-map`): Leaflet + react-leaflet, CartoDB tiles (light/dark auto-switch), AIRLINE_ROUTES data in mock-data.ts
-- Airport Pulse (`/airport-pulse`): Full-screen dark page (no sidebar/topnav), renders via FullScreenRoute in App.tsx, uses HTML5 Canvas + JetBrains Mono font, airport-pulse-data.ts simulation engine
+- Airport Pulse (`/airport-pulse`): Standard dashboard layout (sidebar + topnav), SVG Saudi Arabia map with 29 breathing circles, airport-pulse-data.ts simulation engine
 
 ## Running
 - `npm run dev` starts both Express backend and Vite frontend on port 5000

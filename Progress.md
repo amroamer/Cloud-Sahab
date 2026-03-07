@@ -185,20 +185,18 @@
   - Fully bilingual (EN/AR), RTL-compatible, dark mode support
   - Files: `route-map.tsx`, `mock-data.ts` (AIRLINE_ROUTES), `App.tsx`, `app-sidebar.tsx`, `auth.tsx`, `i18n.tsx`, `dashboard-connectivity.tsx`
 
-### Phase 12: Airport Pulse View (Complete)
-- **Airport Pulse View** (`/airport-pulse`): Full-screen real-time command center monitoring 29 Saudi airports
-  - Dark-mode-only design (#0A0E1A background) — standalone page without sidebar/topnav, command center aesthetic
-  - **29 Saudi Airports**: All airports with IATA codes, EN/AR names, cities, regions, tiers, capacity profiles
-  - **3 Major Hub Cards** (RUH, JED, DMM): Large cards with IATA code (28px monospace), status badge, airport name/city, large EKG heartbeat waveform (200-point history), throughput number + trend arrow, utilization bar
-  - **26 Compact Airport Cards**: Responsive grid (6/5/4/3 columns), IATA code, status dot, utilization %, mini waveform, throughput + trend
-  - **Heartbeat Waveform** (`heartbeat-waveform.tsx`): HTML5 Canvas component with EKG spike-and-dip pattern, 60fps animation via requestAnimationFrame, three render layers (grid, glow, crisp line), color-coded by status (green/amber/red)
+### Phase 12: Airport Pulse View (Complete — Redesigned)
+- **Airport Pulse View** (`/airport-pulse`): Real-time interactive Saudi Arabia map monitoring 29 airports
+  - Uses standard dashboard layout (sidebar + topnav + ScrollArea), matching all other pages
+  - **Saudi Arabia Silhouette Map**: SVG outline of Saudi Arabia with 29 breathing circles positioned by real lat/lon coordinates
+  - **Breathing Circles**: Each airport represented as a pulsing circle with SVG animate — pulse speed reflects utilization (slow = flowing, fast = critical), color-coded green/amber/red, sized by tier (large = major hub, medium = regional, small = domestic)
+  - **29 Saudi Airports**: All airports with IATA codes, EN/AR names, cities, regions, tiers, capacity profiles, geographic coordinates
+  - **Hover Tooltip**: IATA code, airport name (bilingual), city, status badge, utilization %, throughput (pax/min), trend arrow
+  - **Detail Drawer**: Right-side Sheet on click — throughput/utilization/total-today metrics, per-terminal breakdown, 24-hour color-coded trend bar chart, peak today, gates count
+  - **Status Summary Strip**: Flowing/congested/critical pills with counts, national total pax/min
+  - **Map Legend**: Color legend (green/amber/red) and size legend (major hub/regional/domestic)
   - **Simulation Engine** (`airport-pulse-data.ts`): Client-side simulator updating every 2 seconds with natural-feeling throughput variations — smooth baseline, flight-arrival spikes, dips, gradual trends. Scenario simulation: random flight wave arrivals (40-60% spike for 2-3 min). Status logic: flowing (≤75%), congested (75-90%), critical (>90%)
-  - **Header Bar**: SAHAB logo, "Airport Pulse View" label, 3 status summary pills (flowing/congested/critical counts updating in real-time), pulsing LIVE indicator, AR/EN language toggle
-  - **Bottom Ticker Bar**: Horizontally scrolling marquee with national total pax/min, peak today, average today, total passengers today, active alerts color-coded
-  - **Airport Detail Modal**: Right-side sheet/drawer on click — expanded waveform, throughput/utilization/total-today metrics, per-terminal breakdown, 24-hour trend bar chart, peak today, gates count
-  - **Visual Effects**: JetBrains Mono font for numbers, subtle CRT scanline overlay (3-5% opacity), card border glow matching status, pulse animation on critical badges
-  - Renders as full-screen page (no sidebar/topnav wrapper) with dedicated route handling
+  - Supports light/dark mode, fully bilingual (EN/AR) with useTranslation hook
   - Added to sidebar under Tools with Activity icon
   - Role access: Platform Admin, Marketplace Admin, GACA Executive, GACA Analyst, GACA Regulator, Airline Operator
-  - Fully bilingual (EN/AR) with useLanguage hook
-  - Files: `airport-pulse.tsx`, `heartbeat-waveform.tsx`, `airport-pulse-data.ts`, `App.tsx`, `app-sidebar.tsx`, `auth.tsx`, `i18n.tsx`
+  - Files: `airport-pulse.tsx`, `airport-pulse-data.ts`, `App.tsx`, `app-sidebar.tsx`, `auth.tsx`, `i18n.tsx`

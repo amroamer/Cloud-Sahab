@@ -13,6 +13,8 @@ export interface AirportConfig {
   capacity: number;
   baseRate: number;
   gates: number;
+  lat: number;
+  lon: number;
 }
 
 export interface AirportState extends AirportConfig {
@@ -43,35 +45,35 @@ export interface AlertItem {
 }
 
 export const PULSE_AIRPORTS: AirportConfig[] = [
-  { code: "RUH", name: "King Khalid International Airport", nameAr: "مطار الملك خالد الدولي", city: "Riyadh", cityAr: "الرياض", region: "Central", regionAr: "الوسطى", tier: 1, terminals: 4, capacity: 3800, baseRate: 2800, gates: 82 },
-  { code: "JED", name: "King Abdulaziz International Airport", nameAr: "مطار الملك عبدالعزيز الدولي", city: "Jeddah", cityAr: "جدة", region: "Western", regionAr: "الغربية", tier: 1, terminals: 3, capacity: 2800, baseRate: 1900, gates: 68 },
-  { code: "DMM", name: "King Fahd International Airport", nameAr: "مطار الملك فهد الدولي", city: "Dammam", cityAr: "الدمام", region: "Eastern", regionAr: "الشرقية", tier: 1, terminals: 2, capacity: 1600, baseRate: 1100, gates: 42 },
-  { code: "MED", name: "Prince Mohammad bin Abdulaziz Airport", nameAr: "مطار الأمير محمد بن عبدالعزيز", city: "Madinah", cityAr: "المدينة المنورة", region: "Western", regionAr: "الغربية", tier: 2, terminals: 2, capacity: 1200, baseRate: 800, gates: 28 },
-  { code: "AHB", name: "Abha International Airport", nameAr: "مطار أبها الدولي", city: "Abha", cityAr: "أبها", region: "Southern", regionAr: "الجنوبية", tier: 2, terminals: 1, capacity: 600, baseRate: 400, gates: 12 },
-  { code: "TIF", name: "Ta'if International Airport", nameAr: "مطار الطائف الدولي", city: "Ta'if", cityAr: "الطائف", region: "Western", regionAr: "الغربية", tier: 2, terminals: 1, capacity: 500, baseRate: 350, gates: 10 },
-  { code: "GIZ", name: "Jazan Airport", nameAr: "مطار جازان", city: "Jazan", cityAr: "جازان", region: "Southern", regionAr: "الجنوبية", tier: 2, terminals: 1, capacity: 450, baseRate: 300, gates: 8 },
-  { code: "TUU", name: "Tabuk Airport", nameAr: "مطار تبوك", city: "Tabuk", cityAr: "تبوك", region: "Northern", regionAr: "الشمالية", tier: 2, terminals: 1, capacity: 400, baseRate: 280, gates: 8 },
-  { code: "ELQ", name: "Prince Nayef bin Abdulaziz Airport", nameAr: "مطار الأمير نايف بن عبدالعزيز", city: "Buraidah", cityAr: "بريدة", region: "Central", regionAr: "الوسطى", tier: 2, terminals: 1, capacity: 350, baseRate: 250, gates: 6 },
-  { code: "ABT", name: "Al-Baha Airport", nameAr: "مطار الباحة", city: "Al-Baha", cityAr: "الباحة", region: "Southern", regionAr: "الجنوبية", tier: 2, terminals: 1, capacity: 200, baseRate: 120, gates: 4 },
-  { code: "HAS", name: "Ha'il Airport", nameAr: "مطار حائل", city: "Ha'il", cityAr: "حائل", region: "Northern", regionAr: "الشمالية", tier: 2, terminals: 1, capacity: 300, baseRate: 200, gates: 6 },
-  { code: "AJF", name: "Al-Jouf Airport", nameAr: "مطار الجوف", city: "Sakaka", cityAr: "سكاكا", region: "Northern", regionAr: "الشمالية", tier: 2, terminals: 1, capacity: 200, baseRate: 120, gates: 4 },
-  { code: "RAE", name: "Arar Airport", nameAr: "مطار عرعر", city: "Arar", cityAr: "عرعر", region: "Northern", regionAr: "الشمالية", tier: 2, terminals: 1, capacity: 180, baseRate: 100, gates: 3 },
-  { code: "TUI", name: "Turaif Airport", nameAr: "مطار طريف", city: "Turaif", cityAr: "طريف", region: "Northern", regionAr: "الشمالية", tier: 2, terminals: 1, capacity: 120, baseRate: 60, gates: 2 },
-  { code: "YNB", name: "Yanbu Airport", nameAr: "مطار ينبع", city: "Yanbu", cityAr: "ينبع", region: "Western", regionAr: "الغربية", tier: 2, terminals: 1, capacity: 300, baseRate: 180, gates: 6 },
-  { code: "HOF", name: "Al-Ahsa Airport", nameAr: "مطار الأحساء", city: "Al-Ahsa", cityAr: "الأحساء", region: "Eastern", regionAr: "الشرقية", tier: 3, terminals: 1, capacity: 200, baseRate: 110, gates: 4 },
-  { code: "DWD", name: "Dawadmi Airport", nameAr: "مطار الدوادمي", city: "Dawadmi", cityAr: "الدوادمي", region: "Central", regionAr: "الوسطى", tier: 3, terminals: 1, capacity: 80, baseRate: 30, gates: 2 },
-  { code: "WAE", name: "Wadi Al-Dawasir Airport", nameAr: "مطار وادي الدواسر", city: "Wadi Al-Dawasir", cityAr: "وادي الدواسر", region: "Central", regionAr: "الوسطى", tier: 3, terminals: 1, capacity: 80, baseRate: 30, gates: 2 },
-  { code: "SHW", name: "Sharurah Airport", nameAr: "مطار شرورة", city: "Sharurah", cityAr: "شرورة", region: "Southern", regionAr: "الجنوبية", tier: 3, terminals: 1, capacity: 100, baseRate: 50, gates: 2 },
-  { code: "BHH", name: "Bisha Airport", nameAr: "مطار بيشة", city: "Bisha", cityAr: "بيشة", region: "Southern", regionAr: "الجنوبية", tier: 3, terminals: 1, capacity: 100, baseRate: 50, gates: 2 },
-  { code: "URY", name: "Gurayat Airport", nameAr: "مطار القريات", city: "Gurayat", cityAr: "القريات", region: "Northern", regionAr: "الشمالية", tier: 3, terminals: 1, capacity: 100, baseRate: 45, gates: 2 },
-  { code: "EAM", name: "Najran Airport", nameAr: "مطار نجران", city: "Najran", cityAr: "نجران", region: "Southern", regionAr: "الجنوبية", tier: 3, terminals: 1, capacity: 200, baseRate: 110, gates: 4 },
-  { code: "SLF", name: "Sulayel Airport", nameAr: "مطار السليل", city: "Sulayel", cityAr: "السليل", region: "Central", regionAr: "الوسطى", tier: 3, terminals: 1, capacity: 60, baseRate: 20, gates: 1 },
-  { code: "RAH", name: "Rafha Airport", nameAr: "مطار رفحاء", city: "Rafha", cityAr: "رفحاء", region: "Northern", regionAr: "الشمالية", tier: 3, terminals: 1, capacity: 100, baseRate: 40, gates: 2 },
-  { code: "QJB", name: "Qaisumah Airport", nameAr: "مطار القيصومة", city: "Hafar Al-Batin", cityAr: "حفر الباطن", region: "Eastern", regionAr: "الشرقية", tier: 3, terminals: 1, capacity: 80, baseRate: 35, gates: 2 },
-  { code: "AKH", name: "Al-Kharj Airport", nameAr: "مطار الخرج", city: "Al-Kharj", cityAr: "الخرج", region: "Central", regionAr: "الوسطى", tier: 3, terminals: 1, capacity: 60, baseRate: 20, gates: 1 },
-  { code: "NUM", name: "NEOM Bay Airport", nameAr: "مطار خليج نيوم", city: "NEOM", cityAr: "نيوم", region: "Northern", regionAr: "الشمالية", tier: 3, terminals: 1, capacity: 150, baseRate: 80, gates: 4 },
-  { code: "AUL", name: "AlUla Airport", nameAr: "مطار العلا", city: "AlUla", cityAr: "العلا", region: "Western", regionAr: "الغربية", tier: 3, terminals: 1, capacity: 120, baseRate: 65, gates: 3 },
-  { code: "RSI", name: "Red Sea International Airport", nameAr: "مطار البحر الأحمر الدولي", city: "Red Sea", cityAr: "البحر الأحمر", region: "Western", regionAr: "الغربية", tier: 3, terminals: 1, capacity: 180, baseRate: 90, gates: 4 },
+  { code: "RUH", name: "King Khalid International Airport", nameAr: "مطار الملك خالد الدولي", city: "Riyadh", cityAr: "الرياض", region: "Central", regionAr: "الوسطى", tier: 1, terminals: 4, capacity: 3800, baseRate: 2800, gates: 82, lat: 24.96, lon: 46.70 },
+  { code: "JED", name: "King Abdulaziz International Airport", nameAr: "مطار الملك عبدالعزيز الدولي", city: "Jeddah", cityAr: "جدة", region: "Western", regionAr: "الغربية", tier: 1, terminals: 3, capacity: 2800, baseRate: 1900, gates: 68, lat: 21.67, lon: 39.16 },
+  { code: "DMM", name: "King Fahd International Airport", nameAr: "مطار الملك فهد الدولي", city: "Dammam", cityAr: "الدمام", region: "Eastern", regionAr: "الشرقية", tier: 1, terminals: 2, capacity: 1600, baseRate: 1100, gates: 42, lat: 26.47, lon: 49.80 },
+  { code: "MED", name: "Prince Mohammad bin Abdulaziz Airport", nameAr: "مطار الأمير محمد بن عبدالعزيز", city: "Madinah", cityAr: "المدينة المنورة", region: "Western", regionAr: "الغربية", tier: 2, terminals: 2, capacity: 1200, baseRate: 800, gates: 28, lat: 24.55, lon: 39.70 },
+  { code: "AHB", name: "Abha International Airport", nameAr: "مطار أبها الدولي", city: "Abha", cityAr: "أبها", region: "Southern", regionAr: "الجنوبية", tier: 2, terminals: 1, capacity: 600, baseRate: 400, gates: 12, lat: 18.24, lon: 42.66 },
+  { code: "TIF", name: "Ta'if International Airport", nameAr: "مطار الطائف الدولي", city: "Ta'if", cityAr: "الطائف", region: "Western", regionAr: "الغربية", tier: 2, terminals: 1, capacity: 500, baseRate: 350, gates: 10, lat: 21.48, lon: 40.54 },
+  { code: "GIZ", name: "Jazan Airport", nameAr: "مطار جازان", city: "Jazan", cityAr: "جازان", region: "Southern", regionAr: "الجنوبية", tier: 2, terminals: 1, capacity: 450, baseRate: 300, gates: 8, lat: 16.90, lon: 42.59 },
+  { code: "TUU", name: "Tabuk Airport", nameAr: "مطار تبوك", city: "Tabuk", cityAr: "تبوك", region: "Northern", regionAr: "الشمالية", tier: 2, terminals: 1, capacity: 400, baseRate: 280, gates: 8, lat: 28.37, lon: 36.63 },
+  { code: "ELQ", name: "Prince Nayef bin Abdulaziz Airport", nameAr: "مطار الأمير نايف بن عبدالعزيز", city: "Buraidah", cityAr: "بريدة", region: "Central", regionAr: "الوسطى", tier: 2, terminals: 1, capacity: 350, baseRate: 250, gates: 6, lat: 26.30, lon: 43.77 },
+  { code: "ABT", name: "Al-Baha Airport", nameAr: "مطار الباحة", city: "Al-Baha", cityAr: "الباحة", region: "Southern", regionAr: "الجنوبية", tier: 2, terminals: 1, capacity: 200, baseRate: 120, gates: 4, lat: 20.30, lon: 41.63 },
+  { code: "HAS", name: "Ha'il Airport", nameAr: "مطار حائل", city: "Ha'il", cityAr: "حائل", region: "Northern", regionAr: "الشمالية", tier: 2, terminals: 1, capacity: 300, baseRate: 200, gates: 6, lat: 27.44, lon: 41.69 },
+  { code: "AJF", name: "Al-Jouf Airport", nameAr: "مطار الجوف", city: "Sakaka", cityAr: "سكاكا", region: "Northern", regionAr: "الشمالية", tier: 2, terminals: 1, capacity: 200, baseRate: 120, gates: 4, lat: 29.79, lon: 40.10 },
+  { code: "RAE", name: "Arar Airport", nameAr: "مطار عرعر", city: "Arar", cityAr: "عرعر", region: "Northern", regionAr: "الشمالية", tier: 2, terminals: 1, capacity: 180, baseRate: 100, gates: 3, lat: 30.91, lon: 41.14 },
+  { code: "TUI", name: "Turaif Airport", nameAr: "مطار طريف", city: "Turaif", cityAr: "طريف", region: "Northern", regionAr: "الشمالية", tier: 2, terminals: 1, capacity: 120, baseRate: 60, gates: 2, lat: 31.69, lon: 38.73 },
+  { code: "YNB", name: "Yanbu Airport", nameAr: "مطار ينبع", city: "Yanbu", cityAr: "ينبع", region: "Western", regionAr: "الغربية", tier: 2, terminals: 1, capacity: 300, baseRate: 180, gates: 6, lat: 24.14, lon: 38.06 },
+  { code: "HOF", name: "Al-Ahsa Airport", nameAr: "مطار الأحساء", city: "Al-Ahsa", cityAr: "الأحساء", region: "Eastern", regionAr: "الشرقية", tier: 3, terminals: 1, capacity: 200, baseRate: 110, gates: 4, lat: 25.29, lon: 49.49 },
+  { code: "DWD", name: "Dawadmi Airport", nameAr: "مطار الدوادمي", city: "Dawadmi", cityAr: "الدوادمي", region: "Central", regionAr: "الوسطى", tier: 3, terminals: 1, capacity: 80, baseRate: 30, gates: 2, lat: 24.45, lon: 44.12 },
+  { code: "WAE", name: "Wadi Al-Dawasir Airport", nameAr: "مطار وادي الدواسر", city: "Wadi Al-Dawasir", cityAr: "وادي الدواسر", region: "Central", regionAr: "الوسطى", tier: 3, terminals: 1, capacity: 80, baseRate: 30, gates: 2, lat: 20.50, lon: 45.00 },
+  { code: "SHW", name: "Sharurah Airport", nameAr: "مطار شرورة", city: "Sharurah", cityAr: "شرورة", region: "Southern", regionAr: "الجنوبية", tier: 3, terminals: 1, capacity: 100, baseRate: 50, gates: 2, lat: 17.47, lon: 47.12 },
+  { code: "BHH", name: "Bisha Airport", nameAr: "مطار بيشة", city: "Bisha", cityAr: "بيشة", region: "Southern", regionAr: "الجنوبية", tier: 3, terminals: 1, capacity: 100, baseRate: 50, gates: 2, lat: 19.98, lon: 42.62 },
+  { code: "URY", name: "Gurayat Airport", nameAr: "مطار القريات", city: "Gurayat", cityAr: "القريات", region: "Northern", regionAr: "الشمالية", tier: 3, terminals: 1, capacity: 100, baseRate: 45, gates: 2, lat: 31.41, lon: 37.28 },
+  { code: "EAM", name: "Najran Airport", nameAr: "مطار نجران", city: "Najran", cityAr: "نجران", region: "Southern", regionAr: "الجنوبية", tier: 3, terminals: 1, capacity: 200, baseRate: 110, gates: 4, lat: 17.61, lon: 44.42 },
+  { code: "SLF", name: "Sulayel Airport", nameAr: "مطار السليل", city: "Sulayel", cityAr: "السليل", region: "Central", regionAr: "الوسطى", tier: 3, terminals: 1, capacity: 60, baseRate: 20, gates: 1, lat: 20.46, lon: 45.62 },
+  { code: "RAH", name: "Rafha Airport", nameAr: "مطار رفحاء", city: "Rafha", cityAr: "رفحاء", region: "Northern", regionAr: "الشمالية", tier: 3, terminals: 1, capacity: 100, baseRate: 40, gates: 2, lat: 29.63, lon: 43.49 },
+  { code: "QJB", name: "Qaisumah Airport", nameAr: "مطار القيصومة", city: "Hafar Al-Batin", cityAr: "حفر الباطن", region: "Eastern", regionAr: "الشرقية", tier: 3, terminals: 1, capacity: 80, baseRate: 35, gates: 2, lat: 28.33, lon: 46.13 },
+  { code: "AKH", name: "Al-Kharj Airport", nameAr: "مطار الخرج", city: "Al-Kharj", cityAr: "الخرج", region: "Central", regionAr: "الوسطى", tier: 3, terminals: 1, capacity: 60, baseRate: 20, gates: 1, lat: 24.06, lon: 47.58 },
+  { code: "NUM", name: "NEOM Bay Airport", nameAr: "مطار خليج نيوم", city: "NEOM", cityAr: "نيوم", region: "Northern", regionAr: "الشمالية", tier: 3, terminals: 1, capacity: 150, baseRate: 80, gates: 4, lat: 27.93, lon: 35.29 },
+  { code: "AUL", name: "AlUla Airport", nameAr: "مطار العلا", city: "AlUla", cityAr: "العلا", region: "Western", regionAr: "الغربية", tier: 3, terminals: 1, capacity: 120, baseRate: 65, gates: 3, lat: 26.48, lon: 38.13 },
+  { code: "RSI", name: "Red Sea International Airport", nameAr: "مطار البحر الأحمر الدولي", city: "Red Sea", cityAr: "البحر الأحمر", region: "Western", regionAr: "الغربية", tier: 3, terminals: 1, capacity: 180, baseRate: 90, gates: 4, lat: 22.50, lon: 38.74 },
 ];
 
 const HISTORY_LENGTH = 200;

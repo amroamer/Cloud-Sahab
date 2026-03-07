@@ -70,6 +70,7 @@ function AuthenticatedRouter() {
       <Route path="/dashboards/ajwaa-eservices" component={DashboardAjwaaEservices} />
       <Route path="/explorer" component={ExplorerPage} />
       <Route path="/route-map" component={RouteMapPage} />
+      <Route path="/airport-pulse" component={AirportPulsePage} />
       <Route path="/guide" component={UserGuidePage} />
       <Route path="/self-service">{() => <PlaceholderPage path="/self-service" />}</Route>
       <Route path="/reports">{() => <PlaceholderPage path="/reports" />}</Route>
@@ -105,12 +106,6 @@ function AuthenticatedLayout() {
   );
 }
 
-function FullScreenRoute({ component: Component }: { component: React.ComponentType }) {
-  const { user } = useAuth();
-  if (!user) return <Redirect to="/" />;
-  return <Component />;
-}
-
 function AppContent() {
   const { isAuthenticated } = useAuth();
 
@@ -121,9 +116,6 @@ function AppContent() {
       </Route>
       <Route path="/login">
         {() => isAuthenticated ? <Redirect to="/home" /> : <LoginPage />}
-      </Route>
-      <Route path="/airport-pulse">
-        {() => <FullScreenRoute component={AirportPulsePage} />}
       </Route>
       <Route>
         {() => isAuthenticated ? <AuthenticatedLayout /> : <Redirect to="/" />}
