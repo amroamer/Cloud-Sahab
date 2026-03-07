@@ -135,19 +135,17 @@ class AirportSimulator {
 
   start() {
     if (this.intervalId) return;
-    this.intervalId = setInterval(() => this.tick(), 2000);
-    const fastTick = setInterval(() => {
+
+    this.intervalId = setInterval(() => {
       this.states.forEach((state) => {
         this.advanceWaveform(state);
       });
       this.notify();
     }, 100);
-    this.intervalId = fastTick;
 
-    this.scenarioTimer = window.setInterval(() => this.triggerScenario(), 5000 + Math.random() * 3000);
+    (this as any)._dataTick = setInterval(() => this.updateThroughput(), 2000);
 
-    const dataTick = setInterval(() => this.updateThroughput(), 2000);
-    (this as any)._dataTick = dataTick;
+    this.scenarioTimer = window.setInterval(() => this.triggerScenario(), 5000 + Math.random() * 3000) as unknown as number;
   }
 
   stop() {
@@ -161,6 +159,7 @@ class AirportSimulator {
     }
     if ((this as any)._dataTick) {
       clearInterval((this as any)._dataTick);
+      (this as any)._dataTick = null;
     }
   }
 
