@@ -9,6 +9,7 @@ import { TopNav } from "@/components/top-nav";
 import { I18nProvider } from "@/lib/i18n";
 import { ThemeProvider } from "@/lib/theme";
 import { AuthProvider, useAuth, isPathAllowed, type UserRole } from "@/lib/auth";
+import { CartProvider } from "@/lib/cart-context";
 import { useLocation as useWouterLocation } from "wouter";
 import NotFound from "@/pages/not-found";
 import LandingPage from "@/pages/landing";
@@ -41,6 +42,8 @@ import AnomaliesPage from "@/pages/anomalies";
 import SeasonalCalendarPage from "@/pages/seasonal-calendar";
 import Fifa2034Page from "@/pages/fifa-2034";
 import InvestorPage from "@/pages/investor";
+import DataProductsPage from "@/pages/data-products";
+import CartPage from "@/pages/cart";
 import { PlaceholderPage } from "@/pages/placeholder";
 import TransparencyPage from "@/pages/transparency";
 import { Redirect } from "wouter";
@@ -84,6 +87,8 @@ function AuthenticatedRouter() {
       <Route path="/seasonal-calendar" component={SeasonalCalendarPage} />
       <Route path="/fifa-2034" component={Fifa2034Page} />
       <Route path="/investor" component={InvestorPage} />
+      <Route path="/data-products" component={DataProductsPage} />
+      <Route path="/cart" component={CartPage} />
       <Route path="/guide" component={UserGuidePage} />
       <Route path="/catalog/:productId" component={CatalogDetailPage} />
       <Route path="/catalog" component={CatalogPage} />
@@ -141,12 +146,14 @@ function App() {
     <I18nProvider>
       <ThemeProvider>
         <AuthProvider>
-          <QueryClientProvider client={queryClient}>
-            <TooltipProvider>
-              <AppContent />
-              <Toaster />
-            </TooltipProvider>
-          </QueryClientProvider>
+          <CartProvider>
+            <QueryClientProvider client={queryClient}>
+              <TooltipProvider>
+                <AppContent />
+                <Toaster />
+              </TooltipProvider>
+            </QueryClientProvider>
+          </CartProvider>
         </AuthProvider>
       </ThemeProvider>
     </I18nProvider>

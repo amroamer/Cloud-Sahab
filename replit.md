@@ -58,6 +58,8 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 - `/war-room` - Vision 2030 War Room (target tracking, scenario modeling sliders)
 - `/fifa-2034` - FIFA 2034 Readiness Tracker (host city readiness, infrastructure timelines)
 - `/investor` - Investor Intelligence (Bloomberg-style market dashboard, competitive benchmarking)
+- `/data-products` - Data Products Storefront (e-commerce catalog with hero banner, category tabs, faceted filters, Add to Cart for external users)
+- `/cart` - Shopping Cart (item management, promo codes, VAT, mock checkout with order confirmation)
 - `/anomalies` - Anomaly Detection (severity-based anomaly feed, root-cause narratives)
 - `/transparency` - Public Transparency Dashboard (no login required, KPIs, rankings, trends)
 - `/seasonal-calendar` - Seasonal Pattern Calendar (12-month color-coded calendar, event overlays)

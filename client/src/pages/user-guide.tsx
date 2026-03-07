@@ -35,6 +35,8 @@ import {
   CalendarDays,
   Eye,
   TrendingUp,
+  ShoppingBag,
+  ShoppingCart,
 } from "lucide-react";
 
 interface Section {
@@ -118,6 +120,22 @@ const GUIDE_SECTIONS: Section[] = [
     icon: Database,
     contentEn: "The Aviation Data Products page is the marketplace hub for Sahab's 32 aviation datasets. At the top, a live revenue ticker scrolls real-time purchase events showing which airline bought which dataset and for how much. Below, admin users see four KPI cards (Total Revenue, Total Transactions, Average Order Value, Top Seller) and a full Product Revenue Table listing every product with purchase counts and revenue. Click any row to expand and see recent individual purchase details including buyer name, date, and amount. Below the revenue section, all users can browse product cards using search, category tabs, faceted filters (category, frequency, format, price range), and sort options. Click any product card to view its detail page with schema, preview, and reviews.",
     contentAr: "صفحة منتجات بيانات الطيران هي مركز سوق البيانات لـ 32 مجموعة بيانات طيران في سحاب. في الأعلى، شريط إيرادات مباشر يعرض أحداث الشراء في الوقت الفعلي. أدناه، يرى المسؤولون أربع بطاقات مؤشرات أداء (إجمالي الإيرادات، إجمالي المعاملات، متوسط قيمة الطلب، المنتج الأعلى مبيعاً) وجدول إيرادات المنتجات الكامل مع أعداد المشتريات والإيرادات. انقر على أي صف للتوسيع ورؤية تفاصيل المشتريات الفردية. أسفل قسم الإيرادات، يمكن لجميع المستخدمين تصفح بطاقات المنتجات باستخدام البحث وعلامات التصنيف والفلاتر وخيارات الترتيب.",
+  },
+  {
+    id: "data-products",
+    titleEn: "Data Products Storefront",
+    titleAr: "واجهة منتجات البيانات",
+    icon: ShoppingBag,
+    contentEn: "The Data Products page is the e-commerce-style storefront for browsing and purchasing aviation datasets. External/marketplace users see a hero banner with a featured product spotlight and new release counts. The page includes a horizontal category tab bar (All, Traffic, Connectivity, Market, Ops, Cargo, Infra, Financial, Fleet, Sustainability, CX, Bundles, Free), a prominent search bar with sort options (Most Popular, Newest, Price), and a left-side filter panel with category checkboxes, frequency, format, price range slider, and a Free Only toggle. Product cards show category badge, star rating, metadata, description, and role-based action buttons: 'Add to Cart' for external users, 'Access Dataset' for GACA internal users, or 'Download' for free products. Click any card to view the full product detail page. Use 'Load More' to see additional products.",
+    contentAr: "صفحة منتجات البيانات هي واجهة المتجر الإلكتروني لتصفح وشراء مجموعات بيانات الطيران. يرى المستخدمون الخارجيون لافتة رئيسية مع منتج مميز وعدد الإصدارات الجديدة. تتضمن الصفحة شريط فئات أفقي، وشريط بحث بارز مع خيارات ترتيب، ولوحة فلاتر جانبية. تعرض بطاقات المنتجات شارة الفئة والتقييم بالنجوم والبيانات الوصفية وأزرار إجراء حسب الدور.",
+  },
+  {
+    id: "shopping-cart",
+    titleEn: "Shopping Cart & Checkout",
+    titleAr: "سلة التسوق والدفع",
+    icon: ShoppingCart,
+    contentEn: "The Shopping Cart page shows all items you've added from the Data Products storefront. Each item displays the product name, category, format, period, and price with a remove button. Enter a promo code (e.g., GACA2026 for 10% off) and click Apply to get a discount. The order summary shows Subtotal, Discount, VAT (15%), and Total. Click 'Pay' to complete your mock checkout — you'll see a processing animation followed by a success confirmation with an order number and ZATCA invoice reference. The cart icon in the top navigation bar shows your item count and is visible to external/marketplace users (Airline Operator, Airport Operator, Investor/Analyst, Researcher).",
+    contentAr: "تعرض صفحة سلة التسوق جميع العناصر التي أضفتها من واجهة منتجات البيانات. يعرض كل عنصر اسم المنتج والفئة والتنسيق والفترة والسعر مع زر إزالة. أدخل رمز ترويجي للحصول على خصم. يعرض ملخص الطلب المجموع الفرعي والخصم وضريبة القيمة المضافة (15%) والإجمالي. انقر على 'ادفع' لإكمال عملية الدفع.",
   },
   {
     id: "hajj-umrah",

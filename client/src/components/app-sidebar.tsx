@@ -18,6 +18,7 @@ import {
   DollarSign,
   Scale,
   Leaf,
+  Store,
   Radar,
   Award,
   FileCheck,
@@ -94,6 +95,7 @@ export function AppSidebar() {
   ];
 
   const marketplaceItems: NavItem[] = [
+    { title: t("nav.dataProducts"), url: "/data-products", icon: Store },
     { title: t("nav.aviationDataProducts"), url: "/catalog", icon: ShoppingBag },
     { title: t("nav.investor"), url: "/investor", icon: Briefcase },
   ];

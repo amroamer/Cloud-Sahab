@@ -1,6 +1,8 @@
 import { useTranslation } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { useAuth } from "@/lib/auth";
+import { useAuth, isInternalRole } from "@/lib/auth";
+import { useCart } from "@/lib/cart-context";
+import { useLocation } from "wouter";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -26,6 +28,7 @@ import {
   AlertTriangle,
   Info,
   AlertCircle,
+  ShoppingCart,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -60,7 +63,10 @@ export function TopNav() {
   const { t, language, setLanguage, isRTL } = useTranslation();
   const { toggleTheme, isDark } = useTheme();
   const { user, logout } = useAuth();
+  const { itemCount } = useCart();
   const [searchFocused, setSearchFocused] = useState(false);
+  const [, navigate] = useLocation();
+  const showCart = user && !isInternalRole(user.role);
 
   const notificationIcons: Record<string, typeof Info> = {
     critical: AlertCircle,
@@ -110,6 +116,20 @@ export function TopNav() {
         >
           {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
         </Button>
+
+        {showCart && (
+          <Button size="icon" variant="ghost" className="relative" onClick={() => navigate("/cart")} data-testid="button-cart">
+            <ShoppingCart className="h-4 w-4" />
+            {itemCount > 0 && (
+              <Badge
+                variant="destructive"
+                className="absolute -top-0.5 -right-0.5 h-4 min-w-4 px-1 text-[10px] flex items-center justify-center no-default-active-elevate"
+              >
+                {itemCount}
+              </Badge>
+            )}
+          </Button>
+        )}
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
