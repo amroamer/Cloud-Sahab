@@ -1,0 +1,62 @@
+ok i want to create the following pages , note: all pages have data refresh button :
+
+1- Hajj & Umrah Live Operations Mode
+A dedicated seasonal mode that activates during Hajj/Umrah showing pilgrim arrivals by nationality,
+ airport congestion heatmaps, airline capacity vs. demand gauges, and a countdown to peak days.
+ Show how many pilgrims have arrived vs. expected, 
+with predictive alerts for congestion 6 hours ahead. 
+
+
+2- AI-Powered Regulatory Copilot
+An embedded AI chat assistant (Claude-powered) that GACA executives can ask questions in natural language
+ — Arabic or English: "How did flynas perform last Ramadan compared to this Ramadan?", 
+"Which airports are at risk of exceeding capacity during FIFA 2034?",
+ "Show me all airlines that violated OTP standards more than 3 times this quarter."
+ The AI queries Sahab's data and returns instant answers with charts. 
+
+3- Vision 2030 War Room Dashboard
+Not just KPI tracking — a dynamic simulation showing
+ "If we continue at the current growth rate, we will reach 330M travelers by [date]" with a live countdown clock.
+ Add scenario modeling: "What if Riyadh Air launches 20 new routes? What if oil prices drop 30%?"
+ Let executives drag sliders and see the impact on the 2030 targets .
+ Show a green/amber/red traffic light for each target with days ahead or behind schedule.
+
+
+4- FIFA 2034 Readiness Tracker
+A dedicated module showing airport-by-airport readiness for the World Cup — capacity gaps, 
+infrastructure projects needed, estimated passenger surge per match city, and a timeline showing which
+ upgrades must complete by when. Include a match calendar overlay showing which airports will be
+ hit hardest on which days. 
+
+5-Investor Intelligence page with Deal Room
+Beyond just selling data — create a polished, Bloomberg-style page where investors can see Saudi aviation as an investment
+ thesis: market growth charts, airport privatization pipeline, airline fleet expansion plans, route network growth animations,
+ and a "Saudi Aviation vs. UAE vs. Qatar vs. Turkey" competitive benchmarking view. 
+
+6- Anomaly Detection with Root-Cause Narratives
+Not just "traffic dropped 23% at Abha airport this week" — but AI-generated explanations: 
+"Traffic dropped 23% at Abha likely due to severe weather (3 days of fog closures) combined with flynas cancelling 12 flights.
+ Similar pattern observed in January 2024.
+ No regulatory action needed." Turns raw anomalies into executive briefings automatically.
+
+
+7- Public Transparency Dashboard
+A public-facing, read-only version of key Saudi aviation statistics that anyone in the world can access — no login needed.
+ Shows headline KPIs, airport rankings, airline OTP, connectivity map, and growth trends.
+ Positions Saudi Arabia as the most transparent aviation regulator in the Middle East.
+ Builds investor confidence and international credibility. Link it from gaca.gov.sa.
+
+
+8- Seasonal Pattern Calendar
+A visual annual calendar showing expected traffic patterns for the entire year — 
+color-coded by expected volume (Hajj peak in red, summer in orange, Ramadan in purple, National Day in green, low season in blue).
+ Overlaid with upcoming events (FIFA matches, Riyadh Season, Jeddah Season, NEOM events).
+ Helps everyone from regulators to airlines plan capacity months ahead.
+
+
+10 - Data Product Revenue Ticker
+On the marketplace admin dashboard, a live revenue ticker showing purchases happening in real-time 
+— "[Airline X] just purchased Route-Level Traffic Data — SAR 2,000" scrolling like a stock ticker. 
+
+
+note: nothing is realtime, all pages should have refresh data button 

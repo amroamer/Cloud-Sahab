@@ -42,7 +42,7 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 - Info tooltip icons on every KPI card, chart, and table section across all 15 dashboards with bilingual descriptions
 - Collapsible per-dashboard filter bars with dashboard-specific filters (date range, airport, airline, flight type, passenger type, etc.)
 - Route Map — interactive geographic visualization of airline routes from Saudi airports to worldwide destinations with Leaflet
-- Airport Pulse View — real-time interactive Saudi Arabia map with 29 breathing circles representing airports, color-coded by congestion status (green/amber/red), sized by traffic volume, with hover tooltips and detail drawers
+- Airport Pulse View — real-time Leaflet map (CartoDB tiles, light/dark auto-switch) of Saudi Arabia with 29 breathing circle markers representing airports, color-coded by congestion status (green/amber/red), sized by traffic volume, with hover tooltips and detail drawers
 - Air Traffic Explorer — interactive analytical workspace with dimension/metric selectors and 6 chart types
 - Chart toolbar — hover to reveal fullscreen, download PNG, and export CSV on any chart
 - Data Marketplace — 32 aviation data products with faceted filters, product detail pages, schema preview, and universal CSV download

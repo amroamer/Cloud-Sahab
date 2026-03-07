@@ -286,3 +286,13 @@
     inset: -1px;
   }
 }
+
+@keyframes pulse-outer {
+  0%, 100% { transform: scale(0.85); opacity: 0.08; }
+  50% { transform: scale(1.15); opacity: 0.2; }
+}
+
+@keyframes pulse-inner {
+  0%, 100% { transform: scale(0.92); }
+  50% { transform: scale(1.08); }
+}

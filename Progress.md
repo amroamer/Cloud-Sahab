@@ -188,8 +188,8 @@
 ### Phase 12: Airport Pulse View (Complete — Redesigned)
 - **Airport Pulse View** (`/airport-pulse`): Real-time interactive Saudi Arabia map monitoring 29 airports
   - Uses standard dashboard layout (sidebar + topnav + ScrollArea), matching all other pages
-  - **Saudi Arabia Silhouette Map**: SVG outline of Saudi Arabia with 29 breathing circles positioned by real lat/lon coordinates
-  - **Breathing Circles**: Each airport represented as a pulsing circle with SVG animate — pulse speed reflects utilization (slow = flowing, fast = critical), color-coded green/amber/red, sized by tier (large = major hub, medium = regional, small = domestic)
+  - **Leaflet Map**: Real CartoDB tile map (light/dark auto-switch via useTheme) centered on Saudi Arabia, using react-leaflet MapContainer with 29 breathing circle markers positioned by real lat/lon coordinates
+  - **Breathing Circles**: Each airport represented as a Leaflet divIcon marker with CSS-animated pulsing — pulse speed reflects utilization (slow = flowing, fast = critical), color-coded green/amber/red, sized by tier (large = major hub, medium = regional, small = domestic)
   - **29 Saudi Airports**: All airports with IATA codes, EN/AR names, cities, regions, tiers, capacity profiles, geographic coordinates
   - **Hover Tooltip**: IATA code, airport name (bilingual), city, status badge, utilization %, throughput (pax/min), trend arrow
   - **Detail Drawer**: Right-side Sheet on click — throughput/utilization/total-today metrics, per-terminal breakdown, 24-hour color-coded trend bar chart, peak today, gates count

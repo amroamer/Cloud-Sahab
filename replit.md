@@ -127,7 +127,7 @@ client/src/
 - All numbers use Western numerals (0-9) — no Arabic-Indic numerals (٠-٩) anywhere
 - Dashboard tooltips: `SectionTooltip` component for chart/table headers; `KpiCard` has optional `tooltip` prop
 - Route Map (`/route-map`): Leaflet + react-leaflet, CartoDB tiles (light/dark auto-switch), AIRLINE_ROUTES data in mock-data.ts
-- Airport Pulse (`/airport-pulse`): Standard dashboard layout (sidebar + topnav), SVG Saudi Arabia map with 29 breathing circles, airport-pulse-data.ts simulation engine
+- Airport Pulse (`/airport-pulse`): Standard dashboard layout (sidebar + topnav), Leaflet map with CartoDB tiles (light/dark auto-switch) showing 29 breathing circle markers, airport-pulse-data.ts simulation engine
 
 ## Running
 - `npm run dev` starts both Express backend and Vite frontend on port 5000
