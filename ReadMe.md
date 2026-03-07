@@ -47,6 +47,15 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 - Chart toolbar — hover to reveal fullscreen, download PNG, and export CSV on any chart
 - Data Marketplace — 32 aviation data products with faceted filters, product detail pages, schema preview, and universal CSV download
 - User Guide — bilingual reference page with platform overview, dashboard descriptions, role access, FAQ
+- Hajj & Umrah Live Operations — countdown, pilgrim tracking, congestion heatmap, airline capacity gauges, predictive alerts
+- AI Regulatory Copilot — simulated chat assistant with pre-built Q&A pairs, suggested questions, embedded charts
+- Vision 2030 War Room — strategic command dashboard with live countdown, traffic-light targets, scenario modeling sliders
+- FIFA 2034 Readiness Tracker — airport readiness grid, infrastructure timelines, match calendar, capacity gap analysis
+- Investor Intelligence — Bloomberg-style investment dashboard with market metrics, privatization pipeline, fleet expansion, competitive benchmarking
+- Anomaly Detection — AI-powered anomaly feed with severity badges, root-cause narratives, timeline chart, action recommendations
+- Public Transparency Dashboard — public-facing KPIs, rankings, and trend charts (no login required)
+- Seasonal Pattern Calendar — 12-month color-coded calendar with event overlays and traffic forecasts
+- Revenue Ticker — scrolling marquee of marketplace purchase events (admin-only, on catalog page)
 - Global search, notifications, user preferences
 - Public landing page with platform overview
 - Multi-user authentication with demo accounts
@@ -83,6 +92,14 @@ Saudi Arabia's comprehensive aviation analytics platform built for the General A
 | `/airport-pulse` | Auth | Airport Pulse View |
 | `/catalog` | Auth | Data Marketplace |
 | `/catalog/:productId` | Auth | Product Detail Page |
+| `/hajj-umrah` | Auth | Hajj & Umrah Live Operations |
+| `/copilot` | Auth | AI Regulatory Copilot |
+| `/war-room` | Auth | Vision 2030 War Room |
+| `/fifa-2034` | Auth | FIFA 2034 Readiness Tracker |
+| `/investor` | Auth | Investor Intelligence |
+| `/anomalies` | Auth | Anomaly Detection |
+| `/transparency` | Public | Public Transparency Dashboard |
+| `/seasonal-calendar` | Auth | Seasonal Pattern Calendar |
 | `/guide` | Auth | User Guide & Use Cases |
 
 ## Running

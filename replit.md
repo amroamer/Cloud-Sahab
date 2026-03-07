@@ -53,7 +53,15 @@ Sahab is a national aviation data platform for GACA (General Authority of Civil 
 - `/guide` - User Guide & Use Cases (bilingual reference page)
 - `/catalog` - Data Marketplace (32 products, faceted filters, universal download)
 - `/catalog/:productId` - Product Detail Page (schema, preview, reviews, versions)
-- `/airport-pulse` - Airport Pulse View (29 airports as breathing circles on Saudi Arabia SVG map)
+- `/airport-pulse` - Airport Pulse View (29 airports as breathing circles on Leaflet map)
+- `/hajj-umrah` - Hajj & Umrah Live Operations (countdown, congestion heatmap, capacity gauges)
+- `/copilot` - AI Regulatory Copilot (simulated chat with pre-built Q&A pairs)
+- `/war-room` - Vision 2030 War Room (target tracking, scenario modeling sliders)
+- `/fifa-2034` - FIFA 2034 Readiness Tracker (host city readiness, infrastructure timelines)
+- `/investor` - Investor Intelligence (Bloomberg-style market dashboard, competitive benchmarking)
+- `/anomalies` - Anomaly Detection (severity-based anomaly feed, root-cause narratives)
+- `/transparency` - Public Transparency Dashboard (no login required, KPIs, rankings, trends)
+- `/seasonal-calendar` - Seasonal Pattern Calendar (12-month color-coded calendar, event overlays)
 - `/self-service`, `/reports`, `/api-portal` - Tool pages (authenticated, placeholder)
 - `/notifications`, `/settings` - User pages (authenticated, placeholder)
 
@@ -68,6 +76,12 @@ client/src/
     ajwaa-mock-data.ts - Ajwaa e-services regulatory data (licensing, permits, economic, providers)
     catalog-data.ts   - 32 aviation data products with schemas, preview data, and metadata
     airport-pulse-data.ts - 29 airports simulation engine + useAirportPulse hook for real-time data
+    hajj-umrah-data.ts    - Hajj/Umrah pilgrim tracking, congestion, airline capacity mock data
+    war-room-data.ts      - Vision 2030 targets, scenario modeling, growth trajectory data
+    fifa-2034-data.ts     - FIFA 2034 host cities, infrastructure projects, match calendar data
+    investor-data.ts      - Market metrics, privatization pipeline, fleet expansion, benchmarking data
+    anomaly-data.ts       - Anomaly detection mock data with root-cause narratives
+    seasonal-data.ts      - Seasonal calendar patterns, event overlays, traffic forecasts
   components/
     app-sidebar.tsx       - Navigation sidebar with collapsible dashboard sub-menu
     top-nav.tsx           - Top navigation bar (search, notifications, language, theme, user)
@@ -93,7 +107,15 @@ client/src/
     dashboard-ajwaa-economic.tsx   - Dashboard 13: Economic & Regulatory Approvals (9 KPIs)
     dashboard-ajwaa-providers.tsx  - Dashboard 14: Airport & Service-Provider Services (9 KPIs)
     dashboard-ajwaa-eservices.tsx  - Dashboard 15: Ajwaa e-Service Performance (4 KPIs)
-    airport-pulse.tsx         - Airport Pulse View (breathing circles on Saudi Arabia SVG map, 29 airports)
+    airport-pulse.tsx         - Airport Pulse View (breathing circles on Leaflet map, 29 airports)
+    hajj-umrah.tsx            - Hajj & Umrah Live Operations Mode
+    copilot.tsx               - AI Regulatory Copilot (simulated chat UI)
+    war-room.tsx              - Vision 2030 War Room Dashboard
+    fifa-2034.tsx             - FIFA 2034 Readiness Tracker
+    investor.tsx              - Investor Intelligence with Deal Room
+    anomalies.tsx             - Anomaly Detection with Root-Cause Narratives
+    transparency.tsx          - Public Transparency Dashboard (no auth)
+    seasonal-calendar.tsx     - Seasonal Pattern Calendar
     explorer.tsx              - Air Traffic Explorer with dimension/metric/chart selectors
     catalog.tsx               - Data Marketplace browser with filters, search, category tabs
     catalog-detail.tsx        - Product detail page with schema, preview, reviews, versions
@@ -102,6 +124,7 @@ client/src/
     not-found.tsx             - 404 page
   components/
     chart-toolbar.tsx         - Reusable chart wrapper with fullscreen, PNG download, CSV export
+    revenue-ticker.tsx        - Scrolling revenue ticker for marketplace admin view
 ```
 
 ## Design Tokens

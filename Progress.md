@@ -185,6 +185,21 @@
   - Fully bilingual (EN/AR), RTL-compatible, dark mode support
   - Files: `route-map.tsx`, `mock-data.ts` (AIRLINE_ROUTES), `App.tsx`, `app-sidebar.tsx`, `auth.tsx`, `i18n.tsx`, `dashboard-connectivity.tsx`
 
+### Phase 13: 10 New Pages & Components (Complete)
+- **Hajj & Umrah Live Operations** (`/hajj-umrah`): Countdown to peak Hajj day, pilgrims arrived vs. expected progress by nationality (top 10 countries), 29-airport congestion heatmap grid, airline capacity vs. demand gauge cards (6 airlines), predictive congestion alerts table (6-hour lookahead), refresh data button
+- **AI Regulatory Copilot** (`/copilot`): Chat-style UI with message bubbles, 11 pre-built English Q&A pairs + 5 Arabic Q&A pairs, pattern-matched responses, suggested question chips, follow-up suggestions, embedded mock charts and tables in responses, typing indicator animation, new chat button
+- **Vision 2030 War Room** (`/war-room`): Live countdown clock to 330M travelers milestone, 3 Vision 2030 target cards with traffic-light indicators (green/amber/red) and days ahead/behind schedule, interactive scenario modeling with 3 sliders (Riyadh Air routes, oil price change, tourism growth), impact visualization cards, growth trajectory charts (historical + projected)
+- **FIFA 2034 Readiness Tracker** (`/fifa-2034`): Overall readiness score card, 5 host city airport readiness grid (Riyadh, Jeddah, Al Khobar, Abha, NEOM), capacity comparison chart, Gantt-style project timeline with progress bars, match calendar grid (Nov-Dec) with intensity coding, capacity gap analysis cards
+- **Investor Intelligence** (`/investor`): Bloomberg-style market overview cards (6 KPIs), market size trajectory area chart, route network growth with animated counter, airport privatization pipeline table, airline fleet expansion cards, competitive benchmarking (Saudi Arabia vs UAE vs Qatar vs Turkey) with table and bar charts
+- **Anomaly Detection** (`/anomalies`): 8-12 detected anomalies with severity badges (critical/warning/info), AI-generated root-cause narratives, historical pattern references, recommended action badges, anomaly timeline stacked bar chart (30 days), filters by severity and entity type
+- **Public Transparency Dashboard** (`/transparency`): Public page (no login required), headline KPI strip, airport rankings table (top 10), airline OTP ranking table, connectivity statistics, 5-year passenger and cargo trend charts, own navigation bar with language/theme toggles, link from landing page
+- **Seasonal Pattern Calendar** (`/seasonal-calendar`): 12-month annual calendar grid with color-coded days (Hajj red, summer orange, Ramadan purple, National Day green, low season blue), event overlays (FIFA, Riyadh Season, Jeddah Season, NEOM, Eid, National Day), monthly summary cards, color legend
+- **Revenue Ticker** (component on catalog.tsx): Horizontal scrolling marquee at top of Data Marketplace page, mock purchase events with airline, product, and amount, visible only to Platform Admin and Marketplace Admin roles, refresh button
+- All 10 features: fully bilingual (EN/AR), RTL-compatible, dark mode supported, data-testid attributes, refresh data functionality
+- Wired: all routes in App.tsx, sidebar items in app-sidebar.tsx, auth roles in auth.tsx, i18n keys in i18n.tsx
+- Files created: `hajj-umrah.tsx`, `hajj-umrah-data.ts`, `copilot.tsx`, `war-room.tsx`, `war-room-data.ts`, `fifa-2034.tsx`, `fifa-2034-data.ts`, `investor.tsx`, `investor-data.ts`, `anomalies.tsx`, `anomaly-data.ts`, `transparency.tsx`, `seasonal-calendar.tsx`, `seasonal-data.ts`, `revenue-ticker.tsx`
+- Documentation updated: ReadMe.md, Progress.md, replit.md, user-guide.tsx
+
 ### Phase 12: Airport Pulse View (Complete — Redesigned)
 - **Airport Pulse View** (`/airport-pulse`): Real-time interactive Saudi Arabia map monitoring 29 airports
   - Uses standard dashboard layout (sidebar + topnav + ScrollArea), matching all other pages

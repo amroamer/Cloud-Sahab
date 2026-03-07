@@ -33,6 +33,12 @@ import {
   BookOpen,
   ShoppingBag,
   Activity,
+  CalendarDays,
+  Bot,
+  AlertTriangle,
+  Target,
+  Trophy,
+  Briefcase,
 } from "lucide-react";
 import {
   Sidebar,
@@ -79,6 +85,9 @@ export function AppSidebar() {
     { title: t("nav.bop"), url: "/dashboards/bop", icon: Scale },
     { title: t("nav.fleet"), url: "/dashboards/fleet", icon: Plane },
     { title: t("nav.digital"), url: "/dashboards/digital", icon: Leaf },
+    { title: t("nav.hajjUmrah"), url: "/hajj-umrah", icon: Landmark },
+    { title: t("nav.warRoom"), url: "/war-room", icon: Target },
+    { title: t("nav.fifa2034"), url: "/fifa-2034", icon: Trophy },
   ];
 
   const ajwaaItems: NavItem[] = [
@@ -100,10 +109,14 @@ export function AppSidebar() {
     { title: t("nav.explorer"), url: "/explorer", icon: BarChart3 },
     { title: t("nav.routeMap"), url: "/route-map", icon: Navigation },
     { title: t("nav.airportPulse"), url: "/airport-pulse", icon: Activity },
+    { title: t("nav.copilot"), url: "/copilot", icon: Bot },
     { title: t("nav.selfService"), url: "/self-service", icon: TrendingUp },
     { title: t("nav.reports"), url: "/reports", icon: FileText },
     { title: catalogLabel, url: "/catalog", icon: catalogIcon },
     { title: t("nav.api"), url: "/api-portal", icon: Code },
+    { title: t("nav.seasonalCalendar"), url: "/seasonal-calendar", icon: CalendarDays },
+    { title: t("nav.anomalies"), url: "/anomalies", icon: AlertTriangle },
+    { title: t("nav.investor"), url: "/investor", icon: Briefcase },
   ];
 
   const systemItems: NavItem[] = [

@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { useTranslation } from "@/lib/i18n";
 import { useAuth, isInternalRole } from "@/lib/auth";
+import { RevenueTicker } from "@/components/revenue-ticker";
 import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -302,9 +303,12 @@ export default function CatalogPage() {
     (freeOnly ? 1 : 0) +
     (priceRange[0] > 0 || priceRange[1] < maxPrice ? 1 : 0);
 
+  const isAdmin = user?.role === "Platform Admin" || user?.role === "Marketplace Admin";
+
   return (
     <ScrollArea className="h-full">
       <div className="flex flex-col">
+        {isAdmin && <RevenueTicker />}
         {!isInternal && (
           <div
             className="relative bg-primary px-6 py-10 overflow-visible"

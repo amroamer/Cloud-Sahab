@@ -35,7 +35,15 @@ import CatalogPage from "@/pages/catalog";
 import CatalogDetailPage from "@/pages/catalog-detail";
 import RouteMapPage from "@/pages/route-map";
 import AirportPulsePage from "@/pages/airport-pulse";
+import WarRoomPage from "@/pages/war-room";
+import HajjUmrahPage from "@/pages/hajj-umrah";
+import CopilotPage from "@/pages/copilot";
+import AnomaliesPage from "@/pages/anomalies";
+import SeasonalCalendarPage from "@/pages/seasonal-calendar";
+import Fifa2034Page from "@/pages/fifa-2034";
+import InvestorPage from "@/pages/investor";
 import { PlaceholderPage } from "@/pages/placeholder";
+import TransparencyPage from "@/pages/transparency";
 import { Redirect } from "wouter";
 
 function RoleGuard({ children }: { children: React.ReactNode }) {
@@ -68,9 +76,16 @@ function AuthenticatedRouter() {
       <Route path="/dashboards/ajwaa-economic" component={DashboardAjwaaEconomic} />
       <Route path="/dashboards/ajwaa-providers" component={DashboardAjwaaProviders} />
       <Route path="/dashboards/ajwaa-eservices" component={DashboardAjwaaEservices} />
+      <Route path="/copilot" component={CopilotPage} />
       <Route path="/explorer" component={ExplorerPage} />
       <Route path="/route-map" component={RouteMapPage} />
       <Route path="/airport-pulse" component={AirportPulsePage} />
+      <Route path="/hajj-umrah" component={HajjUmrahPage} />
+      <Route path="/war-room" component={WarRoomPage} />
+      <Route path="/anomalies" component={AnomaliesPage} />
+      <Route path="/seasonal-calendar" component={SeasonalCalendarPage} />
+      <Route path="/fifa-2034" component={Fifa2034Page} />
+      <Route path="/investor" component={InvestorPage} />
       <Route path="/guide" component={UserGuidePage} />
       <Route path="/self-service">{() => <PlaceholderPage path="/self-service" />}</Route>
       <Route path="/reports">{() => <PlaceholderPage path="/reports" />}</Route>
@@ -117,6 +132,7 @@ function AppContent() {
       <Route path="/login">
         {() => isAuthenticated ? <Redirect to="/home" /> : <LoginPage />}
       </Route>
+      <Route path="/transparency" component={TransparencyPage} />
       <Route>
         {() => isAuthenticated ? <AuthenticatedLayout /> : <Redirect to="/" />}
       </Route>

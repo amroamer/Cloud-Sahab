@@ -229,6 +229,12 @@ export default function LandingPage() {
                   <ArrowRight className="h-4 w-4 rtl:rotate-180" />
                 </Button>
               </Link>
+              <Link href="/transparency">
+                <Button size="lg" variant="outline" data-testid="button-hero-public-dashboard">
+                  {isAr ? "عرض لوحة البيانات العامة" : "View Public Dashboard"}
+                  <Eye className="h-4 w-4" />
+                </Button>
+              </Link>
               <Button size="lg" variant="secondary" data-testid="button-hero-learn-more"
                 onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
               >

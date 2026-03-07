@@ -136,7 +136,7 @@ export const ROLE_ALLOWED_PATHS: Record<UserRole, string[]> = {
     "/dashboards/financial", "/dashboards/bop", "/dashboards/fleet", "/dashboards/digital",
     "/dashboards/ajwaa-licensing", "/dashboards/ajwaa-permits", "/dashboards/ajwaa-economic",
     "/dashboards/ajwaa-providers", "/dashboards/ajwaa-eservices",
-    "/route-map", "/airport-pulse", "/reports", "/catalog", "/notifications", "/guide",
+    "/route-map", "/airport-pulse", "/hajj-umrah", "/copilot", "/anomalies", "/war-room", "/fifa-2034", "/investor", "/reports", "/catalog", "/notifications", "/guide", "/seasonal-calendar",
   ],
   "GACA Analyst": [
     "/home", "/dashboards/overview", "/dashboards/flight-ops", "/dashboards/passengers",
@@ -144,7 +144,7 @@ export const ROLE_ALLOWED_PATHS: Record<UserRole, string[]> = {
     "/dashboards/financial", "/dashboards/bop", "/dashboards/fleet", "/dashboards/digital",
     "/dashboards/ajwaa-licensing", "/dashboards/ajwaa-permits", "/dashboards/ajwaa-economic",
     "/dashboards/ajwaa-providers", "/dashboards/ajwaa-eservices",
-    "/explorer", "/route-map", "/airport-pulse", "/self-service", "/reports", "/catalog", "/notifications", "/guide",
+    "/explorer", "/route-map", "/airport-pulse", "/hajj-umrah", "/copilot", "/anomalies", "/fifa-2034", "/self-service", "/reports", "/catalog", "/notifications", "/guide", "/seasonal-calendar",
   ],
   "GACA Regulator": [
     "/home", "/dashboards/overview", "/dashboards/flight-ops", "/dashboards/passengers",
@@ -152,18 +152,18 @@ export const ROLE_ALLOWED_PATHS: Record<UserRole, string[]> = {
     "/dashboards/financial", "/dashboards/bop", "/dashboards/fleet", "/dashboards/digital",
     "/dashboards/ajwaa-licensing", "/dashboards/ajwaa-permits", "/dashboards/ajwaa-economic",
     "/dashboards/ajwaa-providers", "/dashboards/ajwaa-eservices",
-    "/explorer", "/route-map", "/airport-pulse", "/reports", "/catalog", "/notifications", "/guide",
+    "/explorer", "/route-map", "/airport-pulse", "/hajj-umrah", "/anomalies", "/reports", "/catalog", "/notifications", "/guide",
   ],
   "Airline Operator": [
     "/home", "/dashboards/overview", "/dashboards/connectivity", "/dashboards/flight-ops",
-    "/dashboards/financial", "/route-map", "/airport-pulse", "/reports", "/catalog", "/api-portal", "/guide",
+    "/dashboards/financial", "/route-map", "/airport-pulse", "/reports", "/catalog", "/api-portal", "/guide", "/seasonal-calendar",
   ],
   "Airport Operator": [
     "/home", "/dashboards/overview", "/dashboards/airports", "/dashboards/passengers",
     "/dashboards/cargo", "/reports", "/catalog", "/api-portal", "/guide",
   ],
   "Investor/Analyst": [
-    "/home", "/dashboards/overview", "/reports", "/catalog", "/api-portal", "/guide",
+    "/home", "/dashboards/overview", "/reports", "/catalog", "/api-portal", "/guide", "/investor",
   ],
   "Researcher": [
     "/home", "/dashboards/overview", "/reports", "/catalog", "/api-portal", "/guide",
