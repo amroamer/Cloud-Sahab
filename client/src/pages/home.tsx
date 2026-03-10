@@ -300,7 +300,7 @@ export default function HomePage() {
                 {[
                   { label: t("home.exploreTraffic"), icon: BarChart3, href: "/explorer" },
                   { label: t("home.buildReport"), icon: FileText, href: "/self-service" },
-                  { label: t("home.browseCatalog"), icon: Database, href: "/catalog" },
+                  { label: t("home.browseCatalog"), icon: Database, href: "/data-products" },
                   { label: t("home.viewApiDocs"), icon: Code, href: "/api-portal" },
                 ].map((link) => (
                   <Link key={link.href} href={link.href}>

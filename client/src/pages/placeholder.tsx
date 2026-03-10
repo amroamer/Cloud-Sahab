@@ -40,7 +40,7 @@ const pageConfig: Record<string, { icon: typeof BarChart3; titleEn: string; titl
     descEn: "Browse, search, and download published aviation reports and analytics.",
     descAr: "تصفح وابحث وحمّل تقارير وتحليلات الطيران المنشورة.",
   },
-  "/catalog": {
+  "/data-products": {
     icon: Database,
     titleEn: "Data Marketplace",
     titleAr: "سوق البيانات",

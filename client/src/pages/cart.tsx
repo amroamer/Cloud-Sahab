@@ -193,7 +193,7 @@ export default function CartPage() {
                           {item.format}
                         </span>
                       </div>
-                      <Link href={`/catalog/${item.product.id}`}>
+                      <Link href={`/data-products/${item.product.id}`}>
                         <h3 className="text-sm font-semibold leading-snug mb-1 hover:underline" data-testid={`text-cart-product-${item.product.id}`}>
                           {name}
                         </h3>

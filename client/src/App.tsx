@@ -41,6 +41,7 @@ import SeasonalCalendarPage from "@/pages/seasonal-calendar";
 import Fifa2034Page from "@/pages/fifa-2034";
 import InvestorPage from "@/pages/investor";
 import DataProductsPage from "@/pages/data-products";
+import ProductDetailPage from "@/pages/product-detail";
 import RevenueTrackerPage from "@/pages/revenue-tracker";
 import CartPage from "@/pages/cart";
 import { PlaceholderPage } from "@/pages/placeholder";
@@ -86,6 +87,7 @@ function AuthenticatedRouter() {
       <Route path="/seasonal-calendar" component={SeasonalCalendarPage} />
       <Route path="/fifa-2034" component={Fifa2034Page} />
       <Route path="/investor" component={InvestorPage} />
+      <Route path="/data-products/:productId" component={ProductDetailPage} />
       <Route path="/data-products" component={DataProductsPage} />
       <Route path="/revenue-tracker" component={RevenueTrackerPage} />
       <Route path="/cart" component={CartPage} />

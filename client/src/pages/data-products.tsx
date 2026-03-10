@@ -141,7 +141,7 @@ function MarketplaceProductCard({
   };
 
   return (
-    <Link href={`/catalog/${product.id}`}>
+    <Link href={`/data-products/${product.id}`}>
       <Card
         className="p-4 hover-elevate cursor-pointer flex flex-col h-full"
         data-testid={`card-product-${product.id}`}
@@ -423,7 +423,7 @@ export default function DataProductsPage() {
                   <p className="text-[10px] text-muted-foreground mb-2">
                     {CATALOG_PRODUCTS[0].price.toLocaleString()} {language === "ar" ? "ر.س" : "SAR"}
                   </p>
-                  <Link href={`/catalog/${CATALOG_PRODUCTS[0].id}`}>
+                  <Link href={`/data-products/${CATALOG_PRODUCTS[0].id}`}>
                     <Button size="sm" variant="secondary" className="w-full" data-testid="button-view-featured">
                       {language === "ar" ? "عرض المنتج" : "View Product"}
                       <ChevronRight className="h-3.5 w-3.5 rtl:rotate-180" />
