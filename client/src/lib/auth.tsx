@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
 
 export type UserRole =
   | "Platform Admin"
@@ -33,6 +33,7 @@ export interface DemoAccount {
 interface AuthContextType {
   user: AuthUser | null;
   isAuthenticated: boolean;
+  loading: boolean;
   login: (username: string, password: string) => Promise<boolean>;
   logout: () => void;
   ssoLogin: () => Promise<boolean>;
@@ -183,6 +184,38 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const saved = sessionStorage.getItem("sahab-user");
     return saved ? JSON.parse(saved) : null;
   });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (user) {
+      setLoading(false);
+      return;
+    }
+
+    const attemptSSO = async () => {
+      try {
+        const res = await fetch("/auth/api/me", { credentials: "include" });
+        if (res.ok) {
+          const ssoUser = await res.json();
+          const authUser: AuthUser = {
+            id: ssoUser.id,
+            name: ssoUser.full_name || ssoUser.email.split("@")[0],
+            nameAr: ssoUser.full_name || ssoUser.email.split("@")[0],
+            email: ssoUser.email,
+            role: ssoUser.role === "admin" ? "Platform Admin" : "GACA Analyst",
+            organization: "KPMG Digital Foundation",
+            organizationAr: "كي بي إم جي",
+          };
+          setUser(authUser);
+          sessionStorage.setItem("sahab-user", JSON.stringify(authUser));
+        }
+      } catch {
+        // SSO failed, continue unauthenticated
+      }
+      setLoading(false);
+    };
+    attemptSSO();
+  }, []);
 
   const login = useCallback(async (username: string, password: string): Promise<boolean> => {
     await new Promise((r) => setTimeout(r, 800));
@@ -228,7 +261,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated: !!user, login, logout, ssoLogin }}>
+    <AuthContext.Provider value={{ user, isAuthenticated: !!user, loading, login, logout, ssoLogin }}>
       {children}
     </AuthContext.Provider>
   );
