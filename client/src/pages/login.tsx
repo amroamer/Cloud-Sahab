@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "@/lib/i18n";
 import { useAuth, DEMO_ACCOUNTS } from "@/lib/auth";
 import { useTheme } from "@/lib/theme";
@@ -33,7 +33,7 @@ import { useLocation, Link } from "wouter";
 export default function LoginPage() {
   const { t, language, setLanguage } = useTranslation();
   const { toggleTheme, isDark } = useTheme();
-  const { login } = useAuth();
+  const { login, ssoLogin } = useAuth();
   const { toast } = useToast();
   const [, navigate] = useLocation();
   const [username, setUsername] = useState("");
@@ -41,6 +41,23 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [ssoChecking, setSsoChecking] = useState(true);
+
+  useEffect(() => {
+    const attemptSSO = async () => {
+      try {
+        const success = await ssoLogin();
+        if (success) {
+          navigate("/home");
+          return;
+        }
+      } catch {
+        // SSO failed, show login form
+      }
+      setSsoChecking(false);
+    };
+    attemptSSO();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,6 +84,17 @@ export default function LoginPage() {
       setPassword(account.password);
     }
   };
+
+  if (ssoChecking) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
+          <p className="mt-4 text-sm text-muted-foreground">Authenticating...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex">

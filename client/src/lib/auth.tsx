@@ -35,6 +35,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   login: (username: string, password: string) => Promise<boolean>;
   logout: () => void;
+  ssoLogin: () => Promise<boolean>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -194,13 +195,40 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return true;
   }, []);
 
+  const ssoLogin = useCallback(async (): Promise<boolean> => {
+    try {
+      const res = await fetch("/auth/api/me", {
+        credentials: "include",
+      });
+      if (!res.ok) return false;
+
+      const ssoUser = await res.json();
+
+      const authUser: AuthUser = {
+        id: ssoUser.id,
+        name: ssoUser.full_name || ssoUser.email.split("@")[0],
+        nameAr: ssoUser.full_name || ssoUser.email.split("@")[0],
+        email: ssoUser.email,
+        role: ssoUser.role === "admin" ? "Platform Admin" : "GACA Analyst",
+        organization: "KPMG Digital Foundation",
+        organizationAr: "كي بي إم جي",
+      };
+
+      setUser(authUser);
+      sessionStorage.setItem("sahab-user", JSON.stringify(authUser));
+      return true;
+    } catch {
+      return false;
+    }
+  }, []);
+
   const logout = useCallback(() => {
     setUser(null);
     sessionStorage.removeItem("sahab-user");
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated: !!user, login, logout }}>
+    <AuthContext.Provider value={{ user, isAuthenticated: !!user, login, logout, ssoLogin }}>
       {children}
     </AuthContext.Provider>
   );
